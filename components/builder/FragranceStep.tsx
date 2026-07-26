@@ -32,6 +32,13 @@ export function FragranceStep() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {results.map((f) => (
           <div key={f.id} className="bg-white/5 border border-gold-400/20 rounded-sm p-5">
+            <div className="w-full aspect-square rounded-sm mb-4 overflow-hidden bg-wine-900 flex items-center justify-center">
+              {f.imageUrl ? (
+                <img src={f.imageUrl} alt={f.contratipo} className="w-full h-full object-cover" />
+              ) : (
+                <span className="font-display text-3xl text-gold-400/40">{f.contratipo.charAt(0)}</span>
+              )}
+            </div>
             <p className="text-[10px] uppercase tracking-widest text-gold-400 mb-2">{groupLabel(f.group)}</p>
             <h3 className="font-display text-lg text-bone mb-1">{f.contratipo}</h3>
             <p className="text-xs text-bone-60 mb-4">{f.house}</p>

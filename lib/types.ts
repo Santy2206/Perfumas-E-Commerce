@@ -34,6 +34,8 @@ export interface Fragrance {
   group: OlfactiveGroup;
   /** COP per gram of oil, no container — from the "Gramo sin envase" column */
   pricePerGram: number;
+  /** Path under /public to a product shot; omitted where no photo exists yet. */
+  imageUrl?: string;
 }
 
 export interface Bottle {

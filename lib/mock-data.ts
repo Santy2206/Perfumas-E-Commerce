@@ -44,11 +44,14 @@
 
 import type { Bottle, CrossSellProduct, Fragrance, LooseComponent } from "./types";
 
-export const OLFACTIVE_GROUPS: { id: Fragrance["group"]; label: string }[] = [
-  { id: "citricas-frescas", label: "Cítricas y Frescas" },
-  { id: "maderas-orientales", label: "Maderas y Orientales" },
-  { id: "intermedios", label: "Intermedios" },
-  { id: "dulces", label: "Dulces" },
+// `wheelLines` is the pre-wrapped label for FragranceWheel — SVG <text> never
+// auto-wraps, so long labels must be split into lines here rather than at
+// render time. `label` (unwrapped) is used everywhere else (cards, chips).
+export const OLFACTIVE_GROUPS: { id: Fragrance["group"]; label: string; wheelLines: string[] }[] = [
+  { id: "citricas-frescas", label: "Cítricas y Frescas", wheelLines: ["Cítricas", "y Frescas"] },
+  { id: "maderas-orientales", label: "Maderas y Orientales", wheelLines: ["Maderas", "y Orientales"] },
+  { id: "intermedios", label: "Intermedios", wheelLines: ["Intermedios"] },
+  { id: "dulces", label: "Dulces", wheelLines: ["Dulces"] },
 ];
 
 /* ---------------- FRAGRANCES (source: MUJER / HOMBRE + *.G.O) --------------- */
@@ -57,9 +60,9 @@ export const FRAGRANCES: Fragrance[] = [
   { id: "f-chanel-5", contratipo: "Chanel Nº 5", house: "Chanel", gender: "dama", group: "maderas-orientales", pricePerGram: 400 },
   { id: "f-coco-mademoiselle", contratipo: "Coco Mademoiselle", house: "Chanel", gender: "dama", group: "intermedios", pricePerGram: 410 },
   { id: "f-la-vie-est-belle", contratipo: "La Vie Est Belle", house: "Lancôme", gender: "dama", group: "dulces", pricePerGram: 400 },
-  { id: "f-good-girl", contratipo: "Good Girl", house: "Carolina Herrera", gender: "dama", group: "dulces", pricePerGram: 400 },
+  { id: "f-good-girl", contratipo: "Good Girl", house: "Carolina Herrera", gender: "dama", group: "dulces", pricePerGram: 400, imageUrl: "/fragrances/good-girl.jpg" },
   { id: "f-one-million", contratipo: "One Million", house: "Paco Rabanne", gender: "caballero", group: "dulces", pricePerGram: 400 },
-  { id: "f-invictus", contratipo: "Invictus", house: "Paco Rabanne", gender: "caballero", group: "citricas-frescas", pricePerGram: 400 },
+  { id: "f-invictus", contratipo: "Invictus", house: "Paco Rabanne", gender: "caballero", group: "citricas-frescas", pricePerGram: 400, imageUrl: "/fragrances/invictus.jpg" },
   { id: "f-eros", contratipo: "Eros", house: "Versace", gender: "caballero", group: "dulces", pricePerGram: 400 },
   { id: "f-fahrenheit", contratipo: "Fahrenheit", house: "Christian Dior", gender: "caballero", group: "maderas-orientales", pricePerGram: 400 },
   { id: "f-legend", contratipo: "Legend", house: "Montblanc", gender: "caballero", group: "intermedios", pricePerGram: 400 },
