@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useCartStore } from "../../store/useCartStore";
 import { Badge } from "../ui/badge";
 import { cn } from "../../lib/utils";
+import { MARKETING_HOME_URL } from "../../lib/site";
 
 const NAV = [
   { href: "/crear", label: "Crear" },
@@ -27,9 +28,20 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-gold-400/20 bg-wine-950/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-8">
-        <Link href="/" className="font-display text-xl text-gold-400 tracking-wide">
-          Perfumas
-        </Link>
+        <div className="flex items-center gap-4">
+          <a
+            href={MARKETING_HOME_URL}
+            className="font-display text-xl text-gold-400 tracking-wide hover:text-gold-100 transition-colors"
+          >
+            Perfumas
+          </a>
+          <a
+            href={MARKETING_HOME_URL}
+            className="hidden sm:inline text-[10px] uppercase tracking-widest text-bone-60 hover:text-gold-400"
+          >
+            ← Volver a Perfumas
+          </a>
+        </div>
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV.map((item) => (
@@ -75,6 +87,14 @@ export function SiteHeader() {
       {open && (
         <nav className="border-t border-gold-400/20 px-4 py-4 lg:hidden">
           <ul className="flex flex-col gap-1">
+            <li>
+              <a
+                href={MARKETING_HOME_URL}
+                className="block rounded-sm px-3 py-3 text-sm uppercase tracking-widest text-gold-400 hover:bg-wine-900"
+              >
+                ← Volver a Perfumas
+              </a>
+            </li>
             {NAV.map((item) => (
               <li key={item.href}>
                 <Link

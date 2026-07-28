@@ -5,54 +5,37 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev # dev server on http://localhost:3000
+npm run dev # storefront on http://localhost:3000
+npm run backend:dev # Medusa on http://localhost:9000 (from ./backend)
 npm run build # production build (also the fastest full type-check)
 npm run start # serve the production build
-npm run lint # eslint (flat config, extends next/core-web-vitals + next/typescript)
+npm run lint # eslint
 npm run catalog:export # emit scripts/output/catalog-seed.json for Medusa import
 ```
 
-There is no test runner configured. `lib/filters.ts` and `lib/build-pricing.ts` are pure functions so a test harness can be added without touching components.
-
 ## Repository layout
 
-The git repository root is the **parent** directory (`Perfumas-Web-Page-/`), which holds the Medusa backend (`perfumas-backend/`) and the archived legacy static site (`legacy-static/`). This Next.js app lives in `PERFUMAS-E-COMMERCE/` and is the active storefront.
+Parent repo `Perfumas-Web-Page-/`:
+
+- **`website/`** — MAIN marketing site (perfumas.com.co `/`)
+- **`PERFUMAS-E-COMMERCE/`** — SECOND: Next.js shop + Medusa in `backend/`
+
+Open this folder for shop work. Marketing CTAs link to `/tienda`, `/crear`, `/carrito` on the same domain (see `../HOSTING.md`, `FUNNEL.md`).
 
 ## Architecture
 
-Next.js 16 App Router + React 19 + TypeScript (strict) + Tailwind v4 + Zustand + shadcn/ui primitives. Medusa v2 (`../perfumas-backend`) is the commerce engine; Supabase hosts Postgres for Medusa.
+Next.js 16 App Router + React 19 + TypeScript + Tailwind v4 + Zustand + shadcn/ui. Medusa v2 (`./backend`) is the commerce engine; Supabase hosts Postgres for Medusa via `backend/apps/backend/.env` → `DATABASE_URL`.
 
-Four commercial departments share one cart:
-
-1. **Custom perfumery** — `/crear` builder (fragrance → bottle → pheromones/label/gift wrap)
-2. **Insumos** — retail `/tienda/insumos` + B2B `/mayoristas/insumos` (MOQ + wholesale prices)
-3. **Hogar** — `/tienda/hogar`
-4. **Accesorios** — `/tienda/accesorios`
-
-Layering:
-
-- **`lib/types.ts`** / **`lib/catalog-types.ts`** — domain model
-- **`lib/mock-data.ts`** / **`lib/catalog.ts`** — curated catalog + department mapping
-- **`lib/filters.ts`** / **`lib/build-pricing.ts`** — pure pricing/filter math (server-validated)
-- **`store/useBuilderStore.ts`** — wizard UI state
-- **`store/useCartStore.ts`** — unified persisted cart (builds + SKUs + B2B)
-- **`lib/medusa.ts`** — Medusa JS SDK client
-- **`components/builder/*`** — builder steps; **`components/shop/*`** — catalog UI; **`components/ui/*`** — shadcn-style primitives
+Four commercial departments share one cart: custom perfumery (`/crear`), insumos, hogar, accesorios (+ B2B `/mayoristas`).
 
 ### Domain rules
 
-- Olfactive groups: `citricas-frescas`, `maderas-orientales`, `intermedios`, `dulces`
-- Bottle tiers AAA / AA / Genérico via `getBottleOptionsForFragrance`
-- Build price = `pricePerGram × capacityMl` + bottle + alcohol + pheromones + optional gift wrap — computed in `computeBuildPrice` (never trust client alone)
-- B2B: customer group `emprendedores`, default 20% wholesale discount, variant `min_qty` MOQ
-
-### Step flow quirk
-
-`BuilderStep` is `1 | 2 | 3 | 4`; steps 1–2 both render `FragranceStep`. `StepIndicator` shows three dots.
+- Build price = `pricePerGram × capacityMl` + bottle + alcohol + pheromones + gift wrap — `computeBuildPrice` (server-validated)
+- B2B: customer group `emprendedores`, ~20% wholesale discount, `min_qty` MOQ
 
 ## Conventions
 
 - Spanish UI (`lang="es"`); English identifiers/comments
 - Prices: COP via `formatCOP` in `lib/utils.ts`
-- Theme tokens in `app/globals.css` (`wine-*`, `gold-*`, `bone`, Fraunces / Work Sans)
-- See `CUTOVER.md` for production launch checklist; `../perfumas-backend/ADMIN.md` for Medusa ops
+- Theme tokens in `app/globals.css`
+- See `CUTOVER.md` and `backend/ADMIN.md`

@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/backend/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -35,6 +36,8 @@ yarn-error.log*
 .env.local
 .env.*.local
 !.env.example
+/backend/apps/backend/.env
+/backend/apps/backend/.seed-output.json
 
 # vercel
 .vercel
@@ -42,3 +45,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# medusa (nested backend)
+/backend/.medusa
+/backend/apps/backend/.medusa

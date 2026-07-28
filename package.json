@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "catalog:export": "npx tsx scripts/import-catalog.ts"
+    "catalog:export": "npx tsx scripts/import-catalog.ts",
+    "backend:dev": "npm run backend:dev --prefix backend",
+    "backend:install": "npm install --prefix backend",
+    "backend:seed": "npm run seed --prefix backend/apps/backend"
   },
   "dependencies": {
     "@medusajs/js-sdk": "^2.18.0",

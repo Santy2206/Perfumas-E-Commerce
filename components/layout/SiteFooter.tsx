@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MARKETING_HOME_URL } from "../../lib/site";
 
 export function SiteFooter() {
   return (
@@ -9,6 +10,9 @@ export function SiteFooter() {
           <p className="text-sm text-bone-60">
             Perfumería familiar en Bogotá desde 2015. Fragancias inspiradas, insumos para emprendedores y más.
           </p>
+          <a href={MARKETING_HOME_URL} className="mt-3 inline-block text-xs uppercase tracking-widest text-gold-400 hover:text-gold-100">
+            ← Sitio principal
+          </a>
         </div>
         <div>
           <p className="text-xs uppercase tracking-widest text-gold-400 mb-3">Explorar</p>
@@ -16,7 +20,7 @@ export function SiteFooter() {
             <li><Link href="/crear" className="hover:text-gold-400">Crear fragancia</Link></li>
             <li><Link href="/tienda" className="hover:text-gold-400">Tienda</Link></li>
             <li><Link href="/mayoristas" className="hover:text-gold-400">Mayoristas</Link></li>
-            <li><Link href="/faq" className="hover:text-gold-400">Preguntas frecuentes</Link></li>
+            <li><a href={`${MARKETING_HOME_URL}/#faq`} className="hover:text-gold-400">Preguntas (marca)</a></li>
           </ul>
         </div>
         <div>

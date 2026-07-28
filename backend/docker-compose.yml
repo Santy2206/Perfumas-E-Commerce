@@ -1,0 +1,22 @@
+# Local Postgres + Redis for Medusa when Supabase is not used yet.
+# Start Docker Desktop, then: docker compose up -d
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: medusa
+      POSTGRES_PASSWORD: medusa
+      POSTGRES_DB: perfumas_medusa
+    volumes:
+      - perfumas_pg:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  perfumas_pg:
