@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProductByHandle } from "../../../lib/catalog";
+import { getCatalogProductByHandle } from "../../../lib/medusa-catalog";
 import { formatCOP } from "../../../lib/utils";
 import { Badge } from "../../../components/ui/badge";
 import { AddToCartButton } from "../../../components/shop/AddToCartButton";
@@ -9,13 +9,13 @@ type Props = { params: Promise<{ handle: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { handle } = await params;
-  const product = getProductByHandle(handle);
+  const { product } = await getCatalogProductByHandle(handle);
   return { title: product?.title ?? "Producto" };
 }
 
 export default async function ProductPage({ params }: Props) {
   const { handle } = await params;
-  const product = getProductByHandle(handle);
+  const { product } = await getCatalogProductByHandle(handle);
   if (!product) notFound();
 
   return (

@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
-import { CATALOG_PRODUCTS } from "../../../lib/catalog";
 import type { Department } from "../../../lib/catalog-types";
+import {
+  getCatalogProductByHandle,
+  listCatalogProducts,
+} from "../../../lib/medusa-catalog";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -8,15 +11,14 @@ export async function GET(req: Request) {
   const handle = searchParams.get("handle");
 
   if (handle) {
-    const product = CATALOG_PRODUCTS.find((p) => p.handle === handle);
+    const { product, source } = await getCatalogProductByHandle(handle);
     if (!product) return NextResponse.json({ error: "No encontrado" }, { status: 404 });
-    return NextResponse.json({ product });
+    return NextResponse.json({ product, source });
   }
 
-  let products = CATALOG_PRODUCTS;
-  if (department) {
-    products = products.filter((p) => p.department === department);
-  }
+  const { products, source } = await listCatalogProducts({
+    department: department || undefined,
+  });
 
-  return NextResponse.json({ products, count: products.length });
+  return NextResponse.json({ products, count: products.length, source });
 }
