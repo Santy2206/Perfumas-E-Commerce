@@ -22,7 +22,7 @@
 
 1. Point `perfumas.com.co` (and `www`) to the Next.js storefront
 2. Keep a staging subdomain for Medusa Admin if desired (`admin.perfumas.com.co` reverse-proxy to :9000)
-3. Retire static `index.html` / `HTML/` legacy site after smoke tests
+3. Retire archived `legacy-static/` (old `index.html` / `HTML/` / `Images/`) after smoke tests
 
 ## Smoke tests
 
