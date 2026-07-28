@@ -1,0 +1,1544 @@
+{
+  "generatedAt": "2026-07-28T18:57:03.836Z",
+  "currency": "COP",
+  "region": "co",
+  "wholesaleDiscountDefault": 0.2,
+  "customerGroup": "emprendedores",
+  "salesChannels": [
+    "retail",
+    "wholesale"
+  ],
+  "collections": [
+    {
+      "handle": "perfumeria",
+      "title": "Perfumería"
+    },
+    {
+      "handle": "insumos",
+      "title": "Insumos"
+    },
+    {
+      "handle": "hogar",
+      "title": "Hogar y cuidado"
+    },
+    {
+      "handle": "accesorios",
+      "title": "Accesorios"
+    }
+  ],
+  "products": [
+    {
+      "handle": "acqua-di-gio",
+      "title": "Acqua di Giò",
+      "description": "Fragancia inspirada en Giorgio Armani. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "citricas-frescas",
+        "house": "Giorgio Armani",
+        "gender": "dama",
+        "group": "citricas-frescas",
+        "price_per_gram": 410,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "dama"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-acqua-di-gio",
+          "prices": [
+            {
+              "amount": 410,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 328,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "chanel-n-5",
+      "title": "Chanel Nº 5",
+      "description": "Fragancia inspirada en Chanel. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "maderas-orientales",
+        "house": "Chanel",
+        "gender": "dama",
+        "group": "maderas-orientales",
+        "price_per_gram": 400,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "dama"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-chanel-5",
+          "prices": [
+            {
+              "amount": 400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 320,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "coco-mademoiselle",
+      "title": "Coco Mademoiselle",
+      "description": "Fragancia inspirada en Chanel. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "intermedios",
+        "house": "Chanel",
+        "gender": "dama",
+        "group": "intermedios",
+        "price_per_gram": 410,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "dama"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-coco-mademoiselle",
+          "prices": [
+            {
+              "amount": 410,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 328,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "la-vie-est-belle",
+      "title": "La Vie Est Belle",
+      "description": "Fragancia inspirada en Lancôme. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "dulces",
+        "house": "Lancôme",
+        "gender": "dama",
+        "group": "dulces",
+        "price_per_gram": 400,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "dama"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-la-vie-est-belle",
+          "prices": [
+            {
+              "amount": 400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 320,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "good-girl",
+      "title": "Good Girl",
+      "description": "Fragancia inspirada en Carolina Herrera. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "dulces",
+        "house": "Carolina Herrera",
+        "gender": "dama",
+        "group": "dulces",
+        "price_per_gram": 400,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "dama"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-good-girl",
+          "prices": [
+            {
+              "amount": 400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 320,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "one-million",
+      "title": "One Million",
+      "description": "Fragancia inspirada en Paco Rabanne. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "dulces",
+        "house": "Paco Rabanne",
+        "gender": "caballero",
+        "group": "dulces",
+        "price_per_gram": 400,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "caballero"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-one-million",
+          "prices": [
+            {
+              "amount": 400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 320,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "invictus",
+      "title": "Invictus",
+      "description": "Fragancia inspirada en Paco Rabanne. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "citricas-frescas",
+        "house": "Paco Rabanne",
+        "gender": "caballero",
+        "group": "citricas-frescas",
+        "price_per_gram": 400,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "caballero"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-invictus",
+          "prices": [
+            {
+              "amount": 400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 320,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "eros",
+      "title": "Eros",
+      "description": "Fragancia inspirada en Versace. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "dulces",
+        "house": "Versace",
+        "gender": "caballero",
+        "group": "dulces",
+        "price_per_gram": 400,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "caballero"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-eros",
+          "prices": [
+            {
+              "amount": 400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 320,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "fahrenheit",
+      "title": "Fahrenheit",
+      "description": "Fragancia inspirada en Christian Dior. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "maderas-orientales",
+        "house": "Christian Dior",
+        "gender": "caballero",
+        "group": "maderas-orientales",
+        "price_per_gram": 400,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "caballero"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-fahrenheit",
+          "prices": [
+            {
+              "amount": 400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 320,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "legend",
+      "title": "Legend",
+      "description": "Fragancia inspirada en Montblanc. Precio por gramo sin envase.",
+      "collection": "perfumeria",
+      "status": "published",
+      "metadata": {
+        "department": "perfumeria",
+        "category": "intermedios",
+        "house": "Montblanc",
+        "gender": "caballero",
+        "group": "intermedios",
+        "price_per_gram": 400,
+        "product_kind": "essence",
+        "tags": [
+          "fragancia",
+          "esencia",
+          "caballero"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "f-legend",
+          "prices": [
+            {
+              "amount": 400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 320,
+            "min_qty": 30
+          }
+        }
+      ]
+    },
+    {
+      "handle": "1-million-replica-agrafe-100-ml-aaa",
+      "title": "1 Million Réplica Agrafe 100 ml AAA",
+      "description": "Envase AAA · 100 ml · cierre Agrafe",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AAA",
+        "capacity_ml": 100,
+        "closure": "Agrafe",
+        "matches_fragrance_ids": [
+          "f-one-million"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AAA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-1million-aaa",
+          "prices": [
+            {
+              "amount": 30000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 24000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "eros-agrafe-100-ml-aaa",
+      "title": "Eros Agrafe 100 ml AAA",
+      "description": "Envase AAA · 100 ml · cierre Agrafe",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AAA",
+        "capacity_ml": 100,
+        "closure": "Agrafe",
+        "matches_fragrance_ids": [
+          "f-eros"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AAA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-eros-aaa",
+          "prices": [
+            {
+              "amount": 30000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 24000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "1-million-replica-agrafe-100-ml",
+      "title": "1 Million Réplica Agrafe 100 ml",
+      "description": "Envase AA · 100 ml · cierre Agrafe",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AA",
+        "capacity_ml": 100,
+        "closure": "Agrafe",
+        "matches_fragrance_ids": [
+          "f-one-million"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-1million-std",
+          "prices": [
+            {
+              "amount": 22200,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 17760,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "copa-invictus-replica-100-ml",
+      "title": "Copa (Invictus) Réplica 100 ml",
+      "description": "Envase AA · 100 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AA",
+        "capacity_ml": 100,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [
+          "f-invictus"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-invictus-std",
+          "prices": [
+            {
+              "amount": 11000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 8800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "eros-replica-100-ml",
+      "title": "Eros Réplica 100 ml",
+      "description": "Envase AA · 100 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AA",
+        "capacity_ml": 100,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [
+          "f-eros"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-eros-std",
+          "prices": [
+            {
+              "amount": 11600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 9280,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "fahrenheit-replica-100-ml",
+      "title": "Fahrenheit Réplica 100 ml",
+      "description": "Envase AA · 100 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AA",
+        "capacity_ml": 100,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [
+          "f-fahrenheit"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-fahrenheit-std",
+          "prices": [
+            {
+              "amount": 9000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 7200,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "chanel-n-5-canada-replica-100-ml",
+      "title": "Chanel Nº5 (Canadá) Réplica 100 ml",
+      "description": "Envase AA · 100 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AA",
+        "capacity_ml": 100,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [
+          "f-chanel-5"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-chanel5-std",
+          "prices": [
+            {
+              "amount": 9300,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 7440,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "good-girl-tacon-90-ml",
+      "title": "Good Girl (Tacón) 90 ml",
+      "description": "Envase AA · 90 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AA",
+        "capacity_ml": 90,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [
+          "f-good-girl"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-goodgirl-std",
+          "prices": [
+            {
+              "amount": 14500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 11600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "legend-replica-100-ml",
+      "title": "Legend Réplica 100 ml",
+      "description": "Envase AA · 100 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AA",
+        "capacity_ml": 100,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [
+          "f-legend"
+        ],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-legend-std",
+          "prices": [
+            {
+              "amount": 11700,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 9360,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cilindrico-de-lujo-100-ml",
+      "title": "Cilíndrico de Lujo 100 ml",
+      "description": "Envase AA · 100 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "AA",
+        "capacity_ml": 100,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "AA"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-cilindrico-lujo",
+          "prices": [
+            {
+              "amount": 5500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4400,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "generico-agrafe-100-ml",
+      "title": "Genérico Agrafe 100 ml",
+      "description": "Envase Generico · 100 ml · cierre Agrafe",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "Generico",
+        "capacity_ml": 100,
+        "closure": "Agrafe",
+        "matches_fragrance_ids": [],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "Generico"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-generico-agrafe-100",
+          "prices": [
+            {
+              "amount": 7500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 6000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "generico-rosca-100-ml",
+      "title": "Genérico Rosca 100 ml",
+      "description": "Envase Generico · 100 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "Generico",
+        "capacity_ml": 100,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "Generico"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-generico-rosca-100",
+          "prices": [
+            {
+              "amount": 4400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3520,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "generico-rosca-30-ml",
+      "title": "Genérico Rosca 30 ml",
+      "description": "Envase Generico · 30 ml · cierre Rosca",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "envases",
+        "quality_tier": "Generico",
+        "capacity_ml": 30,
+        "closure": "Rosca",
+        "matches_fragrance_ids": [],
+        "product_kind": "bottle",
+        "tags": [
+          "envase",
+          "insumo",
+          "Generico"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "b-generico-rosca-30",
+          "prices": [
+            {
+              "amount": 2500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-valvula-spray-30-ml",
+      "title": "Alcohol Desodorizado (válvula spray) 30 ml",
+      "description": "Alcohol desodorizado especializado para perfumería.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "unit": "30 ml",
+        "product_kind": "alcohol",
+        "tags": [
+          "alcohol",
+          "insumo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "alc-30",
+          "prices": [
+            {
+              "amount": 1600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1280,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-valvula-spray-60-ml",
+      "title": "Alcohol Desodorizado (válvula spray) 60 ml",
+      "description": "Alcohol desodorizado especializado para perfumería.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "unit": "60 ml",
+        "product_kind": "alcohol",
+        "tags": [
+          "alcohol",
+          "insumo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "alc-60",
+          "prices": [
+            {
+              "amount": 2200,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1760,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-valvula-spray-125-ml",
+      "title": "Alcohol Desodorizado (válvula spray) 125 ml",
+      "description": "Alcohol desodorizado especializado para perfumería.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "unit": "125 ml",
+        "product_kind": "alcohol",
+        "tags": [
+          "alcohol",
+          "insumo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "alc-125",
+          "prices": [
+            {
+              "amount": 3500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "feromona-femenina",
+      "title": "Feromona Femenina",
+      "description": "Aditivo de feromonas para fragancias dama.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "feromonas",
+        "tags": [
+          "insumo",
+          "feromona"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "ph-femenina",
+          "prices": [
+            {
+              "amount": 5000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "feromona-masculina",
+      "title": "Feromona Masculina",
+      "description": "Aditivo de feromonas para fragancias caballero.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "feromonas",
+        "tags": [
+          "insumo",
+          "feromona"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "ph-masculina",
+          "prices": [
+            {
+              "amount": 5000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "feromona-unisex",
+      "title": "Feromona Unisex",
+      "description": "Aditivo de feromonas unisex.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "feromonas",
+        "tags": [
+          "insumo",
+          "feromona"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "ph-unisex",
+          "prices": [
+            {
+              "amount": 5500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4400,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "anillo-acero-lujo-dama",
+      "title": "Anillo Acero Lujo (Dama)",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "bisuteria",
+        "tags": [
+          "bisuteria"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "cs-anillo-lujo-f",
+          "prices": [
+            {
+              "amount": 10000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 8000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "arete-covergold-lujo",
+      "title": "Arete Covergold Lujo",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "bisuteria",
+        "tags": [
+          "bisuteria"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "cs-arete-covergold",
+          "prices": [
+            {
+              "amount": 15000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 12000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "argolla-acero-lujo",
+      "title": "Argolla Acero Lujo",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "bisuteria",
+        "tags": [
+          "bisuteria"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "cs-argolla-lujo",
+          "prices": [
+            {
+              "amount": 10000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 8000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "billetera-cuero-fina-caballero",
+      "title": "Billetera Cuero Fina (Caballero)",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "accesorios",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "cs-billetera-cuero-m",
+          "prices": [
+            {
+              "amount": 30000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 24000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cosmetiquera-tipo-maletin",
+      "title": "Cosmetiquera Tipo Maletín",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "accesorios",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "cs-cosmetiquera",
+          "prices": [
+            {
+              "amount": 25000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 20000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "agua-de-linos-spray-125-ml",
+      "title": "Agua de Linos Spray 125 ml",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "tags": [
+          "ambientales"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "cs-agua-linos",
+          "prices": [
+            {
+              "amount": 7000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 5600,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "esencial-ambiental-panda-gotero",
+      "title": "Esencial Ambiental Panda (Gotero)",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "tags": [
+          "ambientales"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "cs-esencial-panda",
+          "prices": [
+            {
+              "amount": 5000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4000,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "room-spray-lavanda-125",
+      "title": "Room Spray Lavanda 125 ml",
+      "description": "Ambientador en spray para espacios interiores.",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "room-spray",
+        "tags": [
+          "hogar",
+          "ambientales"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hc-room-spray-lavanda",
+          "prices": [
+            {
+              "amount": 12000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 9600,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "room-spray-citrico-125",
+      "title": "Room Spray Cítrico 125 ml",
+      "description": "Ambientador cítrico fresco para el hogar.",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "room-spray",
+        "tags": [
+          "hogar",
+          "ambientales"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hc-room-spray-citrico",
+          "prices": [
+            {
+              "amount": 12000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 9600,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "esencia-humidificador-jazmin",
+      "title": "Esencia Humidificador Jazmín",
+      "description": "Esencia concentrada para humidificadores.",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "humidificador",
+        "tags": [
+          "hogar",
+          "humidificador"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hc-humidificador-jazmin",
+          "prices": [
+            {
+              "amount": 8000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 6400,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "esencia-humidificador-vainilla",
+      "title": "Esencia Humidificador Vainilla",
+      "description": "Esencia concentrada para humidificadores.",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "humidificador",
+        "tags": [
+          "hogar",
+          "humidificador"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hc-humidificador-vainilla",
+          "prices": [
+            {
+              "amount": 8000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 6400,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "desodorante-dama",
+      "title": "Desodorante Dama",
+      "description": "Desodorante con fragancia Perfumas.",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "desodorante",
+        "tags": [
+          "hogar",
+          "cuidado"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hc-desodorante-dama",
+          "prices": [
+            {
+              "amount": 15000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 12000,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "desodorante-caballero",
+      "title": "Desodorante Caballero",
+      "description": "Desodorante con fragancia Perfumas.",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "desodorante",
+        "tags": [
+          "hogar",
+          "cuidado"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hc-desodorante-caballero",
+          "prices": [
+            {
+              "amount": 15000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 12000,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "bolso-tote-cuero",
+      "title": "Bolso Tote Cuero",
+      "description": "Bolso tote en cuero sintético de lujo.",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "bolsos",
+        "tags": [
+          "accesorios",
+          "moda"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-bolso-tote",
+          "prices": [
+            {
+              "amount": 85000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 68000,
+            "min_qty": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cinturon-cuero-caballero",
+      "title": "Cinturón Cuero Caballero",
+      "description": "Cinturón de cuero genuino.",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "cinturones",
+        "tags": [
+          "accesorios",
+          "moda"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-cinturon-caballero",
+          "prices": [
+            {
+              "amount": 45000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 36000,
+            "min_qty": 1
+          }
+        }
+      ]
+    }
+  ],
+  "count": 44
+}

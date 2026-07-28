@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Perfumas E-commerce (Next.js storefront)
 
-## Getting Started
+Active storefront for perfumas.com.co. Companion Medusa backend lives in `../perfumas-backend`.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 App Router + React 19 + Tailwind v4 + shadcn/ui primitives
+- Zustand cart (persisted) + perfume builder
+- `@medusajs/js-sdk` for Medusa (optional until backend is up)
+- Local catalog + API routes work offline for development
+
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
+npm run build
+npm run catalog:export   # writes scripts/output/catalog-seed.json for Medusa
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Routes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Path | Purpose |
+|------|---------|
+| `/` | Home — 4 departments |
+| `/crear` | Custom perfume builder (+ pheromones) |
+| `/tienda/*` | Retail catalog by department |
+| `/producto/[handle]` | Product detail |
+| `/mayoristas` | B2B registration / login |
+| `/mayoristas/insumos` | Wholesale catalog (MOQ) |
+| `/carrito` | Unified cart |
+| `/checkout` | Colombia checkout (pickup + delivery + Wompi/MP/transfer) |
+| `/cuenta` | Account / B2B profile |
+| `/faq` | FAQ (from legacy site) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Env
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copy `.env.example` → `.env.local` and set Medusa URL + publishable key when ready.
