@@ -66,6 +66,15 @@ function adminToken(): string {
   return token;
 }
 
+function adminAuthHeader(): string {
+  const token = adminToken();
+  // Medusa v2 secret API keys (sk_...) use Basic auth; JWTs use Bearer.
+  if (token.startsWith("sk_")) {
+    return `Basic ${Buffer.from(`${token}:`).toString("base64")}`;
+  }
+  return `Bearer ${token}`;
+}
+
 async function adminFetch(
   path: string,
   init?: RequestInit
@@ -74,7 +83,7 @@ async function adminFetch(
     ...init,
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${adminToken()}`,
+      Authorization: adminAuthHeader(),
       ...(init?.headers || {}),
     },
   });
