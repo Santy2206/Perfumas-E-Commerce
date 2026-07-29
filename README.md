@@ -1,55 +1,51 @@
-# Perfumas Next.js storefront
+# Perfumas E-Commerce
 
-Active storefront for perfumas.com.co. Medusa backend lives in **[`./backend`](./backend)**.
+Next.js storefront + Medusa backend for [perfumas.com.co](https://perfumas.com.co).
+
+Marketing site lives in a separate repo: [Perfumas-Web-Page-](https://github.com/Santy2206/Perfumas-Web-Page-) (`website/` → Hostinger).
 
 ## Stack
 
-- Next.js 16 App Router + React 19 + Tailwind v4 + shadcn/ui primitives
-- Zustand cart (persisted) + perfume builder
-- `@medusajs/js-sdk` for Medusa
-- Local catalog + API routes work offline for development
+- Next.js 16 App Router + React 19 + Tailwind v4
+- Zustand cart + perfume builder
+- Medusa v2 in [`./backend`](./backend)
+- `@medusajs/js-sdk` for Store API
 
-## Commands
+## Develop
 
 ```bash
 npm install
-npm run dev              # http://localhost:3000
-npm run backend:dev      # Medusa → http://localhost:9000
-npm run build
-npm run catalog:export   # writes scripts/output/catalog-seed.json for Medusa
+npm run backend:install   # once
+npm run backend:dev       # Medusa → http://localhost:9000
+npm run dev               # Shop → http://localhost:3000
 ```
 
-## Database (Supabase)
+Copy env templates:
 
-Put the **Postgres connection URI** (not the https API URL) in:
+- `.env.example` → `.env.local` (storefront)
+- `backend/apps/backend/.env.template` → `backend/apps/backend/.env` (Medusa + Supabase)
 
-`backend/apps/backend/.env`
+## Deploy
 
-```env
-DATABASE_URL=postgresql://postgres.[ref]:[password]@aws-0-[region].pooler.supabase.com:6543/postgres
-```
+See [`DEPLOY.md`](./DEPLOY.md) and marketing repo [`HOSTING.md`](https://github.com/Santy2206/Perfumas-Web-Page-/blob/main/HOSTING.md):
 
-Storefront `.env.local` only needs:
+| App | Host |
+|-----|------|
+| Shop | Vercel (this repo root) |
+| Medusa | Railway / Render / Fly (`backend/apps/backend`) |
+| Marketing | Hostinger (`Perfumas-Web-Page-`) |
 
-```env
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
-NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=
-```
+Production shop domain: `https://tienda.perfumas.com.co`  
+Medusa API: `https://api.perfumas.com.co`
 
 ## Routes
 
 | Path | Purpose |
 |------|---------|
-| `/` | Home — 4 departments |
-| `/crear` | Custom perfume builder (+ pheromones) |
-| `/tienda/*` | Retail catalog by department |
+| `/` | Home — departments |
+| `/crear` | Custom perfume builder |
+| `/tienda/*` | Retail catalog |
 | `/producto/[handle]` | Product detail |
-| `/mayoristas` | B2B registration / login |
-| `/mayoristas/insumos` | Wholesale catalog (MOQ) |
-| `/carrito` | Unified cart |
-| `/checkout` | Colombia checkout |
-| `/cuenta` | Account / B2B profile |
-| `/faq` | FAQ |
-
-See [`CUTOVER.md`](./CUTOVER.md), [`FUNNEL.md`](./FUNNEL.md), and [`../HOSTING.md`](../HOSTING.md).
+| `/mayoristas` | B2B |
+| `/carrito` / `/checkout` | Cart + checkout |
+| `/cuenta` | Account |
