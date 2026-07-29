@@ -1,18 +1,49 @@
 "use client";
 
-import { computeFragranceCost } from "../../lib/filters";
-import { CROSS_SELL_PRODUCTS, DEFAULT_BUILD_ALCOHOL, GIFT_WRAP_FEE } from "../../lib/mock-data";
+import Link from "next/link";
+import { FlaskConical, Home, Gem } from "lucide-react";
+import { GIFT_WRAP_FEE } from "../../lib/mock-data";
 import { PHEROMONES } from "../../lib/catalog";
 import { useBuilderStore } from "../../store/useBuilderStore";
-import type { CrossSellCategory } from "../../lib/types";
 import { formatCOP } from "../../lib/utils";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
-const CATEGORY_LABEL: Record<CrossSellCategory, string> = {
-  bisuteria: "Bisutería",
-  accesorios: "Accesorios",
-  ambientales: "Ambientales",
-};
+const SHOP_LINKS: {
+  href: string;
+  label: string;
+  blurb: string;
+  image: string;
+  icon: ReactNode;
+  tone: string;
+}[] = [
+  {
+    href: "/tienda/insumos",
+    label: "Insumos",
+    blurb: "Esencias, envases y alcohol",
+    image:
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=640&q=80",
+    icon: <FlaskConical className="h-5 w-5" aria-hidden />,
+    tone: "from-wine-950/80 via-wine-900/50 to-gold-400/20",
+  },
+  {
+    href: "/tienda/hogar",
+    label: "Hogar",
+    blurb: "Ambientales y cuidado",
+    image:
+      "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=640&q=80",
+    icon: <Home className="h-5 w-5" aria-hidden />,
+    tone: "from-wine-950/80 via-wine-900/40 to-bone/10",
+  },
+  {
+    href: "/tienda/accesorios",
+    label: "Accesorios",
+    blurb: "Bisutería y marroquinería",
+    image:
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=640&q=80",
+    icon: <Gem className="h-5 w-5" aria-hidden />,
+    tone: "from-wine-950/85 via-wine-900/45 to-gold-400/15",
+  },
+];
 
 export function PersonalizeStep() {
   const fragrance = useBuilderStore((s) => s.selectedFragrance);
@@ -25,7 +56,6 @@ export function PersonalizeStep() {
   const togglePheromone = useBuilderStore((s) => s.togglePheromone);
   const currentBuildTotal = useBuilderStore((s) => s.currentBuildTotal);
   const addBuildToCart = useBuilderStore((s) => s.addBuildToCart);
-  const addComponentToCart = useBuilderStore((s) => s.addComponentToCart);
   const setStep = useBuilderStore((s) => s.setStep);
   const [adding, setAdding] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -34,8 +64,10 @@ export function PersonalizeStep() {
     return <p className="text-sm text-bone-60">Completa los pasos 1 y 2 primero.</p>;
   }
 
-  const fragranceCost = computeFragranceCost(fragrance, bottle);
   const selectedPheromones = PHEROMONES.filter((p) => selectedPheromoneIds.includes(p.id));
+  const extrasTotal =
+    selectedPheromones.reduce((sum, p) => sum + p.price, 0) + (giftWrap ? GIFT_WRAP_FEE : 0);
+  const coreTotal = currentBuildTotal() - extrasTotal;
 
   const onAdd = async () => {
     setAdding(true);
@@ -89,27 +121,31 @@ export function PersonalizeStep() {
           <span className="text-sm text-bone">Envolver para regalo (+{formatCOP(GIFT_WRAP_FEE)})</span>
         </label>
 
-        <h3 className="font-display text-xl text-bone mb-4">Complementa tu ritual</h3>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {CROSS_SELL_PRODUCTS.map((p) => (
-            <div
-              key={p.id}
-              className="flex items-center justify-between bg-white/5 border border-white/10 rounded-sm px-4 py-3"
+        <h3 className="font-display text-xl text-bone mb-4">Explora la tienda</h3>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {SHOP_LINKS.map((p) => (
+            <Link
+              key={p.href}
+              href={p.href}
+              className="group overflow-hidden rounded-sm border border-white/10 bg-white/5 transition-colors hover:border-gold-400/40"
             >
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-gold-400 mb-1">
-                  {CATEGORY_LABEL[p.category]}
-                </p>
-                <p className="text-sm text-bone">{p.name}</p>
-                <p className="text-xs text-bone-60">{formatCOP(p.price)}</p>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.image}
+                  alt=""
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${p.tone}`} />
+                <span className="absolute bottom-3 left-3 flex h-9 w-9 items-center justify-center rounded-sm border border-gold-400/40 bg-wine-950/70 text-gold-400">
+                  {p.icon}
+                </span>
               </div>
-              <button
-                onClick={() => addComponentToCart(p.name, p.price, p.id)}
-                className="text-xs text-gold-400 hover:text-bone underline shrink-0 ml-3"
-              >
-                Agregar
-              </button>
-            </div>
+              <div className="px-4 py-3">
+                <p className="text-sm text-bone">{p.label}</p>
+                <p className="text-xs text-bone-60">{p.blurb}</p>
+              </div>
+            </Link>
           ))}
         </div>
 
@@ -121,21 +157,12 @@ export function PersonalizeStep() {
       <div className="bg-white/5 border border-gold-400/20 rounded-sm p-6 h-fit sticky top-8">
         <h4 className="font-display text-lg text-bone mb-4">Resumen</h4>
         <dl className="text-sm space-y-2 text-bone/80">
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-3">
             <dt>
-              {fragrance.contratipo} ({bottle.capacityMl} g)
+              {fragrance.contratipo} · {bottle.capacityMl} ml
+              <span className="block text-xs text-bone-60">{bottle.name}</span>
             </dt>
-            <dd>{formatCOP(fragranceCost)}</dd>
-          </div>
-          <div className="flex justify-between">
-            <dt>{bottle.name}</dt>
-            <dd>{formatCOP(bottle.price)}</dd>
-          </div>
-          <div className="flex justify-between">
-            <dt>
-              {DEFAULT_BUILD_ALCOHOL.name} ({DEFAULT_BUILD_ALCOHOL.unit})
-            </dt>
-            <dd>{formatCOP(DEFAULT_BUILD_ALCOHOL.price)}</dd>
+            <dd className="shrink-0">{formatCOP(coreTotal)}</dd>
           </div>
           {selectedPheromones.map((p) => (
             <div key={p.id} className="flex justify-between">

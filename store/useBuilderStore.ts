@@ -83,17 +83,22 @@ export const useBuilderStore = create<BuilderStore>((set, get) => ({
   currentBuildTotal: () => {
     const { selectedFragrance, selectedBottle, giftWrap, selectedPheromoneIds } = get();
     if (!selectedFragrance || !selectedBottle) return 0;
-    const fragranceCost = computeFragranceCost(selectedFragrance, selectedBottle);
     const pheromonePrice = PHEROMONES.filter((p) => selectedPheromoneIds.includes(p.id)).reduce(
       (sum, p) => sum + p.price,
       0
     );
+    const gift = giftWrap ? GIFT_WRAP_FEE : 0;
+    // Prepared replica (Rep Pre): UNITARIO already includes oil + bottle + alcohol
+    if (selectedBottle.id.startsWith("rep-")) {
+      return selectedBottle.price + pheromonePrice + gift;
+    }
+    const fragranceCost = computeFragranceCost(selectedFragrance, selectedBottle);
     return (
       fragranceCost +
       selectedBottle.price +
       DEFAULT_BUILD_ALCOHOL.price +
       pheromonePrice +
-      (giftWrap ? GIFT_WRAP_FEE : 0)
+      gift
     );
   },
 

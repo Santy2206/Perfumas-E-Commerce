@@ -13,9 +13,47 @@
 
 ## Catalog
 
-1. From `PERFUMAS-E-COMMERCE/`: `npx tsx scripts/import-catalog.ts` (or `npm run catalog:export`)
-2. Prefer `npm run backend:seed` to create collections + products from `scripts/output/catalog-seed.json`.
-3. Collections: `perfumeria`, `insumos`, `hogar`, `accesorios`.
+### Excel import (full catalog)
+
+From `PERFUMAS-E-COMMERCE/`:
+
+```bash
+npm run catalog:import -- --fragancias "C:\path\PRECIOS FRAGANCIAS 2026.xlsx" --perfumas "C:\path\PRECIOS PERFUMAS 2026.xlsx"
+```
+
+Writes:
+
+- `scripts/output/catalog-seed.json` (Medusa seed / sync input)
+- `lib/generated/catalog-data.ts` (storefront + `/crear` builder data)
+
+Then seed a fresh DB:
+
+```bash
+npm run backend:seed
+```
+
+### Ongoing sync (create / update / unpublish)
+
+With Medusa running and an admin API token:
+
+```bash
+set MEDUSA_ADMIN_API_TOKEN=...
+npm run catalog:sync
+npm run catalog:sync -- --prune          # draft products missing from Excel
+npm run catalog:sync -- --dry-run --prune
+```
+
+Prefer Medusa Admin for one-off edits. Re-run Excel import + sync only for bulk refreshes.
+
+### Collections
+
+`perfumeria` (réplicas preparadas), `insumos` (esencias, envases, alcohol, feromonas), `hogar`, `accesorios`.
+
+### Departments UX
+
+- `/crear` — build only (no component unit prices)
+- `/tienda/perfumeria` — prepared replicas + essence → Crear
+- `/tienda/insumos` — buy components with filters
 
 ## B2B (emprendedores)
 
@@ -70,4 +108,5 @@ Create matching shipping options in Medusa for region Colombia (COP).
 
 ## Price updates
 
-Prefer Medusa Admin over editing Excel once live. Re-run import only for bulk refreshes.
+1. Update Excel lists → `npm run catalog:import` → `npm run catalog:sync` (or `backend:seed` on empty DB).
+2. Prefer Medusa Admin for single SKU edits between bulk refreshes.

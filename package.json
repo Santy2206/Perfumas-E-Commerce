@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "catalog:export": "npx tsx scripts/import-catalog.ts",
+    "catalog:export": "npx tsx scripts/catalog/cli.ts export",
+    "catalog:import": "npx tsx scripts/catalog/cli.ts import",
+    "catalog:sync": "npx tsx scripts/catalog/cli.ts sync",
     "backend:dev": "npm run backend:dev --prefix backend",
     "backend:install": "npm install --prefix backend",
     "backend:seed": "npm run seed --prefix backend/apps/backend"
@@ -39,6 +41,7 @@
     "supabase": "^2.110.0",
     "tailwindcss": "^4",
     "tsx": "^4.23.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "xlsx": "^0.18.5"
   }
 }

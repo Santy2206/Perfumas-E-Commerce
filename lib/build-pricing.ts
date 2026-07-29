@@ -44,7 +44,58 @@ export function computeBuildPrice(payload: BuildPayload): BuildPriceResult {
   const bottle = BOTTLES.find((b) => b.id === payload.bottleId);
 
   if (!fragrance) return { ok: false, error: "Fragancia no encontrada" };
-  if (!bottle) return { ok: false, error: "Envase no encontrado" };
+  if (!bottle) return { ok: false, error: "Réplica / envase no encontrado" };
+
+  const pheromoneIds = payload.pheromoneIds ?? [];
+  const selectedPheromones = PHEROMONES.filter((p) => pheromoneIds.includes(p.id));
+  if (pheromoneIds.length !== selectedPheromones.length) {
+    return { ok: false, error: "Feromona inválida" };
+  }
+
+  const pheromonePrice = selectedPheromones.reduce((s, p) => s + p.price, 0);
+  const giftWrapFee = payload.giftWrap ? GIFT_WRAP_FEE : 0;
+
+  // Prepared replicas (Rep Pre UNITARIO) already include oil + bottle + alcohol.
+  const isPrepared = bottle.id.startsWith("rep-");
+
+  if (isPrepared) {
+    const total = bottle.price + pheromonePrice + giftWrapFee;
+    return {
+      ok: true,
+      total,
+      breakdown: {
+        fragranceCost: 0,
+        bottlePrice: bottle.price,
+        alcoholPrice: 0,
+        pheromonePrice,
+        giftWrapFee,
+      },
+      metadata: {
+        type: "custom_build",
+        fragrance_id: fragrance.id,
+        bottle_id: bottle.id,
+        alcohol_id: "included",
+        pheromone_ids: selectedPheromones.map((p) => p.id),
+        label_text: (payload.labelText ?? "").slice(0, 40),
+        gift_wrap: Boolean(payload.giftWrap),
+        build_components: [
+          {
+            variant_id: bottle.id,
+            qty: 1,
+            name: `Réplica preparada: ${bottle.name}`,
+          },
+          ...selectedPheromones.map((p) => ({
+            variant_id: p.id,
+            qty: 1,
+            name: p.title,
+          })),
+          ...(payload.giftWrap
+            ? [{ variant_id: "gift-wrap", qty: 1, name: "Caja para regalo" }]
+            : []),
+        ],
+      },
+    };
+  }
 
   const alcohol =
     (payload.alcoholId && getProductById(payload.alcoholId)
@@ -55,16 +106,9 @@ export function computeBuildPrice(payload: BuildPayload): BuildPriceResult {
         }
       : null) ?? DEFAULT_BUILD_ALCOHOL;
 
-  const pheromoneIds = payload.pheromoneIds ?? [];
-  const selectedPheromones = PHEROMONES.filter((p) => pheromoneIds.includes(p.id));
-  if (pheromoneIds.length !== selectedPheromones.length) {
-    return { ok: false, error: "Feromona inválida" };
-  }
-
   const fragranceCost = computeFragranceCost(fragrance, bottle);
-  const pheromonePrice = selectedPheromones.reduce((s, p) => s + p.price, 0);
-  const giftWrapFee = payload.giftWrap ? GIFT_WRAP_FEE : 0;
-  const total = fragranceCost + bottle.price + alcohol.price + pheromonePrice + giftWrapFee;
+  const total =
+    fragranceCost + bottle.price + alcohol.price + pheromonePrice + giftWrapFee;
 
   return {
     ok: true,
@@ -85,10 +129,18 @@ export function computeBuildPrice(payload: BuildPayload): BuildPriceResult {
       label_text: (payload.labelText ?? "").slice(0, 40),
       gift_wrap: Boolean(payload.giftWrap),
       build_components: [
-        { variant_id: fragrance.id, qty: bottle.capacityMl, name: `${fragrance.contratipo} (${bottle.capacityMl} g)` },
+        {
+          variant_id: fragrance.id,
+          qty: bottle.capacityMl,
+          name: `${fragrance.contratipo} (${bottle.capacityMl} g)`,
+        },
         { variant_id: bottle.id, qty: 1, name: bottle.name },
         { variant_id: alcohol.id, qty: 1, name: alcohol.name },
-        ...selectedPheromones.map((p) => ({ variant_id: p.id, qty: 1, name: p.title })),
+        ...selectedPheromones.map((p) => ({
+          variant_id: p.id,
+          qty: 1,
+          name: p.title,
+        })),
         ...(payload.giftWrap
           ? [{ variant_id: "gift-wrap", qty: 1, name: "Caja para regalo" }]
           : []),

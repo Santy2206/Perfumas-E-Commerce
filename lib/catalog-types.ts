@@ -5,6 +5,16 @@
 
 export type Department = "perfumeria" | "insumos" | "hogar" | "accesorios";
 
+export type ProductKind =
+  | "essence"
+  | "bottle"
+  | "alcohol"
+  | "pheromone"
+  | "prepared_replica"
+  | "home_care"
+  | "accessory"
+  | "custom_build";
+
 export type CatalogProduct = {
   id: string;
   handle: string;

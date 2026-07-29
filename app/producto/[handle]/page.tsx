@@ -33,22 +33,36 @@ export default async function ProductPage({ params }: Props) {
           <Badge variant="outline" className="mb-4">{product.category}</Badge>
           <h1 className="font-display text-3xl text-bone mb-3">{product.title}</h1>
           {product.description && <p className="text-bone-60 mb-6">{product.description}</p>}
-          <p className="font-display text-2xl text-gold-400 mb-2">{formatCOP(product.price)}</p>
-          {product.wholesalePrice != null && (
-            <p className="text-sm text-bone-60 mb-6">
-              Precio mayorista: {formatCOP(product.wholesalePrice)}
-              {product.minQty ? ` · mín. ${product.minQty} uds` : ""}
-            </p>
-          )}
-          {product.department === "perfumeria" && product.metadata?.product_kind === "essence" ? (
-            <Link
-              href={`/crear?fragrance=${product.id}`}
-              className="inline-flex h-11 items-center rounded-sm bg-gold-400 px-6 text-sm font-semibold uppercase tracking-widest text-wine-950 hover:bg-gold-100"
-            >
-              Crear fragancia con esta esencia
-            </Link>
+          {product.metadata?.product_kind === "essence" ? (
+            <>
+              <p className="font-display text-xl text-gold-400 mb-2">
+                {formatCOP(product.price)} / gramo
+              </p>
+              <p className="text-sm text-bone-60 mb-6">
+                En el creador el total depende del envase. También puedes comprar el aceite en
+                Insumos.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href={`/crear?fragrance=${product.id}`}
+                  className="inline-flex h-11 items-center rounded-sm bg-gold-400 px-6 text-sm font-semibold uppercase tracking-widest text-wine-950 hover:bg-gold-100"
+                >
+                  Crear fragancia con esta esencia
+                </Link>
+                <AddToCartButton product={product} />
+              </div>
+            </>
           ) : (
-            <AddToCartButton product={product} />
+            <>
+              <p className="font-display text-2xl text-gold-400 mb-2">{formatCOP(product.price)}</p>
+              {product.wholesalePrice != null && (
+                <p className="text-sm text-bone-60 mb-6">
+                  Precio mayorista: {formatCOP(product.wholesalePrice)}
+                  {product.minQty ? ` · mín. ${product.minQty} uds` : ""}
+                </p>
+              )}
+              <AddToCartButton product={product} />
+            </>
           )}
           <p className="mt-8">
             <Link href={`/tienda/${product.department}`} className="text-sm text-bone-60 underline hover:text-gold-400">

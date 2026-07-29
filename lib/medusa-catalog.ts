@@ -134,11 +134,17 @@ async function getCopRegionId(): Promise<string | null> {
   try {
     const { regions } = await medusa.store.region.list({ limit: 20 });
     const co =
-      regions?.find((r) => r.currency_code?.toLowerCase() === "cop") ||
-      regions?.find((r) => r.name?.toLowerCase() === "colombia") ||
+      regions?.find(
+        (r: { id: string; currency_code?: string; name?: string }) =>
+          r.currency_code?.toLowerCase() === "cop"
+      ) ||
+      regions?.find(
+        (r: { id: string; currency_code?: string; name?: string }) =>
+          r.name?.toLowerCase() === "colombia"
+      ) ||
       regions?.[0];
     cachedRegionId = co?.id ?? null;
-    return cachedRegionId;
+    return cachedRegionId ?? null;
   } catch {
     cachedRegionId = null;
     return null;
@@ -152,16 +158,26 @@ async function fetchMedusaProducts(): Promise<CatalogProduct[] | null> {
     const regionId = await getCopRegionId();
     if (!regionId) return null;
 
-    const { products } = await medusa.store.product.list({
-      limit: 100,
-      region_id: regionId,
-      fields:
-        "*variants,*variants.calculated_price,*collection,+metadata,*images",
-    });
+    const all: MedusaProduct[] = [];
+    let offset = 0;
+    const limit = 100;
+    for (;;) {
+      const { products, count } = await medusa.store.product.list({
+        limit,
+        offset,
+        region_id: regionId,
+        fields:
+          "*variants,*variants.calculated_price,*collection,+metadata,*images",
+      });
+      if (!products?.length) break;
+      all.push(...(products as MedusaProduct[]));
+      offset += limit;
+      if (all.length >= (count ?? all.length)) break;
+    }
 
-    if (!products?.length) return null;
+    if (!all.length) return null;
 
-    const mapped = (products as MedusaProduct[])
+    const mapped = all
       .map(mapMedusaProduct)
       .filter((p): p is CatalogProduct => p != null);
 
@@ -174,18 +190,22 @@ async function fetchMedusaProducts(): Promise<CatalogProduct[] | null> {
 
 export async function listCatalogProducts(options?: {
   department?: Department;
+  productKind?: string;
 }): Promise<{ products: CatalogProduct[]; source: "medusa" | "local" }> {
   const remote = await fetchMedusaProducts();
   const products = remote ?? CATALOG_PRODUCTS;
   const source = remote ? "medusa" : "local";
 
+  let filtered = products;
   if (options?.department) {
-    return {
-      products: products.filter((p) => p.department === options.department),
-      source,
-    };
+    filtered = filtered.filter((p) => p.department === options.department);
   }
-  return { products, source };
+  if (options?.productKind) {
+    filtered = filtered.filter(
+      (p) => p.metadata?.product_kind === options.productKind
+    );
+  }
+  return { products: filtered, source };
 }
 
 export async function getCatalogProductByHandle(

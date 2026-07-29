@@ -1,39 +1,56 @@
 "use client";
 
-import { filterFragrances } from "../../lib/filters";
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { filterFragrances, sortFragrances } from "../../lib/filters";
 import { FRAGRANCES, OLFACTIVE_GROUPS } from "../../lib/mock-data";
 import { useBuilderStore } from "../../store/useBuilderStore";
+import type { CatalogSort } from "../../lib/house-groups";
 import { FragranceWheel } from "./FragranceWheel";
-import { GenderSelector, GlobalSearchBar, HouseSelector } from "./SearchAndFilters";
-
-const formatCOP = (n: number) => new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(n);
+import { GlobalSearchBar, HouseSelector } from "./SearchAndFilters";
+import { CatalogToolbar } from "../shop/CatalogToolbar";
 
 export function FragranceStep() {
   const filters = useBuilderStore((s) => s.filters);
   const setGroup = useBuilderStore((s) => s.setGroup);
+  const setGender = useBuilderStore((s) => s.setGender);
   const selectFragrance = useBuilderStore((s) => s.selectFragrance);
-  const addComponentToCart = useBuilderStore((s) => s.addComponentToCart);
+  const [sort, setSort] = useState<CatalogSort>("alpha-asc");
 
-  const results = filterFragrances(FRAGRANCES, filters);
+  const results = useMemo(
+    () => sortFragrances(filterFragrances(FRAGRANCES, filters), sort),
+    [filters, sort]
+  );
   const groupLabel = (id: string) => OLFACTIVE_GROUPS.find((g) => g.id === id)?.label ?? id;
 
   return (
     <div>
       <h2 className="font-display text-2xl sm:text-3xl text-bone mb-2">Encuentra tu fragancia</h2>
-      <p className="text-sm text-bone-60 mb-8">Busca directamente o explora por género, rueda olfativa y casa inspiradora.</p>
+      <p className="text-sm text-bone-60 mb-8">
+        Busca por nombre o casa (sin importar mayúsculas), filtra por género y ordena la lista.
+      </p>
 
       <GlobalSearchBar />
-      <GenderSelector />
+      <CatalogToolbar
+        gender={filters.gender}
+        onGender={setGender}
+        sort={sort}
+        onSort={setSort}
+        showUnisex
+      />
       <FragranceWheel selected={filters.group} onSelect={setGroup} />
       <div className="mt-6">
         <HouseSelector />
       </div>
+
+      <p className="mb-4 text-xs text-bone-60">{results.length} fragancias</p>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {results.map((f) => (
           <div key={f.id} className="bg-white/5 border border-gold-400/20 rounded-sm p-5">
             <div className="w-full aspect-square rounded-sm mb-4 overflow-hidden bg-wine-900 flex items-center justify-center">
               {f.imageUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img src={f.imageUrl} alt={f.contratipo} className="w-full h-full object-cover" />
               ) : (
                 <span className="font-display text-3xl text-gold-400/40">{f.contratipo.charAt(0)}</span>
@@ -42,7 +59,6 @@ export function FragranceStep() {
             <p className="text-[10px] uppercase tracking-widest text-gold-400 mb-2">{groupLabel(f.group)}</p>
             <h3 className="font-display text-lg text-bone mb-1">{f.contratipo}</h3>
             <p className="text-xs text-bone-60 mb-4">{f.house}</p>
-            <p className="text-sm font-semibold text-bone mb-4">{formatCOP(f.pricePerGram)} / gramo</p>
             <div className="flex flex-col gap-2">
               <button
                 onClick={() => selectFragrance(f)}
@@ -50,16 +66,20 @@ export function FragranceStep() {
               >
                 Seleccionar y continuar
               </button>
-              <button
-                onClick={() => addComponentToCart(`${f.contratipo} — aceite (30 g)`, f.pricePerGram * 30, f.id)}
-                className="border border-white/20 text-bone/80 hover:border-gold-400 hover:text-gold-400 text-xs rounded-sm py-2.5 transition-colors"
+              <Link
+                href="/tienda/insumos?cat=esencias"
+                className="text-center text-xs text-bone-60 hover:text-gold-400 underline py-1"
               >
-                Comprar solo este aceite (30 g)
-              </button>
+                ¿Solo el aceite? Ver en Insumos
+              </Link>
             </div>
           </div>
         ))}
-        {results.length === 0 && <p className="col-span-full text-center text-sm text-bone-60 py-10">Ninguna fragancia coincide con estos filtros.</p>}
+        {results.length === 0 && (
+          <p className="col-span-full text-center text-sm text-bone-60 py-10">
+            Ninguna fragancia coincide con estos filtros.
+          </p>
+        )}
       </div>
     </div>
   );

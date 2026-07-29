@@ -1,0 +1,194 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import type { CatalogProduct } from "../../lib/catalog-types";
+import type { Gender, OlfactiveGroup } from "../../lib/types";
+import {
+  housesMatch,
+  normalizeText,
+  sortByTitleAndPrice,
+  textIncludes,
+  type CatalogSort,
+} from "../../lib/house-groups";
+import { ProductCard } from "./ProductCard";
+import { CatalogToolbar } from "./CatalogToolbar";
+import { HouseGroupAccordion } from "./HouseGroupAccordion";
+import { FragranceWheel } from "../builder/FragranceWheel";
+import Link from "next/link";
+
+function houseOf(p: CatalogProduct): string {
+  return typeof p.metadata?.house === "string" ? p.metadata.house : "";
+}
+
+function genderOf(p: CatalogProduct): string {
+  return typeof p.metadata?.gender === "string" ? p.metadata.gender : "";
+}
+
+function groupOf(p: CatalogProduct): string {
+  return typeof p.metadata?.group === "string" ? p.metadata.group : "";
+}
+
+/** Shop-facing replicas: branded glass bottles only — no genéricos / plásticos / perfumeros. */
+export function isBrandedPreparedReplica(p: CatalogProduct): boolean {
+  const tier = String(p.metadata?.quality_tier ?? "");
+  if (tier === "Generico") return false;
+
+  const t = normalizeText(p.title);
+  if (
+    /generico|plastico|perfumero|maletin|osito|vip bala|bala agrafe|bala rosca|martillado rosca generico/.test(
+      t
+    )
+  ) {
+    return false;
+  }
+
+  // Prefer AA/AAA fragrance replicas (named bottles), not packaging SKUs.
+  return tier === "AAA" || tier === "AA" || tier === "";
+}
+
+export function PerfumeriaBrowser({
+  replicas,
+  essences,
+  sourceLabel,
+}: {
+  replicas: CatalogProduct[];
+  essences: CatalogProduct[];
+  sourceLabel: string;
+}) {
+  const [search, setSearch] = useState("");
+  const [gender, setGender] = useState<Gender | null>(null);
+  const [house, setHouse] = useState<string | null>(null);
+  const [olfactive, setOlfactive] = useState<OlfactiveGroup | null>(null);
+  const [sortReplicas, setSortReplicas] = useState<CatalogSort>("alpha-asc");
+  const [sortEssences, setSortEssences] = useState<CatalogSort>("alpha-asc");
+
+  const houses = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const p of essences) {
+      const h = houseOf(p);
+      if (!h) continue;
+      if (!map.has(h.toLowerCase())) map.set(h.toLowerCase(), h);
+    }
+    return Array.from(map.values());
+  }, [essences]);
+
+  const filteredReplicas = useMemo(() => {
+    const list = replicas.filter((p) => {
+      if (!isBrandedPreparedReplica(p)) return false;
+      if (
+        search.trim() &&
+        !textIncludes(p.title, search) &&
+        !textIncludes(p.description || "", search)
+      ) {
+        return false;
+      }
+      if (gender && genderOf(p) && genderOf(p) !== gender) return false;
+      return true;
+    });
+    return sortByTitleAndPrice(list, sortReplicas);
+  }, [replicas, search, gender, sortReplicas]);
+
+  const filteredEssences = useMemo(() => {
+    const list = essences.filter((p) => {
+      if (gender && genderOf(p) !== gender) return false;
+      if (house && !housesMatch(houseOf(p), house)) return false;
+      if (olfactive && groupOf(p) !== olfactive) return false;
+      if (search.trim()) {
+        const ok =
+          textIncludes(p.title, search) ||
+          textIncludes(houseOf(p), search) ||
+          textIncludes(p.description || "", search);
+        if (!ok) return false;
+      }
+      return true;
+    });
+    return sortByTitleAndPrice(list, sortEssences);
+  }, [essences, search, gender, house, olfactive, sortEssences]);
+
+  return (
+    <div>
+      <h1 className="font-display text-3xl text-bone mb-2">Perfumería</h1>
+      <p className="text-sm text-bone-60 mb-2">
+        Réplicas preparadas listas para llevar, o elige una esencia e inspira tu creación.
+      </p>
+      <p className="mb-6 text-xs uppercase tracking-widest text-bone-60">{sourceLabel}</p>
+
+      <input
+        type="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Buscar por nombre o casa…"
+        className="mb-6 w-full max-w-md rounded-sm border border-gold-400/30 bg-white/5 px-4 py-2.5 text-sm text-bone placeholder:text-bone-60 focus:outline-none focus:ring-2 focus:ring-gold-400"
+      />
+
+      <CatalogToolbar
+        gender={gender}
+        onGender={setGender}
+        sort={sortReplicas}
+        onSort={setSortReplicas}
+      />
+
+      <section className="mb-14">
+        <div className="mb-6">
+          <h2 className="font-display text-2xl text-bone">Réplicas preparadas</h2>
+          <p className="text-sm text-bone-60">
+            Perfume listo en envase de fragancia (sin genéricos ni plásticos) —{" "}
+            {filteredReplicas.length} resultados
+          </p>
+        </div>
+        {filteredReplicas.length === 0 ? (
+          <p className="text-bone-60">No hay réplicas con estos filtros.</p>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredReplicas.map((p) => (
+              <ProductCard key={p.id} product={p} intent="buy" />
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section>
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 className="font-display text-2xl text-bone">Crea con una esencia</h2>
+            <p className="text-sm text-bone-60">
+              Filtra por género, grupo olfativo y casa.
+            </p>
+          </div>
+          <div className="flex gap-3 text-sm">
+            <Link href="/crear" className="text-gold-400 underline hover:text-bone">
+              Ir a Crear
+            </Link>
+            <Link
+              href="/tienda/insumos?cat=esencias"
+              className="text-bone-60 underline hover:text-gold-400"
+            >
+              Comprar esencias en Insumos
+            </Link>
+          </div>
+        </div>
+
+        <CatalogToolbar
+          gender={gender}
+          onGender={setGender}
+          sort={sortEssences}
+          onSort={setSortEssences}
+        />
+        <div className="mb-6">
+          <FragranceWheel
+            selected={olfactive}
+            onSelect={(g) => setOlfactive((prev) => (prev === g ? null : g))}
+          />
+        </div>
+        <HouseGroupAccordion houses={houses} selected={house} onSelect={setHouse} />
+
+        <p className="mb-4 text-xs text-bone-60">{filteredEssences.length} esencias</p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredEssences.map((p) => (
+            <ProductCard key={p.id} product={p} intent="create" />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}

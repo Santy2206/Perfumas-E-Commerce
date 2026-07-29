@@ -1,0 +1,208 @@
+{
+  "repHeaders": [
+    [
+      "CODIGO",
+      "NOMBRE ",
+      "PRECIO",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "PERFUME PRECIO EXCEPCIONAL",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "ENVASE",
+      "PRODUCTO",
+      "ENVASE",
+      "UNITARIO",
+      "RECARGA",
+      "MAYOR 10% 3 A 5 UNID.",
+      "MAYOR 15% 6 A 11 UNID.",
+      "MAYOR 20% + 12 UNID.",
+      "MAYOR 25% + $300.000",
+      "UNITARIO",
+      "RECARGA",
+      "MAYOR 15%",
+      "MAYOR 20%",
+      null,
+      null
+    ]
+  ],
+  "repSample": [
+    [
+      1251,
+      "1 MILLION AGRAFE 100 ML",
+      10700,
+      52000,
+      32000,
+      46800,
+      44200,
+      41600,
+      null,
+      3000,
+      2500,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      1254,
+      "1 MILLION AGRAFE 100 ML AAA",
+      10700,
+      66000,
+      32000,
+      59400,
+      56100,
+      null,
+      null,
+      3000,
+      2500,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      1342,
+      "1 MILLION ROSCA REPLICA 30 ML",
+      5000,
+      17500,
+      13000,
+      15800,
+      14900,
+      14000,
+      13100,
+      6000,
+      5000,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      1357,
+      "1 MILLION ROSCA REPLICA 50 ML",
+      null,
+      null,
+      20000,
+      0,
+      0,
+      0,
+      0,
+      9500,
+      8500,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "perfumero": [
+    [
+      1294,
+      "MALETIN DOBLE PERFUMERO 3 Y 8 ML",
+      4600
+    ],
+    [
+      1289,
+      "PERFUMERO ESFERO LUJO 3 ML",
+      3000
+    ],
+    [
+      1291,
+      "PERFUMERO ESFERO PLASTICO 10 ML",
+      2000
+    ],
+    [
+      1290,
+      "PERFUMERO ESFERO PLASTICO 8 ML",
+      1800
+    ],
+    [
+      1204,
+      "PERFUMERO ESFERO PLASTICO 6 ML",
+      1700
+    ],
+    [
+      1205,
+      "PERFUMERO LUJO 8 ML",
+      null
+    ],
+    [
+      1206,
+      "PERFUMERO LUJO MARLBORO 8 ML",
+      null
+    ],
+    [
+      1203,
+      "PERFUMERO PLASTICO 18 ML",
+      null
+    ]
+  ],
+  "generico": [
+    [
+      1230,
+      "GENERICO AGRAFE 100 ML",
+      7500
+    ],
+    [
+      1229,
+      "GENERICO AGRAFE 50 ML",
+      5000
+    ],
+    [
+      1210,
+      "GENERICO ROSCA 100 ML VP",
+      4400
+    ],
+    [
+      1280,
+      "GENERICO ROSCA 25 ML V.P.",
+      null
+    ],
+    [
+      1207,
+      "GENERICO ROSCA 30 ML VP",
+      2500
+    ],
+    [
+      1275,
+      "GENERICO ROSCA 45 ML",
+      null
+    ],
+    [
+      1208,
+      "GENERICO ROSCA 50 ML VP",
+      null
+    ],
+    [
+      1209,
+      "GENERICO ROSCA 60 ML VP",
+      3500
+    ]
+  ],
+  "arabia": [
+    [
+      1335,
+      "ARABIA ROSCA 30 ML",
+      6800
+    ]
+  ],
+  "arabiaRep": [
+    [
+      1335,
+      "ARABIA ROSCA 30 ML ",
+      null,
+      18000,
+      13000
+    ]
+  ]
+}

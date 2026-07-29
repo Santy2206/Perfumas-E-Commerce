@@ -1,33 +1,34 @@
-"use client";
-
+import { Suspense } from "react";
 import Link from "next/link";
-import { DepartmentGrid } from "../../../components/shop/DepartmentGrid";
-import { useCartStore } from "../../../store/useCartStore";
-import { Button } from "../../../components/ui/button";
-import { Badge } from "../../../components/ui/badge";
+import { listCatalogProducts } from "../../../lib/medusa-catalog";
+import { InsumosBrowser } from "../../../components/shop/InsumosBrowser";
+import { MayoristasGate } from "../../../components/shop/MayoristasGate";
 
-export default function MayoristasInsumosPage() {
-  const isB2B = useCartStore((s) => s.isB2B);
+export const metadata = { title: "Insumos mayoristas" };
 
-  if (!isB2B) {
-    return (
-      <div className="mx-auto max-w-lg px-4 py-16 text-center">
-        <Badge variant="secondary" className="mb-4">Acceso restringido</Badge>
-        <h1 className="font-display text-2xl text-bone mb-4">Inicia sesión mayorista</h1>
-        <p className="text-bone-60 mb-6">
-          Este catálogo muestra precios y MOQ exclusivos para emprendedores aprobados.
-        </p>
-        <Button asChild>
-          <Link href="/mayoristas">Ir al portal</Link>
-        </Button>
-      </div>
-    );
-  }
+export default async function MayoristasInsumosPage() {
+  const { products, source } = await listCatalogProducts({ department: "insumos" });
+  const sourceLabel =
+    source === "medusa"
+      ? "Catálogo en vivo · precios mayoristas"
+      : "Catálogo local · precios mayoristas";
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8">
-      <Badge variant="b2b" className="mb-4">Precios mayoristas</Badge>
-      <DepartmentGrid department="insumos" wholesale />
-    </div>
+    <MayoristasGate>
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8">
+        <Suspense fallback={<p className="text-bone-60">Cargando…</p>}>
+          <InsumosBrowser
+            products={products}
+            wholesale
+            sourceLabel={sourceLabel}
+          />
+        </Suspense>
+        <p className="mt-8 text-sm text-bone-60">
+          <Link href="/mayoristas" className="underline hover:text-gold-400">
+            ← Portal mayoristas
+          </Link>
+        </p>
+      </div>
+    </MayoristasGate>
   );
 }

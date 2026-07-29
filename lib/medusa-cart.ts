@@ -31,11 +31,17 @@ export async function getColombiaRegionId(): Promise<string | null> {
   try {
     const { regions } = await medusa.store.region.list({ limit: 20 });
     const co =
-      regions?.find((r) => r.currency_code?.toLowerCase() === "cop") ||
-      regions?.find((r) => r.name?.toLowerCase() === "colombia") ||
+      regions?.find(
+        (r: { id: string; currency_code?: string; name?: string }) =>
+          r.currency_code?.toLowerCase() === "cop"
+      ) ||
+      regions?.find(
+        (r: { id: string; currency_code?: string; name?: string }) =>
+          r.name?.toLowerCase() === "colombia"
+      ) ||
       null;
     cachedRegionId = co?.id ?? null;
-    return cachedRegionId;
+    return cachedRegionId ?? null;
   } catch {
     cachedRegionId = null;
     return null;

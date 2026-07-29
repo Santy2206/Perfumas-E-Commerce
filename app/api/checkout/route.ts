@@ -64,7 +64,7 @@ async function completeMedusaCheckout(body: CheckoutBody) {
     wholesale: Boolean(body.isB2B),
   });
   if (!cartSummary) return null;
-  let cartId = cartSummary.id;
+  const cartId = cartSummary.id;
 
   // Ensure SKU lines exist on the Medusa cart
   for (const line of body.lines) {
@@ -153,8 +153,12 @@ async function completeMedusaCheckout(body: CheckoutBody) {
   const wantWompi = body.paymentProviderId === "wompi";
   const providerId =
     (wantWompi &&
-      payment_providers?.find((p) => p.id.includes("wompi"))?.id) ||
-    payment_providers?.find((p) => p.id.includes("system"))?.id ||
+      payment_providers?.find((p: { id: string }) =>
+        p.id.includes("wompi")
+      )?.id) ||
+    payment_providers?.find((p: { id: string }) =>
+      p.id.includes("system")
+    )?.id ||
     payment_providers?.[0]?.id ||
     "pp_system_default";
 
