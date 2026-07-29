@@ -303,17 +303,18 @@ export const PAYMENT_PROVIDERS = [
   {
     id: "wompi",
     name: "Wompi",
-    description: "Tarjeta, PSE, Nequi y Bancolombia",
+    description:
+      "Tarjeta, PSE, Nequi — completa el pedido en Medusa; confirma pago en Admin / webhook",
   },
   {
     id: "mercadopago",
     name: "Mercado Pago",
-    description: "Tarjeta y medios locales",
+    description: "Próximamente — usa transferencia o Wompi por ahora",
   },
   {
     id: "transfer",
     name: "Transferencia bancaria",
-    description: "Pago manual — confirmación por WhatsApp",
+    description: "Pago manual — confirmación por WhatsApp / Admin",
   },
 ];
 

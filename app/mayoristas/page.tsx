@@ -154,6 +154,7 @@ function B2BRegisterForm() {
         city,
         email,
         status: data.status ?? "pending",
+        customerId: data.customerId,
       });
     } catch {
       setMsg("Error de red");

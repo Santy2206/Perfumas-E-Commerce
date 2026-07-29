@@ -14,4 +14,24 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
   },
+  modules: [
+    {
+      resolve: "@medusajs/medusa/payment",
+      options: {
+        providers: [
+          {
+            resolve: "./src/modules/wompi-payment",
+            id: "wompi",
+            options: {
+              publicKey:
+                process.env.WOMPI_PUBLIC_KEY ||
+                process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY ||
+                "",
+              privateKey: process.env.WOMPI_PRIVATE_KEY || "",
+            },
+          },
+        ],
+      },
+    },
+  ],
 })

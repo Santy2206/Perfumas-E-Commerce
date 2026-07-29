@@ -114,6 +114,7 @@ function mapMedusaProduct(product: MedusaProduct): CatalogProduct | null {
     minQty: Number.isFinite(minQty) ? minQty : local?.minQty,
     imageUrl,
     tags,
+    variantId: variant?.id || local?.variantId,
     metadata: {
       ...(local?.metadata || {}),
       ...(product.metadata || {}),

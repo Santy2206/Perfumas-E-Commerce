@@ -9,9 +9,7 @@ type Body = {
 };
 
 /**
- * B2B registration — stores pending applications.
- * When Medusa is connected, creates a customer and leaves group assignment
- * to admin approval (emprendedores customer group).
+ * B2B registration — creates Medusa customer via backend; Admin assigns emprendedores.
  */
 export async function POST(req: Request) {
   let body: Body;
@@ -22,7 +20,10 @@ export async function POST(req: Request) {
   }
 
   if (!body.businessName || !body.nit || !body.email || !body.phone) {
-    return NextResponse.json({ error: "Completa todos los campos obligatorios" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Completa todos los campos obligatorios" },
+      { status: 400 }
+    );
   }
 
   const application = {
@@ -38,13 +39,29 @@ export async function POST(req: Request) {
   g.__perfumasB2B.push(application);
 
   const medusaUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL;
+  let customerId: string | undefined;
+  let status: "pending" | "approved" = "pending";
+
   if (medusaUrl) {
     try {
-      await fetch(`${medusaUrl}/store/perfumas/b2b/register`, {
+      const res = await fetch(`${medusaUrl}/store/perfumas/b2b/register`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(application),
+        headers: {
+          "Content-Type": "application/json",
+          ...(process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
+            ? {
+                "x-publishable-api-key":
+                  process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
+              }
+            : {}),
+        },
+        body: JSON.stringify(body),
       });
+      if (res.ok) {
+        const data = await res.json();
+        customerId = data.customer_id;
+        if (data.status === "approved") status = "approved";
+      }
     } catch {
       // local pending record is enough
     }
@@ -52,9 +69,13 @@ export async function POST(req: Request) {
 
   return NextResponse.json({
     ok: true,
-    status: "pending",
-    message: "Solicitud recibida. Te avisaremos cuando tu cuenta sea aprobada.",
+    status,
+    message:
+      status === "approved"
+        ? "Cuenta mayorista lista."
+        : "Solicitud recibida. Te avisaremos cuando tu cuenta sea aprobada (Admin → Customers → asignar grupo emprendedores).",
     applicationId: application.id,
+    customerId,
   });
 }
 

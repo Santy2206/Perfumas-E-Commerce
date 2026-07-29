@@ -134,6 +134,60 @@ export const useBuilderStore = create<BuilderStore>((set, get) => ({
       build: payload,
     });
 
+    // Sync custom build into Medusa cart when configured
+    try {
+      const cartState = useCartStore.getState();
+      let cartId = cartState.medusaCartId;
+      if (!cartId) {
+        const { ensureMedusaCart } = await import("../lib/medusa-cart");
+        const cart = await ensureMedusaCart(null);
+        if (cart?.id) {
+          cartId = cart.id;
+          cartState.setMedusaCartId(cart.id);
+        }
+      }
+      if (cartId && process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL) {
+        const resBuild = await fetch(
+          `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/builds/add-to-cart`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              ...(process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
+                ? {
+                    "x-publishable-api-key":
+                      process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
+                  }
+                : {}),
+            },
+            body: JSON.stringify({
+              ...payload,
+              cart_id: cartId,
+              serverPrice: total,
+              title: `Fragancia: ${selectedFragrance.contratipo}`,
+            }),
+          }
+        );
+        if (resBuild.ok) {
+          const data = await resBuild.json();
+          const lineId = data.line_item?.id as string | undefined;
+          if (lineId) {
+            const lines = useCartStore.getState().lines;
+            const last = [...lines].reverse().find((l) => l.kind === "build");
+            if (last) {
+              useCartStore.setState({
+                lines: lines.map((l) =>
+                  l.id === last.id ? { ...l, medusaLineId: lineId } : l
+                ),
+              });
+            }
+          }
+        }
+      }
+    } catch {
+      // local cart line is enough if Medusa unreachable
+    }
+
     resetSelection();
     return { ok: true };
   },

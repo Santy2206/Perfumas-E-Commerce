@@ -19,11 +19,11 @@
 
 ## B2B (emprendedores)
 
-1. Admin → Customer Groups → create **emprendedores**.
-2. Create a **Price List** (type: override) targeting that group with wholesale prices (default 20% off retail).
-3. On each insumo variant, set metadata `min_qty` (e.g. 6).
-4. Sales channel **wholesale**: assign insumos (+ optional home/accessories).
-5. When a B2B application arrives (`POST /store/perfumas/b2b/register`), review NIT and assign the customer to **emprendedores**.
+1. Admin → Customer Groups → **emprendedores** (created by `npm run backend:seed`).
+2. Create a **Price List** (type: override) targeting that group with wholesale prices (seed creates **Wholesale emprendedores**).
+3. On each insumo variant, set metadata `min_qty` (e.g. 6) — already seeded from catalog.
+4. Sales channel **wholesale**: assign productos as needed.
+5. When a B2B application arrives (`POST /store/perfumas/b2b/register`), a **Customer** is created with `metadata.b2b_status=pending`. Review NIT in Admin → Customers, then assign the customer to **emprendedores** and set `b2b_status=approved`.
 
 ## Custom builds — fulfillment
 
@@ -39,8 +39,23 @@ Admin helper: `GET /admin/perfumas/fulfillment`
 
 ## Payments (Colombia)
 
-Configure Wompi or Mercado Pago as a Medusa payment provider module when going live.
-Until then, the Next.js checkout records `paymentProviderId` and status `pending_payment`.
+### Wompi (preferred)
+
+1. Medusa module: `apps/backend/src/modules/wompi-payment` registered in `medusa-config.ts` as `pp_wompi_wompi`.
+2. After first boot with the module, run `npx medusa db:migrate` from `apps/backend`, then in **Admin → Settings → Regions → Colombia** enable **Wompi** (keep **System** for manual/transfer).
+3. Storefront env (`PERFUMAS-E-COMMERCE/.env.local`):
+   - `NEXT_PUBLIC_WOMPI_PUBLIC_KEY`
+   - `WOMPI_PRIVATE_KEY`
+4. Webhook (production): `POST https://perfumas.com.co/api/payments/wompi/webhook`
+5. Checkout: if the shopper picks Wompi and the provider is enabled on the region, the cart uses `pp_wompi_wompi`; otherwise it falls back to **system**. Cart metadata still stores `payment_provider_local`.
+
+### Local / system payment
+
+Checkout uses Medusa `pp_system_default` when Wompi is unavailable so orders still appear under **Admin → Orders** without a card charge.
+
+### Mercado Pago
+
+Deferred — use transfer or Wompi for now.
 
 ## Shipping
 

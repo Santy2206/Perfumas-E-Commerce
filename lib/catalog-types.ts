@@ -16,6 +16,8 @@ export type CatalogProduct = {
   wholesalePrice?: number;
   minQty?: number;
   imageUrl?: string;
+  /** Medusa variant id when product came from Store API */
+  variantId?: string;
   metadata?: Record<string, string | number | boolean | string[] | undefined>;
   tags?: string[];
 };

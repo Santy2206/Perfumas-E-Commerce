@@ -2,13 +2,20 @@
 
 /**
  * Unified cart store — builds + standard SKUs + B2B line items.
- * Persists to localStorage; syncs to Medusa when the backend is available.
+ * Persists to localStorage; syncs SKU lines to Medusa Store cart when configured.
  */
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { BuildPayload } from "../lib/build-pricing";
 import type { CatalogProduct } from "../lib/catalog-types";
+import { isMedusaConfigured } from "../lib/medusa";
+import {
+  addVariantToMedusaCart,
+  ensureMedusaCart,
+  removeMedusaLine,
+  updateMedusaLineQuantity,
+} from "../lib/medusa-cart";
 
 export type CartLine =
   | {
@@ -18,6 +25,7 @@ export type CartLine =
       price: number;
       quantity: number;
       build: BuildPayload & { metadata?: Record<string, unknown> };
+      medusaLineId?: string;
     }
   | {
       id: string;
@@ -27,8 +35,10 @@ export type CartLine =
       quantity: number;
       productId: string;
       handle: string;
+      variantId?: string;
       isWholesale?: boolean;
       minQty?: number;
+      medusaLineId?: string;
     };
 
 type B2BProfile = {
@@ -38,6 +48,7 @@ type B2BProfile = {
   city: string;
   email: string;
   status: "pending" | "approved" | "rejected";
+  customerId?: string;
 };
 
 interface CartStore {
@@ -54,13 +65,35 @@ interface CartStore {
   setShippingMethodId: (id: string | null) => void;
   setPaymentProviderId: (id: string | null) => void;
 
-  addBuild: (line: Omit<Extract<CartLine, { kind: "build" }>, "id" | "kind" | "quantity"> & { quantity?: number }) => void;
-  addSku: (product: CatalogProduct, quantity: number, opts?: { wholesale?: boolean }) => { ok: true } | { ok: false; error: string };
+  addBuild: (
+    line: Omit<Extract<CartLine, { kind: "build" }>, "id" | "kind" | "quantity"> & {
+      quantity?: number;
+      medusaLineId?: string;
+    }
+  ) => void;
+  addSku: (
+    product: CatalogProduct,
+    quantity: number,
+    opts?: { wholesale?: boolean }
+  ) => { ok: true } | { ok: false; error: string };
   updateQty: (id: string, quantity: number) => { ok: true } | { ok: false; error: string };
   removeLine: (id: string) => void;
   clearCart: () => void;
   subtotal: () => number;
   itemCount: () => number;
+}
+
+async function syncEnsureCart(get: () => CartStore, set: (p: Partial<CartStore>) => void) {
+  if (!isMedusaConfigured()) return null;
+  const customerId = get().isB2B ? get().b2bProfile?.customerId : undefined;
+  const cart = await ensureMedusaCart(get().medusaCartId, {
+    customerId,
+    wholesale: Boolean(get().isB2B),
+  });
+  if (cart?.id && cart.id !== get().medusaCartId) {
+    set({ medusaCartId: cart.id });
+  }
+  return cart;
 }
 
 export const useCartStore = create<CartStore>()(
@@ -91,6 +124,7 @@ export const useCartStore = create<CartStore>()(
           price: line.price,
           quantity: line.quantity ?? 1,
           build: line.build,
+          medusaLineId: line.medusaLineId,
         };
         set((s) => ({ lines: [...s.lines, item] }));
       },
@@ -104,32 +138,92 @@ export const useCartStore = create<CartStore>()(
             error: `Cantidad mínima mayorista: ${minQty} unidades`,
           };
         }
-        const price = wholesale && product.wholesalePrice != null ? product.wholesalePrice : product.price;
+        const price =
+          wholesale && product.wholesalePrice != null ? product.wholesalePrice : product.price;
+        const variantId =
+          product.variantId ||
+          (typeof product.metadata?.medusa_variant_id === "string"
+            ? product.metadata.medusa_variant_id
+            : undefined);
+
         const existing = get().lines.find(
-          (l) => l.kind === "sku" && l.productId === product.id && Boolean(l.isWholesale) === wholesale
+          (l) =>
+            l.kind === "sku" &&
+            l.productId === product.id &&
+            Boolean(l.isWholesale) === wholesale
         );
-        if (existing) {
+
+        if (existing && existing.kind === "sku") {
           const nextQty = existing.quantity + quantity;
           if (wholesale && nextQty < minQty) {
             return { ok: false, error: `Cantidad mínima mayorista: ${minQty} unidades` };
           }
           set((s) => ({
-            lines: s.lines.map((l) => (l.id === existing.id ? { ...l, quantity: nextQty } : l)),
+            lines: s.lines.map((l) =>
+              l.id === existing.id && l.kind === "sku"
+                ? { ...l, quantity: nextQty, variantId: variantId || l.variantId }
+                : l
+            ),
           }));
+
+          void (async () => {
+            const cart = await syncEnsureCart(get, set);
+            if (!cart || !variantId) return;
+            if (existing.medusaLineId) {
+              await updateMedusaLineQuantity(cart.id, existing.medusaLineId, nextQty);
+            } else {
+              const updated = await addVariantToMedusaCart(cart.id, variantId, quantity, {
+                wholesale,
+                handle: product.handle,
+              });
+              const medusaLine = updated?.items.find((i) => i.variant_id === variantId);
+              if (medusaLine) {
+                set((s) => ({
+                  lines: s.lines.map((l) =>
+                    l.id === existing.id ? { ...l, medusaLineId: medusaLine.id } : l
+                  ),
+                }));
+              }
+            }
+          })();
+
           return { ok: true };
         }
+
+        const localId = `sku-${product.id}-${Date.now()}`;
         const item: CartLine = {
-          id: `sku-${product.id}-${Date.now()}`,
+          id: localId,
           kind: "sku",
           title: product.title,
           price,
           quantity,
           productId: product.id,
           handle: product.handle,
+          variantId,
           isWholesale: wholesale,
           minQty: product.minQty,
         };
         set((s) => ({ lines: [...s.lines, item] }));
+
+        void (async () => {
+          const cart = await syncEnsureCart(get, set);
+          if (!cart || !variantId) return;
+          const updated = await addVariantToMedusaCart(cart.id, variantId, quantity, {
+            wholesale,
+            handle: product.handle,
+          });
+          const medusaLine = updated?.items.find(
+            (i) => i.variant_id === variantId && !get().lines.some((l) => l.medusaLineId === i.id)
+          ) || updated?.items.find((i) => i.variant_id === variantId);
+          if (medusaLine) {
+            set((s) => ({
+              lines: s.lines.map((l) =>
+                l.id === localId ? { ...l, medusaLineId: medusaLine.id } : l
+              ),
+            }));
+          }
+        })();
+
         return { ok: true };
       },
 
@@ -145,11 +239,28 @@ export const useCartStore = create<CartStore>()(
         set((s) => ({
           lines: s.lines.map((l) => (l.id === id ? { ...l, quantity } : l)),
         }));
+
+        if (line?.medusaLineId && get().medusaCartId) {
+          void updateMedusaLineQuantity(get().medusaCartId!, line.medusaLineId, quantity);
+        }
         return { ok: true };
       },
 
-      removeLine: (id) => set((s) => ({ lines: s.lines.filter((l) => l.id !== id) })),
-      clearCart: () => set({ lines: [], shippingMethodId: null, paymentProviderId: null }),
+      removeLine: (id) => {
+        const line = get().lines.find((l) => l.id === id);
+        set((s) => ({ lines: s.lines.filter((l) => l.id !== id) }));
+        if (line?.medusaLineId && get().medusaCartId) {
+          void removeMedusaLine(get().medusaCartId!, line.medusaLineId);
+        }
+      },
+
+      clearCart: () =>
+        set({
+          lines: [],
+          shippingMethodId: null,
+          paymentProviderId: null,
+          medusaCartId: null,
+        }),
       subtotal: () => get().lines.reduce((sum, l) => sum + l.price * l.quantity, 0),
       itemCount: () => get().lines.reduce((sum, l) => sum + l.quantity, 0),
     }),

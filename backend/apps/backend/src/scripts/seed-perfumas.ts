@@ -233,7 +233,7 @@ export default async function seedPerfumas({
             name: "Colombia",
             currency_code: "cop",
             countries: ["co"],
-            payment_providers: ["pp_system_default"],
+            payment_providers: ["pp_system_default", "pp_wompi_wompi"],
           },
         ],
       },

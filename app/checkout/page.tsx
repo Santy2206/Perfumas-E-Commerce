@@ -21,6 +21,8 @@ export default function CheckoutPage() {
   const setPaymentProviderId = useCartStore((s) => s.setPaymentProviderId);
   const clearCart = useCartStore((s) => s.clearCart);
   const isB2B = useCartStore((s) => s.isB2B);
+  const b2bProfile = useCartStore((s) => s.b2bProfile);
+  const medusaCartId = useCartStore((s) => s.medusaCartId);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -54,7 +56,11 @@ export default function CheckoutPage() {
         <p className="font-mono text-gold-400 mb-6">{orderId}</p>
         <p className="text-sm text-bone-60 mb-8">
           Te contactaremos al correo/WhatsApp para confirmar el pago
-          {paymentProviderId === "transfer" ? " por transferencia" : ` vía ${paymentProviderId}`}.
+          {paymentProviderId === "transfer"
+            ? " por transferencia"
+            : paymentProviderId === "wompi"
+              ? " (Wompi / sistema — revisa el pedido en Admin)"
+              : ` vía ${paymentProviderId}`}.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Button asChild>
@@ -97,6 +103,8 @@ export default function CheckoutPage() {
           shippingMethodId,
           paymentProviderId,
           isB2B,
+          customerId: b2bProfile?.customerId ?? null,
+          medusaCartId,
           lines: lines.map((l) => ({
             id: l.id,
             kind: l.kind,
@@ -105,6 +113,8 @@ export default function CheckoutPage() {
             quantity: l.quantity,
             build: l.kind === "build" ? l.build : undefined,
             productId: l.kind === "sku" ? l.productId : undefined,
+            variantId: l.kind === "sku" ? l.variantId : undefined,
+            medusaLineId: l.medusaLineId,
             isWholesale: l.kind === "sku" ? l.isWholesale : undefined,
           })),
           subtotal: subtotal(),
