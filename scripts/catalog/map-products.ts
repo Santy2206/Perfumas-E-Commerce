@@ -16,6 +16,10 @@ import {
   mapOlfactiveGroup,
   toHandle,
 } from "./sheet-maps";
+import {
+  applyOlfactiveOverrides,
+  syncEssenceCatalogFromFragrances,
+} from "./olfactive-overrides";
 
 export type SeedVariant = {
   title: string;
@@ -253,6 +257,10 @@ export function mapParsedCatalog(parsed: ParsedCatalog): MappedCatalog {
       tags: ["fragancia", "esencia", "insumo", e.gender],
     });
   }
+
+  // Reclassify groups + mark unisex from Clasificacion_Perfumes_Familia_Olfativa
+  applyOlfactiveOverrides(fragrances);
+  syncEssenceCatalogFromFragrances(fragrances, catalogProducts);
 
   // Builder bottles for /crear step 2 = Réplicas PREPARADAS (UNITARIO), not empty Env Per.
   // Excel codes can repeat across rows — IDs must be unique for React keys + cart lines.

@@ -165,6 +165,7 @@ export function InsumosBrowser({
         sort={sort}
         onSort={setSort}
         showGender={showEssenceFilters}
+        showUnisex={showEssenceFilters}
       />
 
       {showEssenceFilters && (

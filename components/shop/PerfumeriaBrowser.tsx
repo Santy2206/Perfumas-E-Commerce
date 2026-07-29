@@ -126,6 +126,7 @@ export function PerfumeriaBrowser({
         onGender={setGender}
         sort={sortReplicas}
         onSort={setSortReplicas}
+        showUnisex
       />
 
       <section className="mb-14">
@@ -173,6 +174,7 @@ export function PerfumeriaBrowser({
           onGender={setGender}
           sort={sortEssences}
           onSort={setSortEssences}
+          showUnisex
         />
         <div className="mb-6">
           <FragranceWheel

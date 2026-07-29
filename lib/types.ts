@@ -10,18 +10,17 @@
 export type Gender = "dama" | "caballero" | "unisex";
 
 /**
- * These four values are Perfumas' real internal "Grupo Olfativo"
- * classification (from PRECIOS_FRAGANCIAS_2026.xlsx, sheets "MUJER
- * G.O" / "HOMBRE G.O") — NOT the classic Michael Edwards wheel labels.
- * There is no standalone "Floral" group in the current data; florals
- * live inside "Intermedios" alongside other blended profiles. See the
- * note in mock-data.ts before relabeling these.
+ * These four values are Perfumas' internal "Grupo Olfativo" classification
+ * (Clasificacion_Perfumes_Familia_Olfativa.xlsx) — NOT the classic Michael
+ * Edwards wheel labels. IDs stay stable; UI labels are "Cítricas y Frescas",
+ * "Maderas", "Intermedios", "Dulces y árabes". Florals live inside
+ * "Intermedios" alongside other blended profiles.
  */
 export type OlfactiveGroup =
   | "citricas-frescas" // "Cítricas y Frescas"
-  | "maderas-orientales" // "Maderas y Orientales"
+  | "maderas-orientales" // "Maderas"
   | "intermedios" // "Intermedios"
-  | "dulces"; // "Dulces"
+  | "dulces"; // "Dulces y árabes"
 
 export type QualityTier = "AAA" | "AA" | "Generico";
 export type Closure = "Agrafe" | "Rosca";

@@ -120,12 +120,17 @@ export default async function seedPerfumas({
     fields: ["id", "name"],
   })
 
-  const findChannel = (name: string) =>
-    existingChannels.find(
-      (c: { name?: string }) => c.name?.toLowerCase() === name.toLowerCase()
-    )
+  type ChannelRef = { id: string; name?: string }
 
-  let retailChannel = findChannel("retail") || findChannel("Default Sales Channel")
+  const findChannel = (name: string): ChannelRef | undefined => {
+    const found = existingChannels.find(
+      (c: { name?: string }) => c.name?.toLowerCase() === name.toLowerCase()
+    ) as { id?: string; name?: string } | undefined
+    return found?.id ? { id: found.id, name: found.name } : undefined
+  }
+
+  let retailChannel =
+    findChannel("retail") || findChannel("Default Sales Channel")
   let wholesaleChannel = findChannel("wholesale")
 
   if (!retailChannel) {
@@ -136,7 +141,11 @@ export default async function seedPerfumas({
         ],
       },
     })
-    retailChannel = result[0]
+    const created = result[0]
+    if (!created?.id) {
+      throw new Error("Failed to create retail sales channel")
+    }
+    retailChannel = { id: created.id, name: created.name }
     logger.info(`Created sales channel retail (${retailChannel.id})`)
   } else {
     logger.info(`Using sales channel ${retailChannel.name} (${retailChannel.id})`)
@@ -153,8 +162,16 @@ export default async function seedPerfumas({
         ],
       },
     })
-    wholesaleChannel = result[0]
+    const created = result[0]
+    if (!created?.id) {
+      throw new Error("Failed to create wholesale sales channel")
+    }
+    wholesaleChannel = { id: created.id, name: created.name }
     logger.info(`Created sales channel wholesale (${wholesaleChannel.id})`)
+  }
+
+  if (!retailChannel?.id || !wholesaleChannel?.id) {
+    throw new Error("Sales channels missing after seed setup")
   }
 
   // --- Publishable API key ---
@@ -607,7 +624,6 @@ export default async function seedPerfumas({
             title: "Wholesale emprendedores",
             description: "Default ~20% off retail for B2B customer group",
             status: "active",
-            type: "override",
             rules: {
               "customer.groups.id": [emprendedores.id],
             },

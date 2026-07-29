@@ -1,0 +1,2308 @@
+{
+  "DAMA": [
+    {
+      "contratipo": "212",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral almizclado limpio",
+      "obs": null
+    },
+    {
+      "contratipo": "273",
+      "casa": "BEVERLY HILLS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "360",
+      "casa": "PERRY ELLIS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral fresco cítrico",
+      "obs": null
+    },
+    {
+      "contratipo": "5TH AVENUE",
+      "casa": "ELIZABETH ARDEN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "ACQUA DI GIO",
+      "casa": "GIORGIO ARMANI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático floral, notas marinas, jazmín",
+      "obs": null
+    },
+    {
+      "contratipo": "ANAIS ANAIS",
+      "casa": "CACHAREL",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral blanco ligero, lirio, polvoso",
+      "obs": null
+    },
+    {
+      "contratipo": "AQUA KISS",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático limpio",
+      "obs": null
+    },
+    {
+      "contratipo": "AQUAMARINE",
+      "casa": "SHAKIRA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "AQVA DIVINA",
+      "casa": "BVLGARI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Higo, sal marina, acuático",
+      "obs": null
+    },
+    {
+      "contratipo": "BE DELICIOUS",
+      "casa": "DONNA KARAN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Manzana verde, fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "BLUE SEDUCTION",
+      "casa": "ANTONIO BANDERAS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Frutal acuático fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "BLV",
+      "casa": "BVLGARI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Jengibre, violeta, fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "BRIGHT CRYSTAL",
+      "casa": "VERSACE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Yuzu, granada, peonía",
+      "obs": null
+    },
+    {
+      "contratipo": "BURBERRY",
+      "casa": "BURBERRY",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral frutal fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "CIELO DIA",
+      "casa": "YANBAL",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral fresco luminoso",
+      "obs": "Verificar con ficha Yanbal"
+    },
+    {
+      "contratipo": "CLINIQUE HAPPY",
+      "casa": "CLINIQUE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Toronja cítrica",
+      "obs": null
+    },
+    {
+      "contratipo": "COLORS",
+      "casa": "BENETTON",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral frutal fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "ESCAPE",
+      "casa": "CALVIN KLEIN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Frutal fresco, floral acuoso",
+      "obs": null
+    },
+    {
+      "contratipo": "ETERNITY",
+      "casa": "CALVIN KLEIN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral verde fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "FEMME",
+      "casa": "HUGO BOSS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral frutal fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "GAIA",
+      "casa": "YANBAL",
+      "familia": "Cítricas y frescas",
+      "perfil": "Verde natural, floral fresco",
+      "obs": "Verificar con ficha Yanbal"
+    },
+    {
+      "contratipo": "GLOW",
+      "casa": "JENNIFER LOPEZ",
+      "familia": "Cítricas y frescas",
+      "perfil": "Almizcle limpio, cítrico jabonoso",
+      "obs": null
+    },
+    {
+      "contratipo": "HALLOWEEN",
+      "casa": "JESUS DEL POZO",
+      "familia": "Cítricas y frescas",
+      "perfil": "Mandarina, ozónico, floral limpio",
+      "obs": null
+    },
+    {
+      "contratipo": "HUGO",
+      "casa": "HUGO BOSS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Verde frutal fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "HUGO BOSS XX",
+      "casa": "HUGO BOSS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Grosella, floral fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "INSPIRATION",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Rosa, magnolia, fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "L'EAU D'ISSEY",
+      "casa": "ISSEY MIYAKE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático floral, loto",
+      "obs": null
+    },
+    {
+      "contratipo": "LIGHT BLUE",
+      "casa": "DOLCE & GABBANA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Manzana verde, cedro, cítrico",
+      "obs": null
+    },
+    {
+      "contratipo": "MISS DIOR BLOOMING",
+      "casa": "CHRISTIAN DIOR",
+      "familia": "Cítricas y frescas",
+      "perfil": "Peonía, rosa, durazno fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "NATURAL",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral fresco limpio",
+      "obs": null
+    },
+    {
+      "contratipo": "OMNIA CORAL",
+      "casa": "BVLGARI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Goji, granada, hibisco",
+      "obs": null
+    },
+    {
+      "contratipo": "OMNIA CRISTALLINE",
+      "casa": "BVLGARI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Bambú, loto, maderas claras",
+      "obs": null
+    },
+    {
+      "contratipo": "PINK FRESH COUTURE",
+      "casa": "MOSCHINO",
+      "familia": "Cítricas y frescas",
+      "perfil": "Frutal fresco floral",
+      "obs": null
+    },
+    {
+      "contratipo": "RALPH",
+      "casa": "RALPH LAUREN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Manzana, magnolia, fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "SHEER LOVE",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Cítricas y frescas",
+      "perfil": "Algodón, pera, limpio",
+      "obs": null
+    },
+    {
+      "contratipo": "SPARKLING",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Frutal chispeante fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "SWISS ARMY FOR HER",
+      "casa": "SWISS ARMY",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico floral fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "TOMMY GIRL",
+      "casa": "TOMMY HILFIGER",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico verde floral",
+      "obs": null
+    },
+    {
+      "contratipo": "TOUCH",
+      "casa": "BEVERLY HILLS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Floral fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "TOUCH OF PINK",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Naranja sanguina, jazmín",
+      "obs": null
+    },
+    {
+      "contratipo": "TOY 2",
+      "casa": "MOSCHINO",
+      "familia": "Cítricas y frescas",
+      "perfil": "Manzana, mandarina, almizcle",
+      "obs": null
+    },
+    {
+      "contratipo": "212 HEROES FOREVER YOUNG",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Frutal floral fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "212 VIP CLUB",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Frutal fresco con fondo dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "212 VIP ROSE",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Champaña, durazno, almizcle",
+      "obs": null
+    },
+    {
+      "contratipo": "360 CORAL",
+      "casa": "PERRY ELLIS",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "360 RED",
+      "casa": "PERRY ELLIS",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal cálido",
+      "obs": null
+    },
+    {
+      "contratipo": "ADRENALINA",
+      "casa": "YANBAL",
+      "familia": "Intermedios",
+      "perfil": "Frutal floral energético",
+      "obs": "Verificar con ficha Yanbal"
+    },
+    {
+      "contratipo": "AMARIGE",
+      "casa": "GIVENCHY",
+      "familia": "Intermedios",
+      "perfil": "Floral blanco intenso, nardo",
+      "obs": null
+    },
+    {
+      "contratipo": "AMOR AMOR",
+      "casa": "CACHAREL",
+      "familia": "Intermedios",
+      "perfil": "Cítricos de salida + frutos rojos",
+      "obs": null
+    },
+    {
+      "contratipo": "ANIMALE",
+      "casa": "ANIMALE",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal cálido con ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "BFF",
+      "casa": "KIM KARDASHIAN",
+      "familia": "Intermedios",
+      "perfil": "Floral almizclado",
+      "obs": "Verificar referencia"
+    },
+    {
+      "contratipo": "BODY",
+      "casa": "BURBERRY",
+      "familia": "Intermedios",
+      "perfil": "Durazno, iris, ámbar suave",
+      "obs": null
+    },
+    {
+      "contratipo": "BOMBSHELL",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Maracuyá, peonía, almizcle",
+      "obs": null
+    },
+    {
+      "contratipo": "BOSS ORANGE",
+      "casa": "HUGO BOSS",
+      "familia": "Intermedios",
+      "perfil": "Manzana, azahar, sándalo suave",
+      "obs": null
+    },
+    {
+      "contratipo": "CAROLINA HERRERA",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Floral blanco aldehídico, nardo",
+      "obs": null
+    },
+    {
+      "contratipo": "CH CAROLINA HERRERA",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Cítrico de salida + praliné, cuero, ámbar",
+      "obs": "Limítrofe con Dulces"
+    },
+    {
+      "contratipo": "CH SUBLIME",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Floral amaderado con vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "CHANCE",
+      "casa": "CHANEL",
+      "familia": "Intermedios",
+      "perfil": "Pimienta rosa, jazmín, pachulí, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "CHANEL No 5",
+      "casa": "CHANEL",
+      "familia": "Intermedios",
+      "perfil": "Aldehídico floral, sándalo, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "COCKTAIL",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Frutal cítrico dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "COCO MADEMOISELLE",
+      "casa": "CHANEL",
+      "familia": "Intermedios",
+      "perfil": "Naranja, pachulí, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "DAZZLE",
+      "casa": "PARIS HILTON",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "DEEP RED",
+      "casa": "HUGO BOSS",
+      "familia": "Intermedios",
+      "perfil": "Naranja sanguina, vainilla, sándalo",
+      "obs": null
+    },
+    {
+      "contratipo": "DOLCE & GABBANA",
+      "casa": "DOLCE & GABBANA",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal aldehídico",
+      "obs": null
+    },
+    {
+      "contratipo": "EUPHORIA",
+      "casa": "CALVIN KLEIN",
+      "familia": "Intermedios",
+      "perfil": "Granada, orquídea, maderas ambaradas",
+      "obs": null
+    },
+    {
+      "contratipo": "FAMME (FAME)",
+      "casa": "PACO RABANNE",
+      "familia": "Intermedios",
+      "perfil": "Mango, jazmín, incienso, sándalo",
+      "obs": "Se asume Paco Rabanne Fame"
+    },
+    {
+      "contratipo": "FLOWER",
+      "casa": "KENZO",
+      "familia": "Intermedios",
+      "perfil": "Violeta polvosa, vainilla suave",
+      "obs": null
+    },
+    {
+      "contratipo": "FROZEN",
+      "casa": "DISNEY",
+      "familia": "Intermedios",
+      "perfil": "Frutal dulce infantil",
+      "obs": null
+    },
+    {
+      "contratipo": "GUESS",
+      "casa": "GUESS",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "HEIRESS",
+      "casa": "PARIS HILTON",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "J'ADORE",
+      "casa": "CHRISTIAN DIOR",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal luminoso",
+      "obs": null
+    },
+    {
+      "contratipo": "JUICED BERRY",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Frutos rojos jugosos",
+      "obs": null
+    },
+    {
+      "contratipo": "LA PANTHERE",
+      "casa": "CARTIER",
+      "familia": "Intermedios",
+      "perfil": "Gardenia chipre almizclada",
+      "obs": null
+    },
+    {
+      "contratipo": "LADY EMBLEM",
+      "casa": "MONTBLANC",
+      "familia": "Intermedios",
+      "perfil": "Rosa, granada, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "LOVE SPELL",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Flor de cerezo, durazno",
+      "obs": null
+    },
+    {
+      "contratipo": "MANGO TEMPTATION",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Mango tropical",
+      "obs": null
+    },
+    {
+      "contratipo": "MIRACLE",
+      "casa": "LANCOME",
+      "familia": "Intermedios",
+      "perfil": "Lichi, pimienta, jazmín, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "NEXT GIRLFRIEND",
+      "casa": "JUSTIN BIEBER",
+      "familia": "Intermedios",
+      "perfil": "Frutal dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "OMNIA AMETHYSTE",
+      "casa": "BVLGARI",
+      "familia": "Intermedios",
+      "perfil": "Iris, rosa, maderas suaves",
+      "obs": null
+    },
+    {
+      "contratipo": "OSADIA",
+      "casa": "YANBAL",
+      "familia": "Intermedios",
+      "perfil": "Naranja, maracuyá, aromático frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "OSCAR",
+      "casa": "OSCAR DE LA RENTA",
+      "familia": "Intermedios",
+      "perfil": "Floral blanco opulento",
+      "obs": null
+    },
+    {
+      "contratipo": "OUR MOMENT",
+      "casa": "ONE DIRECTION",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "PARIS HILTON",
+      "casa": "PARIS HILTON",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal con fondo ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "PEAR GLACE",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Pera dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "PURE SEDUCTION",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Ciruela roja, fresia frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "RICCI RICCI",
+      "casa": "NINA RICCI",
+      "familia": "Intermedios",
+      "perfil": "Ruibarbo, nardo, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "SECRET CHARM",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "SIGNORINA",
+      "casa": "SALVATORE FERRAGAMO",
+      "familia": "Intermedios",
+      "perfil": "Grosella, panna cotta, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "SIREN",
+      "casa": "PARIS HILTON",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal con vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "SOFIA",
+      "casa": "SOFIA VERGARA",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "SORBETTO ROSSO",
+      "casa": "ESCADA",
+      "familia": "Intermedios",
+      "perfil": "Frutal veraniego dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "TEMPTATION",
+      "casa": "YANBAL",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": "Verificar con ficha Yanbal"
+    },
+    {
+      "contratipo": "THE KEY",
+      "casa": "JUSTIN BIEBER",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "TOTAL ATTRACTION",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Intermedios",
+      "perfil": "Floral frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "TRESOR",
+      "casa": "LANCOME",
+      "familia": "Intermedios",
+      "perfil": "Rosa, durazno, polvoso ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "TRIBU",
+      "casa": "BENETTON",
+      "familia": "Intermedios",
+      "perfil": "Floral amaderado suave",
+      "obs": null
+    },
+    {
+      "contratipo": "VALENTINO BORN IN ROMA",
+      "casa": "VALENTINO",
+      "familia": "Intermedios",
+      "perfil": "Jazmín, vainilla bourbon, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "VERY IRRESISTIBLE",
+      "casa": "GIVENCHY",
+      "familia": "Intermedios",
+      "perfil": "Rosa frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "VIOLETTA",
+      "casa": "DISNEY",
+      "familia": "Intermedios",
+      "perfil": "Frutal dulce infantil",
+      "obs": null
+    },
+    {
+      "contratipo": "WHITE DIAMONDS",
+      "casa": "ELIZABETH TAYLOR",
+      "familia": "Intermedios",
+      "perfil": "Aldehídico floral ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "ANGE OU DEMON",
+      "casa": "GIVENCHY",
+      "familia": "Maderas",
+      "perfil": "Azafrán, maderas, vainilla especiada",
+      "obs": null
+    },
+    {
+      "contratipo": "PALOMA PICASSO",
+      "casa": "PALOMA PICASSO",
+      "familia": "Maderas",
+      "perfil": "Chipre, musgo de roble, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "212 SEXY",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Dulces y árabes",
+      "perfil": "Algodón de azúcar, sándalo, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "212 VIP",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Dulces y árabes",
+      "perfil": "Ron, maracuyá, gardenia",
+      "obs": null
+    },
+    {
+      "contratipo": "AMETHYST",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutal dulce ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "ANGEL",
+      "casa": "THIERRY MUGLER",
+      "familia": "Dulces y árabes",
+      "perfil": "Pachulí, caramelo, gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "BERRY ON TOP",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutos rojos gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "BLACK XS",
+      "casa": "PACO RABANNE",
+      "familia": "Dulces y árabes",
+      "perfil": "Praliné, rosa, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "BON BON",
+      "casa": "VICTOR & ROLF",
+      "familia": "Dulces y árabes",
+      "perfil": "Caramelo gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "BOSS INTENSE",
+      "casa": "HUGO BOSS",
+      "familia": "Dulces y árabes",
+      "perfil": "Ciruela, vainilla, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "BURBERRY HER",
+      "casa": "BURBERRY",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutos rojos, vainilla, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "CAN CAN",
+      "casa": "PARIS HILTON",
+      "familia": "Dulces y árabes",
+      "perfil": "Durazno, ciruela, ámbar, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "CCORI PASSION",
+      "casa": "YANBAL",
+      "familia": "Dulces y árabes",
+      "perfil": "Oriental floral tipo Angel/Alien",
+      "obs": null
+    },
+    {
+      "contratipo": "CHOCOLATE GREEDY (UNISEX)",
+      "casa": "MONTALE",
+      "familia": "Dulces y árabes",
+      "perfil": "Chocolate, café, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "CIELO NOCHE",
+      "casa": "YANBAL",
+      "familia": "Dulces y árabes",
+      "perfil": "Cálido dulce, vainilla ambarada",
+      "obs": "Verificar con ficha Yanbal"
+    },
+    {
+      "contratipo": "CLASSIQUE",
+      "casa": "JEAN PAUL GAULTIER",
+      "familia": "Dulces y árabes",
+      "perfil": "Azahar, vainilla, polvoso",
+      "obs": null
+    },
+    {
+      "contratipo": "CLOUD",
+      "casa": "ARIANA GRANDE",
+      "familia": "Dulces y árabes",
+      "perfil": "Coco, praliné, lavanda cremosa",
+      "obs": null
+    },
+    {
+      "contratipo": "COCO",
+      "casa": "CHANEL",
+      "familia": "Dulces y árabes",
+      "perfil": "Oriental especiado ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "COCO NUT",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Dulces y árabes",
+      "perfil": "Coco gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "COOKIE CRAVE",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Galleta, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "ECLAIRE",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Vainilla gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "ELIXIR",
+      "casa": "SHAKIRA",
+      "familia": "Dulces y árabes",
+      "perfil": "Oriental dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "EMPORIO ARMANI DIAMONDS",
+      "casa": "GIORGIO ARMANI",
+      "familia": "Dulces y árabes",
+      "perfil": "Frambuesa, lichi, vainilla, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "FANTASY",
+      "casa": "BRITNEY SPEARS",
+      "familia": "Dulces y árabes",
+      "perfil": "Gourmand, cupcake, chocolate blanco",
+      "obs": null
+    },
+    {
+      "contratipo": "GOOD GIRL",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Dulces y árabes",
+      "perfil": "Nardo, cacao, haba tonka",
+      "obs": null
+    },
+    {
+      "contratipo": "GOOD GIRL BLUSH",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Dulces y árabes",
+      "perfil": "Azahar, jazmín, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "JAIPUR",
+      "casa": "BOUCHERON",
+      "familia": "Dulces y árabes",
+      "perfil": "Ámbar floral cálido",
+      "obs": null
+    },
+    {
+      "contratipo": "LA BOMBA",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Dulces y árabes",
+      "perfil": "Pitahaya, peonía, vainilla, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "LA VIE EST BELLE",
+      "casa": "LANCOME",
+      "familia": "Dulces y árabes",
+      "perfil": "Praliné, iris, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "LADY MILLION",
+      "casa": "PACO RABANNE",
+      "familia": "Dulces y árabes",
+      "perfil": "Frambuesa, miel, azahar, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "LOLITA LEMPICKA",
+      "casa": "LOLITA LEMPICKA",
+      "familia": "Dulces y árabes",
+      "perfil": "Regaliz, violeta, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "LOQUITO POR TI",
+      "casa": "DIESEL",
+      "familia": "Dulces y árabes",
+      "perfil": "Gourmand dulce (línea Loverdose)",
+      "obs": "Verificar nombre exacto de la referencia"
+    },
+    {
+      "contratipo": "LOVE ADDICT",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Dulces y árabes",
+      "perfil": "Vainilla dulce floral",
+      "obs": null
+    },
+    {
+      "contratipo": "MEOW",
+      "casa": "KATY PERRY",
+      "familia": "Dulces y árabes",
+      "perfil": "Gourmand vainilla frutal",
+      "obs": null
+    },
+    {
+      "contratipo": "MIDNIGHT FANTASY",
+      "casa": "BRITNEY SPEARS",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutal gourmand, vainilla, ciruela",
+      "obs": null
+    },
+    {
+      "contratipo": "OBSESSION",
+      "casa": "CALVIN KLEIN",
+      "familia": "Dulces y árabes",
+      "perfil": "Oriental especiado, ámbar, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "ODYSSEY DUBAI CHOCOLAT",
+      "casa": "ARMAF",
+      "familia": "Dulces y árabes",
+      "perfil": "Chocolate, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "OLYMPEA",
+      "casa": "PACO RABANNE",
+      "familia": "Dulces y árabes",
+      "perfil": "Vainilla salada, jengibre, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "ORGANZA",
+      "casa": "GIVENCHY",
+      "familia": "Dulces y árabes",
+      "perfil": "Floral blanco, vainilla, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "POISON",
+      "casa": "CHRISTIAN DIOR",
+      "familia": "Dulces y árabes",
+      "perfil": "Nardo, ciruela, oriental opulento",
+      "obs": null
+    },
+    {
+      "contratipo": "POISON GIRL",
+      "casa": "CHRISTIAN DIOR",
+      "familia": "Dulces y árabes",
+      "perfil": "Naranja amarga, tonka, almendra",
+      "obs": null
+    },
+    {
+      "contratipo": "ROYAL AMBER",
+      "casa": "ORIENTICA",
+      "familia": "Dulces y árabes",
+      "perfil": "Ámbar, oud, perfil árabe",
+      "obs": null
+    },
+    {
+      "contratipo": "RUSH CAKE",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Dulces y árabes",
+      "perfil": "Pastel gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "S SHAKIRA",
+      "casa": "SHAKIRA",
+      "familia": "Dulces y árabes",
+      "perfil": "Vainilla, ámbar, dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "SCANDAL",
+      "casa": "JEAN PAUL GAULTIER",
+      "familia": "Dulces y árabes",
+      "perfil": "Miel, caramelo, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "SHAKIRA ROCK",
+      "casa": "SHAKIRA",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutal dulce, pachulí, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "SWEET LIKE CANDY",
+      "casa": "ARIANA GRANDE",
+      "familia": "Dulces y árabes",
+      "perfil": "Caramelo, frutal gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "THANK U NEXT",
+      "casa": "ARIANA GRANDE",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutos rojos, macarrón, almizcle",
+      "obs": null
+    },
+    {
+      "contratipo": "THE ONE",
+      "casa": "DOLCE & GABBANA",
+      "familia": "Dulces y árabes",
+      "perfil": "Durazno, lichi, vainilla, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "TOY 2 BUBBLE GUM",
+      "casa": "MOSCHINO",
+      "familia": "Dulces y árabes",
+      "perfil": "Chicle gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "ULTRAVIOLET",
+      "casa": "PACO RABANNE",
+      "familia": "Dulces y árabes",
+      "perfil": "Ámbar, vainilla, almizcle",
+      "obs": null
+    },
+    {
+      "contratipo": "VAINILLA",
+      "casa": "VICTORIA'S SECRET",
+      "familia": "Dulces y árabes",
+      "perfil": "Vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "WHIPPED PLEASURE",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Crema batida gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "WILD MADAGASCAR",
+      "casa": "BATH AND BODY WORKS",
+      "familia": "Dulces y árabes",
+      "perfil": "Vainilla de Madagascar",
+      "obs": null
+    },
+    {
+      "contratipo": "YARA",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Orquídea, heliotropo, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "YARA CANDY",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Caramelo gourmand",
+      "obs": null
+    },
+    {
+      "contratipo": "YARA MOI",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutal cremoso, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "YARA TOUS",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutal dulce ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "YUM YUM",
+      "casa": "ARMAF",
+      "familia": "Dulces y árabes",
+      "perfil": "Gourmand dulce",
+      "obs": null
+    }
+  ],
+  "HOMBRE": [
+    {
+      "contratipo": "(sin nombre)",
+      "casa": "BURBERRY",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico especiado clásico",
+      "obs": "Falta el nombre de la referencia"
+    },
+    {
+      "contratipo": "212 MEN",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Verde especiado, sándalo",
+      "obs": null
+    },
+    {
+      "contratipo": "212 MEN AQUA",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "360",
+      "casa": "PERRY ELLIS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "ACQUA DI GIO",
+      "casa": "GIORGIO ARMANI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático cítrico marino",
+      "obs": null
+    },
+    {
+      "contratipo": "ADRENALINE",
+      "casa": "ENRIQUE IGLESIAS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico especiado fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "ALLURE SPORT",
+      "casa": "CHANEL",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico aromático deportivo",
+      "obs": null
+    },
+    {
+      "contratipo": "AQVA",
+      "casa": "BVLGARI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Marino, algas, cítrico",
+      "obs": null
+    },
+    {
+      "contratipo": "AQVA MARINE",
+      "casa": "BVLGARI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico marino",
+      "obs": null
+    },
+    {
+      "contratipo": "ARRURU",
+      "casa": "(sin casa)",
+      "familia": "Cítricas y frescas",
+      "perfil": "Colonia infantil, limpio polvoso",
+      "obs": null
+    },
+    {
+      "contratipo": "AZZARO",
+      "casa": "LORIS AZZARO",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fougère anisado aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "BATMAN",
+      "casa": "(sin casa)",
+      "familia": "Cítricas y frescas",
+      "perfil": "Colonia infantil fresca",
+      "obs": null
+    },
+    {
+      "contratipo": "BLUE LABEL",
+      "casa": "GIVENCHY",
+      "familia": "Cítricas y frescas",
+      "perfil": "Aromático fresco amaderado",
+      "obs": null
+    },
+    {
+      "contratipo": "BLUE SEDUCTION",
+      "casa": "ANTONIO BANDERAS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático mentolado",
+      "obs": null
+    },
+    {
+      "contratipo": "BOSS ELEMENT",
+      "casa": "HUGO BOSS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Aromático fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "BOSS IN MOTION",
+      "casa": "HUGO BOSS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "CHALLENGE",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "CK ONE (UNISEX)",
+      "casa": "CALVIN KLEIN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico verde unisex",
+      "obs": null
+    },
+    {
+      "contratipo": "COOL WATER",
+      "casa": "DAVIDOFF",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático marino, menta",
+      "obs": null
+    },
+    {
+      "contratipo": "CR7",
+      "casa": "CRISTIANO RONALDO",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fresco aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "DRAKKAR NOIR",
+      "casa": "GUY LAROCHE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fougère lavanda con fondo oscuro",
+      "obs": "Limítrofe con Maderas"
+    },
+    {
+      "contratipo": "DYLAN BLUE",
+      "casa": "VERSACE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático, bergamota, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "EMPORIO ARMANI WHITE",
+      "casa": "GIORGIO ARMANI",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fresco aromático limpio",
+      "obs": null
+    },
+    {
+      "contratipo": "ESCAPE",
+      "casa": "CALVIN KLEIN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Aromático fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "ETERNITY",
+      "casa": "CALVIN KLEIN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fougère verde fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "FACONNABLE",
+      "casa": "FACONNABLE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Aromático fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "GUESS",
+      "casa": "GUESS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fresco aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "HAPPY",
+      "casa": "CLINIQUE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico luminoso",
+      "obs": null
+    },
+    {
+      "contratipo": "HUGO",
+      "casa": "HUGO BOSS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Manzana verde aromática",
+      "obs": null
+    },
+    {
+      "contratipo": "HUGO BOSS UNLIMITED",
+      "casa": "HUGO BOSS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Toronja, piña, fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "HUGO ENERGISE",
+      "casa": "HUGO BOSS",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico energético",
+      "obs": null
+    },
+    {
+      "contratipo": "IMPACT",
+      "casa": "TOMMY HILFIGER",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fresco especiado",
+      "obs": null
+    },
+    {
+      "contratipo": "INVICTUS",
+      "casa": "PACO RABANNE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Toronja, marino, guayaco",
+      "obs": null
+    },
+    {
+      "contratipo": "INVICTUS AQUA",
+      "casa": "PACO RABANNE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Marino, toronja",
+      "obs": null
+    },
+    {
+      "contratipo": "JEAN MARIE FARINE",
+      "casa": "ROGER & GALLET",
+      "familia": "Cítricas y frescas",
+      "perfil": "Agua de colonia cítrica",
+      "obs": null
+    },
+    {
+      "contratipo": "JEAN PASCAL",
+      "casa": "JEAN PASCAL",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico aromático",
+      "obs": "Verificar referencia"
+    },
+    {
+      "contratipo": "KAIAK",
+      "casa": "NATURA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "L'EAU D'ISSEY",
+      "casa": "ISSEY MIYAKE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Yuzu, acuático, amaderado",
+      "obs": null
+    },
+    {
+      "contratipo": "L.12.12 BLUE",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico fresco intenso",
+      "obs": null
+    },
+    {
+      "contratipo": "L.12.12 YELLOW (JAUNE)",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico, jengibre, cedro",
+      "obs": null
+    },
+    {
+      "contratipo": "L.12.12. VERT",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Verde aromático, cedro",
+      "obs": null
+    },
+    {
+      "contratipo": "LACOSTE BLANC",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fresco almizclado, cedro",
+      "obs": null
+    },
+    {
+      "contratipo": "LACOSTE ESSENTIAL",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Frutal fresco amaderado",
+      "obs": null
+    },
+    {
+      "contratipo": "LACOSTE RED",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Frutal fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "LACOSTE ROUGE",
+      "casa": "LACOSTE",
+      "familia": "Cítricas y frescas",
+      "perfil": "Frutal fresco especiado",
+      "obs": null
+    },
+    {
+      "contratipo": "LEGACY",
+      "casa": "CRISTIANO RONALDO",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fresco aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "LEGEND",
+      "casa": "MONT BLANC",
+      "familia": "Cítricas y frescas",
+      "perfil": "Lavanda, piña, fougère fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "LIGHT BLUE",
+      "casa": "DOLCE & GABBANA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Toronja, enebro, palo de rosa",
+      "obs": null
+    },
+    {
+      "contratipo": "MI BEBE",
+      "casa": "(sin casa)",
+      "familia": "Cítricas y frescas",
+      "perfil": "Colonia infantil, limpio polvoso",
+      "obs": null
+    },
+    {
+      "contratipo": "NAUTICA VOYAGE",
+      "casa": "NAUTICA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático, manzana verde",
+      "obs": null
+    },
+    {
+      "contratipo": "ODYSSEY MANDARIN SKY",
+      "casa": "ARMAF",
+      "familia": "Cítricas y frescas",
+      "perfil": "Mandarina cítrica",
+      "obs": null
+    },
+    {
+      "contratipo": "OHM",
+      "casa": "YANBAL",
+      "familia": "Cítricas y frescas",
+      "perfil": "Lavanda, toronja, salvia (herbal)",
+      "obs": null
+    },
+    {
+      "contratipo": "OHM BLUE",
+      "casa": "YANBAL",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fresco acuático aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "PINO SILVESTRE",
+      "casa": "(sin casa)",
+      "familia": "Cítricas y frescas",
+      "perfil": "Pino, fougère verde",
+      "obs": null
+    },
+    {
+      "contratipo": "POLO BLUE",
+      "casa": "RALPH LAUREN",
+      "familia": "Cítricas y frescas",
+      "perfil": "Pepino, melón, acuático",
+      "obs": null
+    },
+    {
+      "contratipo": "PRESENCE",
+      "casa": "MONT BLANC",
+      "familia": "Cítricas y frescas",
+      "perfil": "Fresco especiado",
+      "obs": null
+    },
+    {
+      "contratipo": "SAUVAGE",
+      "casa": "CHRISTIAN DIOR",
+      "familia": "Cítricas y frescas",
+      "perfil": "Bergamota, pimienta, ambroxan",
+      "obs": null
+    },
+    {
+      "contratipo": "SILVER MOUNTAIN",
+      "casa": "CREED",
+      "familia": "Cítricas y frescas",
+      "perfil": "Té, grosella, cítrico",
+      "obs": null
+    },
+    {
+      "contratipo": "STARWALKER",
+      "casa": "MONT BLANC",
+      "familia": "Cítricas y frescas",
+      "perfil": "Bambú, cítricos, maderas claras",
+      "obs": null
+    },
+    {
+      "contratipo": "SUPERMAN",
+      "casa": "(sin casa)",
+      "familia": "Cítricas y frescas",
+      "perfil": "Colonia infantil fresca",
+      "obs": null
+    },
+    {
+      "contratipo": "SWISS ARMY",
+      "casa": "SWISS ARMY",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "SWISS ARMY ALTITUDE",
+      "casa": "SWISS ARMY",
+      "familia": "Cítricas y frescas",
+      "perfil": "Acuático fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "TEMPTATION",
+      "casa": "YANBAL",
+      "familia": "Cítricas y frescas",
+      "perfil": "Menta, mandarina, sándalo (herbal)",
+      "obs": null
+    },
+    {
+      "contratipo": "TOMMY",
+      "casa": "TOMMY HILFIGER",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico lavanda fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "TOMMY BOY",
+      "casa": "TOMMY HILFIGER",
+      "familia": "Cítricas y frescas",
+      "perfil": "Cítrico fresco juvenil",
+      "obs": null
+    },
+    {
+      "contratipo": "WINNER SPORT",
+      "casa": "ESIKA",
+      "familia": "Cítricas y frescas",
+      "perfil": "Herbal aromático fresco",
+      "obs": null
+    },
+    {
+      "contratipo": "1 MILLION ROYAL",
+      "casa": "PACO RABANNE",
+      "familia": "Intermedios",
+      "perfil": "Lavanda, canela, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "212 HEROES",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Manzana, menta, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "212 SEXY MEN",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Mandarina, vainilla, sándalo",
+      "obs": null
+    },
+    {
+      "contratipo": "212 VIP MEN",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Lima, vodka, pimienta, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "360 RED",
+      "casa": "PERRY ELLIS",
+      "familia": "Intermedios",
+      "perfil": "Especiado amaderado dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "AVENTUS",
+      "casa": "CREED",
+      "familia": "Intermedios",
+      "perfil": "Piña, abedul ahumado, almizcle",
+      "obs": null
+    },
+    {
+      "contratipo": "BAD",
+      "casa": "DIESEL",
+      "familia": "Intermedios",
+      "perfil": "Tabaco, caramelo, aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "BAD BOY",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Bergamota, cacao, tonka",
+      "obs": null
+    },
+    {
+      "contratipo": "BOSS BOTTLED",
+      "casa": "HUGO BOSS",
+      "familia": "Intermedios",
+      "perfil": "Manzana, canela, sándalo, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "BOSS ORANGE FOR MEN",
+      "casa": "HUGO BOSS",
+      "familia": "Intermedios",
+      "perfil": "Manzana, vainilla cálida",
+      "obs": null
+    },
+    {
+      "contratipo": "CAROLINA HERRERA",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Aromático con tonka cálida",
+      "obs": null
+    },
+    {
+      "contratipo": "CH MEN",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Bergamota, cuero, azúcar",
+      "obs": null
+    },
+    {
+      "contratipo": "CLUB DE NUIT INTENSE MAN",
+      "casa": "ARMAF",
+      "familia": "Intermedios",
+      "perfil": "Piña, abedul ahumado, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "EMBLEM",
+      "casa": "MONT BLANC",
+      "familia": "Intermedios",
+      "perfil": "Cardamomo, salvia, tonka",
+      "obs": null
+    },
+    {
+      "contratipo": "ERBA PURA",
+      "casa": "XERJOFF",
+      "familia": "Intermedios",
+      "perfil": "Frutas cítricas + vainilla almizclada",
+      "obs": null
+    },
+    {
+      "contratipo": "EROS",
+      "casa": "VERSACE",
+      "familia": "Intermedios",
+      "perfil": "Menta, manzana verde, tonka",
+      "obs": null
+    },
+    {
+      "contratipo": "EROS FLAME",
+      "casa": "VERSACE",
+      "familia": "Intermedios",
+      "perfil": "Limón, pimienta, vainilla amaderada",
+      "obs": null
+    },
+    {
+      "contratipo": "FERRARI BLACK",
+      "casa": "FERRARI",
+      "familia": "Intermedios",
+      "perfil": "Cítrico especiado con vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "GUCCI GUILTY",
+      "casa": "GUCCI",
+      "familia": "Intermedios",
+      "perfil": "Lavanda, pachulí, cedro",
+      "obs": null
+    },
+    {
+      "contratipo": "HUGO RED",
+      "casa": "HUGO BOSS",
+      "familia": "Intermedios",
+      "perfil": "Frutal especiado amaderado",
+      "obs": null
+    },
+    {
+      "contratipo": "INVICTUS VICTORY",
+      "casa": "PACO RABANNE",
+      "familia": "Intermedios",
+      "perfil": "Toronja, tonka, cuero",
+      "obs": null
+    },
+    {
+      "contratipo": "L.12.12. NOIR",
+      "casa": "LACOSTE",
+      "familia": "Intermedios",
+      "perfil": "Pimienta negra, amaderado dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "LE MALE",
+      "casa": "JEAN PAUL GAULTIER",
+      "familia": "Intermedios",
+      "perfil": "Menta y lavanda sobre vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "LOEWE 7",
+      "casa": "LOEWE",
+      "familia": "Intermedios",
+      "perfil": "Cítrico especiado con cuero",
+      "obs": null
+    },
+    {
+      "contratipo": "MERCEDES BENZ",
+      "casa": "MERCEDES BENZ",
+      "familia": "Intermedios",
+      "perfil": "Fresco amaderado floral",
+      "obs": null
+    },
+    {
+      "contratipo": "ONLY THE BRAVE",
+      "casa": "DIESEL",
+      "familia": "Intermedios",
+      "perfil": "Cítrico, cuero, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "OSADIA",
+      "casa": "YANBAL",
+      "familia": "Intermedios",
+      "perfil": "Frutal aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "PARIS HILTON",
+      "casa": "PARIS HILTON",
+      "familia": "Intermedios",
+      "perfil": "Aromático amaderado ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "PHANTOM",
+      "casa": "PACO RABANNE",
+      "familia": "Intermedios",
+      "perfil": "Lavanda, limón, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "POLO BLACK",
+      "casa": "RALPH LAUREN",
+      "familia": "Intermedios",
+      "perfil": "Mango, salvia, tonka",
+      "obs": null
+    },
+    {
+      "contratipo": "POLO RED",
+      "casa": "RALPH LAUREN",
+      "familia": "Intermedios",
+      "perfil": "Arándano, azafrán, cuero",
+      "obs": null
+    },
+    {
+      "contratipo": "THE ONE",
+      "casa": "DOLCE & GABBANA",
+      "familia": "Intermedios",
+      "perfil": "Tabaco, jengibre, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "TOY BOY",
+      "casa": "MOSCHINO",
+      "familia": "Intermedios",
+      "perfil": "Pera, pimienta rosa, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "VIP CLUB",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Intermedios",
+      "perfil": "Fresco especiado con fondo dulce",
+      "obs": null
+    },
+    {
+      "contratipo": "ACQUA DI GIO PROFUMO",
+      "casa": "GIORGIO ARMANI",
+      "familia": "Maderas",
+      "perfil": "Marino con incienso y pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "AROM",
+      "casa": "YANBAL",
+      "familia": "Maderas",
+      "perfil": "Bergamota, romero, sándalo",
+      "obs": null
+    },
+    {
+      "contratipo": "BLEU",
+      "casa": "CHANEL",
+      "familia": "Maderas",
+      "perfil": "Cítrico + incienso, cedro, sándalo",
+      "obs": "Limítrofe con Frescas"
+    },
+    {
+      "contratipo": "BLV POUR HOMME",
+      "casa": "BVLGARI",
+      "familia": "Maderas",
+      "perfil": "Jengibre, tabaco, cardamomo",
+      "obs": null
+    },
+    {
+      "contratipo": "CARDIGAN",
+      "casa": "ESIKA",
+      "familia": "Maderas",
+      "perfil": "Lavanda, cuero, cedro, musgo",
+      "obs": null
+    },
+    {
+      "contratipo": "CH AFRICA",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Maderas",
+      "perfil": "Especias cálidas amaderadas",
+      "obs": null
+    },
+    {
+      "contratipo": "DECLARATION",
+      "casa": "CARTIER",
+      "familia": "Maderas",
+      "perfil": "Comino, cardamomo, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "DIOR HOMME",
+      "casa": "CHRISTIAN DIOR",
+      "familia": "Maderas",
+      "perfil": "Iris, cacao, cuero",
+      "obs": null
+    },
+    {
+      "contratipo": "DORSAY",
+      "casa": "ESIKA",
+      "familia": "Maderas",
+      "perfil": "Verbena, roble, vetiver",
+      "obs": null
+    },
+    {
+      "contratipo": "EUPHORIA",
+      "casa": "CALVIN KLEIN",
+      "familia": "Maderas",
+      "perfil": "Jengibre, ámbar, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "FAHRENHEIT",
+      "casa": "CHRISTIAN DIOR",
+      "familia": "Maderas",
+      "perfil": "Violeta, cuero, mineral",
+      "obs": null
+    },
+    {
+      "contratipo": "HIMALAYA",
+      "casa": "CREED",
+      "familia": "Maderas",
+      "perfil": "Cítrico, sándalo, ambargris",
+      "obs": null
+    },
+    {
+      "contratipo": "INTENSO",
+      "casa": "DOLCE & GABBANA",
+      "familia": "Maderas",
+      "perfil": "Tabaco, lavanda, musgo",
+      "obs": null
+    },
+    {
+      "contratipo": "LAPIDUS",
+      "casa": "LAPIDUS",
+      "familia": "Maderas",
+      "perfil": "Cuero, miel, potencia clásica",
+      "obs": null
+    },
+    {
+      "contratipo": "MESMERIZE",
+      "casa": "AVON",
+      "familia": "Maderas",
+      "perfil": "Especiado amaderado",
+      "obs": null
+    },
+    {
+      "contratipo": "MONTANA HOMME",
+      "casa": "MONTANA",
+      "familia": "Maderas",
+      "perfil": "Aromático amaderado especiado",
+      "obs": null
+    },
+    {
+      "contratipo": "OSCAR",
+      "casa": "OSCAR DE LA RENTA",
+      "familia": "Maderas",
+      "perfil": "Aromático amaderado clásico",
+      "obs": null
+    },
+    {
+      "contratipo": "POLO",
+      "casa": "RALPH LAUREN",
+      "familia": "Maderas",
+      "perfil": "Pino, cuero, tabaco, chipre",
+      "obs": null
+    },
+    {
+      "contratipo": "SANTAL 33",
+      "casa": "LE LABO",
+      "familia": "Maderas",
+      "perfil": "Sándalo, cardamomo, cuero",
+      "obs": null
+    },
+    {
+      "contratipo": "SANTOS DE CARTIER",
+      "casa": "CARTIER",
+      "familia": "Maderas",
+      "perfil": "Cuero amaderado aromático",
+      "obs": null
+    },
+    {
+      "contratipo": "SOLO",
+      "casa": "YANBAL",
+      "familia": "Maderas",
+      "perfil": "Cuero, jengibre, hoja de higo",
+      "obs": null
+    },
+    {
+      "contratipo": "SOLO",
+      "casa": "LOEWE",
+      "familia": "Maderas",
+      "perfil": "Cardamomo, cedro, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "VALENTINO BORN IN ROMA",
+      "casa": "VALENTINO",
+      "familia": "Maderas",
+      "perfil": "Hoja de violeta, jengibre, vetiver",
+      "obs": null
+    },
+    {
+      "contratipo": "1 MILLION LUCKY",
+      "casa": "PACO RABANNE",
+      "familia": "Dulces y árabes",
+      "perfil": "Avellana, ciruela, miel",
+      "obs": null
+    },
+    {
+      "contratipo": "212 VIP BLACK",
+      "casa": "CAROLINA HERRERA",
+      "familia": "Dulces y árabes",
+      "perfil": "Absenta, lavanda, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "9PM",
+      "casa": "AFNAN",
+      "familia": "Dulces y árabes",
+      "perfil": "Manzana, canela, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "AMBER OUD",
+      "casa": "AL HARAMAIN",
+      "familia": "Dulces y árabes",
+      "perfil": "Ámbar, oud, perfil árabe",
+      "obs": null
+    },
+    {
+      "contratipo": "AMBER ROUGE (UNISEX)",
+      "casa": "ORIENTICA",
+      "familia": "Dulces y árabes",
+      "perfil": "Azafrán, ámbar, oud",
+      "obs": null
+    },
+    {
+      "contratipo": "ANGEL (A*MEN)",
+      "casa": "THIERRY MUGLER",
+      "familia": "Dulces y árabes",
+      "perfil": "Chocolate, café, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "ANIMALE",
+      "casa": "ANIMALE",
+      "familia": "Dulces y árabes",
+      "perfil": "Vainilla, ámbar especiado",
+      "obs": null
+    },
+    {
+      "contratipo": "ARABIANS TONKA (UNISEX)",
+      "casa": "MONTALE",
+      "familia": "Dulces y árabes",
+      "perfil": "Tonka, rosa, oud",
+      "obs": null
+    },
+    {
+      "contratipo": "ART OF UNIVERSE",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Ambarado dulce",
+      "obs": "Verificar referencia"
+    },
+    {
+      "contratipo": "ASAD",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Piña, tabaco, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "BADE'E AL OUD HONOR & GLORY (UNISEX)",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Oud, azafrán, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "BADE'E AL OUD OUD FOR GLORY",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Oud, azafrán, resinas",
+      "obs": null
+    },
+    {
+      "contratipo": "BADE'E AL OUD SUBLIME (UNISEX)",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Oud dulce, resinas",
+      "obs": null
+    },
+    {
+      "contratipo": "BLACK XS",
+      "casa": "PACO RABANNE",
+      "familia": "Dulces y árabes",
+      "perfil": "Praliné, cardamomo, pachulí",
+      "obs": null
+    },
+    {
+      "contratipo": "DIESEL PLUS",
+      "casa": "DIESEL",
+      "familia": "Dulces y árabes",
+      "perfil": "Especiado dulce, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "FAKHAR BLACK",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Especiado dulce ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "KHAMRAH (UNISEX)",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "perfil": "Canela, dátil, vainilla",
+      "obs": null
+    },
+    {
+      "contratipo": "KING",
+      "casa": "BHARARA",
+      "familia": "Dulces y árabes",
+      "perfil": "Frutal dulce ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "LE BEAU",
+      "casa": "JEAN PAUL GAULTIER",
+      "familia": "Dulces y árabes",
+      "perfil": "Coco, tonka, maderas",
+      "obs": null
+    },
+    {
+      "contratipo": "OBSESSION",
+      "casa": "CALVIN KLEIN",
+      "familia": "Dulces y árabes",
+      "perfil": "Oriental especiado ambarado",
+      "obs": null
+    },
+    {
+      "contratipo": "ONE MILLION",
+      "casa": "PACO RABANNE",
+      "familia": "Dulces y árabes",
+      "perfil": "Canela, cuero, ámbar",
+      "obs": null
+    },
+    {
+      "contratipo": "PURE XS",
+      "casa": "PACO RABANNE",
+      "familia": "Dulces y árabes",
+      "perfil": "Vainilla, jengibre, mirra",
+      "obs": null
+    },
+    {
+      "contratipo": "SCANDAL",
+      "casa": "JEAN PAUL GAULTIER",
+      "familia": "Dulces y árabes",
+      "perfil": "Caramelo, tonka, salvia",
+      "obs": null
+    },
+    {
+      "contratipo": "TOBACCO VANILLE (UNISEX)",
+      "casa": "TOM FORD",
+      "familia": "Dulces y árabes",
+      "perfil": "Tabaco, vainilla, especias",
+      "obs": null
+    },
+    {
+      "contratipo": "ULTRA MALE",
+      "casa": "JEAN PAUL GAULTIER",
+      "familia": "Dulces y árabes",
+      "perfil": "Pera, lavanda, vainilla intensa",
+      "obs": null
+    },
+    {
+      "contratipo": "(sin nombre)",
+      "casa": "GILLES CANTUEL",
+      "familia": "(sin clasificar)",
+      "perfil": null,
+      "obs": "Falta el nombre de la referencia"
+    }
+  ],
+  "UNISEX": [
+    {
+      "contratipo": "CK ONE",
+      "casa": "CALVIN KLEIN",
+      "familia": "Cítricas y frescas",
+      "tipo": "Marcado unisex",
+      "lista": "HOMBRE",
+      "nota": "Cítrico verde; el unisex original de los 90"
+    },
+    {
+      "contratipo": "AMBER ROUGE",
+      "casa": "ORIENTICA",
+      "familia": "Dulces y árabes",
+      "tipo": "Marcado unisex",
+      "lista": "HOMBRE",
+      "nota": "Azafrán, ámbar, oud"
+    },
+    {
+      "contratipo": "ARABIANS TONKA",
+      "casa": "MONTALE",
+      "familia": "Dulces y árabes",
+      "tipo": "Marcado unisex",
+      "lista": "HOMBRE",
+      "nota": "Tonka, rosa, oud"
+    },
+    {
+      "contratipo": "BADE'E AL OUD HONOR & GLORY",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "tipo": "Marcado unisex",
+      "lista": "HOMBRE",
+      "nota": "Oud, azafrán, ámbar"
+    },
+    {
+      "contratipo": "BADE'E AL OUD SUBLIME",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "tipo": "Marcado unisex",
+      "lista": "HOMBRE",
+      "nota": "Oud dulce, resinas"
+    },
+    {
+      "contratipo": "CHOCOLATE GREEDY",
+      "casa": "MONTALE",
+      "familia": "Dulces y árabes",
+      "tipo": "Marcado unisex",
+      "lista": "DAMA",
+      "nota": "Chocolate, café, vainilla"
+    },
+    {
+      "contratipo": "KHAMRAH",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "tipo": "Marcado unisex",
+      "lista": "HOMBRE",
+      "nota": "Canela, dátil, vainilla"
+    },
+    {
+      "contratipo": "TOBACCO VANILLE",
+      "casa": "TOM FORD",
+      "familia": "Dulces y árabes",
+      "tipo": "Marcado unisex",
+      "lista": "HOMBRE",
+      "nota": "Tabaco, vainilla, especias"
+    },
+    {
+      "contratipo": "JEAN MARIE FARINA",
+      "casa": "ROGER & GALLET",
+      "familia": "Cítricas y frescas",
+      "tipo": "Unisex de origen",
+      "lista": "HOMBRE",
+      "nota": "Agua de colonia clásica, sin género"
+    },
+    {
+      "contratipo": "SILVER MOUNTAIN WATER",
+      "casa": "CREED",
+      "familia": "Cítricas y frescas",
+      "tipo": "Unisex de origen",
+      "lista": "HOMBRE",
+      "nota": "Creed lo cataloga como compartido"
+    },
+    {
+      "contratipo": "AMBER OUD",
+      "casa": "AL HARAMAIN",
+      "familia": "Dulces y árabes",
+      "tipo": "Unisex de origen",
+      "lista": "HOMBRE",
+      "nota": "Toda la línea Amber Oud es compartida"
+    },
+    {
+      "contratipo": "ART OF UNIVERSE",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "tipo": "Unisex de origen",
+      "lista": "HOMBRE",
+      "nota": "Ambarado dulce (verificar referencia)"
+    },
+    {
+      "contratipo": "BADE'E AL OUD OUD FOR GLORY",
+      "casa": "LATTAFA",
+      "familia": "Dulces y árabes",
+      "tipo": "Unisex de origen",
+      "lista": "HOMBRE",
+      "nota": "Misma línea Bade'e Al Oud, toda unisex"
+    },
+    {
+      "contratipo": "ROYAL AMBER",
+      "casa": "ORIENTICA",
+      "familia": "Dulces y árabes",
+      "tipo": "Unisex de origen",
+      "lista": "DAMA",
+      "nota": "Ámbar/oud; se vende a ambos géneros"
+    },
+    {
+      "contratipo": "ERBA PURA",
+      "casa": "XERJOFF",
+      "familia": "Intermedios",
+      "tipo": "Unisex de origen",
+      "lista": "HOMBRE",
+      "nota": "Frutal cítrico + vainilla almizclada"
+    },
+    {
+      "contratipo": "SANTAL 33",
+      "casa": "LE LABO",
+      "familia": "Maderas",
+      "tipo": "Unisex de origen",
+      "lista": "HOMBRE",
+      "nota": "Le Labo no segmenta por género"
+    },
+    {
+      "contratipo": "ARRURU",
+      "casa": "(sin casa)",
+      "familia": "Cítricas y frescas",
+      "tipo": "Infantil / bebé",
+      "lista": "HOMBRE",
+      "nota": "Colonia de bebé, unisex por naturaleza"
+    },
+    {
+      "contratipo": "MI BEBE",
+      "casa": "(sin casa)",
+      "familia": "Cítricas y frescas",
+      "tipo": "Infantil / bebé",
+      "lista": "HOMBRE",
+      "nota": "Colonia de bebé, unisex por naturaleza"
+    }
+  ]
+}

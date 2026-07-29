@@ -23,7 +23,7 @@ const PATHS: Record<OlfactiveGroup, string> = {
 // labels have room to grow without crossing the quadrant dividers.
 const LABEL_POS: Record<OlfactiveGroup, [number, number]> = {
   "citricas-frescas": [140, 60],
-  "maderas-orientales": [140, 130],
+  "maderas-orientales": [140, 145],
   dulces: [60, 127],
   intermedios: [60, 65],
 };

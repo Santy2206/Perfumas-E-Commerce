@@ -11,9 +11,12 @@ export type OlfactiveGroupId =
 const GROUP_ALIASES: Record<string, OlfactiveGroupId> = {
   "citricas y frescas": "citricas-frescas",
   "cítricas y frescas": "citricas-frescas",
+  maderas: "maderas-orientales",
   "maderas y orientales": "maderas-orientales",
   intermedios: "intermedios",
   dulces: "dulces",
+  "dulces y arabes": "dulces",
+  "dulces y árabes": "dulces",
 };
 
 export function mapOlfactiveGroup(raw: string | null | undefined): OlfactiveGroupId {
@@ -23,12 +26,17 @@ export function mapOlfactiveGroup(raw: string | null | undefined): OlfactiveGrou
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .trim();
+  if (key.includes("sin clasificar")) return "intermedios";
   for (const [alias, id] of Object.entries(GROUP_ALIASES)) {
     const a = alias.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    if (key.includes(a) || a.includes(key)) return id;
+    if (key === a || key.includes(a) || a.includes(key)) return id;
   }
   if (key.includes("citric")) return "citricas-frescas";
-  if (key.includes("madera") || key.includes("oriental")) return "maderas-orientales";
+  // Arabes / oud / oriental-gourmand → Dulces y árabes (not Maderas)
+  if (key.includes("arabe") || key.includes("oud") || key.includes("oriental")) {
+    return "dulces";
+  }
+  if (key.includes("madera")) return "maderas-orientales";
   if (key.includes("dulce")) return "dulces";
   return "intermedios";
 }
@@ -111,8 +119,8 @@ export const OLFACTIVE_GROUPS = [
   },
   {
     id: "maderas-orientales" as const,
-    label: "Maderas y Orientales",
-    wheelLines: ["Maderas", "y Orientales"],
+    label: "Maderas",
+    wheelLines: ["Maderas"],
   },
   {
     id: "intermedios" as const,
@@ -121,7 +129,7 @@ export const OLFACTIVE_GROUPS = [
   },
   {
     id: "dulces" as const,
-    label: "Dulces",
-    wheelLines: ["Dulces"],
+    label: "Dulces y árabes",
+    wheelLines: ["Dulces", "y árabes"],
   },
 ];

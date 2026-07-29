@@ -10,6 +10,7 @@
     "catalog:export": "npx tsx scripts/catalog/cli.ts export",
     "catalog:import": "npx tsx scripts/catalog/cli.ts import",
     "catalog:sync": "npx tsx scripts/catalog/cli.ts sync",
+    "catalog:olfactive": "npx tsx scripts/catalog/apply-olfactive-overrides.ts",
     "backend:dev": "npm run backend:dev --prefix backend",
     "backend:install": "npm install --prefix backend",
     "backend:seed": "npm run seed --prefix backend/apps/backend"
