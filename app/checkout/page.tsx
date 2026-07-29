@@ -290,10 +290,17 @@ export default function CheckoutPage() {
               {shipping ? (shipping.price === 0 ? "Gratis" : formatCOP(shipping.price)) : "—"}
             </span>
           </div>
-          <div className="flex justify-between font-display text-xl text-bone mb-6">
+          <div className="flex justify-between font-display text-xl text-bone mb-4">
             <span>Total</span>
             <span className="text-gold-400">{formatCOP(total)}</span>
           </div>
+          <p className="mb-6 text-xs leading-relaxed text-bone-60">
+            Al confirmar se abre el pago seguro. Puedes pagar con{" "}
+            <span className="text-bone">tarjeta débito o crédito</span>,{" "}
+            <span className="text-bone">PSE</span>,{" "}
+            <span className="text-bone">Nequi</span>,{" "}
+            <span className="text-bone">Bancolombia</span> u otros medios disponibles.
+          </p>
           {error ? <p className="text-sm text-red-400 mb-4">{error}</p> : null}
           <Button className="w-full" disabled={placing} onClick={placeOrder}>
             {placing ? "Procesando…" : "Confirmar pedido"}
