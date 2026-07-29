@@ -432,15 +432,42 @@ export default async function seedPerfumas({
   // --- Products ---
   const { data: existingProducts } = await query.graph({
     entity: "product",
-    fields: ["id", "handle"],
+    fields: ["id", "handle", "variants.sku"],
+    pagination: { take: 10000, skip: 0 },
   })
   const existingHandles = new Set(
-    (existingProducts as { handle?: string }[]).map((p) => p.handle)
+    (existingProducts as { handle?: string }[]).map((p) => p.handle).filter(Boolean)
   )
+  const existingSkus = new Set<string>()
+  for (const p of existingProducts as {
+    variants?: { sku?: string | null }[]
+  }[]) {
+    for (const v of p.variants || []) {
+      if (v.sku) existingSkus.add(v.sku)
+    }
+  }
 
-  const productsToCreate = catalog.products.filter(
-    (p) => !existingHandles.has(p.handle)
-  )
+  const claimedSkus = new Set(existingSkus)
+  const productsToCreate: typeof catalog.products = []
+  let skippedDupSku = 0
+  for (const p of catalog.products) {
+    if (existingHandles.has(p.handle)) continue
+    const skus = p.variants.map((v) => v.sku).filter(Boolean)
+    if (skus.some((sku) => claimedSkus.has(sku))) {
+      skippedDupSku++
+      logger.warn(
+        `Skipping product ${p.handle}: variant SKU already used (${skus.join(", ")})`
+      )
+      continue
+    }
+    for (const sku of skus) claimedSkus.add(sku)
+    productsToCreate.push(p)
+  }
+  if (skippedDupSku) {
+    logger.warn(
+      `Skipped ${skippedDupSku} catalog products due to duplicate SKUs`
+    )
+  }
 
   const createdVariantIds: {
     sku: string
@@ -523,10 +550,12 @@ export default async function seedPerfumas({
   const { data: inventoryItems } = await query.graph({
     entity: "inventory_item",
     fields: ["id", "sku"],
+    pagination: { take: 10000, skip: 0 },
   })
   const { data: existingLevels } = await query.graph({
     entity: "inventory_level",
     fields: ["id", "inventory_item_id", "location_id"],
+    pagination: { take: 10000, skip: 0 },
   })
   const leveled = new Set(
     (existingLevels as { inventory_item_id?: string; location_id?: string }[])
@@ -584,6 +613,7 @@ export default async function seedPerfumas({
   const { data: variants } = await query.graph({
     entity: "variant",
     fields: ["id", "sku", "metadata"],
+    pagination: { take: 10000, skip: 0 },
   })
 
   const wholesalePrices = (
