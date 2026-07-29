@@ -75,16 +75,19 @@ const SHIPPING_OPTIONS = [
 ]
 
 function loadCatalog(): CatalogSeed {
+  // Prefer shop export locally; ship a copy under apps/backend/data for Railway.
   const candidates = [
+    resolve(process.cwd(), "data/catalog-seed.json"),
     resolve(process.cwd(), "../../../scripts/output/catalog-seed.json"),
     resolve(process.cwd(), "../../scripts/output/catalog-seed.json"),
     resolve(process.cwd(), "../scripts/output/catalog-seed.json"),
+    resolve(__dirname, "../../data/catalog-seed.json"),
     resolve(__dirname, "../../../../../../scripts/output/catalog-seed.json"),
   ]
   const path = candidates.find((p) => existsSync(p))
   if (!path) {
     throw new Error(
-      "catalog-seed.json not found. Run `npm run catalog:export` from PERFUMAS-E-COMMERCE first."
+      "catalog-seed.json not found. Run `npm run catalog:export` from PERFUMAS-E-COMMERCE, or ensure apps/backend/data/catalog-seed.json is present."
     )
   }
   return JSON.parse(readFileSync(path, "utf8")) as CatalogSeed
