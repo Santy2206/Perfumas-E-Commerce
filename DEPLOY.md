@@ -38,7 +38,11 @@ Copy channel IDs / publishable key from `backend/apps/backend/.seed-output.json`
    - `AUTH_CORS=https://perfumas.com.co,https://tienda.perfumas.com.co,https://api.perfumas.com.co`
    - `ADMIN_CORS` include your Admin origin
    - `WOMPI_PRIVATE_KEY` (optional)
-3. Build/start: `npm install` at backend workspace, then in `apps/backend`: `npx medusa db:migrate` then `npm run seed` once, then `npm run start` / `medusa start`.
+3. Build/start (Railway Root `/backend`):
+   - Build: `npm run build --workspace=@dtc/backend` (includes post-build `public/` link for Admin)
+   - Start: `cd apps/backend && npx medusa db:migrate && npm run start`
+   - If Admin `index.html` is still missing, set Start to `cd apps/backend && npx medusa db:migrate && npm run start:server`
+   - Seed once via Console: `cd apps/backend && npm run seed`
 4. Attach domain `api.perfumas.com.co` → that service.
 5. Put storefront publishable key into Vercel env; enable Wompi on region Colombia in Admin when ready.
 

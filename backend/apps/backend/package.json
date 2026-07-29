@@ -13,8 +13,9 @@
     "medusa"
   ],
   "scripts": {
-    "build": "medusa build",
+    "build": "medusa build && node ./scripts/post-medusa-build.mjs",
     "start": "medusa start",
+    "start:server": "cd .medusa/server && npm install --omit=dev && npm run start",
     "dev": "medusa develop",
     "seed": "medusa exec ./src/scripts/seed-perfumas.ts",
     "lint": "medusa lint",
