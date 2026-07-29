@@ -55,6 +55,9 @@ export function buildWompiCheckoutReference(input: {
 }): WompiCheckoutPayload {
   const amountInCents = pesosToWompiCents(input.amountPesos);
   const reference = input.orderId.replace(/[^a-zA-Z0-9_-]/g, "_");
+  const site =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+    "http://localhost:3000";
   return {
     provider: "wompi",
     publicKey: getWompiPublicKey(),
@@ -62,9 +65,7 @@ export function buildWompiCheckoutReference(input: {
     amountInCents,
     reference,
     customerEmail: input.customerEmail,
-    redirectUrl: process.env.NEXT_PUBLIC_SITE_URL
-      ? `${process.env.NEXT_PUBLIC_SITE_URL}/cuenta`
-      : "http://localhost:3000/cuenta",
+    redirectUrl: `${site}/checkout/resultado?ref=${encodeURIComponent(reference)}`,
     integrity: buildIntegritySignature({
       reference,
       amountInCents,

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { PAYMENT_PROVIDERS, SHIPPING_METHODS } from "../../lib/catalog";
 import { formatCOP } from "../../lib/utils";
 import { useCartStore } from "../../store/useCartStore";
@@ -9,6 +10,8 @@ import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Badge } from "../../components/ui/badge";
+
+const LAST_ORDER_KEY = "perfumas_last_order";
 
 type WompiPayload = {
   publicKey: string;
@@ -93,7 +96,23 @@ function paymentLabel(id: string | null) {
   return `vía ${id}`;
 }
 
+function rememberOrder(orderId: string, paymentProviderId: string) {
+  try {
+    sessionStorage.setItem(
+      LAST_ORDER_KEY,
+      JSON.stringify({
+        orderId,
+        paymentProviderId,
+        createdAt: new Date().toISOString(),
+      })
+    );
+  } catch {
+    /* ignore */
+  }
+}
+
 export default function CheckoutPage() {
+  const router = useRouter();
   const lines = useCartStore((s) => s.lines);
   const subtotal = useCartStore((s) => s.subtotal);
   const shippingMethodId = useCartStore((s) => s.shippingMethodId);
@@ -221,19 +240,37 @@ export default function CheckoutPage() {
         return;
       }
 
+      const oid = data.orderId;
+      if (!oid) {
+        setError("Pedido sin número. Intenta de nuevo.");
+        return;
+      }
+
+      // Clear cart immediately so "Ir a pagar" does not reappear if Wompi redirects away.
+      rememberOrder(oid, data.paymentProviderId || selectedPayment);
+      clearCart();
+      setConfirmedPaymentId(data.paymentProviderId || selectedPayment);
+
       const payment = data.payment;
       if (payment?.mode === "wompi_widget" && payment.wompi) {
         try {
-          await openWompiWidget(payment.wompi);
-          setPaymentNote("Pago Wompi iniciado. Revisaremos la confirmación automáticamente.");
+          const tx = await openWompiWidget(payment.wompi);
+          const q = new URLSearchParams({ ref: payment.wompi.reference || oid });
+          if (tx.id) q.set("id", tx.id);
+          router.replace(`/checkout/resultado?${q.toString()}`);
+          return;
         } catch (e) {
           setPaymentNote(
             e instanceof Error
               ? `Pedido creado, pero no se abrió Wompi: ${e.message}`
               : "Pedido creado; no se pudo abrir Wompi."
           );
+          setOrderId(oid);
+          return;
         }
-      } else if (payment?.mode === "wompi_needs_integrity") {
+      }
+
+      if (payment?.mode === "wompi_needs_integrity") {
         setPaymentNote(
           payment.message ||
             "Pedido creado. Agrega WOMPI_INTEGRITY_SECRET en Vercel para abrir el widget."
@@ -244,9 +281,7 @@ export default function CheckoutPage() {
         setPaymentNote(data.warning);
       }
 
-      setConfirmedPaymentId(data.paymentProviderId || selectedPayment);
-      clearCart();
-      setOrderId(data.orderId || null);
+      setOrderId(oid);
     } catch {
       setError("Error de red al crear el pedido");
     } finally {
@@ -319,7 +354,7 @@ export default function CheckoutPage() {
         <section className="rounded-sm border border-gold-400/20 bg-white/5 p-5 space-y-3">
           <h2 className="font-display text-lg text-bone mb-2">Pago</h2>
           <p className="text-xs text-bone-60 mb-2">
-            Wompi abre el widget de pago al confirmar. Transferencia se confirma por WhatsApp/Admin.
+            Wompi abre el widget al confirmar. Al volver, verás el resultado del pago.
           </p>
           {PAYMENT_PROVIDERS.filter((p) => p.id !== "mercadopago").map((p) => (
             <label
