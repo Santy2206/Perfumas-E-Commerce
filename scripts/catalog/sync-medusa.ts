@@ -75,19 +75,35 @@ function adminAuthHeader(): string {
   return `Bearer ${token}`;
 }
 
+async function sleep(ms: number) {
+  await new Promise((r) => setTimeout(r, ms));
+}
+
 async function adminFetch(
   path: string,
   init?: RequestInit
 ): Promise<Response> {
-  const res = await fetch(`${backendUrl()}${path}`, {
-    ...init,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: adminAuthHeader(),
-      ...(init?.headers || {}),
-    },
-  });
-  return res;
+  const maxAttempts = 5;
+  let last: Response | undefined;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      last = await fetch(`${backendUrl()}${path}`, {
+        ...init,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: adminAuthHeader(),
+          ...(init?.headers || {}),
+        },
+      });
+      if (last.status !== 502 && last.status !== 503 && last.status !== 429) {
+        return last;
+      }
+    } catch (err) {
+      if (attempt === maxAttempts) throw err;
+    }
+    await sleep(500 * attempt);
+  }
+  return last as Response;
 }
 
 async function listAllProducts(): Promise<
@@ -144,6 +160,7 @@ export async function syncMedusaCatalog(opts: {
   const seedHandles = new Set(seed.products.map((p) => p.handle));
 
   for (const product of seed.products) {
+    await sleep(150);
     const collectionId = collections.get(product.collection);
     const body = {
       title: product.title,
