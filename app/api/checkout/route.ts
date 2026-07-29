@@ -228,7 +228,7 @@ export async function POST(req: Request) {
         body.paymentProviderId === "wompi" && isWompiConfigured()
           ? buildWompiCheckoutReference({
               orderId: medusaOrder.orderId,
-              amountInCents: Math.round(body.total),
+              amountPesos: body.total,
               customerEmail: body.customer.email,
             })
           : null;
@@ -236,14 +236,21 @@ export async function POST(req: Request) {
         orderId: medusaOrder.orderId,
         displayId: medusaOrder.displayId,
         source: "medusa",
+        paymentProviderId: body.paymentProviderId,
         payment:
           body.paymentProviderId === "wompi"
             ? wompi
-              ? { mode: "wompi_widget", wompi }
+              ? {
+                  mode: wompi.integrity ? "wompi_widget" : "wompi_needs_integrity",
+                  wompi,
+                  message: wompi.integrity
+                    ? undefined
+                    : "Falta WOMPI_INTEGRITY_SECRET en Vercel (Dashboard Wompi → Secretos).",
+                }
               : {
                   mode: "system_pending",
                   message:
-                    "Pedido creado con pago sistema. Configura WOMPI_* para el widget; confirma en Admin.",
+                    "Pedido creado. Configura NEXT_PUBLIC_WOMPI_PUBLIC_KEY y WOMPI_PRIVATE_KEY en Vercel.",
                 }
             : { mode: "manual_or_system" },
       });
@@ -290,11 +297,38 @@ export async function POST(req: Request) {
   if (!g.__perfumasOrders) g.__perfumasOrders = [];
   g.__perfumasOrders.push(order);
 
+  const wompiFallback =
+    body.paymentProviderId === "wompi" && isWompiConfigured()
+      ? buildWompiCheckoutReference({
+          orderId,
+          amountPesos: body.total,
+          customerEmail: body.customer.email,
+        })
+      : null;
+
   return NextResponse.json({
     orderId,
     order,
     source: "local_fallback",
+    paymentProviderId: body.paymentProviderId,
     warning: "Pedido local — Medusa no disponible o checkout incompleto",
+    payment:
+      body.paymentProviderId === "wompi"
+        ? wompiFallback
+          ? {
+              mode: wompiFallback.integrity
+                ? "wompi_widget"
+                : "wompi_needs_integrity",
+              wompi: wompiFallback,
+              message: wompiFallback.integrity
+                ? undefined
+                : "Falta WOMPI_INTEGRITY_SECRET en Vercel.",
+            }
+          : {
+              mode: "system_pending",
+              message: "Configura las keys WOMPI_* en Vercel.",
+            }
+        : { mode: "manual_or_system" },
   });
 }
 

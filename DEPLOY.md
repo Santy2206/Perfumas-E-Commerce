@@ -18,6 +18,7 @@ NEXT_PUBLIC_MEDUSA_SALES_CHANNEL_ID=sc_...
 NEXT_PUBLIC_MEDUSA_WHOLESALE_CHANNEL_ID=sc_...
 NEXT_PUBLIC_WOMPI_PUBLIC_KEY=
 WOMPI_PRIVATE_KEY=
+WOMPI_INTEGRITY_SECRET=
 ```
 
 Copy channel IDs / publishable key from `backend/apps/backend/.seed-output.json` after production seed.

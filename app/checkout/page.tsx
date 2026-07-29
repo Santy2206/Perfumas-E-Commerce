@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { PAYMENT_PROVIDERS, SHIPPING_METHODS } from "../../lib/catalog";
 import { formatCOP } from "../../lib/utils";
 import { useCartStore } from "../../store/useCartStore";
@@ -11,8 +10,90 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Badge } from "../../components/ui/badge";
 
+type WompiPayload = {
+  publicKey: string;
+  currency: string;
+  amountInCents: number;
+  reference: string;
+  customerEmail: string;
+  redirectUrl: string;
+  integrity: string | null;
+};
+
+type CheckoutPayment = {
+  mode: string;
+  wompi?: WompiPayload;
+  message?: string;
+};
+
+declare global {
+  interface Window {
+    WidgetCheckout?: new (config: Record<string, unknown>) => {
+      open: (cb: (result: { transaction?: { status?: string; id?: string } }) => void) => void;
+    };
+  }
+}
+
+function loadWompiScript(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (typeof window === "undefined") {
+      reject(new Error("No window"));
+      return;
+    }
+    if (window.WidgetCheckout) {
+      resolve();
+      return;
+    }
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[src="https://checkout.wompi.co/widget.js"]'
+    );
+    if (existing) {
+      existing.addEventListener("load", () => resolve());
+      existing.addEventListener("error", () => reject(new Error("Wompi script error")));
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://checkout.wompi.co/widget.js";
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("No se pudo cargar Wompi"));
+    document.body.appendChild(script);
+  });
+}
+
+async function openWompiWidget(wompi: WompiPayload) {
+  if (!wompi.integrity) {
+    throw new Error("Falta firma de integridad Wompi");
+  }
+  await loadWompiScript();
+  if (!window.WidgetCheckout) {
+    throw new Error("WidgetCheckout no disponible");
+  }
+  const checkout = new window.WidgetCheckout({
+    currency: wompi.currency,
+    amountInCents: wompi.amountInCents,
+    reference: wompi.reference,
+    publicKey: wompi.publicKey,
+    signature: { integrity: wompi.integrity },
+    redirectUrl: wompi.redirectUrl,
+    customerData: { email: wompi.customerEmail },
+  });
+  return new Promise<{ status?: string; id?: string }>((resolve) => {
+    checkout.open((result) => {
+      resolve(result.transaction || {});
+    });
+  });
+}
+
+function paymentLabel(id: string | null) {
+  if (!id) return null;
+  if (id === "transfer") return "por transferencia";
+  if (id === "wompi") return "con Wompi";
+  if (id === "mercadopago") return "con Mercado Pago";
+  return `vía ${id}`;
+}
+
 export default function CheckoutPage() {
-  const router = useRouter();
   const lines = useCartStore((s) => s.lines);
   const subtotal = useCartStore((s) => s.subtotal);
   const shippingMethodId = useCartStore((s) => s.shippingMethodId);
@@ -31,6 +112,8 @@ export default function CheckoutPage() {
   const [city, setCity] = useState("Bogotá");
   const [placing, setPlacing] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
+  const [confirmedPaymentId, setConfirmedPaymentId] = useState<string | null>(null);
+  const [paymentNote, setPaymentNote] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const shipping = SHIPPING_METHODS.find((m) => m.id === shippingMethodId);
@@ -48,20 +131,23 @@ export default function CheckoutPage() {
   }
 
   if (orderId) {
+    const via = paymentLabel(confirmedPaymentId);
     return (
       <div className="mx-auto max-w-lg px-4 py-16 text-center">
         <Badge className="mb-4">Pedido confirmado</Badge>
         <h1 className="font-display text-3xl text-bone mb-4">¡Gracias por tu compra!</h1>
         <p className="text-bone-60 mb-2">Número de pedido</p>
         <p className="font-mono text-gold-400 mb-6">{orderId}</p>
-        <p className="text-sm text-bone-60 mb-8">
-          Te contactaremos al correo/WhatsApp para confirmar el pago
-          {paymentProviderId === "transfer"
-            ? " por transferencia"
-            : paymentProviderId === "wompi"
-              ? " (Wompi / sistema — revisa el pedido en Admin)"
-              : ` vía ${paymentProviderId}`}.
+        <p className="text-sm text-bone-60 mb-4">
+          {via
+            ? `Te contactaremos al correo/WhatsApp para confirmar el pago ${via}.`
+            : "Te contactaremos al correo/WhatsApp para confirmar el pago."}
         </p>
+        {paymentNote ? (
+          <p className="text-sm text-gold-400 mb-8">{paymentNote}</p>
+        ) : (
+          <div className="mb-8" />
+        )}
         <div className="flex flex-wrap justify-center gap-3">
           <Button asChild>
             <Link href="/cuenta">Ver mi cuenta</Link>
@@ -94,6 +180,7 @@ export default function CheckoutPage() {
     }
 
     setPlacing(true);
+    const selectedPayment = paymentProviderId;
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -122,13 +209,44 @@ export default function CheckoutPage() {
           total,
         }),
       });
-      const data = await res.json();
+      const data = (await res.json()) as {
+        error?: string;
+        orderId?: string;
+        payment?: CheckoutPayment;
+        warning?: string;
+        paymentProviderId?: string;
+      };
       if (!res.ok) {
         setError(data.error || "No se pudo crear el pedido");
         return;
       }
+
+      const payment = data.payment;
+      if (payment?.mode === "wompi_widget" && payment.wompi) {
+        try {
+          await openWompiWidget(payment.wompi);
+          setPaymentNote("Pago Wompi iniciado. Revisaremos la confirmación automáticamente.");
+        } catch (e) {
+          setPaymentNote(
+            e instanceof Error
+              ? `Pedido creado, pero no se abrió Wompi: ${e.message}`
+              : "Pedido creado; no se pudo abrir Wompi."
+          );
+        }
+      } else if (payment?.mode === "wompi_needs_integrity") {
+        setPaymentNote(
+          payment.message ||
+            "Pedido creado. Agrega WOMPI_INTEGRITY_SECRET en Vercel para abrir el widget."
+        );
+      } else if (payment?.message) {
+        setPaymentNote(payment.message);
+      } else if (data.warning) {
+        setPaymentNote(data.warning);
+      }
+
+      setConfirmedPaymentId(data.paymentProviderId || selectedPayment);
       clearCart();
-      setOrderId(data.orderId);
+      setOrderId(data.orderId || null);
     } catch {
       setError("Error de red al crear el pedido");
     } finally {
@@ -200,10 +318,10 @@ export default function CheckoutPage() {
 
         <section className="rounded-sm border border-gold-400/20 bg-white/5 p-5 space-y-3">
           <h2 className="font-display text-lg text-bone mb-2">Pago</h2>
-          <p className="text-xs text-bone-60 mb-3">
-            Wompi / Mercado Pago se conectan en producción con claves de API. Por ahora puedes elegir el medio preferido.
+          <p className="text-xs text-bone-60 mb-2">
+            Wompi abre el widget de pago al confirmar. Transferencia se confirma por WhatsApp/Admin.
           </p>
-          {PAYMENT_PROVIDERS.map((p) => (
+          {PAYMENT_PROVIDERS.filter((p) => p.id !== "mercadopago").map((p) => (
             <label
               key={p.id}
               className={`flex cursor-pointer items-start gap-3 rounded-sm border p-3 ${
@@ -226,21 +344,22 @@ export default function CheckoutPage() {
         </section>
 
         <section className="rounded-sm border border-gold-400/20 bg-white/5 p-5">
-          <div className="flex justify-between font-display text-lg text-gold-400 mb-4">
-            <span>Total a pagar</span>
-            <span>{formatCOP(total)}</span>
+          <div className="flex justify-between text-sm text-bone-60 mb-1">
+            <span>Subtotal</span>
+            <span>{formatCOP(subtotal())}</span>
           </div>
-          {error && <p className="text-sm text-red-300 mb-3">{error}</p>}
-          <Button className="w-full" size="lg" disabled={placing} onClick={placeOrder}>
+          <div className="flex justify-between text-sm text-bone-60 mb-3">
+            <span>Envío</span>
+            <span>{shipping ? (shipping.price === 0 ? "Gratis" : formatCOP(shipping.price)) : "—"}</span>
+          </div>
+          <div className="flex justify-between font-display text-xl text-bone mb-6">
+            <span>Total</span>
+            <span className="text-gold-400">{formatCOP(total)}</span>
+          </div>
+          {error ? <p className="text-sm text-red-400 mb-4">{error}</p> : null}
+          <Button className="w-full" disabled={placing} onClick={placeOrder}>
             {placing ? "Procesando…" : "Confirmar pedido"}
           </Button>
-          <button
-            type="button"
-            className="mt-3 w-full text-sm text-bone-60 underline"
-            onClick={() => router.push("/carrito")}
-          >
-            Volver al carrito
-          </button>
         </section>
       </div>
     </div>
