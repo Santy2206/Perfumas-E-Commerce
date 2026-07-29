@@ -246,29 +246,34 @@ export default function CheckoutPage() {
         return;
       }
 
-      // Clear cart immediately so "Ir a pagar" does not reappear if Wompi redirects away.
       rememberOrder(oid, data.paymentProviderId || selectedPayment);
-      clearCart();
       setConfirmedPaymentId(data.paymentProviderId || selectedPayment);
 
       const payment = data.payment;
       if (payment?.mode === "wompi_widget" && payment.wompi) {
         try {
           const tx = await openWompiWidget(payment.wompi);
+          const approved = tx.status === "APPROVED";
+          // Keep cart items unless payment succeeded — user can retry.
+          if (approved) clearCart();
           const q = new URLSearchParams({ ref: payment.wompi.reference || oid });
           if (tx.id) q.set("id", tx.id);
+          if (!approved && tx.status) q.set("status", tx.status);
           router.replace(`/checkout/resultado?${q.toString()}`);
           return;
         } catch (e) {
-          setPaymentNote(
+          // Widget failed to open or was dismissed — keep cart.
+          setError(
             e instanceof Error
-              ? `Pedido creado, pero no se abrió Wompi: ${e.message}`
-              : "Pedido creado; no se pudo abrir Wompi."
+              ? `No se completó el pago Wompi: ${e.message}. Tu carrito se mantiene.`
+              : "No se completó el pago. Tu carrito se mantiene."
           );
-          setOrderId(oid);
           return;
         }
       }
+
+      // Transfer / non-Wompi: order placed without card widget — clear cart.
+      clearCart();
 
       if (payment?.mode === "wompi_needs_integrity") {
         setPaymentNote(

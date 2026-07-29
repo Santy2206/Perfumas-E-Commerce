@@ -10,7 +10,9 @@ export default function CuentaPage() {
   const isB2B = useCartStore((s) => s.isB2B);
   const b2bProfile = useCartStore((s) => s.b2bProfile);
   const setB2BSession = useCartStore((s) => s.setB2BSession);
-  const itemCount = useCartStore((s) => s.itemCount);
+  const itemCount = useCartStore((s) =>
+    s.lines.reduce((sum, line) => sum + line.quantity, 0)
+  );
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
@@ -69,7 +71,7 @@ export default function CuentaPage() {
             <CardTitle>Carrito actual</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-bone-60 mb-3">{itemCount()} artículo(s) en el carrito</p>
+            <p className="text-sm text-bone-60 mb-3">{itemCount} artículo(s) en el carrito</p>
             <Button asChild size="sm" variant="outline">
               <Link href="/carrito">Ver carrito</Link>
             </Button>

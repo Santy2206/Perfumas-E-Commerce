@@ -20,10 +20,11 @@ const NAV = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const itemCount = useCartStore((s) => s.itemCount);
+  const count = useCartStore((s) =>
+    s.lines.reduce((sum, line) => sum + line.quantity, 0)
+  );
   const isB2B = useCartStore((s) => s.isB2B);
   const [open, setOpen] = useState(false);
-  const count = itemCount();
 
   return (
     <header className="sticky top-0 z-40 border-b border-gold-400/20 bg-wine-950/95 backdrop-blur">
