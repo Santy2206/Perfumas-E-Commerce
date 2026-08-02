@@ -19,9 +19,14 @@ NEXT_PUBLIC_MEDUSA_WHOLESALE_CHANNEL_ID=sc_...
 NEXT_PUBLIC_WOMPI_PUBLIC_KEY=
 WOMPI_PRIVATE_KEY=
 WOMPI_INTEGRITY_SECRET=
+WOMPI_EVENTS_SECRET=
 ```
 
 Copy channel IDs / publishable key from `backend/apps/backend/.seed-output.json` after production seed.
+
+Wompi Events URL (Dashboard → URL de eventos):  
+`https://tienda.perfumas.com.co/api/payments/wompi/webhook`  
+(or your real storefront domain). That route verifies the checksum and forwards to Medusa `POST /hooks/wompi` to capture the payment.
 
 5. Deploy → note the `*.vercel.app` URL.
 6. In Vercel → Domains, add `tienda.perfumas.com.co` (or `shop.`).
@@ -38,7 +43,9 @@ Copy channel IDs / publishable key from `backend/apps/backend/.seed-output.json`
    - `STORE_CORS=https://perfumas.com.co,https://tienda.perfumas.com.co`
    - `AUTH_CORS=https://perfumas.com.co,https://tienda.perfumas.com.co,https://api.perfumas.com.co`
    - `ADMIN_CORS` include your Admin origin
-   - `WOMPI_PRIVATE_KEY` (optional)
+   - `WOMPI_PUBLIC_KEY` / `WOMPI_PRIVATE_KEY`
+   - `WOMPI_INTEGRITY_SECRET` (same as Vercel; Widget integrity)
+   - `WOMPI_EVENTS_SECRET` (Dashboard → secreto de eventos `prod_events_...` / `test_events_...`)
 3. Build/start (Railway Root `/backend`):
    - Build: `npm run build --workspace=@dtc/backend` (includes post-build `public/` link for Admin)
    - Start: `cd apps/backend && npx medusa db:migrate && npm run start`

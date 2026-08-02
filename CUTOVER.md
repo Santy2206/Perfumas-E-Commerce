@@ -7,7 +7,7 @@
 3. [x] Catalog imported (`npm run catalog:export` → `npm run backend:seed`)
 4. [x] Customer group `emprendedores` + wholesale price list configured
 5. [x] Region Colombia / currency COP + shipping options
-6. [ ] Wompi keys in production env (`NEXT_PUBLIC_WOMPI_PUBLIC_KEY`, `WOMPI_PRIVATE_KEY`) + webhook URL
+6. [ ] Wompi keys in production env (`NEXT_PUBLIC_WOMPI_*`, `WOMPI_PRIVATE_KEY`, `WOMPI_INTEGRITY_SECRET`, `WOMPI_EVENTS_SECRET`) + Events URL → `/api/payments/wompi/webhook`
 7. [ ] Storefront production `.env`: `NEXT_PUBLIC_SITE_URL=https://perfumas.com.co`, Medusa URL + publishable key
 8. [ ] `npm run build` succeeds on storefront
 9. [ ] FAQ / contact / WhatsApp verified

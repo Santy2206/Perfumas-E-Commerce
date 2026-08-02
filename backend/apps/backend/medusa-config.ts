@@ -28,6 +28,10 @@ module.exports = defineConfig({
                 process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY ||
                 "",
               privateKey: process.env.WOMPI_PRIVATE_KEY || "",
+              // Widget integrity (also used by Next.js). Events secret is read
+              // by /hooks/wompi from WOMPI_EVENTS_SECRET.
+              integritySecret: process.env.WOMPI_INTEGRITY_SECRET || "",
+              eventsSecret: process.env.WOMPI_EVENTS_SECRET || "",
             },
           },
         ],

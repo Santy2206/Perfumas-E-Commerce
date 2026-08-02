@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
-import { isWompiConfigured } from "../../../../../lib/wompi";
+import {
+  isWompiConfigured,
+  type WompiEventPayload,
+  verifyWompiEventSignature,
+} from "../../../../../lib/wompi";
 
 /**
  * POST /api/payments/wompi/webhook
- * Receives Wompi transaction events. Marks metadata for ops;
- * full Medusa payment capture should be wired once the Wompi provider module is live.
+ * Public Wompi Events URL. Verifies checksum, then asks Medusa to capture
+ * the authorized payment for transaction.reference (Medusa order id).
  */
 export async function POST(req: Request) {
   if (!isWompiConfigured()) {
@@ -14,11 +18,20 @@ export async function POST(req: Request) {
     );
   }
 
-  let event: Record<string, unknown>;
+  let event: WompiEventPayload;
   try {
-    event = await req.json();
+    event = (await req.json()) as WompiEventPayload;
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
+  const checksum = req.headers.get("x-event-checksum");
+  const verified = verifyWompiEventSignature(event, checksum);
+  if (!verified.ok) {
+    return NextResponse.json(
+      { ok: false, message: verified.reason },
+      { status: 401 }
+    );
   }
 
   const g = globalThis as unknown as {
@@ -30,16 +43,72 @@ export async function POST(req: Request) {
     event,
   });
 
-  // TODO: verify Wompi signature with WOMPI_PRIVATE_KEY / events secret
-  // TODO: mark Medusa payment collection as captured for event.data.transaction
+  const medusaUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL?.replace(
+    /\/$/,
+    ""
+  );
+  if (!medusaUrl) {
+    return NextResponse.json({
+      ok: true,
+      verified: true,
+      medusa: "skipped",
+      message: "Missing NEXT_PUBLIC_MEDUSA_BACKEND_URL",
+    });
+  }
 
-  return NextResponse.json({ ok: true });
+  try {
+    const medusaRes = await fetch(`${medusaUrl}/hooks/wompi`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(checksum ? { "X-Event-Checksum": checksum } : {}),
+      },
+      body: JSON.stringify(event),
+      cache: "no-store",
+    });
+    const medusaJson = (await medusaRes.json().catch(() => ({}))) as Record<
+      string,
+      unknown
+    >;
+
+    if (!medusaRes.ok) {
+      // Non-200 so Wompi retries (up to 3 times / 24h).
+      return NextResponse.json(
+        {
+          ok: false,
+          verified: true,
+          medusaStatus: medusaRes.status,
+          medusa: medusaJson,
+        },
+        { status: 502 }
+      );
+    }
+
+    return NextResponse.json({
+      ok: true,
+      verified: true,
+      medusaStatus: medusaRes.status,
+      medusa: medusaJson,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        ok: false,
+        verified: true,
+        medusa: "error",
+        message:
+          error instanceof Error ? error.message : "Medusa forward failed",
+      },
+      { status: 502 }
+    );
+  }
 }
 
 export async function GET() {
   return NextResponse.json({
     configured: isWompiConfigured(),
+    eventsSecret: Boolean(process.env.WOMPI_EVENTS_SECRET),
     message:
-      "POST Wompi webhooks here. Until the Medusa Wompi module is registered, checkout completes with system payment and records payment_provider_local=wompi.",
+      "POST Wompi webhooks here. Requires WOMPI_EVENTS_SECRET; forwards to Medusa /hooks/wompi to capture payment.",
   });
 }

@@ -29,6 +29,8 @@ import type {
 type WompiOptions = {
   publicKey?: string
   privateKey?: string
+  integritySecret?: string
+  eventsSecret?: string
 }
 
 /**

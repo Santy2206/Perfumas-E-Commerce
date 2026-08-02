@@ -81,11 +81,16 @@ Admin helper: `GET /admin/perfumas/fulfillment`
 
 1. Medusa module: `apps/backend/src/modules/wompi-payment` registered in `medusa-config.ts` as `pp_wompi_wompi`.
 2. After first boot with the module, run `npx medusa db:migrate` from `apps/backend`, then in **Admin → Settings → Regions → Colombia** enable **Wompi** (keep **System** for manual/transfer).
-3. Storefront env (`PERFUMAS-E-COMMERCE/.env.local`):
+3. Storefront env (Vercel / `.env.local`):
    - `NEXT_PUBLIC_WOMPI_PUBLIC_KEY`
    - `WOMPI_PRIVATE_KEY`
-4. Webhook (production): `POST https://perfumas.com.co/api/payments/wompi/webhook`
-5. Checkout: if the shopper picks Wompi and the provider is enabled on the region, the cart uses `pp_wompi_wompi`; otherwise it falls back to **system**. Cart metadata still stores `payment_provider_local`.
+   - `WOMPI_INTEGRITY_SECRET` (Widget)
+   - `WOMPI_EVENTS_SECRET` (webhooks — different from integrity)
+4. Backend env (Railway): same Wompi keys + `WOMPI_INTEGRITY_SECRET` + `WOMPI_EVENTS_SECRET`
+5. Webhook (production): Dashboard Wompi → URL de eventos →  
+   `POST https://tienda.perfumas.com.co/api/payments/wompi/webhook`  
+   Flow: verify checksum → `POST {MEDUSA}/hooks/wompi` → capture payment + order metadata (`wompi_status`, `wompi_transaction_id`).
+6. Checkout: if the shopper picks Wompi and the provider is enabled on the region, the cart uses `pp_wompi_wompi`; otherwise it falls back to **system**. Cart metadata still stores `payment_provider_local`.
 
 ### Local / system payment
 
