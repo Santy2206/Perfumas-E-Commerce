@@ -2,11 +2,18 @@ import { listCatalogProducts } from "../../../lib/medusa-catalog";
 import { PerfumeriaBrowser } from "../../../components/shop/PerfumeriaBrowser";
 
 export const metadata = { title: "Perfumería" };
+export const revalidate = 120;
 
 export default async function PerfumeriaPage() {
   const [{ products: replicas, source }, { products: essences }] = await Promise.all([
-    listCatalogProducts({ productKind: "prepared_replica" }),
-    listCatalogProducts({ productKind: "essence" }),
+    listCatalogProducts({
+      department: "perfumeria",
+      productKind: "prepared_replica",
+    }),
+    listCatalogProducts({
+      department: "insumos",
+      productKind: "essence",
+    }),
   ]);
 
   const sourceLabel =

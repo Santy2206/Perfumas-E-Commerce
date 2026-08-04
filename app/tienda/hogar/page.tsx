@@ -2,6 +2,7 @@ import { listCatalogProducts } from "../../../lib/medusa-catalog";
 import { HogarBrowser } from "../../../components/shop/HogarBrowser";
 
 export const metadata = { title: "Hogar y cuidado" };
+export const revalidate = 120;
 
 export default async function HogarPage() {
   const { products, source } = await listCatalogProducts({ department: "hogar" });

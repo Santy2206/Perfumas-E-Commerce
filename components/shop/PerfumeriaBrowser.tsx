@@ -10,10 +10,10 @@ import {
   textIncludes,
   type CatalogSort,
 } from "../../lib/house-groups";
-import { ProductCard } from "./ProductCard";
 import { CatalogToolbar } from "./CatalogToolbar";
 import { HouseGroupAccordion } from "./HouseGroupAccordion";
 import { FragranceWheel } from "../builder/FragranceWheel";
+import { PaginatedProductGrid } from "./PaginatedProductGrid";
 import Link from "next/link";
 
 function houseOf(p: CatalogProduct): string {
@@ -137,15 +137,7 @@ export function PerfumeriaBrowser({
             {filteredReplicas.length} resultados
           </p>
         </div>
-        {filteredReplicas.length === 0 ? (
-          <p className="text-bone-60">No hay réplicas con estos filtros.</p>
-        ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredReplicas.map((p) => (
-              <ProductCard key={p.id} product={p} intent="buy" />
-            ))}
-          </div>
-        )}
+        <PaginatedProductGrid products={filteredReplicas} intent="buy" />
       </section>
 
       <section>
@@ -184,12 +176,7 @@ export function PerfumeriaBrowser({
         </div>
         <HouseGroupAccordion houses={houses} selected={house} onSelect={setHouse} />
 
-        <p className="mb-4 text-xs text-bone-60">{filteredEssences.length} esencias</p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredEssences.map((p) => (
-            <ProductCard key={p.id} product={p} intent="create" />
-          ))}
-        </div>
+        <PaginatedProductGrid products={filteredEssences} intent="create" />
       </section>
     </div>
   );

@@ -1,8 +1,12 @@
 /**
  * Fetch Medusa Store products and map them into CatalogProduct.
  * Falls back to the local catalog when Medusa is unset or unreachable.
+ *
+ * Performance: caches catalog responses (Next.js + in-memory TTL) and can
+ * scope fetches by collection/department instead of paging the whole store.
  */
 
+import { unstable_cache } from "next/cache";
 import {
   CATALOG_PRODUCTS,
   getProductByHandle as getLocalProductByHandle,
@@ -17,6 +21,9 @@ const DEPARTMENTS: Department[] = [
   "hogar",
   "accesorios",
 ];
+
+const CATALOG_REVALIDATE_SECONDS = 120;
+const MEMORY_TTL_MS = 60_000;
 
 type MedusaVariant = {
   id: string;
@@ -39,6 +46,24 @@ type MedusaProduct = {
   variants?: MedusaVariant[] | null;
   images?: { url?: string | null }[] | null;
 };
+
+type MemoryEntry<T> = { at: number; value: T };
+
+const memoryCache = new Map<string, MemoryEntry<unknown>>();
+
+function memoryGet<T>(key: string): T | undefined {
+  const hit = memoryCache.get(key) as MemoryEntry<T> | undefined;
+  if (!hit) return undefined;
+  if (Date.now() - hit.at > MEMORY_TTL_MS) {
+    memoryCache.delete(key);
+    return undefined;
+  }
+  return hit.value;
+}
+
+function memorySet<T>(key: string, value: T) {
+  memoryCache.set(key, { at: Date.now(), value });
+}
 
 function isDepartment(value: unknown): value is Department {
   return typeof value === "string" && (DEPARTMENTS as string[]).includes(value);
@@ -128,6 +153,7 @@ function mapMedusaProduct(product: MedusaProduct): CatalogProduct | null {
 }
 
 let cachedRegionId: string | null | undefined;
+const cachedCollectionIds = new Map<string, string | null>();
 
 async function getCopRegionId(): Promise<string | null> {
   if (cachedRegionId !== undefined) return cachedRegionId;
@@ -151,35 +177,88 @@ async function getCopRegionId(): Promise<string | null> {
   }
 }
 
-async function fetchMedusaProducts(): Promise<CatalogProduct[] | null> {
+async function getCollectionIdByHandle(handle: Department): Promise<string | null> {
+  if (cachedCollectionIds.has(handle)) {
+    return cachedCollectionIds.get(handle) ?? null;
+  }
+  try {
+    const { collections } = await medusa.store.collection.list({ limit: 50 });
+    const match = collections?.find(
+      (c: { id: string; handle?: string | null }) => c.handle === handle
+    );
+    const id = match?.id ?? null;
+    cachedCollectionIds.set(handle, id);
+    return id;
+  } catch {
+    cachedCollectionIds.set(handle, null);
+    return null;
+  }
+}
+
+const LIST_FIELDS =
+  "*variants,*variants.calculated_price,*collection,+metadata,+thumbnail";
+
+async function pageMedusaProducts(params: {
+  regionId: string;
+  collectionId?: string | null;
+}): Promise<MedusaProduct[]> {
+  const all: MedusaProduct[] = [];
+  let offset = 0;
+  const limit = 100;
+  for (;;) {
+    const query: Record<string, unknown> = {
+      limit,
+      offset,
+      region_id: params.regionId,
+      fields: LIST_FIELDS,
+    };
+    if (params.collectionId) {
+      query.collection_id = [params.collectionId];
+    }
+
+    const { products, count } = await medusa.store.product.list(query);
+    if (!products?.length) break;
+    all.push(...(products as MedusaProduct[]));
+    offset += limit;
+    if (all.length >= (count ?? all.length)) break;
+  }
+  return all;
+}
+
+async function fetchMedusaProductsRaw(
+  department?: Department
+): Promise<CatalogProduct[] | null> {
   if (!isMedusaConfigured()) return null;
 
   try {
     const regionId = await getCopRegionId();
     if (!regionId) return null;
 
-    const all: MedusaProduct[] = [];
-    let offset = 0;
-    const limit = 100;
-    for (;;) {
-      const { products, count } = await medusa.store.product.list({
-        limit,
-        offset,
-        region_id: regionId,
-        fields:
-          "*variants,*variants.calculated_price,*collection,+metadata,*images",
-      });
-      if (!products?.length) break;
-      all.push(...(products as MedusaProduct[]));
-      offset += limit;
-      if (all.length >= (count ?? all.length)) break;
+    let collectionId: string | null = null;
+    if (department) {
+      collectionId = await getCollectionIdByHandle(department);
     }
 
-    if (!all.length) return null;
+    const raw = await pageMedusaProducts({
+      regionId,
+      collectionId,
+    });
+    if (!raw.length) return null;
 
-    const mapped = all
+    let mapped = raw
       .map(mapMedusaProduct)
       .filter((p): p is CatalogProduct => p != null);
+
+    // If collection filter returned empty mapping, fall back to full list once.
+    if (department && collectionId && mapped.length === 0) {
+      const all = await pageMedusaProducts({ regionId });
+      mapped = all
+        .map(mapMedusaProduct)
+        .filter((p): p is CatalogProduct => p != null)
+        .filter((p) => p.department === department);
+    } else if (department && !collectionId) {
+      mapped = mapped.filter((p) => p.department === department);
+    }
 
     return mapped.length ? mapped : null;
   } catch (error) {
@@ -188,24 +267,60 @@ async function fetchMedusaProducts(): Promise<CatalogProduct[] | null> {
   }
 }
 
+const getCachedAllProducts = unstable_cache(
+  async () => fetchMedusaProductsRaw(),
+  ["medusa-catalog-all-v2"],
+  { revalidate: CATALOG_REVALIDATE_SECONDS }
+);
+
+function getCachedDepartmentProducts(department: Department) {
+  return unstable_cache(
+    async () => fetchMedusaProductsRaw(department),
+    [`medusa-catalog-dept-v2-${department}`],
+    { revalidate: CATALOG_REVALIDATE_SECONDS }
+  )();
+}
+
+async function fetchMedusaProducts(
+  department?: Department
+): Promise<CatalogProduct[] | null> {
+  const memKey = department ? `dept:${department}` : "all";
+  const warm = memoryGet<CatalogProduct[] | null>(memKey);
+  if (warm !== undefined) return warm;
+
+  const remote = department
+    ? await getCachedDepartmentProducts(department)
+    : await getCachedAllProducts();
+
+  memorySet(memKey, remote);
+  return remote;
+}
+
 export async function listCatalogProducts(options?: {
   department?: Department;
   productKind?: string;
 }): Promise<{ products: CatalogProduct[]; source: "medusa" | "local" }> {
-  const remote = await fetchMedusaProducts();
-  const products = remote ?? CATALOG_PRODUCTS;
+  const remote = await fetchMedusaProducts(options?.department);
+  let products = remote ?? (
+    options?.department
+      ? getLocalProductsByDepartment(options.department)
+      : CATALOG_PRODUCTS
+  );
   const source = remote ? "medusa" : "local";
 
-  let filtered = products;
-  if (options?.department) {
-    filtered = filtered.filter((p) => p.department === options.department);
+  if (!remote && options?.department) {
+    // already department-scoped from local helper
+  } else if (options?.department && remote) {
+    // already scoped when collection filter worked; keep filter as safety net
+    products = products.filter((p) => p.department === options.department);
   }
+
   if (options?.productKind) {
-    filtered = filtered.filter(
+    products = products.filter(
       (p) => p.metadata?.product_kind === options.productKind
     );
   }
-  return { products: filtered, source };
+  return { products, source };
 }
 
 export async function getCatalogProductByHandle(
@@ -219,8 +334,7 @@ export async function getCatalogProductByHandle(
           handle,
           limit: 1,
           region_id: regionId,
-          fields:
-            "*variants,*variants.calculated_price,*collection,+metadata,*images",
+          fields: LIST_FIELDS,
         });
         const mapped = products?.[0]
           ? mapMedusaProduct(products[0] as MedusaProduct)

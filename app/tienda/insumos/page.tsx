@@ -3,6 +3,7 @@ import { listCatalogProducts } from "../../../lib/medusa-catalog";
 import { InsumosBrowser } from "../../../components/shop/InsumosBrowser";
 
 export const metadata = { title: "Insumos" };
+export const revalidate = 120;
 
 export default async function InsumosPage({
   searchParams,

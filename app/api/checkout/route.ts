@@ -66,52 +66,58 @@ async function completeMedusaCheckout(body: CheckoutBody) {
   if (!cartSummary) return null;
   const cartId = cartSummary.id;
 
-  // Ensure SKU lines exist on the Medusa cart
-  for (const line of body.lines) {
-    if (line.kind !== "sku" || !line.variantId) continue;
-    const already = cartSummary.items.some(
-      (i) => i.id === line.medusaLineId || i.variant_id === line.variantId
+  // Ensure SKU lines exist on the Medusa cart (parallel)
+  const skuAdds = body.lines
+    .filter((line) => line.kind === "sku" && line.variantId)
+    .filter(
+      (line) =>
+        !cartSummary.items.some(
+          (i) => i.id === line.medusaLineId || i.variant_id === line.variantId
+        )
+    )
+    .map((line) =>
+      addVariantToMedusaCart(cartId, line.variantId!, line.quantity, {
+        handle: line.title,
+        wholesale: Boolean(line.isWholesale),
+      })
     );
-    if (!already) {
-      const updated = await addVariantToMedusaCart(
-        cartId,
-        line.variantId,
-        line.quantity,
-        { handle: line.title, wholesale: Boolean(line.isWholesale) }
-      );
-      if (updated) cartSummary = updated;
-    }
+  if (skuAdds.length) {
+    await Promise.all(skuAdds);
   }
 
-  // Custom builds: call backend route if any build lines
-  for (const line of body.lines) {
-    if (line.kind !== "build" || !line.build) continue;
-    try {
-      await fetch(
-        `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/builds/add-to-cart`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            ...(process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
-              ? {
-                  "x-publishable-api-key":
-                    process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
-                }
-              : {}),
-          },
-          body: JSON.stringify({
-            ...line.build,
-            cart_id: cartId,
-            serverPrice: line.price,
-            quantity: line.quantity,
-            title: line.title,
-          }),
-        }
-      );
-    } catch {
-      // build may still be local-only
-    }
+  // Custom builds in parallel
+  const buildAdds = body.lines
+    .filter((line) => line.kind === "build" && line.build)
+    .map(async (line) => {
+      try {
+        await fetch(
+          `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/builds/add-to-cart`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              ...(process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
+                ? {
+                    "x-publishable-api-key":
+                      process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
+                  }
+                : {}),
+            },
+            body: JSON.stringify({
+              ...line.build,
+              cart_id: cartId,
+              serverPrice: line.price,
+              quantity: line.quantity,
+              title: line.title,
+            }),
+          }
+        );
+      } catch {
+        // build may still be local-only
+      }
+    });
+  if (buildAdds.length) {
+    await Promise.all(buildAdds);
   }
 
   const { first_name, last_name } = splitName(body.customer.name);
@@ -143,13 +149,15 @@ async function completeMedusaCheckout(body: CheckoutBody) {
     await medusa.store.cart.addShippingMethod(cartId, { option_id: optionId });
   }
 
-  const { cart } = await medusa.store.cart.retrieve(cartId, {
-    fields: "*payment_collection,*payment_collection.payment_sessions",
-  });
+  const [{ cart }, { payment_providers }] = await Promise.all([
+    medusa.store.cart.retrieve(cartId, {
+      fields: "*payment_collection,*payment_collection.payment_sessions",
+    }),
+    medusa.store.payment.listPaymentProviders({
+      region_id: regionId,
+    }),
+  ]);
 
-  const { payment_providers } = await medusa.store.payment.listPaymentProviders({
-    region_id: regionId,
-  });
   const wantWompi = body.paymentProviderId === "wompi";
   const providerId =
     (wantWompi &&

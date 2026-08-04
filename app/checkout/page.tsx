@@ -63,6 +63,7 @@ export default function CheckoutPage() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("Bogotá");
   const [placing, setPlacing] = useState(false);
+  const [placingStep, setPlacingStep] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [paymentNote, setPaymentNote] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -128,7 +129,11 @@ export default function CheckoutPage() {
     }
 
     setPlacing(true);
+    setPlacingStep("Creando pedido…");
     try {
+      // Warm Wompi while Medusa completes the cart.
+      const wompiReady = preloadWompiScript().catch(() => undefined);
+
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -178,6 +183,8 @@ export default function CheckoutPage() {
       const payment = data.payment;
       if (payment?.mode === "wompi_widget" && payment.wompi) {
         try {
+          setPlacingStep("Abriendo Wompi…");
+          await wompiReady;
           const tx = await openWompiWidget(payment.wompi);
           const approved = tx.status === "APPROVED";
           if (approved) clearCart();
@@ -212,6 +219,7 @@ export default function CheckoutPage() {
       setError("Error de red al crear el pedido");
     } finally {
       setPlacing(false);
+      setPlacingStep(null);
     }
   };
 
@@ -303,7 +311,7 @@ export default function CheckoutPage() {
           </p>
           {error ? <p className="text-sm text-red-400 mb-4">{error}</p> : null}
           <Button className="w-full" disabled={placing} onClick={placeOrder}>
-            {placing ? "Procesando…" : "Confirmar pedido"}
+            {placing ? placingStep || "Procesando…" : "Confirmar pedido"}
           </Button>
         </section>
       </div>

@@ -2,6 +2,7 @@ import { listCatalogProducts } from "../../../lib/medusa-catalog";
 import { AccesoriosBrowser } from "../../../components/shop/AccesoriosBrowser";
 
 export const metadata = { title: "Accesorios" };
+export const revalidate = 120;
 
 export default async function AccesoriosPage() {
   const { products, source } = await listCatalogProducts({

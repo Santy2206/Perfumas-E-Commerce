@@ -1,7 +1,7 @@
 import { DEPARTMENTS } from "../../lib/catalog";
 import { listCatalogProducts } from "../../lib/medusa-catalog";
 import type { Department } from "../../lib/catalog-types";
-import { ProductCard } from "./ProductCard";
+import { PaginatedProductGrid } from "./PaginatedProductGrid";
 
 export async function DepartmentGrid({
   department,
@@ -25,11 +25,7 @@ export async function DepartmentGrid({
       {products.length === 0 ? (
         <p className="text-bone-60">Pronto habrá productos en esta categoría.</p>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((p) => (
-            <ProductCard key={p.id} product={p} wholesale={wholesale} />
-          ))}
-        </div>
+        <PaginatedProductGrid products={products} wholesale={wholesale} />
       )}
     </div>
   );

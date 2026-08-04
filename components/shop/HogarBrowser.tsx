@@ -14,9 +14,9 @@ import {
   textIncludes,
   type CatalogSort,
 } from "../../lib/house-groups";
-import { ProductCard } from "./ProductCard";
 import { CatalogToolbar } from "./CatalogToolbar";
 import { ChipFilter, PriceBandFilter } from "./FilterChips";
+import { PaginatedProductGrid } from "./PaginatedProductGrid";
 
 export function HogarBrowser({
   products,
@@ -93,16 +93,7 @@ export function HogarBrowser({
       />
       <PriceBandFilter value={priceBand} onChange={setPriceBand} />
 
-      <p className="mb-4 text-xs text-bone-60">{filtered.length} productos</p>
-      {filtered.length === 0 ? (
-        <p className="text-bone-60">No hay productos con estos filtros.</p>
-      ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
-            <ProductCard key={p.id} product={p} intent="buy" />
-          ))}
-        </div>
-      )}
+      <PaginatedProductGrid products={filtered} intent="buy" />
     </div>
   );
 }

@@ -15,10 +15,10 @@ import {
   textIncludes,
   type CatalogSort,
 } from "../../lib/house-groups";
-import { ProductCard } from "./ProductCard";
 import { FragranceWheel } from "../builder/FragranceWheel";
 import { HouseGroupAccordion } from "./HouseGroupAccordion";
 import { CatalogToolbar } from "./CatalogToolbar";
+import { PaginatedProductGrid } from "./PaginatedProductGrid";
 
 const CATS: { id: InsumosCat; label: string }[] = [
   { id: "esencias", label: "Esencias" },
@@ -201,24 +201,11 @@ export function InsumosBrowser({
         </div>
       )}
 
-      {filtered.length === 0 ? (
-        <p className="text-bone-60">No hay productos con estos filtros.</p>
-      ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
-            <ProductCard
-              key={`${cat}-${p.id}`}
-              product={p}
-              wholesale={wholesale}
-              intent="buy"
-            />
-          ))}
-        </div>
-      )}
-      <p className="mt-6 text-xs text-bone-60">
-        {filtered.length} productos
-        {cat !== "todos" ? ` en ${cat}` : ""}
-      </p>
+      <PaginatedProductGrid
+        products={filtered}
+        wholesale={wholesale}
+        intent="buy"
+      />
     </div>
   );
 }

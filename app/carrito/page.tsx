@@ -1,12 +1,18 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { formatCOP } from "../../lib/utils";
 import { useCartStore } from "../../store/useCartStore";
 import { Button } from "../../components/ui/button";
 import { SHIPPING_METHODS } from "../../lib/catalog";
+import { preloadWompiScript } from "../../lib/wompi-client";
 
 export default function CarritoPage() {
+  useEffect(() => {
+    void preloadWompiScript().catch(() => undefined);
+  }, []);
+
   const lines = useCartStore((s) => s.lines);
   const removeLine = useCartStore((s) => s.removeLine);
   const updateQty = useCartStore((s) => s.updateQty);
