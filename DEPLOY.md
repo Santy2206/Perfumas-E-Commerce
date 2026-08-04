@@ -53,6 +53,9 @@ Also set on **Vercel + Railway**:
    - `WOMPI_PUBLIC_KEY` / `WOMPI_PRIVATE_KEY`
    - `WOMPI_INTEGRITY_SECRET` (same as Vercel; Widget integrity)
    - `WOMPI_EVENTS_SECRET` (Dashboard → secreto de eventos `prod_events_...` / `test_events_...`)
+   - `PERFUMAS_INTERNAL_SECRET` (same as Vercel)
+   - Build env: set `NPM_CONFIG_PRODUCTION=false` (or remove it). `true` skips deps and breaks `medusa build`.
+   - Keep `DISABLE_MEDUSA_ADMIN=false` (or delete it) if you need Admin at `/app`.
 3. Build/start (Railway Root `/backend`):
    - Build: `npm run build --workspace=@dtc/backend` (includes post-build `public/` link for Admin)
    - Start: `cd apps/backend && npx medusa db:migrate && npm run start`
