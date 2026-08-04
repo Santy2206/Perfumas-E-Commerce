@@ -3,7 +3,7 @@ import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 
 type OrderRow = {
   id: string
-  display_id?: number
+  display_id?: string | number | null
   email?: string | null
   created_at?: string
   metadata?: Record<string, unknown> | null
@@ -45,7 +45,7 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
     pagination: { take: 100, order: { created_at: "DESC" } },
   })
 
-  const orders = ((data as OrderRow[]) || []).filter((o) => {
+  const orders = ((data as unknown as OrderRow[]) || []).filter((o) => {
     const meta = o.metadata || {}
     const st = String(meta.shipping_status || "")
     const h = String(meta.shipping_hub || "")

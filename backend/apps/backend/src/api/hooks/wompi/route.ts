@@ -8,7 +8,7 @@ import {
 
 type OrderRow = {
   id: string
-  display_id?: number
+  display_id?: string | number | null
   email?: string | null
   metadata?: Record<string, unknown> | null
   shipping_address?: {
@@ -83,7 +83,7 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     filters: { id: orderId },
   })
 
-  const order = (data as OrderRow[])?.[0]
+  const order = (data as unknown as OrderRow[])?.[0]
   if (!order) {
     return res.status(200).json({
       ok: true,

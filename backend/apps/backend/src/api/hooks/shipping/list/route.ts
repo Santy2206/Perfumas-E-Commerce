@@ -3,7 +3,7 @@ import { assertInternalSecret } from "../../../../utils/internal-secret"
 
 type OrderRow = {
   id: string
-  display_id?: number
+  display_id?: string | number | null
   email?: string | null
   created_at?: string
   metadata?: Record<string, unknown> | null
@@ -51,7 +51,7 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
     pagination: { take: 100, order: { created_at: "DESC" } },
   })
 
-  const orders = ((data as OrderRow[]) || []).filter((o) => {
+  const orders = ((data as unknown as OrderRow[]) || []).filter((o) => {
     const meta = o.metadata || {}
     if (!meta.shipping_hub && !meta.shipping_status) return false
     if (hub && String(meta.shipping_hub) !== hub) return false
