@@ -26,7 +26,14 @@ Copy channel IDs / publishable key from `backend/apps/backend/.seed-output.json`
 
 Wompi Events URL (Dashboard → URL de eventos):  
 `https://tienda.perfumas.com.co/api/payments/wompi/webhook`  
-(or your real storefront domain). That route verifies the checksum and forwards to Medusa `POST /hooks/wompi` to capture the payment.
+(or your real storefront domain). That route verifies the checksum, forwards to Medusa `POST /hooks/wompi` to capture the payment, then assigns Fontibón/Bonanza hub and emails ops/customer.
+
+Also set on **Vercel + Railway**:
+- `PERFUMAS_INTERNAL_SECRET` (shared; shipping hooks)
+- `OPS_PANEL_SECRET` (panel `/ops/envios`)
+- `RESEND_API_KEY` + `RESEND_FROM_EMAIL` (optional until email is ready)
+- `OPS_EMAIL` / `OPS_EMAIL_FONTIBON` / `OPS_EMAIL_BONANZA`
+- Pibox (phase 2): `PIBOX_API_*` when you have a corporate account
 
 5. Deploy → note the `*.vercel.app` URL.
 6. In Vercel → Domains, add `tienda.perfumas.com.co` (or `shop.`).

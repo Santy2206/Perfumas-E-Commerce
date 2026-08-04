@@ -13,6 +13,7 @@ import {
   buildWompiCheckoutReference,
   isWompiConfigured,
 } from "../../../lib/wompi";
+import { resolveDispatchHub } from "../../../lib/shipping/hub-routing";
 
 type CheckoutLine = {
   id: string;
@@ -34,6 +35,9 @@ type CheckoutBody = {
     phone: string;
     address?: string;
     city?: string;
+    locality?: string;
+    department?: string;
+    postalCode?: string;
   };
   shippingMethodId: string;
   paymentProviderId: string;
@@ -120,12 +124,20 @@ async function completeMedusaCheckout(body: CheckoutBody) {
     await Promise.all(buildAdds);
   }
 
+  const hub = resolveDispatchHub({
+    shippingMethodId: body.shippingMethodId,
+    city: body.customer.city,
+    locality: body.customer.locality,
+  });
+
   const { first_name, last_name } = splitName(body.customer.name);
   const address = {
     first_name,
     last_name,
     address_1: body.customer.address || "Recogida en tienda",
     city: body.customer.city || "Bogotá",
+    province: body.customer.locality || body.customer.department || undefined,
+    postal_code: body.customer.postalCode || undefined,
     country_code: "co",
     phone: body.customer.phone,
   };
@@ -137,6 +149,19 @@ async function completeMedusaCheckout(body: CheckoutBody) {
     metadata: {
       payment_provider_local: body.paymentProviderId,
       is_b2b: Boolean(body.isB2B),
+      shipping_method_id: body.shippingMethodId,
+      shipping_locality: body.customer.locality || null,
+      shipping_department: body.customer.department || null,
+      shipping_postal_code: body.customer.postalCode || null,
+      shipping_hub: hub.hub,
+      shipping_hub_label: hub.label,
+      shipping_hub_address: hub.address,
+      shipping_hub_reason: hub.reason,
+      shipping_status:
+        hub.mode === "pickup" ? "pickup_ready" : "pending_dispatch",
+      shipping_provider: hub.mode === "pickup" ? "none" : "manual_pibox",
+      customer_name: body.customer.name,
+      customer_phone: body.customer.phone,
     },
   });
 
@@ -207,6 +232,25 @@ export async function POST(req: Request) {
   if (!body.customer?.email || !body.customer?.name) {
     return NextResponse.json(
       { error: "Datos de cliente incompletos" },
+      { status: 400 }
+    );
+  }
+
+  if (
+    body.shippingMethodId === "delivery-bogota" &&
+    !body.customer.locality?.trim()
+  ) {
+    return NextResponse.json(
+      { error: "Selecciona la localidad de Bogotá para el domicilio." },
+      { status: 400 }
+    );
+  }
+  if (
+    body.shippingMethodId === "delivery-nacional" &&
+    !body.customer.city?.trim()
+  ) {
+    return NextResponse.json(
+      { error: "Indica la ciudad de destino para el envío nacional." },
       { status: 400 }
     );
   }
@@ -283,6 +327,12 @@ export async function POST(req: Request) {
     })
     .filter(Boolean);
 
+  const hubFallback = resolveDispatchHub({
+    shippingMethodId: body.shippingMethodId,
+    city: body.customer.city,
+    locality: body.customer.locality,
+  });
+
   const order = {
     id: orderId,
     createdAt: new Date().toISOString(),
@@ -299,6 +349,12 @@ export async function POST(req: Request) {
     currency: "COP",
     region: "co",
     source: "local_fallback",
+    shipping: {
+      hub: hubFallback.hub,
+      hubLabel: hubFallback.label,
+      reason: hubFallback.reason,
+      locality: body.customer.locality || null,
+    },
   };
 
   const g = globalThis as unknown as { __perfumasOrders?: typeof order[] };

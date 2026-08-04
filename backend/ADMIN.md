@@ -102,12 +102,15 @@ Deferred — use transfer or Wompi for now.
 
 ## Shipping
 
-Offer:
+Storefront methods (fixed prices):
 
-- Pickup Fontibón
-- Pickup Bonanza
-- Bogotá delivery
-- National shipping
+- Pickup Fontibón / Bonanza ($0)
+- Domicilio Bogotá ($8.000) — requires **localidad**; routes to hub Bonanza (norte) or Fontibón (sur/default)
+- Envío nacional ($18.000) — always prepares from **Fontibón**
+
+Ops panel: `https://tienda.perfumas.com.co/ops/envios` (secret = `OPS_PANEL_SECRET`).
+
+After Wompi `APPROVED`, order metadata includes `shipping_hub`, `shipping_status`, and emails fire via Resend when configured. Paste Pibox tracking in the ops panel until the Pibox API is connected (`PIBOX_API_*`).
 
 Create matching shipping options in Medusa for region Colombia (COP).
 

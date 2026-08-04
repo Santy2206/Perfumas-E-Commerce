@@ -8,7 +8,19 @@ import {
 
 type OrderRow = {
   id: string
+  display_id?: number
+  email?: string | null
   metadata?: Record<string, unknown> | null
+  shipping_address?: {
+    first_name?: string | null
+    last_name?: string | null
+    address_1?: string | null
+    city?: string | null
+    phone?: string | null
+    province?: string | null
+    postal_code?: string | null
+  } | null
+  items?: Array<{ title?: string | null; quantity?: number | null }>
   payment_collections?: Array<{
     id: string
     status?: string
@@ -21,9 +33,7 @@ type OrderRow = {
 
 /**
  * POST /hooks/wompi
- * Wompi event URL (or forwarded from the Next.js storefront webhook).
- * Verifies checksum, then captures authorized Medusa payments for the order
- * referenced in transaction.reference (checkout uses Medusa order id).
+ * Verifies checksum, captures payment, returns order snapshot for shipping dispatch.
  */
 export async function POST(req: MedusaRequest, res: MedusaResponse) {
   const event = (req.body || {}) as WompiEventPayload
@@ -53,7 +63,18 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     entity: "order",
     fields: [
       "id",
+      "display_id",
+      "email",
       "metadata",
+      "shipping_address.first_name",
+      "shipping_address.last_name",
+      "shipping_address.address_1",
+      "shipping_address.city",
+      "shipping_address.phone",
+      "shipping_address.province",
+      "shipping_address.postal_code",
+      "items.title",
+      "items.quantity",
       "payment_collections.id",
       "payment_collections.status",
       "payment_collections.payments.id",
@@ -64,7 +85,6 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
 
   const order = (data as OrderRow[])?.[0]
   if (!order) {
-    // Local-fallback checkout refs (PF-...) are not Medusa orders.
     return res.status(200).json({
       ok: true,
       ignored: true,
@@ -92,12 +112,22 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     },
   ])
 
+  const orderSnapshot = {
+    id: order.id,
+    display_id: order.display_id,
+    email: order.email,
+    metadata: nextMetadata,
+    shipping_address: order.shipping_address,
+    items: order.items,
+  }
+
   if (status !== "APPROVED") {
     return res.status(200).json({
       ok: true,
       captured: false,
       order_id: order.id,
       wompi_status: status,
+      order: orderSnapshot,
     })
   }
 
@@ -131,6 +161,7 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     already_captured: payments.length > 0 && capturedIds.length === 0,
     wompi_status: status,
     wompi_transaction_id: transaction.id,
+    order: orderSnapshot,
   })
 }
 

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SHIPPING_METHODS } from "../../lib/catalog";
+import { BOGOTA_LOCALITIES } from "../../lib/shipping/hub-routing";
 import { formatCOP } from "../../lib/utils";
 import { openWompiWidget, preloadWompiScript } from "../../lib/wompi-client";
 import { useCartStore } from "../../store/useCartStore";
@@ -62,6 +63,9 @@ export default function CheckoutPage() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("Bogotá");
+  const [locality, setLocality] = useState("");
+  const [department, setDepartment] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [placing, setPlacing] = useState(false);
   const [placingStep, setPlacingStep] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
@@ -72,8 +76,17 @@ export default function CheckoutPage() {
     void preloadWompiScript().catch(() => undefined);
   }, []);
 
+  useEffect(() => {
+    if (shippingMethodId === "delivery-bogota") {
+      setCity("Bogotá");
+    }
+  }, [shippingMethodId]);
+
   const shipping = SHIPPING_METHODS.find((m) => m.id === shippingMethodId);
   const total = subtotal() + (shipping?.price ?? 0);
+  const needsAddress = Boolean(shippingMethodId?.startsWith("delivery"));
+  const needsLocality = shippingMethodId === "delivery-bogota";
+  const needsNationalCity = shippingMethodId === "delivery-nacional";
 
   if (lines.length === 0 && !orderId) {
     return (
@@ -123,22 +136,38 @@ export default function CheckoutPage() {
       setError("Selecciona un método de envío o recogida.");
       return;
     }
-    if (shippingMethodId.startsWith("delivery") && !address) {
+    if (needsAddress && !address) {
       setError("Ingresa la dirección de entrega.");
+      return;
+    }
+    if (needsLocality && !locality) {
+      setError("Selecciona la localidad de Bogotá.");
+      return;
+    }
+    if (needsNationalCity && !city.trim()) {
+      setError("Indica la ciudad de destino.");
       return;
     }
 
     setPlacing(true);
     setPlacingStep("Creando pedido…");
     try {
-      // Warm Wompi while Medusa completes the cart.
       const wompiReady = preloadWompiScript().catch(() => undefined);
 
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          customer: { name, email, phone, address, city },
+          customer: {
+            name,
+            email,
+            phone,
+            address,
+            city: needsLocality ? "Bogotá" : city,
+            locality: needsLocality ? locality : undefined,
+            department: needsNationalCity ? department || undefined : undefined,
+            postalCode: postalCode || undefined,
+          },
           shippingMethodId,
           paymentProviderId: DEFAULT_PAYMENT,
           isB2B,
@@ -248,16 +277,6 @@ export default function CheckoutPage() {
               <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
             </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <Label htmlFor="city">Ciudad</Label>
-              <Input id="city" value={city} onChange={(e) => setCity(e.target.value)} />
-            </div>
-            <div>
-              <Label htmlFor="address">Dirección (si es domicilio)</Label>
-              <Input id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
-            </div>
-          </div>
         </section>
 
         <section className="rounded-sm border border-gold-400/20 bg-white/5 p-5 space-y-3">
@@ -285,6 +304,74 @@ export default function CheckoutPage() {
               </span>
             </label>
           ))}
+
+          {needsAddress ? (
+            <div className="mt-4 space-y-4 border-t border-gold-400/15 pt-4">
+              {needsLocality ? (
+                <div>
+                  <Label htmlFor="locality">Localidad (Bogotá)</Label>
+                  <select
+                    id="locality"
+                    value={locality}
+                    onChange={(e) => setLocality(e.target.value)}
+                    className="mt-1 flex h-10 w-full rounded-sm border border-gold-400/30 bg-wine-950 px-3 text-sm text-bone focus:outline-none focus:ring-2 focus:ring-gold-400"
+                  >
+                    <option value="">Selecciona localidad…</option>
+                    {BOGOTA_LOCALITIES.map((loc) => (
+                      <option key={loc} value={loc}>
+                        {loc}
+                      </option>
+                    ))}
+                  </select>
+                  <p className="mt-1 text-xs text-bone-60">
+                    Usamos la localidad para despachar desde el hub más cercano (Fontibón o Bonanza).
+                  </p>
+                </div>
+              ) : null}
+
+              {needsNationalCity ? (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <Label htmlFor="city">Ciudad</Label>
+                    <Input
+                      id="city"
+                      value={city === "Bogotá" ? "" : city}
+                      onChange={(e) => setCity(e.target.value)}
+                      placeholder="Medellín, Cali…"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="department">Departamento (opcional)</Label>
+                    <Input
+                      id="department"
+                      value={department}
+                      onChange={(e) => setDepartment(e.target.value)}
+                      placeholder="Antioquia…"
+                    />
+                  </div>
+                </div>
+              ) : null}
+
+              <div>
+                <Label htmlFor="address">Dirección de entrega</Label>
+                <Input
+                  id="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="Calle, número, barrio, referencias"
+                />
+              </div>
+              <div>
+                <Label htmlFor="postal">Código postal (opcional)</Label>
+                <Input
+                  id="postal"
+                  value={postalCode}
+                  onChange={(e) => setPostalCode(e.target.value)}
+                  placeholder="110111"
+                />
+              </div>
+            </div>
+          ) : null}
         </section>
 
         <section className="rounded-sm border border-gold-400/20 bg-white/5 p-5">
