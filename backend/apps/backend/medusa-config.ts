@@ -1,17 +1,6 @@
-import { existsSync } from "fs"
-import { resolve } from "path"
 import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
-
-/** Vite fails on react-stately@3.49 exports pointing at missing index.mjs */
-function reactStatelyAlias() {
-  const candidates = [
-    resolve(process.cwd(), "node_modules/react-stately/dist/exports/index.js"),
-    resolve(process.cwd(), "../../node_modules/react-stately/dist/exports/index.js"),
-  ]
-  return candidates.find((p) => existsSync(p))
-}
 
 const adminDisabled =
   process.env.DISABLE_MEDUSA_ADMIN === "true" ||
@@ -31,17 +20,6 @@ module.exports = defineConfig({
   },
   admin: {
     disable: adminDisabled,
-    vite: () => {
-      const aliasTarget = reactStatelyAlias()
-      if (!aliasTarget) return {}
-      return {
-        resolve: {
-          alias: {
-            "react-stately": aliasTarget,
-          },
-        },
-      }
-    },
   },
   modules: [
     {
