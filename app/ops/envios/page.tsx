@@ -10,7 +10,10 @@ type ShippingOrder = {
   display_id?: number;
   email?: string | null;
   created_at?: string;
+  total?: number | null;
   shipping_address?: {
+    first_name?: string | null;
+    last_name?: string | null;
     address_1?: string | null;
     city?: string | null;
     phone?: string | null;
@@ -27,6 +30,7 @@ export default function OpsEnviosPage() {
   const [orders, setOrders] = useState<ShippingOrder[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [busyId, setBusyId] = useState<string | null>(null);
   const [trackingDraft, setTrackingDraft] = useState<Record<string, string>>({});
   const [labelDraft, setLabelDraft] = useState<Record<string, string>>({});
 
@@ -65,35 +69,67 @@ export default function OpsEnviosPage() {
       setError("Pega el número de tracking de Pibox");
       return;
     }
-    const res = await fetch("/api/ops/shipping", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-ops-secret": secret,
-      },
-      body: JSON.stringify({
-        orderId: order.id,
-        trackingNumber: tracking,
-        labelUrl: labelDraft[order.id]?.trim() || undefined,
-        shippingStatus: "dispatched",
-        customerEmail: order.email,
-        hubLabel: String(order.metadata?.shipping_hub_label || ""),
-        displayId: order.display_id,
-      }),
-    });
-    const data = (await res.json()) as { ok?: boolean; message?: string };
-    if (!res.ok || !data.ok) {
-      setError(data.message || "No se pudo actualizar");
-      return;
+    setBusyId(order.id);
+    try {
+      const res = await fetch("/api/ops/shipping", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-ops-secret": secret,
+        },
+        body: JSON.stringify({
+          orderId: order.id,
+          trackingNumber: tracking,
+          labelUrl: labelDraft[order.id]?.trim() || undefined,
+          shippingStatus: "dispatched",
+          customerEmail: order.email,
+          hubLabel: String(order.metadata?.shipping_hub_label || ""),
+          displayId: order.display_id,
+        }),
+      });
+      const data = (await res.json()) as { ok?: boolean; message?: string };
+      if (!res.ok || !data.ok) {
+        setError(data.message || "No se pudo actualizar");
+        return;
+      }
+      await load();
+    } finally {
+      setBusyId(null);
     }
-    await load();
+  };
+
+  const createPibox = async (order: ShippingOrder) => {
+    setError(null);
+    setBusyId(order.id);
+    try {
+      const res = await fetch("/api/ops/shipping", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-ops-secret": secret,
+        },
+        body: JSON.stringify({
+          action: "create_pibox",
+          orderId: order.id,
+        }),
+      });
+      const data = (await res.json()) as { ok?: boolean; message?: string };
+      if (!res.ok || !data.ok) {
+        setError(data.message || "No se pudo crear el envío Picap");
+        return;
+      }
+      await load();
+    } finally {
+      setBusyId(null);
+    }
   };
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-8">
       <h1 className="font-display text-3xl text-bone mb-2">Ops · Envíos</h1>
       <p className="text-sm text-bone-60 mb-8">
-        Pedidos por hub (Fontibón / Bonanza). Pega el tracking de Pibox al despachar.
+        Pedidos por hub (Fontibón / Bonanza). Crea el envío en Picap o pega el
+        tracking manualmente.
       </p>
 
       <section className="mb-8 grid gap-4 rounded-sm border border-gold-400/20 bg-white/5 p-5 sm:grid-cols-4">
@@ -131,6 +167,9 @@ export default function OpsEnviosPage() {
             <option value="pending_dispatch">Pendiente</option>
             <option value="label_created">Guía creada</option>
             <option value="dispatched">Despachado</option>
+            <option value="in_transit">En tránsito</option>
+            <option value="delivered">Entregado</option>
+            <option value="failed">Fallido</option>
             <option value="pickup_ready">Recogida</option>
           </select>
         </div>
@@ -149,6 +188,14 @@ export default function OpsEnviosPage() {
         ) : (
           orders.map((o) => {
             const meta = o.metadata || {};
+            const statusStr = String(meta.shipping_status || "");
+            const canCreatePibox =
+              statusStr === "pending_dispatch" && !meta.pibox_shipment_id;
+            const showManual =
+              statusStr !== "dispatched" &&
+              statusStr !== "delivered" &&
+              statusStr !== "pickup_ready";
+
             return (
               <article
                 key={o.id}
@@ -160,12 +207,15 @@ export default function OpsEnviosPage() {
                   </h2>
                   <p className="text-xs uppercase tracking-widest text-gold-400">
                     {String(meta.shipping_hub_label || meta.shipping_hub || "—")} ·{" "}
-                    {String(meta.shipping_status || "—")}
+                    {statusStr || "—"}
                   </p>
                 </div>
-                <p className="text-sm text-bone-60">{String(meta.shipping_hub_reason || "")}</p>
+                <p className="text-sm text-bone-60">
+                  {String(meta.shipping_hub_reason || "")}
+                </p>
                 <p className="text-sm text-bone">
-                  {o.email} · {o.shipping_address?.phone || String(meta.customer_phone || "")}
+                  {o.email} ·{" "}
+                  {o.shipping_address?.phone || String(meta.customer_phone || "")}
                 </p>
                 <p className="text-sm text-bone-60">
                   {o.shipping_address?.address_1}
@@ -181,14 +231,43 @@ export default function OpsEnviosPage() {
                     .map((i) => `${i.quantity || 1}× ${i.title}`)
                     .join(", ")}
                 </p>
-                {String(meta.shipping_status) !== "dispatched" ? (
+                {meta.pibox_shipment_id ? (
+                  <p className="text-xs text-gold-400">
+                    Picap ID: {String(meta.pibox_shipment_id)}
+                    {meta.pickup_validation_code
+                      ? ` · Código recogida: ${String(meta.pickup_validation_code)}`
+                      : ""}
+                  </p>
+                ) : null}
+                {meta.tracking_number ? (
+                  <p className="text-sm text-gold-400">
+                    Tracking: {String(meta.tracking_number)}
+                  </p>
+                ) : null}
+
+                {canCreatePibox ? (
+                  <div className="pt-1">
+                    <Button
+                      type="button"
+                      onClick={() => createPibox(o)}
+                      disabled={busyId === o.id}
+                    >
+                      {busyId === o.id ? "Creando…" : "Crear envío Picap"}
+                    </Button>
+                  </div>
+                ) : null}
+
+                {showManual ? (
                   <div className="grid gap-3 sm:grid-cols-3 pt-2">
                     <div className="sm:col-span-1">
-                      <Label>Tracking Pibox</Label>
+                      <Label>Tracking Pibox (manual)</Label>
                       <Input
                         value={trackingDraft[o.id] || ""}
                         onChange={(e) =>
-                          setTrackingDraft((d) => ({ ...d, [o.id]: e.target.value }))
+                          setTrackingDraft((d) => ({
+                            ...d,
+                            [o.id]: e.target.value,
+                          }))
                         }
                       />
                     </div>
@@ -197,21 +276,24 @@ export default function OpsEnviosPage() {
                       <Input
                         value={labelDraft[o.id] || ""}
                         onChange={(e) =>
-                          setLabelDraft((d) => ({ ...d, [o.id]: e.target.value }))
+                          setLabelDraft((d) => ({
+                            ...d,
+                            [o.id]: e.target.value,
+                          }))
                         }
                       />
                     </div>
                     <div className="flex items-end">
-                      <Button type="button" onClick={() => markDispatched(o)}>
+                      <Button
+                        type="button"
+                        onClick={() => markDispatched(o)}
+                        disabled={busyId === o.id}
+                      >
                         Marcar despachado
                       </Button>
                     </div>
                   </div>
-                ) : (
-                  <p className="text-sm text-gold-400">
-                    Tracking: {String(meta.tracking_number || "—")}
-                  </p>
-                )}
+                ) : null}
               </article>
             );
           })

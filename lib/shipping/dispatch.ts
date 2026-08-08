@@ -87,6 +87,7 @@ export async function buildDispatchForOrder(
     tracking_number: shipment.trackingNumber || null,
     label_url: shipment.labelUrl || null,
     pibox_shipment_id: shipment.externalId || null,
+    pickup_validation_code: shipment.pickupValidationCode || null,
     estimated_weight_kg: DEFAULT_WEIGHT_KG,
     shipping_updated_at: now,
   };

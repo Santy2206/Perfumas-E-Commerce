@@ -25,6 +25,8 @@ export type OrderShippingMetadata = {
   tracking_number?: string | null;
   label_url?: string | null;
   pibox_shipment_id?: string | null;
+  pibox_package_id?: string | null;
+  pickup_validation_code?: string | null;
   estimated_weight_kg?: number;
   shipping_updated_at?: string | null;
   shipping_dispatched_at?: string | null;
@@ -45,6 +47,9 @@ export type CreateShipmentInput = {
     postalCode?: string | null;
   };
   weightKg?: number;
+  /** Declared value in COP centavos for Picap insurance */
+  declaredValueCents?: number;
+  indications?: string;
 };
 
 export type CreateShipmentResult = {
@@ -55,4 +60,6 @@ export type CreateShipmentResult = {
   externalId?: string | null;
   status: ShippingStatus;
   message?: string;
+  pickupValidationCode?: string | null;
+  packageId?: string | null;
 };

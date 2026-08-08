@@ -3,19 +3,26 @@ import { createPiboxShipment, isPiboxConfigured } from "./providers/pibox";
 import type { CreateShipmentInput, CreateShipmentResult } from "./types";
 
 /**
- * Prefer Pibox when configured; otherwise phase-1 manual pack.
+ * Payment-time dispatch: never calls Picap.
+ * Ops creates the Picap booking manually via createPiboxBooking().
  */
 export async function createShipment(
   input: CreateShipmentInput
 ): Promise<CreateShipmentResult> {
-  if (isPiboxConfigured()) {
-    const pibox = await createPiboxShipment(input);
-    if (pibox.ok) return pibox;
-    const manual = await createManualShipment(input);
+  return createManualShipment(input);
+}
+
+/** Ops-only: create a real Picap booking when the hub is ready. */
+export async function createPiboxBooking(
+  input: CreateShipmentInput
+): Promise<CreateShipmentResult> {
+  if (!isPiboxConfigured()) {
     return {
-      ...manual,
-      message: `Pibox falló (${pibox.message}). Fallback manual.`,
+      ok: false,
+      provider: "pibox",
+      status: "pending_dispatch",
+      message: "Pibox API no configurada",
     };
   }
-  return createManualShipment(input);
+  return createPiboxShipment(input);
 }

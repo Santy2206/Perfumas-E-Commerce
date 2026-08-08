@@ -1,8 +1,8 @@
 import type { CreateShipmentInput, CreateShipmentResult } from "../types";
 
 /**
- * Phase-1 provider: no external API. Ops creates the Pibox guide manually
- * and pastes tracking into the shipping admin panel.
+ * Payment-time placeholder: no Picap call.
+ * Ops creates the booking from /ops/envios ("Crear envío Picap") or pastes tracking.
  */
 export async function createManualShipment(
   input: CreateShipmentInput
@@ -14,6 +14,6 @@ export async function createManualShipment(
     labelUrl: null,
     externalId: null,
     status: "pending_dispatch",
-    message: `Despacho asignado a hub ${input.hub}. Crear guía en Pibox manualmente.`,
+    message: `Despacho asignado a hub ${input.hub}. Crear envío Picap desde Ops cuando esté listo.`,
   };
 }

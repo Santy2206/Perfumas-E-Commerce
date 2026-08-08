@@ -33,7 +33,14 @@ Also set on **Vercel + Railway**:
 - `OPS_PANEL_SECRET` (panel `/ops/envios`)
 - `RESEND_API_KEY` + `RESEND_FROM_EMAIL` (optional until email is ready)
 - `OPS_EMAIL` / `OPS_EMAIL_FONTIBON` / `OPS_EMAIL_BONANZA`
-- Pibox (phase 2): `PIBOX_API_*` when you have a corporate account
+- Picap/Pibox (manual from `/ops/envios`):
+  - `PIBOX_API_URL=https://turing.thetrancon.com`
+  - `PIBOX_API_KEY=` (token `t` from Picap)
+  - `PIBOX_FONTIBON_LAT` / `PIBOX_FONTIBON_LON`
+  - `PIBOX_BONANZA_LAT` / `PIBOX_BONANZA_LON`
+  - Optional: `PIBOX_SERVICE_TYPE_ID`, `PIBOX_DEFAULT_SIZE_CD`
+- Picap webhooks (create in Picap dashboard for event_cd 0 and 1):  
+  `https://tienda.perfumas.com.co/api/shipping/pibox/webhook`
 
 5. Deploy → note the `*.vercel.app` URL.
 6. In Vercel → Domains, add `tienda.perfumas.com.co` (or `shop.`).

@@ -110,7 +110,19 @@ Storefront methods (fixed prices):
 
 Ops panel: `https://tienda.perfumas.com.co/ops/envios` (secret = `OPS_PANEL_SECRET`).
 
-After Wompi `APPROVED`, order metadata includes `shipping_hub`, `shipping_status`, and emails fire via Resend when configured. Paste Pibox tracking in the ops panel until the Pibox API is connected (`PIBOX_API_*`).
+After Wompi `APPROVED`, order metadata includes `shipping_hub`, `shipping_status: pending_dispatch` (delivery) or `pickup_ready`, and emails fire via Resend when configured. **Picap bookings are not created on payment** — from Ops click **Crear envío Picap** (or paste tracking manually).
+
+### Picap / Pibox
+
+Env (Vercel):
+
+- `PIBOX_API_URL=https://turing.thetrancon.com`
+- `PIBOX_API_KEY` — token query `t`
+- `PIBOX_FONTIBON_LAT` / `PIBOX_FONTIBON_LON`
+- `PIBOX_BONANZA_LAT` / `PIBOX_BONANZA_LON`
+
+Webhooks in Picap (event_cd `0` booking + `1` package):  
+`POST https://tienda.perfumas.com.co/api/shipping/pibox/webhook`
 
 Create matching shipping options in Medusa for region Colombia (COP).
 
