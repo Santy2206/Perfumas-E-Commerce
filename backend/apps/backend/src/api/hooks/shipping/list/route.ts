@@ -20,6 +20,38 @@ type OrderRow = {
   items?: Array<{ title?: string | null; quantity?: number | null }>
 }
 
+const ORDER_FIELDS_FULL = [
+  "id",
+  "display_id",
+  "email",
+  "created_at",
+  "total",
+  "metadata",
+  "shipping_address.first_name",
+  "shipping_address.last_name",
+  "shipping_address.address_1",
+  "shipping_address.city",
+  "shipping_address.phone",
+  "shipping_address.province",
+  "shipping_address.postal_code",
+  "items.title",
+  "items.quantity",
+]
+
+const ORDER_FIELDS_SAFE = [
+  "id",
+  "display_id",
+  "email",
+  "created_at",
+  "metadata",
+  "shipping_address.address_1",
+  "shipping_address.city",
+  "shipping_address.phone",
+  "shipping_address.province",
+  "items.title",
+  "items.quantity",
+]
+
 /**
  * GET /hooks/shipping/list?hub=&status=
  * Internal secret auth for the Next.js ops panel.
@@ -46,41 +78,42 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
       ? req.query.pibox_package_id
       : undefined
 
-  const query = req.scope.resolve("query")
-  const { data } = await query.graph({
-    entity: "order",
-    fields: [
-      "id",
-      "display_id",
-      "email",
-      "created_at",
-      "total",
-      "metadata",
-      "shipping_address.first_name",
-      "shipping_address.last_name",
-      "shipping_address.address_1",
-      "shipping_address.city",
-      "shipping_address.phone",
-      "shipping_address.province",
-      "shipping_address.postal_code",
-      "items.title",
-      "items.quantity",
-    ],
-    pagination: { take: 100, order: { created_at: "DESC" } },
-  })
-
-  const orders = ((data as unknown as OrderRow[]) || []).filter((o) => {
-    const meta = o.metadata || {}
-    if (orderId) return o.id === orderId
-    if (piboxId) return String(meta.pibox_shipment_id || "") === piboxId
-    if (piboxPackageId) {
-      return String(meta.pibox_package_id || "") === piboxPackageId
+  try {
+    const query = req.scope.resolve("query")
+    let data: unknown
+    try {
+      const full = await query.graph({
+        entity: "order",
+        fields: ORDER_FIELDS_FULL,
+        pagination: { take: 100, order: { created_at: "DESC" } },
+      })
+      data = full.data
+    } catch {
+      const safe = await query.graph({
+        entity: "order",
+        fields: ORDER_FIELDS_SAFE,
+        pagination: { take: 100, order: { created_at: "DESC" } },
+      })
+      data = safe.data
     }
-    if (!meta.shipping_hub && !meta.shipping_status) return false
-    if (hub && String(meta.shipping_hub) !== hub) return false
-    if (status && String(meta.shipping_status) !== status) return false
-    return true
-  })
 
-  return res.status(200).json({ ok: true, count: orders.length, orders })
+    const orders = ((data as unknown as OrderRow[]) || []).filter((o) => {
+      const meta = o.metadata || {}
+      if (orderId) return o.id === orderId
+      if (piboxId) return String(meta.pibox_shipment_id || "") === piboxId
+      if (piboxPackageId) {
+        return String(meta.pibox_package_id || "") === piboxPackageId
+      }
+      if (!meta.shipping_hub && !meta.shipping_status) return false
+      if (hub && String(meta.shipping_hub) !== hub) return false
+      if (status && String(meta.shipping_status) !== status) return false
+      return true
+    })
+
+    return res.status(200).json({ ok: true, count: orders.length, orders })
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "Failed to list shipping orders"
+    return res.status(500).json({ ok: false, message })
+  }
 }

@@ -44,13 +44,24 @@ export default function OpsEnviosPage() {
         headers: { "x-ops-secret": secret },
         cache: "no-store",
       });
-      const data = (await res.json()) as {
+      const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
         orders?: ShippingOrder[];
         message?: string;
+        reason?: string;
+        error?: string;
       };
       if (!res.ok || !data.ok) {
-        setError(data.message || "No se pudo cargar");
+        const detail =
+          data.message ||
+          data.reason ||
+          data.error ||
+          (res.status === 401
+            ? "Clave ops incorrecta o OPS_PANEL_SECRET no configurado"
+            : res.status === 502
+              ? "No se pudo hablar con Medusa (¿PERFUMAS_INTERNAL_SECRET / NEXT_PUBLIC_MEDUSA_BACKEND_URL?)"
+              : `No se pudo cargar (HTTP ${res.status})`);
+        setError(detail);
         setOrders([]);
         return;
       }
