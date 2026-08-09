@@ -37,15 +37,21 @@ function asCustomer(customer: {
 
 export function decodeJwtPayload(token: string): {
   actor_id?: string;
+  auth_identity_id?: string;
   user_metadata?: Record<string, unknown>;
 } {
   try {
     const part = token.split(".")[1];
     if (!part) return {};
     const normalized = part.replace(/-/g, "+").replace(/_/g, "/");
-    const json = atob(normalized);
+    const padded = normalized + "=".repeat((4 - (normalized.length % 4)) % 4);
+    const binary = atob(padded);
+    const json = decodeURIComponent(
+      Array.from(binary, (c) => "%" + c.charCodeAt(0).toString(16).padStart(2, "0")).join("")
+    );
     return JSON.parse(json) as {
       actor_id?: string;
+      auth_identity_id?: string;
       user_metadata?: Record<string, unknown>;
     };
   } catch {
@@ -58,9 +64,23 @@ export async function getCustomer(): Promise<StoreCustomer | null> {
   try {
     const { customer } = await medusa.store.customer.retrieve();
     return customer ? asCustomer(customer) : null;
-  } catch {
+  } catch (error) {
+    console.error("[auth] customer.retrieve failed:", error);
     return null;
   }
+}
+
+async function ensureCustomerFromAuth(meta?: {
+  first_name?: string;
+  last_name?: string;
+}): Promise<void> {
+  await medusa.client.fetch("/auth/customer/ensure", {
+    method: "POST",
+    body: {
+      first_name: meta?.first_name,
+      last_name: meta?.last_name,
+    },
+  });
 }
 
 export async function transferCartToCustomer(customerId: string): Promise<void> {
@@ -253,7 +273,7 @@ export async function completeGoogleCallback(
     return {
       ok: false,
       error:
-        "Google no devolvió el código de acceso. Revisa que el Redirect URI sea exactamente http://localhost:3000/auth/google/callback",
+        "Google no devolvió el código de acceso. Revisa el Redirect URI en Google Cloud (localhost o tienda.perfumas.com.co).",
     };
   }
   try {
@@ -269,18 +289,35 @@ export async function completeGoogleCallback(
       };
     }
     const decoded = decodeJwtPayload(callbackResult);
-    const shouldCreateCustomer = !decoded.actor_id;
+    const needsCustomer =
+      decoded.actor_id === "" || decoded.actor_id == null || !decoded.actor_id;
 
-    if (shouldCreateCustomer) {
-      const email = String(decoded.user_metadata?.email || "");
-      if (!email) {
-        return { ok: false, error: "Google no devolvió un correo válido." };
-      }
+    if (needsCustomer) {
+      const meta = decoded.user_metadata || {};
       try {
-        await medusa.store.customer.create({ email });
-      } catch (createError) {
-        // Customer may already exist for this identity — continue and refresh.
-        console.warn("[auth] customer.create after Google:", createError);
+        await ensureCustomerFromAuth({
+          first_name: String(meta.given_name || meta.first_name || "") || undefined,
+          last_name: String(meta.family_name || meta.last_name || "") || undefined,
+        });
+      } catch (ensureError) {
+        console.error("[auth] ensure customer failed:", ensureError);
+        // Fallback: classic store create (needs STORE_CORS)
+        const email = String(meta.email || "");
+        if (email) {
+          try {
+            await medusa.store.customer.create({ email });
+          } catch (createError) {
+            console.warn("[auth] customer.create fallback:", createError);
+          }
+        } else {
+          return {
+            ok: false,
+            error: authErrorMessage(
+              ensureError,
+              "No pudimos crear tu cuenta de cliente después de Google"
+            ),
+          };
+        }
       }
       await medusa.auth.refresh();
     }
