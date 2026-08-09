@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { ShoppingBag, Menu, X, User } from "lucide-react";
 import { useState } from "react";
 import { useCartStore } from "../../store/useCartStore";
+import { useCustomerStore } from "../../store/useCustomerStore";
 import { Badge } from "../ui/badge";
 import { cn } from "../../lib/utils";
 import { MARKETING_HOME_URL } from "../../lib/site";
@@ -24,7 +25,12 @@ export function SiteHeader() {
     s.lines.reduce((sum, line) => sum + line.quantity, 0)
   );
   const isB2B = useCartStore((s) => s.isB2B);
+  const customer = useCustomerStore((s) => s.customer);
   const [open, setOpen] = useState(false);
+  const accountHref = customer ? "/cuenta" : "/cuenta/login";
+  const accountInitial = customer?.first_name?.charAt(0)?.toUpperCase()
+    || customer?.email?.charAt(0)?.toUpperCase()
+    || null;
 
   return (
     <header className="sticky top-0 z-40 border-b border-gold-400/20 bg-wine-950/95 backdrop-blur">
@@ -71,8 +77,17 @@ export function SiteHeader() {
               </span>
             )}
           </Link>
-          <Link href="/cuenta" className="hidden text-xs uppercase tracking-widest text-bone-60 hover:text-gold-400 sm:inline">
-            Cuenta
+          <Link
+            href={accountHref}
+            className="relative text-bone hover:text-gold-400"
+            aria-label={customer ? "Mi cuenta" : "Iniciar sesión"}
+          >
+            <User className="h-5 w-5" />
+            {accountInitial && (
+              <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold-400 px-1 text-[10px] font-bold text-wine-950">
+                {accountInitial}
+              </span>
+            )}
           </Link>
           <button
             type="button"
@@ -108,8 +123,12 @@ export function SiteHeader() {
               </li>
             ))}
             <li>
-              <Link href="/cuenta" onClick={() => setOpen(false)} className="block rounded-sm px-3 py-3 text-sm uppercase tracking-widest text-bone hover:bg-wine-900">
-                Cuenta
+              <Link
+                href={accountHref}
+                onClick={() => setOpen(false)}
+                className="block rounded-sm px-3 py-3 text-sm uppercase tracking-widest text-bone hover:bg-wine-900"
+              >
+                {customer ? "Mi cuenta" : "Iniciar sesión"}
               </Link>
             </li>
           </ul>

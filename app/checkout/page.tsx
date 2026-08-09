@@ -8,6 +8,7 @@ import { BOGOTA_LOCALITIES } from "../../lib/shipping/hub-routing";
 import { formatCOP } from "../../lib/utils";
 import { openWompiWidget, preloadWompiScript } from "../../lib/wompi-client";
 import { useCartStore } from "../../store/useCartStore";
+import { useCustomerStore } from "../../store/useCustomerStore";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
@@ -57,6 +58,8 @@ export default function CheckoutPage() {
   const isB2B = useCartStore((s) => s.isB2B);
   const b2bProfile = useCartStore((s) => s.b2bProfile);
   const medusaCartId = useCartStore((s) => s.medusaCartId);
+  const linkedCustomerId = useCartStore((s) => s.linkedCustomerId);
+  const customer = useCustomerStore((s) => s.customer);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -75,6 +78,20 @@ export default function CheckoutPage() {
   useEffect(() => {
     void preloadWompiScript().catch(() => undefined);
   }, []);
+
+  useEffect(() => {
+    if (!customer) return;
+    setEmail((prev) => prev || customer.email || "");
+    const fullName = [customer.first_name, customer.last_name]
+      .filter(Boolean)
+      .join(" ");
+    if (fullName) {
+      setName((prev) => prev || fullName);
+    }
+    if (customer.phone) {
+      setPhone((prev) => prev || customer.phone || "");
+    }
+  }, [customer]);
 
   useEffect(() => {
     if (shippingMethodId === "delivery-bogota") {
@@ -171,7 +188,8 @@ export default function CheckoutPage() {
           shippingMethodId,
           paymentProviderId: DEFAULT_PAYMENT,
           isB2B,
-          customerId: b2bProfile?.customerId ?? null,
+          customerId:
+            b2bProfile?.customerId ?? linkedCustomerId ?? customer?.id ?? null,
           medusaCartId,
           lines: lines.map((l) => ({
             id: l.id,

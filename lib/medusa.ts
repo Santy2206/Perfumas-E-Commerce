@@ -13,6 +13,9 @@ export const medusa = new Medusa({
   baseUrl: MEDUSA_BACKEND_URL,
   publishableKey: PUBLISHABLE_KEY || undefined,
   debug: process.env.NODE_ENV === "development",
+  auth: {
+    type: "jwt",
+  },
 });
 
 export const isMedusaConfigured = () =>

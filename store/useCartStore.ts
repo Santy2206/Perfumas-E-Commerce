@@ -56,6 +56,10 @@ interface CartStore {
   medusaCartId: string | null;
   setMedusaCartId: (id: string | null) => void;
 
+  /** Retail Medusa customer id (set after login) for cart association */
+  linkedCustomerId: string | null;
+  setLinkedCustomerId: (id: string | null) => void;
+
   isB2B: boolean;
   b2bProfile: B2BProfile | null;
   setB2BSession: (profile: B2BProfile | null) => void;
@@ -85,7 +89,10 @@ interface CartStore {
 
 async function syncEnsureCart(get: () => CartStore, set: (p: Partial<CartStore>) => void) {
   if (!isMedusaConfigured()) return null;
-  const customerId = get().isB2B ? get().b2bProfile?.customerId : undefined;
+  const customerId =
+    (get().isB2B ? get().b2bProfile?.customerId : undefined) ||
+    get().linkedCustomerId ||
+    undefined;
   const cart = await ensureMedusaCart(get().medusaCartId, {
     customerId,
     wholesale: Boolean(get().isB2B),
@@ -102,6 +109,9 @@ export const useCartStore = create<CartStore>()(
       lines: [],
       medusaCartId: null,
       setMedusaCartId: (medusaCartId) => set({ medusaCartId }),
+
+      linkedCustomerId: null,
+      setLinkedCustomerId: (linkedCustomerId) => set({ linkedCustomerId }),
 
       isB2B: false,
       b2bProfile: null,
