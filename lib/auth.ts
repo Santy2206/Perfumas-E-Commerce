@@ -181,11 +181,25 @@ export async function registerEmail(input: {
   return afterAuthSuccess();
 }
 
+function authErrorMessage(error: unknown, fallback: string): string {
+  if (error instanceof FetchError) {
+    const detail = String(error.message || error.statusText || "").trim();
+    if (detail) return `${fallback} (${detail})`;
+  } else if (error instanceof Error && error.message) {
+    return `${fallback} (${error.message})`;
+  }
+  return fallback;
+}
+
 export async function startGoogleLogin(): Promise<
   AuthResult | { ok: true; redirect: string; customer?: undefined }
 > {
   if (!isMedusaConfigured()) {
-    return { ok: false, error: "El servicio de cuenta no está disponible ahora." };
+    return {
+      ok: false,
+      error:
+        "Falta configurar NEXT_PUBLIC_MEDUSA_BACKEND_URL y NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY.",
+    };
   }
   try {
     const result = await medusa.auth.login("customer", "google", {});
@@ -201,10 +215,14 @@ export async function startGoogleLogin(): Promise<
       return { ok: true, redirect: result.location };
     }
     return { ok: false, error: "No pudimos conectar con Google." };
-  } catch {
+  } catch (error) {
+    console.error("[auth] Google login failed:", error);
     return {
       ok: false,
-      error: "Google no está configurado o no está disponible ahora.",
+      error: authErrorMessage(
+        error,
+        "Google no está disponible. ¿Está corriendo el backend en :9000 y reiniciado con GOOGLE_CLIENT_ID/SECRET?"
+      ),
     };
   }
 }
@@ -213,7 +231,18 @@ export async function completeGoogleCallback(
   queryParams: Record<string, string>
 ): Promise<AuthResult> {
   if (!isMedusaConfigured()) {
-    return { ok: false, error: "El servicio de cuenta no está disponible ahora." };
+    return {
+      ok: false,
+      error:
+        "Falta configurar NEXT_PUBLIC_MEDUSA_BACKEND_URL y NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY.",
+    };
+  }
+  if (!queryParams.code) {
+    return {
+      ok: false,
+      error:
+        "Google no devolvió el código de acceso. Revisa que el Redirect URI sea exactamente http://localhost:3000/auth/google/callback",
+    };
   }
   try {
     const callbackResult = await medusa.auth.callback(
@@ -235,13 +264,22 @@ export async function completeGoogleCallback(
       if (!email) {
         return { ok: false, error: "Google no devolvió un correo válido." };
       }
-      await medusa.store.customer.create({ email });
+      try {
+        await medusa.store.customer.create({ email });
+      } catch (createError) {
+        // Customer may already exist for this identity — continue and refresh.
+        console.warn("[auth] customer.create after Google:", createError);
+      }
       await medusa.auth.refresh();
     }
 
     return afterAuthSuccess();
-  } catch {
-    return { ok: false, error: "No pudimos validar el acceso con Google." };
+  } catch (error) {
+    console.error("[auth] Google callback failed:", error);
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos validar el acceso con Google"),
+    };
   }
 }
 
