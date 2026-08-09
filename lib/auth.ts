@@ -78,9 +78,21 @@ export async function transferCartToCustomer(customerId: string): Promise<void> 
 }
 
 async function afterAuthSuccess(): Promise<AuthResult> {
-  const customer = await getCustomer();
+  let customer = await getCustomer();
   if (!customer) {
-    return { ok: false, error: "No pudimos cargar tu cuenta. Intenta de nuevo." };
+    try {
+      await medusa.auth.refresh();
+      customer = await getCustomer();
+    } catch (error) {
+      console.error("[auth] refresh after login failed:", error);
+    }
+  }
+  if (!customer) {
+    return {
+      ok: false,
+      error:
+        "La sesión de Google se creó, pero no pudimos leer tu perfil. Revisa AUTH_CORS/STORE_CORS en Railway (debe incluir https://tienda.perfumas.com.co) y vuelve a intentar.",
+    };
   }
   await transferCartToCustomer(customer.id);
   return { ok: true, customer };
