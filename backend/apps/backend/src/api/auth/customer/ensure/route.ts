@@ -9,7 +9,16 @@ import {
   Modules,
 } from "@medusajs/framework/utils"
 import { createCustomerAccountWorkflow } from "@medusajs/medusa/core-flows"
-import { isValidEmail } from "../../../../utils/customer-auth"
+import {
+  clearAccountMergeToken,
+  detectEmailConflict,
+  emailFromProviderIdentities,
+  issueAccountMergeToken,
+  isValidEmail,
+  mergeCustomersByEmail,
+  verifyAccountMergeToken,
+  verifyEmailpassPassword,
+} from "../../../../utils/customer-auth"
 
 type Body = {
   email?: string
@@ -19,6 +28,10 @@ type Body = {
   /** Opaque token from POST /auth/customer/google/link */
   link_token?: string
   link_customer_id?: string
+  /** Opt-in merge when Google email already has emailpass */
+  confirm_merge?: boolean
+  merge_token?: string
+  password?: string
 }
 
 /**
@@ -26,7 +39,8 @@ type Body = {
  * After Google OAuth callback: create a customer or link the auth identity
  * to an existing customer with the same email.
  *
- * Note: Google provider stores Google `sub` in entity_id; email lives in user_metadata.
+ * If the Gmail already has email+password, returns status "conflict" until
+ * the user confirms with password + merge_token.
  */
 export async function POST(
   req: AuthenticatedMedusaRequest<Body>,
@@ -47,6 +61,10 @@ export async function POST(
 
   const identityId = authIdentityId || undefined
   let providerMeta: Record<string, unknown> = {}
+  let email = String(body.email || "")
+    .trim()
+    .toLowerCase()
+  let hasGoogleProvider = false
 
   if (identityId) {
     const { data: authIdentities } = await query.graph({
@@ -54,6 +72,7 @@ export async function POST(
       fields: [
         "id",
         "app_metadata",
+        "provider_identities.provider",
         "provider_identities.entity_id",
         "provider_identities.user_metadata",
       ],
@@ -63,20 +82,24 @@ export async function POST(
     const identity = (authIdentities || [])[0] as
       | {
           provider_identities?: {
+            provider?: string | null
             entity_id?: string | null
             user_metadata?: Record<string, unknown> | null
           }[] | null
         }
       | undefined
 
-    providerMeta = identity?.provider_identities?.[0]?.user_metadata || {}
+    const pis = identity?.provider_identities || []
+    hasGoogleProvider = pis.some((p) => p.provider === "google")
+    const fromProviders = emailFromProviderIdentities(pis)
+    if (!isValidEmail(email) && fromProviders.email) {
+      email = fromProviders.email
+    }
+    providerMeta = fromProviders.meta
   }
 
-  let email = String(body.email || providerMeta.email || "")
-    .trim()
-    .toLowerCase()
-
-  const picture = String(body.picture || providerMeta.picture || "") || undefined
+  const picture =
+    String(body.picture || providerMeta.picture || "") || undefined
   const firstName =
     body.first_name ||
     String(providerMeta.given_name || providerMeta.first_name || "") ||
@@ -86,33 +109,109 @@ export async function POST(
     String(providerMeta.family_name || providerMeta.last_name || "") ||
     undefined
 
-  const patchCustomerProfile = async (
-    customerId: string,
-    current?: {
-      email?: string | null
-      first_name?: string | null
-      last_name?: string | null
-      metadata?: Record<string, unknown> | null
-    },
-    resolvedEmail?: string
-  ) => {
-    const mail = resolvedEmail || email
-    if (!isValidEmail(mail)) return
-    const updates: Record<string, unknown> = {
-      metadata: {
-        ...(current?.metadata || {}),
-        google_email: mail,
-        ...(picture
-          ? { avatar_url: picture, google_picture: picture }
-          : {}),
-      },
+  const confirmMerge = Boolean(body.confirm_merge)
+  const mergeToken = String(body.merge_token || "").trim()
+  const password = String(body.password || "")
+
+  const respondConflict = async (targetCustomerId: string, mail: string) => {
+    const token = await issueAccountMergeToken(req.scope, targetCustomerId)
+    return res.status(200).json({
+      status: "conflict",
+      code: "EMAIL_ALREADY_REGISTERED",
+      email: mail,
+      existing_providers: ["emailpass"],
+      pending_providers: ["google"],
+      merge_token: token,
+      message:
+        "Ya existe una cuenta con este correo y contraseña. Confirma tu contraseña para unirlas.",
+    })
+  }
+
+  const finishLink = async (customerId: string, mode: string) => {
+    if (identityId) {
+      const authIdentity = await authModule.retrieveAuthIdentity(identityId)
+      await authModule.updateAuthIdentities({
+        id: identityId,
+        app_metadata: {
+          ...(authIdentity.app_metadata || {}),
+          customer_id: customerId,
+        },
+      })
     }
-    if (!isValidEmail(String(current?.email || ""))) {
-      updates.email = mail
+    try {
+      await clearAccountMergeToken(req.scope, customerId)
+    } catch {
+      /* ignore */
     }
-    if (!current?.first_name && firstName) updates.first_name = firstName
-    if (!current?.last_name && lastName) updates.last_name = lastName
-    await customerModule.updateCustomers(customerId, updates)
+    return res.status(200).json({
+      status: "ok",
+      customer_id: customerId,
+      mode,
+    })
+  }
+
+  // Confirmed merge: password + merge_token required
+  if (confirmMerge) {
+    if (!isValidEmail(email)) {
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
+        "Correo inválido para fusionar"
+      )
+    }
+    if (!mergeToken || !password) {
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
+        "Contraseña y token de fusión son obligatorios"
+      )
+    }
+
+    const conflict = await detectEmailConflict(req.scope, email)
+    if (!conflict) {
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
+        "No hay una cuenta de correo+contraseña para fusionar"
+      )
+    }
+    const tokenOk = await verifyAccountMergeToken(
+      req.scope,
+      conflict.customerId,
+      mergeToken
+    )
+    if (!tokenOk) {
+      throw new MedusaError(
+        MedusaError.Types.UNAUTHORIZED,
+        "El enlace de fusión expiró. Entra de nuevo con Google."
+      )
+    }
+    const pwdOk = await verifyEmailpassPassword(
+      req.scope,
+      conflict.email,
+      password
+    )
+    if (!pwdOk) {
+      throw new MedusaError(
+        MedusaError.Types.UNAUTHORIZED,
+        "Contraseña incorrecta"
+      )
+    }
+
+    let currentId = conflict.customerId
+    if (identityId) {
+      const authIdentity = await authModule.retrieveAuthIdentity(identityId)
+      const linkedId = String(authIdentity.app_metadata?.customer_id || "")
+      if (linkedId) currentId = linkedId
+    } else if (req.auth_context?.actor_id) {
+      currentId = req.auth_context.actor_id
+    }
+
+    const merged = await mergeCustomersByEmail(req.scope, {
+      currentId,
+      email: conflict.email,
+      picture,
+      firstName,
+      lastName,
+    })
+    return finishLink(merged.customerId, "merged")
   }
 
   // Link Google OAuth identity to an existing logged-in customer (settings flow)
@@ -185,7 +284,16 @@ export async function POST(
       google_link_expires: _ex,
       ...restMeta
     } = meta
-    await customerModule.updateCustomers(linkCustomerId, {
+
+    const merged = await mergeCustomersByEmail(req.scope, {
+      currentId: linkCustomerId,
+      email,
+      picture,
+      firstName,
+      lastName,
+    })
+
+    await customerModule.updateCustomers(merged.customerId, {
       metadata: {
         ...restMeta,
         google_email: email,
@@ -193,16 +301,12 @@ export async function POST(
           ? { avatar_url: picture, google_picture: picture }
           : {}),
       },
-      ...(!isValidEmail(String(target.email || "")) ? { email } : {}),
     })
 
-    return res.status(200).json({
-      customer_id: linkCustomerId,
-      mode: "google_linked",
-    })
+    return finishLink(merged.customerId, "google_linked")
   }
 
-  // Already linked: repair bad email / metadata, then return
+  // Already linked: repair bad email; conflict if another emailpass owns the Gmail
   if (req.auth_context?.actor_id) {
     const customerId = req.auth_context.actor_id
     try {
@@ -212,40 +316,40 @@ export async function POST(
       if (!isValidEmail(email) && typeof meta.google_email === "string") {
         email = meta.google_email.toLowerCase()
       }
-      // Also try emailpass entity_id from auth identity
-      if (!isValidEmail(email) && identityId) {
-        const { data: authIdentities } = await query.graph({
-          entity: "auth_identity",
-          fields: ["provider_identities.provider", "provider_identities.entity_id"],
-          filters: { id: identityId },
+
+      if (isValidEmail(email) && hasGoogleProvider) {
+        const conflict = await detectEmailConflict(req.scope, email, {
+          excludeCustomerId: customerId,
         })
-        const pis =
-          (
-            (authIdentities || [])[0] as
-              | {
-                  provider_identities?: {
-                    provider?: string
-                    entity_id?: string
-                  }[]
-                }
-              | undefined
-          )?.provider_identities || []
-        for (const pi of pis) {
-          if (
-            pi.provider === "emailpass" &&
-            pi.entity_id &&
-            isValidEmail(pi.entity_id)
-          ) {
-            email = pi.entity_id.toLowerCase()
-            break
-          }
+        if (conflict) {
+          return respondConflict(conflict.customerId, conflict.email)
         }
+
+        const merged = await mergeCustomersByEmail(req.scope, {
+          currentId: customerId,
+          email,
+          picture,
+          firstName,
+          lastName,
+        })
+        return finishLink(merged.customerId, merged.mode)
       }
-      await patchCustomerProfile(customerId, current, email)
-    } catch {
-      /* best-effort repair */
+
+      if (isValidEmail(email) && !hasGoogleProvider) {
+        const merged = await mergeCustomersByEmail(req.scope, {
+          currentId: customerId,
+          email,
+          picture,
+          firstName,
+          lastName,
+        })
+        return finishLink(merged.customerId, merged.mode)
+      }
+    } catch (error) {
+      console.warn("[ensure] repair/merge failed:", error)
     }
     return res.status(200).json({
+      status: "ok",
       customer_id: customerId,
       mode: "existing",
     })
@@ -260,7 +364,7 @@ export async function POST(
 
   const { data: customers } = await query.graph({
     entity: "customer",
-    fields: ["id", "email", "first_name", "last_name", "metadata"],
+    fields: ["id", "email", "first_name", "last_name", "phone", "metadata"],
     filters: { email },
   })
 
@@ -270,33 +374,53 @@ export async function POST(
         email?: string | null
         first_name?: string | null
         last_name?: string | null
+        phone?: string | null
         metadata?: Record<string, unknown> | null
       }
     | undefined
 
-  // Also find broken customers created with Google sub as email
-  if (!existing && identityId) {
+  let linkedBrokenId = ""
+  if (identityId) {
     const authIdentity = await authModule.retrieveAuthIdentity(identityId)
-    const linkedId = String(authIdentity.app_metadata?.customer_id || "")
-    if (linkedId) {
-      const linked = await customerModule.listCustomers({ id: linkedId })
-      existing = linked[0]
+    linkedBrokenId = String(authIdentity.app_metadata?.customer_id || "")
+  }
+
+  // Google login into an email that already has emailpass → ask to merge
+  if (hasGoogleProvider) {
+    const conflict = await detectEmailConflict(req.scope, email, {
+      excludeCustomerId: linkedBrokenId || undefined,
+    })
+    if (conflict) {
+      // Already linked to the emailpass customer → just repair
+      if (linkedBrokenId && linkedBrokenId === conflict.customerId) {
+        const merged = await mergeCustomersByEmail(req.scope, {
+          currentId: conflict.customerId,
+          email,
+          picture,
+          firstName,
+          lastName,
+        })
+        return finishLink(merged.customerId, "linked")
+      }
+      return respondConflict(conflict.customerId, conflict.email)
     }
   }
 
-  if (existing?.id) {
-    await authModule.updateAuthIdentities({
-      id: identityId!,
-      app_metadata: {
-        customer_id: existing.id,
-      },
-    })
-    await patchCustomerProfile(existing.id, existing)
+  // Broken Google customer (sub as email) without emailpass conflict
+  if (!existing && linkedBrokenId) {
+    const linked = await customerModule.listCustomers({ id: linkedBrokenId })
+    existing = linked[0]
+  }
 
-    return res.status(200).json({
-      customer_id: existing.id,
-      mode: "linked",
+  if (existing?.id) {
+    const merged = await mergeCustomersByEmail(req.scope, {
+      currentId: existing.id,
+      email,
+      picture,
+      firstName,
+      lastName,
     })
+    return finishLink(merged.customerId, "linked")
   }
 
   const { result } = await createCustomerAccountWorkflow(req.scope).run({
@@ -317,6 +441,7 @@ export async function POST(
   })
 
   return res.status(200).json({
+    status: "ok",
     customer_id: result.id,
     mode: "created",
   })

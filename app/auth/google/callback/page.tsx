@@ -3,8 +3,12 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
+import { GoogleAccountMergeForm } from "../../../../components/auth/GoogleAccountMergeForm";
 import { Button } from "../../../../components/ui/button";
-import { completeGoogleCallback } from "../../../../lib/auth";
+import {
+  completeGoogleCallback,
+  type AccountMergeConflict,
+} from "../../../../lib/auth";
 import { useCustomerStore } from "../../../../store/useCustomerStore";
 
 function GoogleCallbackInner() {
@@ -12,6 +16,7 @@ function GoogleCallbackInner() {
   const searchParams = useSearchParams();
   const setCustomer = useCustomerStore((s) => s.setCustomer);
   const [error, setError] = useState<string | null>(null);
+  const [conflict, setConflict] = useState<AccountMergeConflict | null>(null);
   const ran = useRef(false);
 
   useEffect(() => {
@@ -23,6 +28,10 @@ function GoogleCallbackInner() {
     const run = async () => {
       const result = await completeGoogleCallback(queryParams);
       if (!result.ok) {
+        if (result.conflict) {
+          setConflict(result.conflict);
+          return;
+        }
         setError(result.error);
         return;
       }
@@ -36,6 +45,27 @@ function GoogleCallbackInner() {
 
     void run();
   }, [router, searchParams, setCustomer]);
+
+  if (conflict) {
+    return (
+      <div className="mx-auto max-w-md px-4 py-16 sm:px-8">
+        <GoogleAccountMergeForm
+          conflict={conflict}
+          onMerged={async (customer) => {
+            setCustomer(customer);
+            const { useFavoritesStore } = await import(
+              "../../../../store/useFavoritesStore"
+            );
+            await useFavoritesStore.getState().hydrate();
+            router.replace("/cuenta#acceso");
+          }}
+          onCancel={() => {
+            router.replace("/cuenta/login");
+          }}
+        />
+      </div>
+    );
+  }
 
   if (error) {
     return (

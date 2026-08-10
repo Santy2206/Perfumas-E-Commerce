@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { loginWithGoogleIdToken } from "../../lib/auth";
+import {
+  loginWithGoogleIdToken,
+  type AccountMergeConflict,
+} from "../../lib/auth";
 import { useCustomerStore } from "../../store/useCustomerStore";
+import { GoogleAccountMergeForm } from "./GoogleAccountMergeForm";
 import { GoogleLoginButton } from "./GoogleLoginButton";
 
 declare global {
@@ -31,7 +35,9 @@ const CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "";
 function loadGisScript(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
   if (window.google?.accounts?.id) return Promise.resolve();
-  const existing = document.querySelector<HTMLScriptElement>(`script[src="${GIS_SRC}"]`);
+  const existing = document.querySelector<HTMLScriptElement>(
+    `script[src="${GIS_SRC}"]`
+  );
   if (existing) {
     return new Promise((resolve) => {
       existing.addEventListener("load", () => resolve());
@@ -43,7 +49,8 @@ function loadGisScript(): Promise<void> {
     script.src = GIS_SRC;
     script.async = true;
     script.onload = () => resolve();
-    script.onerror = () => reject(new Error("No se pudo cargar Google Identity Services"));
+    script.onerror = () =>
+      reject(new Error("No se pudo cargar Google Identity Services"));
     document.head.appendChild(script);
   });
 }
@@ -60,6 +67,7 @@ export function GoogleSignInAside() {
   const hydrated = useCustomerStore((s) => s.hydrated);
   const setCustomer = useCustomerStore((s) => s.setCustomer);
   const started = useRef(false);
+  const [conflict, setConflict] = useState<AccountMergeConflict | null>(null);
 
   const hide =
     !CLIENT_ID ||
@@ -84,6 +92,10 @@ export function GoogleSignInAside() {
             if (!response.credential) return;
             const result = await loginWithGoogleIdToken(response.credential);
             if (!result.ok) {
+              if (result.conflict) {
+                setConflict(result.conflict);
+                return;
+              }
               console.warn("[google-one-tap]", result.error);
               return;
             }
@@ -93,7 +105,6 @@ export function GoogleSignInAside() {
           auto_select: false,
           cancel_on_tap_outside: true,
           context: "signin",
-          // Prefer right-side placement where supported
           itp_support: true,
         });
 
@@ -113,6 +124,27 @@ export function GoogleSignInAside() {
       }
     };
   }, [hide, router, setCustomer]);
+
+  if (conflict) {
+    return (
+      <div className="fixed inset-0 z-[60] flex items-center justify-center bg-wine-950/80 px-4 backdrop-blur-sm">
+        <div className="w-full max-w-md rounded-sm border border-gold-400/30 bg-wine-900 p-6 shadow-xl">
+          <GoogleAccountMergeForm
+            conflict={conflict}
+            onMerged={(next) => {
+              setCustomer(next);
+              setConflict(null);
+              router.push("/cuenta#acceso");
+            }}
+            onCancel={() => {
+              setConflict(null);
+              router.push("/cuenta/login");
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
 
   if (hide) return null;
 

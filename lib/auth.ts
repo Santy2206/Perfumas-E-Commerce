@@ -23,9 +23,21 @@ export type StoreCustomer = {
   profile_complete?: boolean;
 };
 
+export type AccountMergeConflict = {
+  email: string;
+  merge_token: string;
+  existing_providers: string[];
+  message: string;
+};
+
 export type AuthResult =
   | { ok: true; customer: StoreCustomer }
-  | { ok: false; error: string; redirect?: string };
+  | {
+      ok: false;
+      error: string;
+      redirect?: string;
+      conflict?: AccountMergeConflict;
+    };
 
 function isValidEmail(value: string): boolean {
   return value.includes("@") && value.includes(".");
@@ -170,6 +182,19 @@ export async function saveCustomerFavorites(
   return { ok: true };
 }
 
+type EnsureResponse =
+  | {
+      status?: "ok" | "conflict";
+      customer_id?: string;
+      mode?: string;
+      code?: string;
+      email?: string;
+      merge_token?: string;
+      existing_providers?: string[];
+      message?: string;
+    }
+  | Record<string, unknown>;
+
 async function ensureCustomerFromAuth(meta?: {
   email?: string;
   first_name?: string;
@@ -177,18 +202,91 @@ async function ensureCustomerFromAuth(meta?: {
   picture?: string;
   link_token?: string;
   link_customer_id?: string;
-}): Promise<void> {
-  await medusa.client.fetch("/auth/customer/ensure", {
-    method: "POST",
-    body: {
-      email: meta?.email,
-      first_name: meta?.first_name,
-      last_name: meta?.last_name,
-      picture: meta?.picture,
-      link_token: meta?.link_token,
-      link_customer_id: meta?.link_customer_id,
-    },
-  });
+  confirm_merge?: boolean;
+  merge_token?: string;
+  password?: string;
+}): Promise<
+  | { ok: true; customerId?: string; mode?: string }
+  | { ok: false; conflict: AccountMergeConflict }
+> {
+  const data = await medusa.client.fetch<EnsureResponse>(
+    "/auth/customer/ensure",
+    {
+      method: "POST",
+      body: {
+        email: meta?.email,
+        first_name: meta?.first_name,
+        last_name: meta?.last_name,
+        picture: meta?.picture,
+        link_token: meta?.link_token,
+        link_customer_id: meta?.link_customer_id,
+        confirm_merge: meta?.confirm_merge,
+        merge_token: meta?.merge_token,
+        password: meta?.password,
+      },
+    }
+  );
+
+  if (data && data.status === "conflict" && data.merge_token) {
+    return {
+      ok: false,
+      conflict: {
+        email: String(data.email || meta?.email || ""),
+        merge_token: String(data.merge_token),
+        existing_providers: Array.isArray(data.existing_providers)
+          ? data.existing_providers.map(String)
+          : ["emailpass"],
+        message:
+          String(data.message || "") ||
+          "Ya existe una cuenta con este correo y contraseña.",
+      },
+    };
+  }
+
+  return {
+    ok: true,
+    customerId:
+      typeof data?.customer_id === "string" ? data.customer_id : undefined,
+    mode: typeof data?.mode === "string" ? data.mode : undefined,
+  };
+}
+
+export async function confirmGoogleAccountMerge(input: {
+  email: string;
+  mergeToken: string;
+  password: string;
+  first_name?: string;
+  last_name?: string;
+  picture?: string;
+}): Promise<AuthResult> {
+  if (!isMedusaConfigured()) {
+    return { ok: false, error: "Cuenta no disponible." };
+  }
+  try {
+    const result = await ensureCustomerFromAuth({
+      email: input.email,
+      first_name: input.first_name,
+      last_name: input.last_name,
+      picture: input.picture,
+      confirm_merge: true,
+      merge_token: input.mergeToken,
+      password: input.password,
+    });
+    if (!result.ok) {
+      return {
+        ok: false,
+        error: result.conflict.message,
+        conflict: result.conflict,
+      };
+    }
+    await medusa.auth.refresh().catch(() => undefined);
+    return afterAuthSuccess();
+  } catch (error) {
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos unir las cuentas"),
+    };
+  }
 }
 
 export type AuthProviders = {
@@ -200,12 +298,39 @@ export type AuthProviders = {
 export async function repairCustomerEmail(): Promise<StoreCustomer | null> {
   if (!isMedusaConfigured()) return null;
   try {
-    await ensureCustomerFromAuth();
+    const result = await ensureCustomerFromAuth();
+    if (!result.ok) {
+      // Conflict needs interactive merge — leave profile as-is
+      console.info("[auth] repair needs merge:", result.conflict.email);
+      return getCustomer();
+    }
+    // Refresh JWT so actor_id picks up a merged customer_id after Google/email repair
     await medusa.auth.refresh().catch(() => undefined);
     return getCustomer();
   } catch (error) {
     console.warn("[auth] repairCustomerEmail failed:", error);
     return getCustomer();
+  }
+}
+
+export async function deleteCustomerAccount(input: {
+  confirm: string;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!isMedusaConfigured()) {
+    return { ok: false, error: "Cuenta no disponible." };
+  }
+  try {
+    await medusa.client.fetch("/auth/customer/delete", {
+      method: "DELETE",
+      body: { confirm: input.confirm },
+    });
+    await logout();
+    return { ok: true };
+  } catch (error) {
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos eliminar la cuenta"),
+    };
   }
 }
 
@@ -635,18 +760,32 @@ export async function completeGoogleCallback(
       picture: String(meta.picture || "") || undefined,
     };
     try {
-      await ensureCustomerFromAuth({
+      const ensured = await ensureCustomerFromAuth({
         ...ensurePayload,
         link_token: linkToken,
         link_customer_id: linkCustomerId,
       });
+      if (!ensured.ok) {
+        return {
+          ok: false,
+          error: ensured.conflict.message,
+          conflict: ensured.conflict,
+        };
+      }
       await medusa.auth.refresh();
     } catch (ensureError) {
       console.error("[auth] ensure customer failed:", ensureError);
       // Stale link intent from a cancelled "Vincular Google" must not block login
       if (linkToken) {
         try {
-          await ensureCustomerFromAuth(ensurePayload);
+          const retry = await ensureCustomerFromAuth(ensurePayload);
+          if (!retry.ok) {
+            return {
+              ok: false,
+              error: retry.conflict.message,
+              conflict: retry.conflict,
+            };
+          }
           await medusa.auth.refresh();
         } catch {
           return {
@@ -713,17 +852,39 @@ export async function loginWithGoogleIdToken(idToken: string): Promise<AuthResul
     };
   }
   try {
-    const data = await medusa.client.fetch<{ token: string }>(
-      "/auth/customer/google/id-token",
-      {
-        method: "POST",
-        body: { id_token: idToken },
-      }
-    );
+    const data = await medusa.client.fetch<{
+      status?: string;
+      token?: string;
+      email?: string;
+      merge_token?: string;
+      existing_providers?: string[];
+      message?: string;
+    }>("/auth/customer/google/id-token", {
+      method: "POST",
+      body: { id_token: idToken },
+    });
     if (!data?.token) {
       return { ok: false, error: "Google no devolvió una sesión válida." };
     }
     medusa.client.setToken(data.token);
+    if (data.status === "conflict" && data.merge_token) {
+      return {
+        ok: false,
+        error:
+          data.message ||
+          "Ya existe una cuenta con este correo y contraseña.",
+        conflict: {
+          email: String(data.email || ""),
+          merge_token: String(data.merge_token),
+          existing_providers: Array.isArray(data.existing_providers)
+            ? data.existing_providers.map(String)
+            : ["emailpass"],
+          message:
+            data.message ||
+            "Ya existe una cuenta con este correo y contraseña.",
+        },
+      };
+    }
     return afterAuthSuccess();
   } catch (error) {
     console.error("[auth] Google id_token login failed:", error);

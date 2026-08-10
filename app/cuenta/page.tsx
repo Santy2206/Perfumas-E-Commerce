@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/ca
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { AccountAccessPanel } from "../../components/account/AccountAccessPanel";
+import { AccountDangerZone } from "../../components/account/AccountDangerZone";
 import {
   needsProfileCompletion,
   repairCustomerEmail,
@@ -599,6 +600,15 @@ export default function CuentaPage() {
               empty: "Aún no tienes compras completadas en el historial.",
               showReorder: true,
             })}
+          </CardContent>
+        </Card>
+
+        <Card id="zona-peligrosa">
+          <CardHeader>
+            <CardTitle>Zona peligrosa</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <AccountDangerZone />
           </CardContent>
         </Card>
       </div>

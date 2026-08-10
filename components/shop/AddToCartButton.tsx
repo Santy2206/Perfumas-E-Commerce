@@ -5,6 +5,7 @@ import type { CatalogProduct } from "../../lib/catalog-types";
 import { formatCOP } from "../../lib/utils";
 import { Button } from "../ui/button";
 import { useCartStore } from "../../store/useCartStore";
+import { GramsQuantityInput } from "./GramsQuantityInput";
 
 export function AddToCartButton({
   product,
@@ -47,24 +48,31 @@ export function AddToCartButton({
           </span>
         </p>
       )}
-      <div className="flex items-center gap-3">
-        <label className="text-xs uppercase tracking-widest text-gold-400">
-          {isEssence ? "Gramos" : "Cantidad"}
-        </label>
-        <input
-          type="number"
-          min={minQty}
-          step={1}
+      {isEssence ? (
+        <GramsQuantityInput
           value={qty}
-          onChange={(e) =>
-            setQty(Math.max(minQty, Number(e.target.value) || minQty))
-          }
-          className="h-11 w-24 rounded-sm border border-gold-400/30 bg-white/5 px-3 text-bone"
+          min={minQty}
+          onChange={setQty}
+          showMinHint
+          inputClassName="h-11 w-20"
         />
-        {isEssence && (
-          <span className="text-xs text-bone-60">mín. {minQty} g</span>
-        )}
-      </div>
+      ) : (
+        <div className="flex items-center gap-3">
+          <label className="text-xs uppercase tracking-widest text-gold-400">
+            Cantidad
+          </label>
+          <input
+            type="number"
+            min={minQty}
+            step={1}
+            value={qty}
+            onChange={(e) =>
+              setQty(Math.max(minQty, Number(e.target.value) || minQty))
+            }
+            className="h-11 w-24 rounded-sm border border-gold-400/30 bg-white/5 px-3 text-bone"
+          />
+        </div>
+      )}
       <Button onClick={onAdd}>Agregar al carrito</Button>
       {msg && <p className="text-sm text-bone-60">{msg}</p>}
     </div>

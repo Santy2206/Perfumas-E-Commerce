@@ -45,5 +45,10 @@ export default defineMiddlewares({
       method: "DELETE",
       middlewares: [customerAuth],
     },
+    {
+      matcher: "/auth/customer/delete",
+      method: "DELETE",
+      middlewares: [customerAuth],
+    },
   ],
 })

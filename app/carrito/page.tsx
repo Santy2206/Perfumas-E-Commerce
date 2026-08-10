@@ -6,6 +6,7 @@ import { formatCOP } from "../../lib/utils";
 import { getProductById, SHIPPING_METHODS } from "../../lib/catalog";
 import { useCartStore } from "../../store/useCartStore";
 import { Button } from "../../components/ui/button";
+import { GramsQuantityInput } from "../../components/shop/GramsQuantityInput";
 import { preloadWompiScript } from "../../lib/wompi-client";
 
 export default function CarritoPage() {
@@ -88,25 +89,34 @@ export default function CarritoPage() {
                     )}
                   </div>
                   <div className="flex items-center gap-3">
-                    <label className="flex items-center gap-2 text-xs text-bone-60">
-                      <span className="uppercase tracking-widest">
-                        {isEssence ? "Gramos" : "Cant."}
-                      </span>
-                      <input
-                        type="number"
-                        min={minQty}
-                        step={1}
+                    {isEssence ? (
+                      <GramsQuantityInput
                         value={line.quantity}
-                        onChange={(e) => {
-                          const r = updateQty(
-                            line.id,
-                            Math.max(minQty, Number(e.target.value) || minQty)
-                          );
+                        min={minQty}
+                        onChange={(qty) => {
+                          const r = updateQty(line.id, qty);
                           if (!r.ok) alert(r.error);
                         }}
-                        className="h-10 w-24 rounded-sm border border-gold-400/30 bg-white/5 px-2 text-bone"
                       />
-                    </label>
+                    ) : (
+                      <label className="flex items-center gap-2 text-xs text-bone-60">
+                        <span className="uppercase tracking-widest">Cant.</span>
+                        <input
+                          type="number"
+                          min={minQty}
+                          step={1}
+                          value={line.quantity}
+                          onChange={(e) => {
+                            const r = updateQty(
+                              line.id,
+                              Math.max(minQty, Number(e.target.value) || minQty)
+                            );
+                            if (!r.ok) alert(r.error);
+                          }}
+                          className="h-10 w-24 rounded-sm border border-gold-400/30 bg-white/5 px-2 text-bone"
+                        />
+                      </label>
+                    )}
                     <button
                       type="button"
                       onClick={() => removeLine(line.id)}

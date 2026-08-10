@@ -10,6 +10,7 @@ import { useCartStore } from "../../store/useCartStore";
 import { useState } from "react";
 import { LikeButton } from "../favorites/LikeButton";
 import { AddToListButton } from "../favorites/AddToListButton";
+import { GramsQuantityInput } from "./GramsQuantityInput";
 
 export function ProductCard({
   product,
@@ -68,7 +69,12 @@ export function ProductCard({
       )}
     >
       <CardHeader>
-        <div className="group/image relative mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-sm bg-wine-900">
+        <div
+          className={cn(
+            "group/image relative mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-sm",
+            product.imageUrl ? "bg-white" : "bg-wine-900"
+          )}
+        >
           {product.imageUrl ? (
             <>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -76,7 +82,7 @@ export function ProductCard({
                 src={product.imageUrl}
                 alt={product.title}
                 className={cn(
-                  "h-full w-full object-cover transition-opacity duration-300",
+                  "h-full w-full object-contain p-2 transition-opacity duration-300",
                   product.hoverImageUrl && "group-hover/image:opacity-0"
                 )}
               />
@@ -86,7 +92,7 @@ export function ProductCard({
                   src={product.hoverImageUrl}
                   alt=""
                   aria-hidden
-                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover/image:opacity-100"
+                  className="absolute inset-0 h-full w-full object-contain p-2 opacity-0 transition-opacity duration-300 group-hover/image:opacity-100"
                 />
               )}
             </>
@@ -127,19 +133,11 @@ export function ProductCard({
         ) : null}
         {sellByGram && (
           <div className="mt-3 space-y-1">
-            <label className="flex items-center gap-2 text-xs text-bone-60">
-              <span className="uppercase tracking-widest text-gold-400">Gramos</span>
-              <input
-                type="number"
-                min={minQty}
-                step={1}
-                value={grams}
-                onChange={(e) =>
-                  setGrams(Math.max(minQty, Number(e.target.value) || minQty))
-                }
-                className="h-9 w-20 rounded-sm border border-gold-400/30 bg-white/5 px-2 text-bone"
-              />
-            </label>
+            <GramsQuantityInput
+              value={grams}
+              min={minQty}
+              onChange={setGrams}
+            />
             <p className="text-xs text-bone-60">
               mín. {minQty} g · total {formatCOP(price * grams)}
             </p>
