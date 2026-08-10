@@ -24,20 +24,25 @@ export function FavoriteItemCard({
   const addSku = useCartStore((s) => s.addSku);
   const [cartMsg, setCartMsg] = useState<string | null>(null);
 
-  const addProductToCart = (productId: string) => {
+  const addProductToCart = (productId: string, grams?: number) => {
     const product = getProductById(productId);
     if (!product) {
       setCartMsg("No encontramos este producto en el catálogo.");
       return;
     }
     const isEssence = product.metadata?.product_kind === "essence";
-    const qty = isEssence ? product.minQty ?? 30 : 1;
+    const min = product.minQty ?? (isEssence ? 30 : 1);
+    const qty = isEssence ? Math.max(min, grams ?? min) : 1;
     const result = addSku(product, qty);
     if (!result.ok) {
       setCartMsg(result.error);
       return;
     }
-    setCartMsg(isEssence ? "Aceite añadido al carrito." : "Añadido al carrito.");
+    setCartMsg(
+      isEssence
+        ? `Aceite añadido (${qty} g). Puedes ajustar gramos en el carrito.`
+        : "Añadido al carrito."
+    );
   };
 
   if (item.kind === "custom_build") {
@@ -116,14 +121,12 @@ export function FavoriteItemCard({
               Continuar con creación
             </Link>
           </Button>
-          <Button
-            type="button"
-            size="sm"
-            variant="outline"
-            className="w-full"
-            onClick={() => addProductToCart(item.productId)}
-          >
-            Comprar aceite
+          <Button asChild size="sm" variant="outline" className="w-full">
+            <Link
+              href={`/tienda/insumos?cat=esencias&essence=${encodeURIComponent(item.productId)}`}
+            >
+              Comprar aceite
+            </Link>
           </Button>
         </div>
       )}

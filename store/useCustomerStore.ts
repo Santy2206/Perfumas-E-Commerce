@@ -29,7 +29,12 @@ export const useCustomerStore = create<CustomerStore>((set, get) => ({
       return;
     }
     set({ loading: true });
-    const customer = await getCustomer();
+    let customer = await getCustomer();
+    // Repair Google accounts that stored numeric sub as email
+    if (customer && !customer.email) {
+      const { repairCustomerEmail } = await import("../lib/auth");
+      customer = (await repairCustomerEmail()) || customer;
+    }
     const { useCartStore } = await import("./useCartStore");
     useCartStore.getState().setLinkedCustomerId(customer?.id ?? null);
     set({ customer, loading: false, hydrated: true });

@@ -108,7 +108,7 @@ export function FragranceStep() {
                 Seleccionar y continuar
               </button>
               <Link
-                href="/tienda/insumos?cat=esencias"
+                href={`/tienda/insumos?cat=esencias&essence=${encodeURIComponent(f.id)}`}
                 className="text-center text-xs text-bone-60 hover:text-gold-400 underline py-1"
               >
                 ¿Solo el aceite? Ver en Insumos

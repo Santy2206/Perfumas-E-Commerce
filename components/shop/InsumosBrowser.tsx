@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { CatalogProduct } from "../../lib/catalog-types";
 import type { Gender, OlfactiveGroup, QualityTier } from "../../lib/types";
@@ -56,6 +56,7 @@ export function InsumosBrowser({
 }) {
   const params = useSearchParams();
   const initial = (params.get("cat") as InsumosCat) || "esencias";
+  const essenceFocus = params.get("essence");
   const [cat, setCat] = useState<InsumosCat>(
     CATS.some((c) => c.id === initial) ? initial : "esencias"
   );
@@ -68,6 +69,13 @@ export function InsumosBrowser({
   const [collection, setCollection] = useState<CollectionFilter>(null);
   const likes = useFavoritesStore((s) => s.likes);
   const lists = useFavoritesStore((s) => s.lists);
+
+  useEffect(() => {
+    if (!essenceFocus) return;
+    setCat("esencias");
+    const match = products.find((p) => p.id === essenceFocus);
+    if (match) setSearch(match.title);
+  }, [essenceFocus, products]);
 
   const buckets = useMemo(() => partitionInsumosProducts(products), [products]);
 
@@ -110,8 +118,25 @@ export function InsumosBrowser({
       return true;
     });
 
-    return sortByTitleAndPrice(list, sort);
-  }, [buckets, cat, search, gender, group, house, tier, sort, collection, likes, lists]);
+    const sorted = sortByTitleAndPrice(list, sort);
+    if (!essenceFocus) return sorted;
+    const focused = sorted.filter((p) => p.id === essenceFocus);
+    const rest = sorted.filter((p) => p.id !== essenceFocus);
+    return [...focused, ...rest];
+  }, [
+    buckets,
+    cat,
+    search,
+    gender,
+    group,
+    house,
+    tier,
+    sort,
+    collection,
+    likes,
+    lists,
+    essenceFocus,
+  ]);
 
   const selectCat = (next: InsumosCat) => {
     setCat(next);
@@ -238,6 +263,7 @@ export function InsumosBrowser({
         products={filtered}
         wholesale={wholesale}
         intent="buy"
+        highlightId={essenceFocus}
       />
     </div>
   );

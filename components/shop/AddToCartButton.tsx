@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { CatalogProduct } from "../../lib/catalog-types";
+import { formatCOP } from "../../lib/utils";
 import { Button } from "../ui/button";
 import { useCartStore } from "../../store/useCartStore";
 
@@ -15,7 +16,15 @@ export function AddToCartButton({
   const addSku = useCartStore((s) => s.addSku);
   const isB2B = useCartStore((s) => s.isB2B);
   const useWholesale = wholesale || isB2B;
-  const [qty, setQty] = useState(useWholesale ? product.minQty ?? 1 : 1);
+  const isEssence =
+    product.metadata?.product_kind === "essence" && !useWholesale;
+  const minQty = product.minQty ?? (isEssence ? 30 : 1);
+  const unitPrice =
+    useWholesale && product.wholesalePrice != null
+      ? product.wholesalePrice
+      : product.price;
+
+  const [qty, setQty] = useState(minQty);
   const [msg, setMsg] = useState<string | null>(null);
 
   const onAdd = () => {
@@ -29,15 +38,32 @@ export function AddToCartButton({
 
   return (
     <div className="space-y-3">
+      {isEssence && (
+        <p className="text-sm text-gold-400">
+          {formatCOP(unitPrice)} / gramo
+          <span className="text-bone-60">
+            {" "}
+            · total {formatCOP(unitPrice * qty)}
+          </span>
+        </p>
+      )}
       <div className="flex items-center gap-3">
-        <label className="text-xs uppercase tracking-widest text-gold-400">Cantidad</label>
+        <label className="text-xs uppercase tracking-widest text-gold-400">
+          {isEssence ? "Gramos" : "Cantidad"}
+        </label>
         <input
           type="number"
-          min={1}
+          min={minQty}
+          step={1}
           value={qty}
-          onChange={(e) => setQty(Math.max(1, Number(e.target.value) || 1))}
+          onChange={(e) =>
+            setQty(Math.max(minQty, Number(e.target.value) || minQty))
+          }
           className="h-11 w-24 rounded-sm border border-gold-400/30 bg-white/5 px-3 text-bone"
         />
+        {isEssence && (
+          <span className="text-xs text-bone-60">mín. {minQty} g</span>
+        )}
       </div>
       <Button onClick={onAdd}>Agregar al carrito</Button>
       {msg && <p className="text-sm text-bone-60">{msg}</p>}

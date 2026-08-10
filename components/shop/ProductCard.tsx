@@ -16,10 +16,12 @@ export function ProductCard({
   wholesale = false,
   /** create = essence inspiration (no $/g); buy = add to cart with price */
   intent,
+  highlighted = false,
 }: {
   product: CatalogProduct;
   wholesale?: boolean;
   intent?: "create" | "buy";
+  highlighted?: boolean;
 }) {
   const addSku = useCartStore((s) => s.addSku);
   const [error, setError] = useState<string | null>(null);
@@ -28,12 +30,15 @@ export function ProductCard({
   const kind = product.metadata?.product_kind;
   const isEssence = kind === "essence";
   const mode = intent ?? (isEssence ? "create" : "buy");
+  const sellByGram = isEssence && mode === "buy" && !wholesale;
+  const minQty = product.minQty ?? (sellByGram ? 30 : wholesale ? product.minQty ?? 1 : 1);
+  const [grams, setGrams] = useState(minQty);
 
   const price =
     wholesale && product.wholesalePrice != null ? product.wholesalePrice : product.price;
-  const qty = wholesale ? product.minQty ?? 1 : isEssence && mode === "buy" ? product.minQty ?? 30 : 1;
 
   const onAdd = () => {
+    const qty = sellByGram ? grams : wholesale ? minQty : 1;
     const result = addSku(product, qty, { wholesale });
     if (!result.ok) {
       setError(result.error);
@@ -55,7 +60,13 @@ export function ProductCard({
   };
 
   return (
-    <Card className="flex flex-col">
+    <Card
+      id={`product-${product.id}`}
+      className={cn(
+        "flex flex-col scroll-mt-28",
+        highlighted && "ring-2 ring-gold-400/70"
+      )}
+    >
       <CardHeader>
         <div className="group/image relative mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-sm bg-wine-900">
           {product.imageUrl ? (
@@ -114,6 +125,26 @@ export function ProductCard({
             Crea tu perfume personalizado con esta esencia
           </p>
         ) : null}
+        {sellByGram && (
+          <div className="mt-3 space-y-1">
+            <label className="flex items-center gap-2 text-xs text-bone-60">
+              <span className="uppercase tracking-widest text-gold-400">Gramos</span>
+              <input
+                type="number"
+                min={minQty}
+                step={1}
+                value={grams}
+                onChange={(e) =>
+                  setGrams(Math.max(minQty, Number(e.target.value) || minQty))
+                }
+                className="h-9 w-20 rounded-sm border border-gold-400/30 bg-white/5 px-2 text-bone"
+              />
+            </label>
+            <p className="text-xs text-bone-60">
+              mín. {minQty} g · total {formatCOP(price * grams)}
+            </p>
+          </div>
+        )}
         {showPrice && wholesale && product.minQty ? (
           <p className="text-xs text-bone-60 mt-1">Mín. {product.minQty} uds</p>
         ) : null}

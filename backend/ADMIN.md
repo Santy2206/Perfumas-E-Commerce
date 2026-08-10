@@ -45,6 +45,26 @@ npm run catalog:sync -- --dry-run --prune
 
 Prefer Medusa Admin for one-off edits. Re-run Excel import + sync only for bulk refreshes.
 
+### Bulk product images
+
+Put JPEGs/PNGs in a folder named exactly like the product **handle** (e.g. `cloud-agrafe-100-ml-aaa.jpeg`). Then:
+
+```bash
+# preview matches
+npm run catalog:images -- --dir "C:\Users\USUARIO\Capital Productive\Project\Archivosperfumas\Imagenes_perfumas" --dry-run
+
+# upload + set thumbnail/images
+npm run catalog:images -- --dir "C:\Users\USUARIO\Capital Productive\Project\Archivosperfumas\Imagenes_perfumas"
+
+# also copy onto prepared-replica twin (handle-2)
+npm run catalog:images -- --dir "..." --also-prepared
+
+# replace existing thumbnails
+npm run catalog:images -- --dir "..." --force
+```
+
+Files are stored under the Medusa local `static/` folder (`http://localhost:9000/static/...`). For production, configure S3 (or sync that `static/` folder with the deployed backend).
+
 ### Collections
 
 `perfumeria` (réplicas preparadas), `insumos` (esencias, envases, alcohol, feromonas), `hogar`, `accesorios`.

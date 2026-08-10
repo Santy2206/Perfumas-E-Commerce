@@ -7,8 +7,11 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
+import { AccountAccessPanel } from "../../components/account/AccountAccessPanel";
 import {
   needsProfileCompletion,
+  repairCustomerEmail,
+  startGoogleLogin,
   updateCustomerProfile,
 } from "../../lib/auth";
 import {
@@ -35,9 +38,7 @@ export default function CuentaPage() {
   const isB2B = useCartStore((s) => s.isB2B);
   const b2bProfile = useCartStore((s) => s.b2bProfile);
   const setB2BSession = useCartStore((s) => s.setB2BSession);
-  const itemCount = useCartStore((s) =>
-    s.lines.reduce((sum, line) => sum + line.quantity, 0)
-  );
+  const itemCount = useCartStore((s) => s.lines.length);
 
   const [orders, setOrders] = useState<AccountOrder[]>([]);
   const [ordersLoading, setOrdersLoading] = useState(false);
@@ -64,6 +65,17 @@ export default function CuentaPage() {
     setBirthday(customer.birthday || "");
     setShowCompleteModal(needsProfileCompletion(customer));
   }, [customer]);
+
+  useEffect(() => {
+    if (!customer || customer.email) return;
+    let cancelled = false;
+    void repairCustomerEmail().then((next) => {
+      if (!cancelled && next) setCustomer(next);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [customer, setCustomer]);
 
   useEffect(() => {
     if (!customer || !isMedusaConfigured()) {
@@ -370,6 +382,36 @@ export default function CuentaPage() {
                 {profileMsg && (
                   <p className="text-sm text-gold-400">{profileMsg}</p>
                 )}
+                {!customer.email && (
+                  <div className="space-y-2 rounded-sm border border-red-400/30 bg-red-950/30 p-3">
+                    <p className="text-sm text-red-200">
+                      No pudimos leer tu correo. Repara la cuenta con Google
+                      (vuelve a autenticarte) o crea una contraseña abajo si ya
+                      tienes correo válido en el proveedor.
+                    </p>
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="outline"
+                      disabled={loggingOut}
+                      onClick={() => {
+                        void startGoogleLogin().then((result) => {
+                          if (
+                            result.ok &&
+                            "redirect" in result &&
+                            typeof result.redirect === "string"
+                          ) {
+                            window.location.href = result.redirect;
+                            return;
+                          }
+                          if (!result.ok) setProfileError(result.error);
+                        });
+                      }}
+                    >
+                      Reparar con Google
+                    </Button>
+                  </div>
+                )}
                 <div className="flex flex-wrap gap-2">
                   <Button
                     type="button"
@@ -391,6 +433,7 @@ export default function CuentaPage() {
                     {loggingOut ? "Cerrando…" : "Cerrar sesión"}
                   </Button>
                 </div>
+                <AccountAccessPanel />
               </div>
             ) : (
               <form onSubmit={(e) => void saveProfile(e)} className="space-y-4">

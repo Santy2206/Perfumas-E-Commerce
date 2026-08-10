@@ -175,6 +175,8 @@ async function ensureCustomerFromAuth(meta?: {
   first_name?: string;
   last_name?: string;
   picture?: string;
+  link_token?: string;
+  link_customer_id?: string;
 }): Promise<void> {
   await medusa.client.fetch("/auth/customer/ensure", {
     method: "POST",
@@ -183,8 +185,196 @@ async function ensureCustomerFromAuth(meta?: {
       first_name: meta?.first_name,
       last_name: meta?.last_name,
       picture: meta?.picture,
+      link_token: meta?.link_token,
+      link_customer_id: meta?.link_customer_id,
     },
   });
+}
+
+export type AuthProviders = {
+  google: boolean;
+  emailpass: boolean;
+  email: string;
+};
+
+export async function repairCustomerEmail(): Promise<StoreCustomer | null> {
+  if (!isMedusaConfigured()) return null;
+  try {
+    await ensureCustomerFromAuth();
+    await medusa.auth.refresh().catch(() => undefined);
+    return getCustomer();
+  } catch (error) {
+    console.warn("[auth] repairCustomerEmail failed:", error);
+    return getCustomer();
+  }
+}
+
+export async function getAuthProviders(): Promise<
+  | { ok: true; providers: AuthProviders }
+  | { ok: false; error: string }
+> {
+  if (!isMedusaConfigured()) {
+    return { ok: false, error: "Cuenta no disponible." };
+  }
+  try {
+    const data = await medusa.client.fetch<AuthProviders>(
+      "/auth/customer/providers",
+      { method: "GET" }
+    );
+    return { ok: true, providers: data };
+  } catch (error) {
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos leer los métodos de acceso"),
+    };
+  }
+}
+
+export async function setCustomerPassword(input: {
+  password: string;
+  currentPassword?: string;
+}): Promise<{ ok: true; mode?: string } | { ok: false; error: string }> {
+  if (!isMedusaConfigured()) {
+    return { ok: false, error: "Cuenta no disponible." };
+  }
+  try {
+    const data = await medusa.client.fetch<{ ok: boolean; mode?: string }>(
+      "/auth/customer/password",
+      {
+        method: "POST",
+        body: {
+          password: input.password,
+          current_password: input.currentPassword,
+        },
+      }
+    );
+    return { ok: true, mode: data.mode };
+  } catch (error) {
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos guardar la contraseña"),
+    };
+  }
+}
+
+export async function requestEmailChange(input: {
+  newEmail: string;
+  password: string;
+}): Promise<
+  | { ok: true; devCode?: string }
+  | { ok: false; error: string }
+> {
+  if (!isMedusaConfigured()) {
+    return { ok: false, error: "Cuenta no disponible." };
+  }
+  try {
+    const data = await medusa.client.fetch<{ ok: boolean; dev_code?: string }>(
+      "/auth/customer/email/request",
+      {
+        method: "POST",
+        body: {
+          new_email: input.newEmail,
+          password: input.password,
+        },
+      }
+    );
+    return { ok: true, devCode: data.dev_code };
+  } catch (error) {
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos iniciar el cambio de correo"),
+    };
+  }
+}
+
+export async function confirmEmailChange(
+  code: string
+): Promise<{ ok: true; email: string } | { ok: false; error: string }> {
+  if (!isMedusaConfigured()) {
+    return { ok: false, error: "Cuenta no disponible." };
+  }
+  try {
+    const data = await medusa.client.fetch<{ ok: boolean; email: string }>(
+      "/auth/customer/email/confirm",
+      {
+        method: "POST",
+        body: { code },
+      }
+    );
+    return { ok: true, email: data.email };
+  } catch (error) {
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos confirmar el correo"),
+    };
+  }
+}
+
+const GOOGLE_LINK_KEY = "perfumas_google_link";
+
+export async function startGoogleLink(): Promise<
+  | { ok: true; redirect: string }
+  | { ok: false; error: string }
+> {
+  if (!isMedusaConfigured()) {
+    return { ok: false, error: "Cuenta no disponible." };
+  }
+  try {
+    const customer = await getCustomer();
+    if (!customer) {
+      return { ok: false, error: "Debes iniciar sesión." };
+    }
+    const prep = await medusa.client.fetch<{
+      ok: boolean;
+      link_token: string;
+      customer_id: string;
+    }>("/auth/customer/google/link", { method: "POST", body: {} });
+
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem(
+        GOOGLE_LINK_KEY,
+        JSON.stringify({
+          link_token: prep.link_token,
+          customer_id: prep.customer_id,
+        })
+      );
+    }
+
+    const result = await medusa.auth.login("customer", "google", {});
+    if (
+      typeof result === "object" &&
+      result &&
+      "location" in result &&
+      typeof result.location === "string"
+    ) {
+      return { ok: true, redirect: result.location };
+    }
+    return { ok: false, error: "No pudimos abrir Google." };
+  } catch (error) {
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos iniciar el vínculo con Google"),
+    };
+  }
+}
+
+export async function unlinkGoogle(): Promise<
+  { ok: true } | { ok: false; error: string }
+> {
+  if (!isMedusaConfigured()) {
+    return { ok: false, error: "Cuenta no disponible." };
+  }
+  try {
+    await medusa.client.fetch("/auth/customer/google/unlink", {
+      method: "DELETE",
+    });
+    return { ok: true };
+  } catch (error) {
+    return {
+      ok: false,
+      error: authErrorMessage(error, "No pudimos desvincular Google"),
+    };
+  }
 }
 
 export async function transferCartToCustomer(customerId: string): Promise<void> {
@@ -419,45 +609,86 @@ export async function completeGoogleCallback(
     }
     const decoded = decodeJwtPayload(callbackResult);
     const meta = decoded.user_metadata || {};
+    let linkToken: string | undefined;
+    let linkCustomerId: string | undefined;
+    if (typeof window !== "undefined") {
+      try {
+        const raw = sessionStorage.getItem(GOOGLE_LINK_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw) as {
+            link_token?: string;
+            customer_id?: string;
+          };
+          linkToken = parsed.link_token;
+          linkCustomerId = parsed.customer_id;
+          sessionStorage.removeItem(GOOGLE_LINK_KEY);
+        }
+      } catch {
+        /* ignore */
+      }
+    }
     // Always ensure/repair — including when actor_id exists (fixes email = Google sub)
+    const ensurePayload = {
+      email: String(meta.email || "") || undefined,
+      first_name: String(meta.given_name || meta.first_name || "") || undefined,
+      last_name: String(meta.family_name || meta.last_name || "") || undefined,
+      picture: String(meta.picture || "") || undefined,
+    };
     try {
       await ensureCustomerFromAuth({
-        email: String(meta.email || "") || undefined,
-        first_name: String(meta.given_name || meta.first_name || "") || undefined,
-        last_name: String(meta.family_name || meta.last_name || "") || undefined,
-        picture: String(meta.picture || "") || undefined,
+        ...ensurePayload,
+        link_token: linkToken,
+        link_customer_id: linkCustomerId,
       });
       await medusa.auth.refresh();
     } catch (ensureError) {
       console.error("[auth] ensure customer failed:", ensureError);
-      const needsCustomer =
-        decoded.actor_id === "" || decoded.actor_id == null || !decoded.actor_id;
-      if (needsCustomer) {
-        const email = String(meta.email || "");
-        if (email && isValidEmail(email)) {
-          try {
-            await medusa.store.customer.create({
-              email,
-              metadata: meta.picture
-                ? {
-                    avatar_url: String(meta.picture),
-                    google_picture: String(meta.picture),
-                    google_email: email,
-                  }
-                : { google_email: email },
-            });
-            await medusa.auth.refresh();
-          } catch (createError) {
-            console.warn("[auth] customer.create fallback:", createError);
-          }
-        } else {
+      // Stale link intent from a cancelled "Vincular Google" must not block login
+      if (linkToken) {
+        try {
+          await ensureCustomerFromAuth(ensurePayload);
+          await medusa.auth.refresh();
+        } catch {
           return {
             ok: false,
             error: authErrorMessage(
               ensureError,
-              "No pudimos crear tu cuenta de cliente después de Google"
+              "No pudimos vincular Google a tu cuenta. ¿El Gmail coincide con tu correo?"
             ),
           };
+        }
+      } else {
+        const needsCustomer =
+          decoded.actor_id === "" ||
+          decoded.actor_id == null ||
+          !decoded.actor_id;
+        if (needsCustomer) {
+          const email = String(meta.email || "");
+          if (email && isValidEmail(email)) {
+            try {
+              await medusa.store.customer.create({
+                email,
+                metadata: meta.picture
+                  ? {
+                      avatar_url: String(meta.picture),
+                      google_picture: String(meta.picture),
+                      google_email: email,
+                    }
+                  : { google_email: email },
+              });
+              await medusa.auth.refresh();
+            } catch (createError) {
+              console.warn("[auth] customer.create fallback:", createError);
+            }
+          } else {
+            return {
+              ok: false,
+              error: authErrorMessage(
+                ensureError,
+                "No pudimos crear tu cuenta de cliente después de Google"
+              ),
+            };
+          }
         }
       }
     }

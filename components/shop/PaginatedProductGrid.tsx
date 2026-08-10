@@ -11,16 +11,30 @@ export function PaginatedProductGrid({
   products,
   wholesale = false,
   intent,
+  highlightId,
 }: {
   products: CatalogProduct[];
   wholesale?: boolean;
   intent?: "create" | "buy";
+  highlightId?: string | null;
 }) {
   const [visible, setVisible] = useState(PAGE_SIZE);
 
   useEffect(() => {
     setVisible(PAGE_SIZE);
   }, [products]);
+
+  useEffect(() => {
+    if (!highlightId) return;
+    const idx = products.findIndex((p) => p.id === highlightId);
+    if (idx >= 0) setVisible((n) => Math.max(n, idx + 1));
+    const t = window.setTimeout(() => {
+      document
+        .getElementById(`product-${highlightId}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 120);
+    return () => window.clearTimeout(t);
+  }, [highlightId, products]);
 
   const slice = products.slice(0, visible);
   const remaining = products.length - slice.length;
@@ -38,6 +52,7 @@ export function PaginatedProductGrid({
             product={p}
             wholesale={wholesale}
             intent={intent}
+            highlighted={p.id === highlightId}
           />
         ))}
       </div>

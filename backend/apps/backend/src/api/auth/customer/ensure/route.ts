@@ -1,3 +1,4 @@
+import { createHash } from "crypto"
 import {
   AuthenticatedMedusaRequest,
   MedusaResponse,
@@ -8,16 +9,16 @@ import {
   Modules,
 } from "@medusajs/framework/utils"
 import { createCustomerAccountWorkflow } from "@medusajs/medusa/core-flows"
+import { isValidEmail } from "../../../../utils/customer-auth"
 
 type Body = {
   email?: string
   first_name?: string
   last_name?: string
   picture?: string
-}
-
-function isValidEmail(value: string): boolean {
-  return value.includes("@") && value.includes(".")
+  /** Opaque token from POST /auth/customer/google/link */
+  link_token?: string
+  link_customer_id?: string
 }
 
 /**
@@ -71,16 +72,9 @@ export async function POST(
     providerMeta = identity?.provider_identities?.[0]?.user_metadata || {}
   }
 
-  const email = String(body.email || providerMeta.email || "")
+  let email = String(body.email || providerMeta.email || "")
     .trim()
     .toLowerCase()
-
-  if (!isValidEmail(email)) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
-      "Couldn't determine the identity's email from Google."
-    )
-  }
 
   const picture = String(body.picture || providerMeta.picture || "") || undefined
   const firstName =
@@ -99,23 +93,113 @@ export async function POST(
       first_name?: string | null
       last_name?: string | null
       metadata?: Record<string, unknown> | null
-    }
+    },
+    resolvedEmail?: string
   ) => {
+    const mail = resolvedEmail || email
+    if (!isValidEmail(mail)) return
     const updates: Record<string, unknown> = {
       metadata: {
         ...(current?.metadata || {}),
-        google_email: email,
+        google_email: mail,
         ...(picture
           ? { avatar_url: picture, google_picture: picture }
           : {}),
       },
     }
     if (!isValidEmail(String(current?.email || ""))) {
-      updates.email = email
+      updates.email = mail
     }
     if (!current?.first_name && firstName) updates.first_name = firstName
     if (!current?.last_name && lastName) updates.last_name = lastName
     await customerModule.updateCustomers(customerId, updates)
+  }
+
+  // Link Google OAuth identity to an existing logged-in customer (settings flow)
+  const linkToken = String(body.link_token || "").trim()
+  const linkCustomerId = String(body.link_customer_id || "").trim()
+  if (linkToken && linkCustomerId && identityId) {
+    const customers = await customerModule.listCustomers({ id: linkCustomerId })
+    const target = customers[0]
+    if (!target) {
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
+        "Cuenta a vincular no encontrada"
+      )
+    }
+    const meta = (target.metadata || {}) as Record<string, unknown>
+    const expectedHash = String(meta.google_link_token_hash || "")
+    const expires = Number(meta.google_link_expires || 0)
+    const tokenHash = createHash("sha256").update(linkToken).digest("hex")
+    if (!expectedHash || tokenHash !== expectedHash) {
+      throw new MedusaError(
+        MedusaError.Types.UNAUTHORIZED,
+        "Enlace de Google inválido o expirado"
+      )
+    }
+    if (!expires || Date.now() > expires) {
+      throw new MedusaError(
+        MedusaError.Types.UNAUTHORIZED,
+        "El enlace de Google expiró. Intenta de nuevo."
+      )
+    }
+
+    const accountEmail = isValidEmail(String(target.email || ""))
+      ? String(target.email).toLowerCase()
+      : typeof meta.google_email === "string"
+        ? meta.google_email.toLowerCase()
+        : ""
+
+    if (!isValidEmail(email)) {
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
+        "Google no devolvió un correo válido para vincular"
+      )
+    }
+    if (accountEmail && accountEmail !== email) {
+      throw new MedusaError(
+        MedusaError.Types.NOT_ALLOWED,
+        `El Google (${email}) no coincide con el correo de la cuenta (${accountEmail}).`
+      )
+    }
+
+    const authIdentity = await authModule.retrieveAuthIdentity(identityId)
+    const alreadyLinked = String(authIdentity.app_metadata?.customer_id || "")
+    if (alreadyLinked && alreadyLinked !== linkCustomerId) {
+      throw new MedusaError(
+        MedusaError.Types.NOT_ALLOWED,
+        "Esa cuenta de Google ya está vinculada a otro perfil"
+      )
+    }
+
+    await authModule.updateAuthIdentities({
+      id: identityId,
+      app_metadata: {
+        ...(authIdentity.app_metadata || {}),
+        customer_id: linkCustomerId,
+      },
+    })
+
+    const {
+      google_link_token_hash: _th,
+      google_link_expires: _ex,
+      ...restMeta
+    } = meta
+    await customerModule.updateCustomers(linkCustomerId, {
+      metadata: {
+        ...restMeta,
+        google_email: email,
+        ...(picture
+          ? { avatar_url: picture, google_picture: picture }
+          : {}),
+      },
+      ...(!isValidEmail(String(target.email || "")) ? { email } : {}),
+    })
+
+    return res.status(200).json({
+      customer_id: linkCustomerId,
+      mode: "google_linked",
+    })
   }
 
   // Already linked: repair bad email / metadata, then return
@@ -124,7 +208,40 @@ export async function POST(
     try {
       const customers = await customerModule.listCustomers({ id: customerId })
       const current = customers[0]
-      await patchCustomerProfile(customerId, current)
+      const meta = (current?.metadata || {}) as Record<string, unknown>
+      if (!isValidEmail(email) && typeof meta.google_email === "string") {
+        email = meta.google_email.toLowerCase()
+      }
+      // Also try emailpass entity_id from auth identity
+      if (!isValidEmail(email) && identityId) {
+        const { data: authIdentities } = await query.graph({
+          entity: "auth_identity",
+          fields: ["provider_identities.provider", "provider_identities.entity_id"],
+          filters: { id: identityId },
+        })
+        const pis =
+          (
+            (authIdentities || [])[0] as
+              | {
+                  provider_identities?: {
+                    provider?: string
+                    entity_id?: string
+                  }[]
+                }
+              | undefined
+          )?.provider_identities || []
+        for (const pi of pis) {
+          if (
+            pi.provider === "emailpass" &&
+            pi.entity_id &&
+            isValidEmail(pi.entity_id)
+          ) {
+            email = pi.entity_id.toLowerCase()
+            break
+          }
+        }
+      }
+      await patchCustomerProfile(customerId, current, email)
     } catch {
       /* best-effort repair */
     }
@@ -132,6 +249,13 @@ export async function POST(
       customer_id: customerId,
       mode: "existing",
     })
+  }
+
+  if (!isValidEmail(email)) {
+    throw new MedusaError(
+      MedusaError.Types.INVALID_DATA,
+      "Couldn't determine the identity's email from Google."
+    )
   }
 
   const { data: customers } = await query.graph({

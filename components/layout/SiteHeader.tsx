@@ -199,9 +199,7 @@ function AccountMenu() {
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const count = useCartStore((s) =>
-    s.lines.reduce((sum, line) => sum + line.quantity, 0)
-  );
+  const count = useCartStore((s) => s.lines.length);
   const isB2B = useCartStore((s) => s.isB2B);
   const customer = useCustomerStore((s) => s.customer);
   const clear = useCustomerStore((s) => s.clear);

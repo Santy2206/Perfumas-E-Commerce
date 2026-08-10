@@ -39,6 +39,8 @@ export type CartLine =
       isWholesale?: boolean;
       minQty?: number;
       medusaLineId?: string;
+      /** e.g. essence — quantity is grams */
+      productKind?: string;
     };
 
 type B2BProfile = {
@@ -141,11 +143,18 @@ export const useCartStore = create<CartStore>()(
 
       addSku: (product, quantity, opts) => {
         const wholesale = Boolean(opts?.wholesale);
-        const minQty = product.minQty ?? 1;
-        if (wholesale && quantity < minQty) {
+        const productKind =
+          typeof product.metadata?.product_kind === "string"
+            ? product.metadata.product_kind
+            : undefined;
+        const isEssence = productKind === "essence";
+        const minQty = product.minQty ?? (isEssence && !wholesale ? 30 : 1);
+        if (quantity < minQty) {
           return {
             ok: false,
-            error: `Cantidad mínima mayorista: ${minQty} unidades`,
+            error: isEssence && !wholesale
+              ? `Cantidad mínima: ${minQty} g`
+              : `Cantidad mínima: ${minQty} unidades`,
           };
         }
         const price =
@@ -165,13 +174,24 @@ export const useCartStore = create<CartStore>()(
 
         if (existing && existing.kind === "sku") {
           const nextQty = existing.quantity + quantity;
-          if (wholesale && nextQty < minQty) {
-            return { ok: false, error: `Cantidad mínima mayorista: ${minQty} unidades` };
+          if (nextQty < minQty) {
+            return {
+              ok: false,
+              error: isEssence && !wholesale
+                ? `Cantidad mínima: ${minQty} g`
+                : `Cantidad mínima: ${minQty} unidades`,
+            };
           }
           set((s) => ({
             lines: s.lines.map((l) =>
               l.id === existing.id && l.kind === "sku"
-                ? { ...l, quantity: nextQty, variantId: variantId || l.variantId }
+                ? {
+                    ...l,
+                    quantity: nextQty,
+                    variantId: variantId || l.variantId,
+                    productKind: productKind || l.productKind,
+                    minQty: minQty || l.minQty,
+                  }
                 : l
             ),
           }));
@@ -211,7 +231,8 @@ export const useCartStore = create<CartStore>()(
           handle: product.handle,
           variantId,
           isWholesale: wholesale,
-          minQty: product.minQty,
+          minQty,
+          productKind,
         };
         set((s) => ({ lines: [...s.lines, item] }));
 
@@ -243,8 +264,14 @@ export const useCartStore = create<CartStore>()(
           return { ok: true };
         }
         const line = get().lines.find((l) => l.id === id);
-        if (line?.kind === "sku" && line.isWholesale && line.minQty && quantity < line.minQty) {
-          return { ok: false, error: `Cantidad mínima mayorista: ${line.minQty} unidades` };
+        if (line?.kind === "sku" && line.minQty && quantity < line.minQty) {
+          const isEssence = line.productKind === "essence" && !line.isWholesale;
+          return {
+            ok: false,
+            error: isEssence
+              ? `Cantidad mínima: ${line.minQty} g`
+              : `Cantidad mínima: ${line.minQty} unidades`,
+          };
         }
         set((s) => ({
           lines: s.lines.map((l) => (l.id === id ? { ...l, quantity } : l)),
@@ -272,7 +299,8 @@ export const useCartStore = create<CartStore>()(
           medusaCartId: null,
         }),
       subtotal: () => get().lines.reduce((sum, l) => sum + l.price * l.quantity, 0),
-      itemCount: () => get().lines.reduce((sum, l) => sum + l.quantity, 0),
+      /** Distinct cart lines (not grams / units summed) */
+      itemCount: () => get().lines.length,
     }),
     { name: "perfumas-cart-v1" }
   )

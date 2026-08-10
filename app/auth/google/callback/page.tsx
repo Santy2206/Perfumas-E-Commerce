@@ -31,7 +31,7 @@ function GoogleCallbackInner() {
         "../../../../store/useFavoritesStore"
       );
       await useFavoritesStore.getState().hydrate();
-      router.replace("/cuenta");
+      router.replace("/cuenta#acceso");
     };
 
     void run();
