@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Fraunces, Work_Sans } from "next/font/google";
 import { CustomerHydrator } from "../components/auth/CustomerHydrator";
+import { GoogleSignInAside } from "../components/auth/GoogleSignInAside";
 import { SiteFooter } from "../components/layout/SiteFooter";
 import { SiteHeader } from "../components/layout/SiteHeader";
 import "./globals.css";
@@ -50,6 +51,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <GoogleSignInAside />
       </body>
     </html>
   );

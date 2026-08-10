@@ -37,6 +37,8 @@ export const useCustomerStore = create<CustomerStore>((set, get) => ({
 
   clear: async () => {
     await authLogout();
+    const { useFavoritesStore } = await import("./useFavoritesStore");
+    useFavoritesStore.getState().reset();
     set({ customer: null, loading: false, hydrated: true });
   },
 }));

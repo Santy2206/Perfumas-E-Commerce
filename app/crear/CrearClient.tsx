@@ -9,23 +9,49 @@ import { PriceSummary } from "../../components/builder/PriceSummary";
 import { StepIndicator } from "../../components/builder/StepIndicator";
 import { useBuilderStore } from "../../store/useBuilderStore";
 import { useCartStore } from "../../store/useCartStore";
-import { FRAGRANCES } from "../../lib/mock-data";
+import { BOTTLES, FRAGRANCES } from "../../lib/mock-data";
 import { formatCOP } from "../../lib/utils";
 
 export default function CrearClient() {
   const step = useBuilderStore((s) => s.step);
   const selectFragrance = useBuilderStore((s) => s.selectFragrance);
+  const setPendingBottleId = useBuilderStore((s) => s.setPendingBottleId);
   const lines = useCartStore((s) => s.lines);
   const subtotal = useCartStore((s) => s.subtotal);
   const [mobileCartOpen, setMobileCartOpen] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const id = searchParams.get("fragrance");
-    if (!id) return;
-    const f = FRAGRANCES.find((x) => x.id === id);
-    if (f) selectFragrance(f);
-  }, [searchParams, selectFragrance]);
+    const fragranceId = searchParams.get("fragrance");
+    const bottleId = searchParams.get("bottle");
+
+    if (bottleId && !fragranceId) {
+      setPendingBottleId(bottleId);
+      useBuilderStore.getState().setStep(1);
+      return;
+    }
+
+    if (!fragranceId) return;
+    const f = FRAGRANCES.find((x) => x.id === fragranceId);
+    if (!f) return;
+
+    if (bottleId) {
+      const bottle = BOTTLES.find((b) => b.id === bottleId);
+      if (bottle) {
+        useBuilderStore.setState({
+          selectedFragrance: f,
+          selectedBottle: bottle,
+          pendingBottleId: null,
+          selectedPheromoneIds: [],
+          step: 4,
+        });
+        return;
+      }
+    }
+
+    setPendingBottleId(null);
+    selectFragrance(f);
+  }, [searchParams, selectFragrance, setPendingBottleId]);
 
   return (
     <div className="px-4 sm:px-8 py-10 pb-28 lg:pb-10">

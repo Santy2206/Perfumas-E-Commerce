@@ -5,7 +5,7 @@
  */
 
 import { create } from "zustand";
-import { DEFAULT_BUILD_ALCOHOL, GIFT_WRAP_FEE } from "../lib/mock-data";
+import { BOTTLES, DEFAULT_BUILD_ALCOHOL, GIFT_WRAP_FEE } from "../lib/mock-data";
 import { PHEROMONES } from "../lib/catalog";
 import { computeFragranceCost } from "../lib/filters";
 import type { Bottle, BuilderStep, FilterState, Fragrance, Gender, OlfactiveGroup } from "../lib/types";
@@ -24,6 +24,9 @@ interface BuilderStore {
 
   selectedFragrance: Fragrance | null;
   selectedBottle: Bottle | null;
+  /** When set (e.g. /crear?bottle=), applying a fragrance auto-selects this bottle → Personalizar */
+  pendingBottleId: string | null;
+  setPendingBottleId: (id: string | null) => void;
   selectedPheromoneIds: string[];
   labelText: string;
   giftWrap: boolean;
@@ -55,12 +58,35 @@ export const useBuilderStore = create<BuilderStore>((set, get) => ({
 
   selectedFragrance: null,
   selectedBottle: null,
+  pendingBottleId: null,
   selectedPheromoneIds: [],
   labelText: "",
   giftWrap: false,
 
-  selectFragrance: (fragrance) =>
-    set({ selectedFragrance: fragrance, selectedBottle: null, selectedPheromoneIds: [], step: 3 }),
+  setPendingBottleId: (id) => set({ pendingBottleId: id }),
+
+  selectFragrance: (fragrance) => {
+    const pendingId = get().pendingBottleId;
+    const pendingBottle = pendingId
+      ? BOTTLES.find((b) => b.id === pendingId) ?? null
+      : null;
+    if (pendingBottle) {
+      set({
+        selectedFragrance: fragrance,
+        selectedBottle: pendingBottle,
+        pendingBottleId: null,
+        selectedPheromoneIds: [],
+        step: 4,
+      });
+      return;
+    }
+    set({
+      selectedFragrance: fragrance,
+      selectedBottle: null,
+      selectedPheromoneIds: [],
+      step: 3,
+    });
+  },
   selectBottle: (bottle) => set({ selectedBottle: bottle, step: 4 }),
   togglePheromone: (id) =>
     set((s) => ({
@@ -74,6 +100,7 @@ export const useBuilderStore = create<BuilderStore>((set, get) => ({
     set({
       selectedFragrance: null,
       selectedBottle: null,
+      pendingBottleId: null,
       selectedPheromoneIds: [],
       labelText: "",
       giftWrap: false,

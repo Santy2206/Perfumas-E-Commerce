@@ -20,6 +20,8 @@ export default function RegisterPage() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -36,12 +38,18 @@ export default function RegisterPage() {
       setError("La contraseña debe tener al menos 8 caracteres.");
       return;
     }
+    if (!phone.trim() || !birthday) {
+      setError("Teléfono y cumpleaños son obligatorios.");
+      return;
+    }
     setSubmitting(true);
     const result = await registerEmail({
       email,
       password,
       firstName,
       lastName,
+      phone,
+      birthday,
     });
     setSubmitting(false);
     if (!result.ok) {
@@ -95,6 +103,28 @@ export default function RegisterPage() {
           />
         </div>
         <div className="space-y-2">
+          <Label htmlFor="phone">Teléfono</Label>
+          <Input
+            id="phone"
+            type="tel"
+            autoComplete="tel"
+            required
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="3001234567"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="birthday">Cumpleaños</Label>
+          <Input
+            id="birthday"
+            type="date"
+            required
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+          />
+        </div>
+        <div className="space-y-2">
           <Label htmlFor="password">Contraseña</Label>
           <Input
             id="password"
@@ -121,7 +151,7 @@ export default function RegisterPage() {
         <span className="h-px flex-1 bg-gold-400/20" />
       </div>
 
-      <GoogleLoginButton className="w-full" onError={setError} />
+      <GoogleLoginButton className="w-full" variant="outline" onError={setError} />
 
       <p className="mt-8 text-sm text-bone-60">
         ¿Ya tienes cuenta?{" "}

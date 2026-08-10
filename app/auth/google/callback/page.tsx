@@ -27,6 +27,10 @@ function GoogleCallbackInner() {
         return;
       }
       setCustomer(result.customer);
+      const { useFavoritesStore } = await import(
+        "../../../../store/useFavoritesStore"
+      );
+      await useFavoritesStore.getState().hydrate();
       router.replace("/cuenta");
     };
 

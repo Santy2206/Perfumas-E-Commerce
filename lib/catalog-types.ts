@@ -26,6 +26,8 @@ export type CatalogProduct = {
   wholesalePrice?: number;
   minQty?: number;
   imageUrl?: string;
+  /** Second Medusa gallery image for hover swap */
+  hoverImageUrl?: string;
   /** Medusa variant id when product came from Store API */
   variantId?: string;
   metadata?: Record<string, string | number | boolean | string[] | undefined>;

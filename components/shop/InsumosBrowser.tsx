@@ -18,7 +18,13 @@ import {
 import { FragranceWheel } from "../builder/FragranceWheel";
 import { HouseGroupAccordion } from "./HouseGroupAccordion";
 import { CatalogToolbar } from "./CatalogToolbar";
+import {
+  CollectionFilterChips,
+  type CollectionFilter,
+} from "./CollectionFilterChips";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
+import { matchesCollectionFilter } from "../../lib/collection-filter";
+import { useFavoritesStore } from "../../store/useFavoritesStore";
 
 const CATS: { id: InsumosCat; label: string }[] = [
   { id: "esencias", label: "Esencias" },
@@ -59,6 +65,9 @@ export function InsumosBrowser({
   const [house, setHouse] = useState<string | null>(null);
   const [tier, setTier] = useState<QualityTier | "all">("all");
   const [sort, setSort] = useState<CatalogSort>("alpha-asc");
+  const [collection, setCollection] = useState<CollectionFilter>(null);
+  const likes = useFavoritesStore((s) => s.likes);
+  const lists = useFavoritesStore((s) => s.lists);
 
   const buckets = useMemo(() => partitionInsumosProducts(products), [products]);
 
@@ -97,11 +106,12 @@ export function InsumosBrowser({
         const matchesDesc = p.description ? textIncludes(p.description, search) : false;
         if (!matchesTitle && !matchesHouse && !matchesDesc) return false;
       }
+      if (!matchesCollectionFilter(p.id, collection, likes, lists)) return false;
       return true;
     });
 
     return sortByTitleAndPrice(list, sort);
-  }, [buckets, cat, search, gender, group, house, tier, sort]);
+  }, [buckets, cat, search, gender, group, house, tier, sort, collection, likes, lists]);
 
   const selectCat = (next: InsumosCat) => {
     setCat(next);
@@ -166,6 +176,9 @@ export function InsumosBrowser({
         onSort={setSort}
         showGender={showEssenceFilters}
         showUnisex={showEssenceFilters}
+        collection={collection}
+        onCollection={setCollection}
+        showCollections={showEssenceFilters}
       />
 
       {showEssenceFilters && (
@@ -183,22 +196,42 @@ export function InsumosBrowser({
       )}
 
       {cat === "envases" && (
-        <div className="mb-8 flex flex-wrap gap-2">
-          {TIERS.map((t) => (
-            <button
-              key={t.id}
-              type="button"
-              onClick={() => setTier(t.id)}
-              className={`rounded-sm px-3 py-1.5 text-xs border ${
-                tier === t.id
-                  ? "border-gold-400 text-gold-400"
-                  : "border-white/15 text-bone-60"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
+        <div className="mb-8 space-y-4">
+          <CollectionFilterChips
+            value={collection}
+            onChange={setCollection}
+            label="Me gusta y listas"
+          />
+          <div>
+            <p className="mb-2 text-xs uppercase tracking-widest text-gold-400">
+              Calidad
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {TIERS.map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  onClick={() => setTier(t.id)}
+                  className={`rounded-sm px-3 py-1.5 text-xs border ${
+                    tier === t.id
+                      ? "border-gold-400 text-gold-400"
+                      : "border-white/15 text-bone-60"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
+      )}
+
+      {(cat === "alcohol" || cat === "feromonas") && (
+        <CollectionFilterChips
+          value={collection}
+          onChange={setCollection}
+          label="Me gusta y listas"
+        />
       )}
 
       <PaginatedProductGrid

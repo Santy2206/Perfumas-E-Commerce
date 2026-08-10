@@ -3,14 +3,21 @@
 import { useState } from "react";
 import { startGoogleLogin } from "../../lib/auth";
 import { useCustomerStore } from "../../store/useCustomerStore";
-import { Button } from "../ui/button";
+import { cn } from "../../lib/utils";
+import { GoogleGlyph } from "./GoogleGlyph";
 
 type Props = {
   className?: string;
   onError?: (message: string) => void;
+  /** Official blue Google button vs outline brand style */
+  variant?: "google" | "outline";
 };
 
-export function GoogleLoginButton({ className, onError }: Props) {
+export function GoogleLoginButton({
+  className,
+  onError,
+  variant = "google",
+}: Props) {
   const [loading, setLoading] = useState(false);
   const setCustomer = useCustomerStore((s) => s.setCustomer);
 
@@ -34,15 +41,40 @@ export function GoogleLoginButton({ className, onError }: Props) {
     setLoading(false);
   };
 
+  if (variant === "outline") {
+    return (
+      <button
+        type="button"
+        disabled={loading}
+        onClick={() => void handleClick()}
+        className={cn(
+          "inline-flex h-11 w-full items-center justify-center gap-3 rounded-sm border border-gold-400/40 bg-transparent px-4 text-sm font-semibold uppercase tracking-widest text-gold-400 transition-colors hover:bg-gold-400/10 disabled:opacity-40",
+          className
+        )}
+      >
+        <GoogleGlyph className="h-5 w-5 shrink-0" />
+        {loading ? "Conectando…" : "Continuar con Google"}
+      </button>
+    );
+  }
+
   return (
-    <Button
+    <button
       type="button"
-      variant="outline"
-      className={className}
       disabled={loading}
       onClick={() => void handleClick()}
+      aria-label="Iniciar sesión con Google"
+      className={cn(
+        "inline-flex h-10 w-full max-w-[240px] overflow-hidden rounded-[3px] border border-[#4285F4] shadow-sm transition opacity-100 hover:brightness-105 disabled:opacity-50",
+        className
+      )}
     >
-      {loading ? "Conectando…" : "Continuar con Google"}
-    </Button>
+      <span className="flex h-full w-10 shrink-0 items-center justify-center bg-white">
+        <GoogleGlyph className="h-5 w-5" />
+      </span>
+      <span className="flex flex-1 items-center justify-center bg-[#4285F4] px-3 text-sm font-medium text-white">
+        {loading ? "Conectando…" : "Iniciar sesión con Google"}
+      </span>
+    </button>
   );
 }

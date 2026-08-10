@@ -11,10 +11,13 @@ import {
   type CatalogSort,
 } from "../../lib/house-groups";
 import { CatalogToolbar } from "./CatalogToolbar";
+import type { CollectionFilter } from "./CollectionFilterChips";
 import { HouseGroupAccordion } from "./HouseGroupAccordion";
 import { FragranceWheel } from "../builder/FragranceWheel";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
 import Link from "next/link";
+import { matchesCollectionFilter } from "../../lib/collection-filter";
+import { useFavoritesStore } from "../../store/useFavoritesStore";
 
 function houseOf(p: CatalogProduct): string {
   return typeof p.metadata?.house === "string" ? p.metadata.house : "";
@@ -61,6 +64,9 @@ export function PerfumeriaBrowser({
   const [olfactive, setOlfactive] = useState<OlfactiveGroup | null>(null);
   const [sortReplicas, setSortReplicas] = useState<CatalogSort>("alpha-asc");
   const [sortEssences, setSortEssences] = useState<CatalogSort>("alpha-asc");
+  const [collection, setCollection] = useState<CollectionFilter>(null);
+  const likes = useFavoritesStore((s) => s.likes);
+  const lists = useFavoritesStore((s) => s.lists);
 
   const houses = useMemo(() => {
     const map = new Map<string, string>();
@@ -83,10 +89,11 @@ export function PerfumeriaBrowser({
         return false;
       }
       if (gender && genderOf(p) && genderOf(p) !== gender) return false;
+      if (!matchesCollectionFilter(p.id, collection, likes, lists)) return false;
       return true;
     });
     return sortByTitleAndPrice(list, sortReplicas);
-  }, [replicas, search, gender, sortReplicas]);
+  }, [replicas, search, gender, sortReplicas, collection, likes, lists]);
 
   const filteredEssences = useMemo(() => {
     const list = essences.filter((p) => {
@@ -100,10 +107,11 @@ export function PerfumeriaBrowser({
           textIncludes(p.description || "", search);
         if (!ok) return false;
       }
+      if (!matchesCollectionFilter(p.id, collection, likes, lists)) return false;
       return true;
     });
     return sortByTitleAndPrice(list, sortEssences);
-  }, [essences, search, gender, house, olfactive, sortEssences]);
+  }, [essences, search, gender, house, olfactive, sortEssences, collection, likes, lists]);
 
   return (
     <div>
@@ -127,6 +135,8 @@ export function PerfumeriaBrowser({
         sort={sortReplicas}
         onSort={setSortReplicas}
         showUnisex
+        collection={collection}
+        onCollection={setCollection}
       />
 
       <section className="mb-14">
@@ -167,6 +177,9 @@ export function PerfumeriaBrowser({
           sort={sortEssences}
           onSort={setSortEssences}
           showUnisex
+          collection={collection}
+          onCollection={setCollection}
+          showCollections={false}
         />
         <div className="mb-6">
           <FragranceWheel

@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { formatCOP } from "../../lib/utils";
+import { formatCOP, cn } from "../../lib/utils";
 import type { CatalogProduct } from "../../lib/catalog-types";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { useCartStore } from "../../store/useCartStore";
 import { useState } from "react";
+import { LikeButton } from "../favorites/LikeButton";
+import { AddToListButton } from "../favorites/AddToListButton";
 
 export function ProductCard({
   product,
@@ -44,17 +46,49 @@ export function ProductCard({
   };
 
   const showPrice = mode === "buy";
+  const listTarget = {
+    type: "sku" as const,
+    productId: product.id,
+    productKind: typeof kind === "string" ? kind : undefined,
+    title: product.title,
+    handle: product.handle,
+  };
 
   return (
     <Card className="flex flex-col">
       <CardHeader>
-        <div className="mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-sm bg-wine-900">
+        <div className="group/image relative mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-sm bg-wine-900">
           {product.imageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={product.imageUrl} alt={product.title} className="h-full w-full object-cover" />
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={product.imageUrl}
+                alt={product.title}
+                className={cn(
+                  "h-full w-full object-cover transition-opacity duration-300",
+                  product.hoverImageUrl && "group-hover/image:opacity-0"
+                )}
+              />
+              {product.hoverImageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={product.hoverImageUrl}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover/image:opacity-100"
+                />
+              )}
+            </>
           ) : (
             <span className="font-display text-3xl text-gold-400/40">{product.title.charAt(0)}</span>
           )}
+          <LikeButton
+            productId={product.id}
+            productKind={typeof kind === "string" ? kind : undefined}
+            title={product.title}
+            handle={product.handle}
+            className="absolute right-2 top-2"
+          />
         </div>
         <div className="flex flex-wrap gap-2 mb-2">
           <Badge variant="outline">{product.category}</Badge>
@@ -85,7 +119,8 @@ export function ProductCard({
         ) : null}
         {error && <p className="mt-2 text-xs text-red-300">{error}</p>}
       </CardContent>
-      <CardFooter className="gap-2">
+      <CardFooter className="flex-col gap-2">
+        <AddToListButton target={listTarget} />
         {isEssence && mode === "create" ? (
           <Button asChild className="w-full" size="sm">
             <Link href={`/crear?fragrance=${product.id}`}>Crear con esta</Link>

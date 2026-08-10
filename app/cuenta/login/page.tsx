@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { FormEvent, Suspense, useEffect, useState } from "react";
 import { GoogleLoginButton } from "../../../components/auth/GoogleLoginButton";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
@@ -10,8 +10,15 @@ import { Label } from "../../../components/ui/label";
 import { loginEmail } from "../../../lib/auth";
 import { useCustomerStore } from "../../../store/useCustomerStore";
 
-export default function LoginPage() {
+function safeReturnTo(value: string | null): string {
+  if (!value || !value.startsWith("/") || value.startsWith("//")) return "/cuenta";
+  return value;
+}
+
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const returnTo = safeReturnTo(searchParams.get("returnTo"));
   const customer = useCustomerStore((s) => s.customer);
   const loadingSession = useCustomerStore((s) => s.loading);
   const setCustomer = useCustomerStore((s) => s.setCustomer);
@@ -23,9 +30,9 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (!loadingSession && customer) {
-      router.replace("/cuenta");
+      router.replace(returnTo);
     }
-  }, [customer, loadingSession, router]);
+  }, [customer, loadingSession, router, returnTo]);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -38,7 +45,9 @@ export default function LoginPage() {
       return;
     }
     setCustomer(result.customer);
-    router.push("/cuenta");
+    const { useFavoritesStore } = await import("../../../store/useFavoritesStore");
+    await useFavoritesStore.getState().hydrate();
+    router.push(returnTo);
   };
 
   return (
@@ -88,7 +97,7 @@ export default function LoginPage() {
         <span className="h-px flex-1 bg-gold-400/20" />
       </div>
 
-      <GoogleLoginButton className="w-full" onError={setError} />
+      <GoogleLoginButton className="w-full" variant="outline" onError={setError} />
 
       <p className="mt-8 text-sm text-bone-60">
         ¿No tienes cuenta?{" "}
@@ -97,5 +106,19 @@ export default function LoginPage() {
         </Link>
       </p>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="mx-auto max-w-md px-4 py-12 sm:px-8">
+          <p className="text-sm text-bone-60">Cargando…</p>
+        </div>
+      }
+    >
+      <LoginForm />
+    </Suspense>
   );
 }

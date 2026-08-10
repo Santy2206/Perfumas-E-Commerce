@@ -123,6 +123,11 @@ function mapMedusaProduct(product: MedusaProduct): CatalogProduct | null {
     local?.imageUrl ||
     undefined;
 
+  const hoverImageUrl =
+    product.images?.[1]?.url ||
+    local?.hoverImageUrl ||
+    undefined;
+
   const tags = Array.isArray(product.metadata?.tags)
     ? (product.metadata.tags as string[])
     : local?.tags;
@@ -138,6 +143,7 @@ function mapMedusaProduct(product: MedusaProduct): CatalogProduct | null {
     wholesalePrice: Number.isFinite(wholesalePrice) ? wholesalePrice : local?.wholesalePrice,
     minQty: Number.isFinite(minQty) ? minQty : local?.minQty,
     imageUrl,
+    hoverImageUrl,
     tags,
     variantId: variant?.id || local?.variantId,
     metadata: {
@@ -196,7 +202,7 @@ async function getCollectionIdByHandle(handle: Department): Promise<string | nul
 }
 
 const LIST_FIELDS =
-  "*variants,*variants.calculated_price,*collection,+metadata,+thumbnail";
+  "*variants,*variants.calculated_price,*collection,+metadata,+thumbnail,*images";
 
 async function pageMedusaProducts(params: {
   regionId: string;

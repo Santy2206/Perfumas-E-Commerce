@@ -14,6 +14,14 @@ import {
 import { PriceBandFilter, ChipFilter } from "../shop/FilterChips";
 import { textIncludes } from "../../lib/house-groups";
 import { formatCOP } from "../../lib/utils";
+import { LikeButton } from "../favorites/LikeButton";
+import { AddToListButton } from "../favorites/AddToListButton";
+import {
+  CollectionFilterChips,
+  type CollectionFilter,
+} from "../shop/CollectionFilterChips";
+import { likedSkuIds, listSkuIds } from "../../lib/favorites";
+import { useFavoritesStore } from "../../store/useFavoritesStore";
 
 const TIER_OPTS: { id: QualityTier | "all"; label: string }[] = [
   { id: "all", label: "Todas" },
@@ -46,6 +54,9 @@ export function BottleStep() {
   const [sizeMl, setSizeMl] = useState<number | "all">("all");
   const [search, setSearch] = useState("");
   const [matchedOnly, setMatchedOnly] = useState(false);
+  const [collection, setCollection] = useState<CollectionFilter>(null);
+  const likes = useFavoritesStore((s) => s.likes);
+  const lists = useFavoritesStore((s) => s.lists);
 
   const recommended = fragrance
     ? getRecommendedBottle(fragrance.id, BOTTLES, fragrance)
@@ -76,9 +87,16 @@ export function BottleStep() {
       if (sizeFilter != null && bottleSizeMl(bottle) !== sizeFilter) return false;
       if (matchedOnly && match.score < 55) return false;
       if (search.trim() && !textIncludes(bottle.name, search)) return false;
+      if (collection === "likes") {
+        if (!likedSkuIds(likes).has(bottle.id)) return false;
+      } else if (collection === "any-list") {
+        if (!listSkuIds(lists, "any").has(bottle.id)) return false;
+      } else if (collection?.startsWith("list:")) {
+        if (!listSkuIds(lists, collection.slice(5)).has(bottle.id)) return false;
+      }
       return true;
     });
-  }, [ranked, fragrance, tier, priceBand, sizeMl, matchedOnly, search]);
+  }, [ranked, fragrance, tier, priceBand, sizeMl, matchedOnly, search, collection, likes, lists]);
 
   if (!fragrance) {
     return <p className="text-sm text-bone-60">Primero elige una fragancia en el paso 1.</p>;
@@ -128,6 +146,7 @@ export function BottleStep() {
         className="mb-4 w-full max-w-md rounded-sm border border-gold-400/30 bg-white/5 px-4 py-2.5 text-sm text-bone placeholder:text-bone-60 focus:outline-none focus:ring-2 focus:ring-gold-400"
       />
 
+      <CollectionFilterChips value={collection} onChange={setCollection} />
       <ChipFilter label="Calidad" options={TIER_OPTS} value={tier} onChange={setTier} />
       <div className="mb-4">
         <p className="mb-2 text-xs uppercase tracking-widest text-gold-400">Tamaño</p>
@@ -242,8 +261,14 @@ function BottleCard({
   const ml = bottleSizeMl(bottle);
   return (
     <div className="bg-white/5 border border-gold-400/20 rounded-sm p-5 flex flex-col">
-      <div className="aspect-square bg-white/5 rounded-sm mb-4 flex items-center justify-center text-bone-60 text-xs">
+      <div className="relative aspect-square bg-white/5 rounded-sm mb-4 flex items-center justify-center text-bone-60 text-xs">
         Réplica preparada
+        <LikeButton
+          productId={bottle.id}
+          productKind="bottle"
+          title={bottle.name}
+          className="absolute right-2 top-2"
+        />
       </div>
       <div className="mb-2 flex flex-wrap gap-2">
         <span className="inline-block text-[10px] uppercase tracking-widest bg-wine-950 text-gold-400 px-2 py-1 rounded-sm">
@@ -266,13 +291,23 @@ function BottleCard({
       </p>
       <p className="text-sm font-semibold text-bone mb-1 mt-auto">{formatCOP(bottle.price)}</p>
       <p className="text-[10px] text-bone-60 mb-4">Precio unitario (con contenido)</p>
-      <button
-        type="button"
-        onClick={() => onSelect(bottle)}
-        className="bg-gold-400 hover:bg-gold-100 text-wine-950 text-xs font-semibold uppercase tracking-widest rounded-sm py-3 transition-colors"
-      >
-        Seleccionar y continuar
-      </button>
+      <div className="flex flex-col gap-2">
+        <AddToListButton
+          target={{
+            type: "sku",
+            productId: bottle.id,
+            productKind: "bottle",
+            title: bottle.name,
+          }}
+        />
+        <button
+          type="button"
+          onClick={() => onSelect(bottle)}
+          className="bg-gold-400 hover:bg-gold-100 text-wine-950 text-xs font-semibold uppercase tracking-widest rounded-sm py-3 transition-colors"
+        >
+          Seleccionar y continuar
+        </button>
+      </div>
     </div>
   );
 }

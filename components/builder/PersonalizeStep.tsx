@@ -6,7 +6,11 @@ import { GIFT_WRAP_FEE } from "../../lib/mock-data";
 import { PHEROMONES } from "../../lib/catalog";
 import { useBuilderStore } from "../../store/useBuilderStore";
 import { formatCOP } from "../../lib/utils";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, type ReactNode } from "react";
+import { AddToListButton } from "../favorites/AddToListButton";
+import { useFavoritesStore } from "../../store/useFavoritesStore";
+import type { BuildPayload } from "../../lib/build-pricing";
 
 const SHOP_LINKS: {
   href: string;
@@ -57,8 +61,13 @@ export function PersonalizeStep() {
   const currentBuildTotal = useBuilderStore((s) => s.currentBuildTotal);
   const addBuildToCart = useBuilderStore((s) => s.addBuildToCart);
   const setStep = useBuilderStore((s) => s.setStep);
+  const saveBuildLike = useFavoritesStore((s) => s.saveBuildLike);
+  const router = useRouter();
+  const pathname = usePathname();
   const [adding, setAdding] = useState(false);
+  const [savingLike, setSavingLike] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [likeMsg, setLikeMsg] = useState<string | null>(null);
 
   if (!fragrance || !bottle) {
     return <p className="text-sm text-bone-60">Completa los pasos 1 y 2 primero.</p>;
@@ -69,12 +78,40 @@ export function PersonalizeStep() {
     selectedPheromones.reduce((sum, p) => sum + p.price, 0) + (giftWrap ? GIFT_WRAP_FEE : 0);
   const coreTotal = currentBuildTotal() - extrasTotal;
 
+  const buildPayload = (): BuildPayload => ({
+    fragranceId: fragrance!.id,
+    bottleId: bottle!.id,
+    pheromoneIds: selectedPheromoneIds,
+    labelText: labelText || undefined,
+    giftWrap,
+  });
+
+  const buildTitle = `Fragancia: ${fragrance!.contratipo}`;
+
   const onAdd = async () => {
     setAdding(true);
     setError(null);
     const result = await addBuildToCart();
     if (!result.ok) setError(result.error);
     setAdding(false);
+  };
+
+  const onSaveLike = async () => {
+    setSavingLike(true);
+    setLikeMsg(null);
+    const result = await saveBuildLike(buildPayload(), buildTitle);
+    setSavingLike(false);
+    if (!result.ok) {
+      if (result.needAuth) {
+        router.push(
+          `/cuenta/login?returnTo=${encodeURIComponent(pathname || "/crear")}`
+        );
+        return;
+      }
+      setLikeMsg(result.error);
+      return;
+    }
+    setLikeMsg("Creación guardada en Me gusta.");
   };
 
   return (
@@ -182,13 +219,32 @@ export function PersonalizeStep() {
           <span className="font-display text-lg text-gold-400">{formatCOP(currentBuildTotal())}</span>
         </div>
         {error && <p className="mt-3 text-xs text-red-300">{error}</p>}
-        <button
-          onClick={onAdd}
-          disabled={adding}
-          className="w-full mt-6 bg-gold-400 hover:bg-gold-100 disabled:opacity-40 text-wine-950 text-sm font-semibold uppercase tracking-widest rounded-sm py-3 transition-colors"
-        >
-          {adding ? "Validando…" : "Agregar al carrito"}
-        </button>
+        {likeMsg && <p className="mt-3 text-xs text-gold-400">{likeMsg}</p>}
+        <div className="mt-6 space-y-2">
+          <AddToListButton
+            target={{
+              type: "build",
+              build: buildPayload(),
+              title: buildTitle,
+            }}
+            label="Añadir creación a lista"
+          />
+          <button
+            type="button"
+            onClick={() => void onSaveLike()}
+            disabled={savingLike}
+            className="w-full border border-gold-400/40 hover:border-gold-400 disabled:opacity-40 text-gold-400 text-xs font-semibold uppercase tracking-widest rounded-sm py-3 transition-colors"
+          >
+            {savingLike ? "Guardando…" : "Guardar creación en Me gusta"}
+          </button>
+          <button
+            onClick={onAdd}
+            disabled={adding}
+            className="w-full bg-gold-400 hover:bg-gold-100 disabled:opacity-40 text-wine-950 text-sm font-semibold uppercase tracking-widest rounded-sm py-3 transition-colors"
+          >
+            {adding ? "Validando…" : "Agregar al carrito"}
+          </button>
+        </div>
       </div>
     </div>
   );
