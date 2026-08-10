@@ -16,6 +16,7 @@ import {
   issueAccountMergeToken,
   isValidEmail,
   mergeCustomersByEmail,
+  resolveTrustedEnsureEmail,
   verifyAccountMergeToken,
   verifyEmailpassPassword,
 } from "../../../../utils/customer-auth"
@@ -61,10 +62,8 @@ export async function POST(
 
   const identityId = authIdentityId || undefined
   let providerMeta: Record<string, unknown> = {}
-  let email = String(body.email || "")
-    .trim()
-    .toLowerCase()
   let hasGoogleProvider = false
+  let providerEmail = ""
 
   if (identityId) {
     const { data: authIdentities } = await query.graph({
@@ -92,11 +91,22 @@ export async function POST(
     const pis = identity?.provider_identities || []
     hasGoogleProvider = pis.some((p) => p.provider === "google")
     const fromProviders = emailFromProviderIdentities(pis)
-    if (!isValidEmail(email) && fromProviders.email) {
-      email = fromProviders.email
-    }
+    providerEmail = fromProviders.email
     providerMeta = fromProviders.meta
   }
+
+  const trusted = resolveTrustedEnsureEmail({
+    bodyEmail: body.email,
+    providerEmail,
+    hasGoogleProvider,
+  })
+  if (trusted.mismatch && trusted.source === "provider") {
+    throw new MedusaError(
+      MedusaError.Types.NOT_ALLOWED,
+      "El correo enviado no coincide con la identidad autenticada"
+    )
+  }
+  let email = trusted.email
 
   const picture =
     String(body.picture || providerMeta.picture || "") || undefined
@@ -317,6 +327,9 @@ export async function POST(
         email = meta.google_email.toLowerCase()
       }
 
+      // Only Google-backed sessions may repair/merge here. Email+password
+      // sessions must never pass a client email and silently absorb another
+      // customer (account takeover).
       if (isValidEmail(email) && hasGoogleProvider) {
         const conflict = await detectEmailConflict(req.scope, email, {
           excludeCustomerId: customerId,
@@ -325,17 +338,6 @@ export async function POST(
           return respondConflict(conflict.customerId, conflict.email)
         }
 
-        const merged = await mergeCustomersByEmail(req.scope, {
-          currentId: customerId,
-          email,
-          picture,
-          firstName,
-          lastName,
-        })
-        return finishLink(merged.customerId, merged.mode)
-      }
-
-      if (isValidEmail(email) && !hasGoogleProvider) {
         const merged = await mergeCustomersByEmail(req.scope, {
           currentId: customerId,
           email,
