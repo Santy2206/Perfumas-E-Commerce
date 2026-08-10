@@ -6,7 +6,7 @@
 import type { Bottle, Fragrance, LooseComponent } from "../types";
 import type { CatalogProduct } from "../catalog-types";
 
-export const GENERATED_AT = "2026-07-29T15:49:59.974Z";
+export const GENERATED_AT = "2026-08-10T21:11:35.654Z";
 
 export const OLFACTIVE_GROUPS = [
   {
@@ -2358,7 +2358,7 @@ export const FRAGRANCES: Fragrance[] = [
 
 export const BOTTLES: Bottle[] = [
   {
-    "id": "rep-1251",
+    "id": "rep-1251-100",
     "name": "1 MILLION AGRAFE 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2366,7 +2366,7 @@ export const BOTTLES: Bottle[] = [
     "price": 52000
   },
   {
-    "id": "rep-1254",
+    "id": "rep-1254-100",
     "name": "1 MILLION AGRAFE 100 ML AAA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -2374,7 +2374,7 @@ export const BOTTLES: Bottle[] = [
     "price": 66000
   },
   {
-    "id": "rep-1342",
+    "id": "rep-1342-30",
     "name": "1 MILLION ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2382,7 +2382,7 @@ export const BOTTLES: Bottle[] = [
     "price": 17500
   },
   {
-    "id": "rep-1341",
+    "id": "rep-1341-100",
     "name": "212 ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2390,7 +2390,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39500
   },
   {
-    "id": "rep-1323",
+    "id": "rep-1323-100",
     "name": "360° AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2401,7 +2401,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1328",
+    "id": "rep-1328-100",
     "name": "360° ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2412,7 +2412,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1266",
+    "id": "rep-1266-55",
     "name": "AGATHA LUJO ROSCA 55 ML",
     "qualityTier": "AA",
     "capacityMl": 55,
@@ -2420,7 +2420,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26500
   },
   {
-    "id": "rep-1393",
+    "id": "rep-1393-100",
     "name": "AMBER OUD AGRAFE 100 ML AAA (CAJA)",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -2431,7 +2431,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1333",
+    "id": "rep-1333-100",
     "name": "ANTHEA ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2439,7 +2439,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39500
   },
   {
-    "id": "rep-1335",
+    "id": "rep-1335-30",
     "name": "ARABIA ROSCA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2447,7 +2447,7 @@ export const BOTTLES: Bottle[] = [
     "price": 18000
   },
   {
-    "id": "rep-1287",
+    "id": "rep-1287-100",
     "name": "ARSENAL AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2455,7 +2455,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39500
   },
   {
-    "id": "rep-1355",
+    "id": "rep-1355-100",
     "name": "ARSENAL ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2463,7 +2463,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39500
   },
   {
-    "id": "rep-1360",
+    "id": "rep-1360-100",
     "name": "ASUS ROSCA LUJO 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2471,7 +2471,7 @@ export const BOTTLES: Bottle[] = [
     "price": 37500
   },
   {
-    "id": "rep-1358",
+    "id": "rep-1358-55",
     "name": "BEAUTY ROSCA LUJO 55 ML",
     "qualityTier": "AA",
     "capacityMl": 55,
@@ -2479,7 +2479,7 @@ export const BOTTLES: Bottle[] = [
     "price": 27000
   },
   {
-    "id": "rep-1271",
+    "id": "rep-1271-100",
     "name": "BELLA ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2487,7 +2487,7 @@ export const BOTTLES: Bottle[] = [
     "price": 41000
   },
   {
-    "id": "rep-1364",
+    "id": "rep-1364-30",
     "name": "BELLA ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2495,7 +2495,7 @@ export const BOTTLES: Bottle[] = [
     "price": 18000
   },
   {
-    "id": "rep-1320",
+    "id": "rep-1320-45",
     "name": "BELLA ROSCA REPLICA 45 ML",
     "qualityTier": "AA",
     "capacityMl": 45,
@@ -2503,7 +2503,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25000
   },
   {
-    "id": "rep-1326",
+    "id": "rep-1326-50",
     "name": "BLACK XS F ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2515,7 +2515,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1298",
+    "id": "rep-1298-100",
     "name": "BLACK XS M AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2527,7 +2527,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1286",
+    "id": "rep-1286-100",
     "name": "BLACK XS M ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2539,7 +2539,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1373",
+    "id": "rep-1373-110",
     "name": "BOY (RAYO) ROSCA REPLICA 110 ML",
     "qualityTier": "AA",
     "capacityMl": 110,
@@ -2547,7 +2547,7 @@ export const BOTTLES: Bottle[] = [
     "price": 50000
   },
   {
-    "id": "rep-1377",
+    "id": "rep-1377-100",
     "name": "BRIGHT (VERSACE) ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2555,7 +2555,7 @@ export const BOTTLES: Bottle[] = [
     "price": 40000
   },
   {
-    "id": "rep-1344",
+    "id": "rep-1344-30",
     "name": "BRIGHT (VERSACE) ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2563,7 +2563,7 @@ export const BOTTLES: Bottle[] = [
     "price": 18000
   },
   {
-    "id": "rep-1348",
+    "id": "rep-1348-50",
     "name": "BRIGHT (VERSACE) ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2571,7 +2571,7 @@ export const BOTTLES: Bottle[] = [
     "price": 27000
   },
   {
-    "id": "rep-1265",
+    "id": "rep-1265-80",
     "name": "BUTTER FLY ROSCA LUJO 80 ML",
     "qualityTier": "AA",
     "capacityMl": 80,
@@ -2579,7 +2579,7 @@ export const BOTTLES: Bottle[] = [
     "price": 33500
   },
   {
-    "id": "rep-1371",
+    "id": "rep-1371-60",
     "name": "CALABERA (POLICE) ROSCA REPLICA  60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -2587,7 +2587,7 @@ export const BOTTLES: Bottle[] = [
     "price": 28500
   },
   {
-    "id": "rep-1288",
+    "id": "rep-1288-100",
     "name": "CAMELOT AGRAFE 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2595,7 +2595,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39000
   },
   {
-    "id": "rep-1381",
+    "id": "rep-1381-100",
     "name": "CAN CAN ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2606,7 +2606,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1241",
+    "id": "rep-1241-100",
     "name": "CANADA (CHANEL) ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2614,7 +2614,7 @@ export const BOTTLES: Bottle[] = [
     "price": 40000
   },
   {
-    "id": "rep-1359",
+    "id": "rep-1359-100",
     "name": "CANAL ROSCA LUJO 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2622,7 +2622,7 @@ export const BOTTLES: Bottle[] = [
     "price": 40000
   },
   {
-    "id": "rep-1375",
+    "id": "rep-1375-60",
     "name": "CANAL ROSCA LUJO 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -2630,7 +2630,7 @@ export const BOTTLES: Bottle[] = [
     "price": 27000
   },
   {
-    "id": "rep-1372",
+    "id": "rep-1372-60",
     "name": "CAT ROSCA REPLICA 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -2638,7 +2638,7 @@ export const BOTTLES: Bottle[] = [
     "price": 30000
   },
   {
-    "id": "rep-1264",
+    "id": "rep-1264-75",
     "name": "CAT ROSCA REPLICA 75 ML",
     "qualityTier": "AA",
     "capacityMl": 75,
@@ -2646,7 +2646,7 @@ export const BOTTLES: Bottle[] = [
     "price": 35000
   },
   {
-    "id": "rep-1378",
+    "id": "rep-1378-100",
     "name": "CH F AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2654,7 +2654,7 @@ export const BOTTLES: Bottle[] = [
     "price": 41000
   },
   {
-    "id": "rep-1386",
+    "id": "rep-1386-100",
     "name": "CH M ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2662,7 +2662,7 @@ export const BOTTLES: Bottle[] = [
     "price": 42000
   },
   {
-    "id": "rep-1240",
+    "id": "rep-1240-60",
     "name": "CANADA (CHANEL) ROSCA REPLICA 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -2670,7 +2670,7 @@ export const BOTTLES: Bottle[] = [
     "price": 27000
   },
   {
-    "id": "rep-1293",
+    "id": "rep-1293-90",
     "name": "CILINDRICO AGRAFE LUJO 90 ML",
     "qualityTier": "AA",
     "capacityMl": 90,
@@ -2678,7 +2678,7 @@ export const BOTTLES: Bottle[] = [
     "price": 37500
   },
   {
-    "id": "rep-1214",
+    "id": "rep-1214-100",
     "name": "CILINDRICO ROSCA LUJO 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2686,7 +2686,7 @@ export const BOTTLES: Bottle[] = [
     "price": 36000
   },
   {
-    "id": "rep-1211",
+    "id": "rep-1211-30",
     "name": "CILINDRICO ROSCA LUJO 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2694,7 +2694,7 @@ export const BOTTLES: Bottle[] = [
     "price": 15000
   },
   {
-    "id": "rep-1212",
+    "id": "rep-1212-50",
     "name": "CILINDRICO ROSCA LUJO 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2702,7 +2702,7 @@ export const BOTTLES: Bottle[] = [
     "price": 24000
   },
   {
-    "id": "rep-1213",
+    "id": "rep-1213-60",
     "name": "CILINDRICO ROSCA LUJO 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -2710,7 +2710,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26000
   },
   {
-    "id": "rep-1248",
+    "id": "rep-1248-90",
     "name": "CILINDRICO ROSCA LUJO 90 ML",
     "qualityTier": "AA",
     "capacityMl": 90,
@@ -2718,7 +2718,7 @@ export const BOTTLES: Bottle[] = [
     "price": 34500
   },
   {
-    "id": "rep-1247",
+    "id": "rep-1247-100",
     "name": "COOL ROSCA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2726,7 +2726,7 @@ export const BOTTLES: Bottle[] = [
     "price": 36500
   },
   {
-    "id": "rep-1239",
+    "id": "rep-1239-100",
     "name": "COPA (INVICTUS) ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2737,7 +2737,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1272",
+    "id": "rep-1272-30",
     "name": "COPA (INVICTUS) ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2748,7 +2748,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1238",
+    "id": "rep-1238-50",
     "name": "COPA (INVICTUS) ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2759,7 +2759,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1370",
+    "id": "rep-1370-100",
     "name": "COPA (VICTORY) REPLICA ROSCA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2767,7 +2767,7 @@ export const BOTTLES: Bottle[] = [
     "price": 42000
   },
   {
-    "id": "rep-1334",
+    "id": "rep-1334-30",
     "name": "COPA (VICTORY) REPLICA ROSCA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2775,7 +2775,7 @@ export const BOTTLES: Bottle[] = [
     "price": 19000
   },
   {
-    "id": "rep-1221",
+    "id": "rep-1221-50",
     "name": "CORAZON ROSCA COLOR 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2783,7 +2783,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25000
   },
   {
-    "id": "rep-1270",
+    "id": "rep-1270-60",
     "name": "CORAZON ROSCA CRISTAL 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -2791,7 +2791,7 @@ export const BOTTLES: Bottle[] = [
     "price": 28000
   },
   {
-    "id": "rep-1237",
+    "id": "rep-1237-100",
     "name": "CREED ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2799,7 +2799,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39500
   },
   {
-    "id": "rep-1236",
+    "id": "rep-1236-30",
     "name": "CREED ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2807,7 +2807,7 @@ export const BOTTLES: Bottle[] = [
     "price": 18000
   },
   {
-    "id": "rep-1356",
+    "id": "rep-1356-50",
     "name": "CREED ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2815,7 +2815,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25500
   },
   {
-    "id": "rep-1227",
+    "id": "rep-1227-45",
     "name": "CRISTAL ROSCA 45 ML",
     "qualityTier": "AA",
     "capacityMl": 45,
@@ -2823,7 +2823,7 @@ export const BOTTLES: Bottle[] = [
     "price": 23000
   },
   {
-    "id": "rep-1261",
+    "id": "rep-1261-50",
     "name": "DORSO (JPG) ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2831,7 +2831,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25500
   },
   {
-    "id": "rep-1314",
+    "id": "rep-1314-100",
     "name": "DORSO ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2839,7 +2839,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39000
   },
   {
-    "id": "rep-1300",
+    "id": "rep-1300-30",
     "name": "DUBAI ROSCA LUJO 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2847,7 +2847,7 @@ export const BOTTLES: Bottle[] = [
     "price": 16000
   },
   {
-    "id": "rep-1304",
+    "id": "rep-1304-30",
     "name": "EIFFEL ROSCA LUJO 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2855,7 +2855,7 @@ export const BOTTLES: Bottle[] = [
     "price": 19000
   },
   {
-    "id": "rep-1313",
+    "id": "rep-1313-50",
     "name": "EIFFEL ROSCA LUJO 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2863,7 +2863,7 @@ export const BOTTLES: Bottle[] = [
     "price": 27000
   },
   {
-    "id": "rep-1307",
+    "id": "rep-1307-60",
     "name": "EMBLEM ROSCA REPLICA  60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -2874,7 +2874,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1325",
+    "id": "rep-1325-50",
     "name": "EROS ROSCA REPLICA  50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2885,7 +2885,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1368",
+    "id": "rep-1368-100",
     "name": "EROS ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2896,7 +2896,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1343",
+    "id": "rep-1343-25",
     "name": "EROS ROSCA REPLICA 25 ML",
     "qualityTier": "AA",
     "capacityMl": 25,
@@ -2907,7 +2907,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1267",
+    "id": "rep-1267-100",
     "name": "FAHRENHEIT ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2918,7 +2918,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1258",
+    "id": "rep-1258-100",
     "name": "FANTASY AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2929,7 +2929,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1315",
+    "id": "rep-1315-110",
     "name": "FANTASY ROSCA REPLICA 110 ML",
     "qualityTier": "AA",
     "capacityMl": 110,
@@ -2940,7 +2940,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1366",
+    "id": "rep-1366-100",
     "name": "FERRARI REPLICA ROSCA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2948,7 +2948,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39000
   },
   {
-    "id": "rep-1311",
+    "id": "rep-1311-30",
     "name": "FLAT ROSCA LUJO 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -2956,7 +2956,7 @@ export const BOTTLES: Bottle[] = [
     "price": 15000
   },
   {
-    "id": "rep-1312",
+    "id": "rep-1312-50",
     "name": "FLAT ROSCA LUJO 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -2964,7 +2964,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25000
   },
   {
-    "id": "rep-1367",
+    "id": "rep-1367-100",
     "name": "FLOR LUJO ROSCA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2972,7 +2972,7 @@ export const BOTTLES: Bottle[] = [
     "price": 38500
   },
   {
-    "id": "rep-1383",
+    "id": "rep-1383-100",
     "name": "GABBANA ROSCA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -2980,7 +2980,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39000
   },
   {
-    "id": "rep-1230",
+    "id": "rep-1230-100",
     "name": "GENERICO AGRAFE 100 ML",
     "qualityTier": "Generico",
     "capacityMl": 100,
@@ -2988,7 +2988,7 @@ export const BOTTLES: Bottle[] = [
     "price": 38500
   },
   {
-    "id": "rep-1229",
+    "id": "rep-1229-50",
     "name": "GENERICO AGRAFE 50 ML",
     "qualityTier": "Generico",
     "capacityMl": 50,
@@ -2996,7 +2996,7 @@ export const BOTTLES: Bottle[] = [
     "price": 24500
   },
   {
-    "id": "rep-1210",
+    "id": "rep-1210-100",
     "name": "GENERICO ROSCA 100 ML VP",
     "qualityTier": "Generico",
     "capacityMl": 100,
@@ -3004,7 +3004,7 @@ export const BOTTLES: Bottle[] = [
     "price": 35000
   },
   {
-    "id": "rep-1280",
+    "id": "rep-1280-25",
     "name": "GENERICO ROSCA 25 ML V.P.",
     "qualityTier": "Generico",
     "capacityMl": 25,
@@ -3012,7 +3012,7 @@ export const BOTTLES: Bottle[] = [
     "price": 13000
   },
   {
-    "id": "rep-1207",
+    "id": "rep-1207-30",
     "name": "GENERICO ROSCA 30 ML VP",
     "qualityTier": "Generico",
     "capacityMl": 30,
@@ -3020,7 +3020,7 @@ export const BOTTLES: Bottle[] = [
     "price": 14500
   },
   {
-    "id": "rep-1275",
+    "id": "rep-1275-45",
     "name": "GENERICO ROSCA 45 ML",
     "qualityTier": "Generico",
     "capacityMl": 45,
@@ -3028,7 +3028,7 @@ export const BOTTLES: Bottle[] = [
     "price": 20000
   },
   {
-    "id": "rep-1208",
+    "id": "rep-1208-50",
     "name": "GENERICO ROSCA 50 ML VP",
     "qualityTier": "Generico",
     "capacityMl": 50,
@@ -3036,7 +3036,7 @@ export const BOTTLES: Bottle[] = [
     "price": 22000
   },
   {
-    "id": "rep-1209",
+    "id": "rep-1209-60",
     "name": "GENERICO ROSCA 60 ML VP",
     "qualityTier": "Generico",
     "capacityMl": 60,
@@ -3044,7 +3044,7 @@ export const BOTTLES: Bottle[] = [
     "price": 24000
   },
   {
-    "id": "rep-1231",
+    "id": "rep-1231-100",
     "name": "GLOBO AGRAFE LUJO 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3052,7 +3052,7 @@ export const BOTTLES: Bottle[] = [
     "price": 38500
   },
   {
-    "id": "rep-1260",
+    "id": "rep-1260-90",
     "name": "GOLDEN ROSCA LUJO 90 ML",
     "qualityTier": "AA",
     "capacityMl": 90,
@@ -3060,7 +3060,7 @@ export const BOTTLES: Bottle[] = [
     "price": 35500
   },
   {
-    "id": "rep-1234",
+    "id": "rep-1234-80",
     "name": "GUCCI (CONQUER) AGRAFE 80 ML",
     "qualityTier": "AA",
     "capacityMl": 80,
@@ -3068,7 +3068,7 @@ export const BOTTLES: Bottle[] = [
     "price": 32500
   },
   {
-    "id": "rep-1233",
+    "id": "rep-1233-70",
     "name": "GUCCI (SNAKE) AGRAFE 70 ML",
     "qualityTier": "AA",
     "capacityMl": 70,
@@ -3076,7 +3076,7 @@ export const BOTTLES: Bottle[] = [
     "price": 29500
   },
   {
-    "id": "rep-1282",
+    "id": "rep-1282-60",
     "name": "GUITARRA ROSCA 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -3084,7 +3084,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26500
   },
   {
-    "id": "rep-1219",
+    "id": "rep-1219-100",
     "name": "HAPPY ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3095,7 +3095,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1218",
+    "id": "rep-1218-60",
     "name": "HAPPY ROSCA REPLICA 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -3106,7 +3106,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1394",
+    "id": "rep-1394-100",
     "name": "HONOR & GLORY (LATAFFA) AGRAFE 100 ML AAA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -3114,7 +3114,7 @@ export const BOTTLES: Bottle[] = [
     "price": 80000
   },
   {
-    "id": "rep-1257",
+    "id": "rep-1257-100",
     "name": "HUGO AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3126,7 +3126,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1281",
+    "id": "rep-1281-100",
     "name": "HUGO BOSS ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3138,7 +3138,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1273",
+    "id": "rep-1273-60",
     "name": "HUGO BOSS ROSCA REPLICA 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -3150,7 +3150,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1369",
+    "id": "rep-1369-120",
     "name": "ISSEY MIYAKE ROSCA REPLICA 120 ML",
     "qualityTier": "AA",
     "capacityMl": 120,
@@ -3158,7 +3158,7 @@ export const BOTTLES: Bottle[] = [
     "price": 46000
   },
   {
-    "id": "rep-1374",
+    "id": "rep-1374-30",
     "name": "ISSEY MIYAKE ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3166,7 +3166,7 @@ export const BOTTLES: Bottle[] = [
     "price": 17500
   },
   {
-    "id": "rep-1392",
+    "id": "rep-1392-30",
     "name": "ISSEY MIYAKE ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3174,7 +3174,7 @@ export const BOTTLES: Bottle[] = [
     "price": 17500
   },
   {
-    "id": "rep-1224",
+    "id": "rep-1224-100",
     "name": "J´ADORE ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3182,7 +3182,7 @@ export const BOTTLES: Bottle[] = [
     "price": 40500
   },
   {
-    "id": "rep-1223",
+    "id": "rep-1223-60",
     "name": "J´ADORE ROSCA REPLICA 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -3190,7 +3190,7 @@ export const BOTTLES: Bottle[] = [
     "price": 29000
   },
   {
-    "id": "rep-1297",
+    "id": "rep-1297-50",
     "name": "JENIFER ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3198,7 +3198,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26000
   },
   {
-    "id": "rep-1385",
+    "id": "rep-1385-45",
     "name": "KALIFA ROSCA LUJO 45 ML",
     "qualityTier": "AA",
     "capacityMl": 45,
@@ -3206,7 +3206,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25000
   },
   {
-    "id": "rep-1330",
+    "id": "rep-1330-30",
     "name": "LACOSTE COLOR ROSCA LUJO 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3214,7 +3214,7 @@ export const BOTTLES: Bottle[] = [
     "price": 18000
   },
   {
-    "id": "rep-1305",
+    "id": "rep-1305-50",
     "name": "LACOSTE COLOR ROSCA LUJO 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3222,7 +3222,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26000
   },
   {
-    "id": "rep-1274",
+    "id": "rep-1274-100",
     "name": "LACOSTE RED ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3233,7 +3233,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1279",
+    "id": "rep-1279-100",
     "name": "LACOSTE ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3241,7 +3241,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39500
   },
   {
-    "id": "rep-1284",
+    "id": "rep-1284-100",
     "name": "LADY AGRAFE LUJO 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3249,7 +3249,7 @@ export const BOTTLES: Bottle[] = [
     "price": 38000
   },
   {
-    "id": "rep-1308",
+    "id": "rep-1308-100",
     "name": "LEGEND ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3260,7 +3260,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1308",
+    "id": "rep-1308-85",
     "name": "LEGEND ROSCA REPLICA 85 ML",
     "qualityTier": "AA",
     "capacityMl": 85,
@@ -3271,7 +3271,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1365",
+    "id": "rep-1365-100",
     "name": "LICOR ROSCA LUJO 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3279,7 +3279,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39000
   },
   {
-    "id": "rep-1256",
+    "id": "rep-1256-100",
     "name": "LIGHT BLUE M ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3290,7 +3290,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1294",
+    "id": "rep-1294-8",
     "name": "MALETIN DOBLE PERFUMERO 3 Y 8 ML",
     "qualityTier": "Generico",
     "capacityMl": 8,
@@ -3298,7 +3298,7 @@ export const BOTTLES: Bottle[] = [
     "price": 8500
   },
   {
-    "id": "rep-1232",
+    "id": "rep-1232-100",
     "name": "MANZANA AGRAFE LUJO 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3306,7 +3306,7 @@ export const BOTTLES: Bottle[] = [
     "price": 38500
   },
   {
-    "id": "rep-1321",
+    "id": "rep-1321-30",
     "name": "MANZANA ROSCA COLOR 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3314,7 +3314,7 @@ export const BOTTLES: Bottle[] = [
     "price": 17000
   },
   {
-    "id": "rep-1244",
+    "id": "rep-1244-80",
     "name": "MARTILLADO ROSCA GENERICO 80 ML",
     "qualityTier": "Generico",
     "capacityMl": 80,
@@ -3322,7 +3322,7 @@ export const BOTTLES: Bottle[] = [
     "price": 32000
   },
   {
-    "id": "rep-1216",
+    "id": "rep-1216-60",
     "name": "MOON ROSCA JUJO 60 ML",
     "qualityTier": "AA",
     "capacityMl": 60,
@@ -3330,7 +3330,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26500
   },
   {
-    "id": "rep-1354",
+    "id": "rep-1354-100",
     "name": "MURANO ROSCA LUJO 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3338,7 +3338,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39000
   },
   {
-    "id": "rep-1354",
+    "id": "rep-1354-50",
     "name": "MURANO ROSCA LUJO 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3346,7 +3346,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25000
   },
   {
-    "id": "rep-1379",
+    "id": "rep-1379-55",
     "name": "NEW YORK ROSCA 55 ML",
     "qualityTier": "AA",
     "capacityMl": 55,
@@ -3354,7 +3354,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26000
   },
   {
-    "id": "rep-1235",
+    "id": "rep-1235-100",
     "name": "OLYMPEA ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3365,7 +3365,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1324",
+    "id": "rep-1324-50",
     "name": "OLYMPEA ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3376,7 +3376,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1336",
+    "id": "rep-1336-65",
     "name": "OMNIA ROSCA REPLICA 65 ML",
     "qualityTier": "AA",
     "capacityMl": 65,
@@ -3384,7 +3384,7 @@ export const BOTTLES: Bottle[] = [
     "price": 33000
   },
   {
-    "id": "rep-1316",
+    "id": "rep-1316-50",
     "name": "ONLY THE BRAVE ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3395,7 +3395,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1285",
+    "id": "rep-1285-80",
     "name": "ONLY THE BRAVE ROSCA REPLICA 80 ML",
     "qualityTier": "AA",
     "capacityMl": 80,
@@ -3406,7 +3406,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1382",
+    "id": "rep-1382-65",
     "name": "OSITO ROSCA PLASTICO 65 ML",
     "qualityTier": "AA",
     "capacityMl": 65,
@@ -3414,7 +3414,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26500
   },
   {
-    "id": "rep-1387",
+    "id": "rep-1387-30",
     "name": "OSO (MOSHINO) ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3422,7 +3422,7 @@ export const BOTTLES: Bottle[] = [
     "price": 21500
   },
   {
-    "id": "rep-1310",
+    "id": "rep-1310-50",
     "name": "OSO (MOSHINO) ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3430,7 +3430,7 @@ export const BOTTLES: Bottle[] = [
     "price": 30000
   },
   {
-    "id": "rep-1276",
+    "id": "rep-1276-100",
     "name": "OVAL ROSCA COLOR 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3438,7 +3438,7 @@ export const BOTTLES: Bottle[] = [
     "price": 38000
   },
   {
-    "id": "rep-1362",
+    "id": "rep-1362-45",
     "name": "OVAL ROSCA LUJO 45 ML",
     "qualityTier": "AA",
     "capacityMl": 45,
@@ -3446,7 +3446,7 @@ export const BOTTLES: Bottle[] = [
     "price": 23000
   },
   {
-    "id": "rep-1339",
+    "id": "rep-1339-100",
     "name": "PARIS AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3454,7 +3454,7 @@ export const BOTTLES: Bottle[] = [
     "price": 43000
   },
   {
-    "id": "rep-1289",
+    "id": "rep-1289-3",
     "name": "PERFUMERO ESFERO LUJO 3 ML",
     "qualityTier": "Generico",
     "capacityMl": 3,
@@ -3462,7 +3462,7 @@ export const BOTTLES: Bottle[] = [
     "price": 4300
   },
   {
-    "id": "rep-1291",
+    "id": "rep-1291-10",
     "name": "PERFUMERO ESFERO PLASTICO 10 ML",
     "qualityTier": "Generico",
     "capacityMl": 10,
@@ -3470,7 +3470,7 @@ export const BOTTLES: Bottle[] = [
     "price": 6600
   },
   {
-    "id": "rep-1290",
+    "id": "rep-1290-8",
     "name": "PERFUMERO ESFERO PLASTICO 8 ML",
     "qualityTier": "Generico",
     "capacityMl": 8,
@@ -3478,7 +3478,7 @@ export const BOTTLES: Bottle[] = [
     "price": 5800
   },
   {
-    "id": "rep-1204",
+    "id": "rep-1204-6",
     "name": "PERFUMERO ESFERO PLASTICO 6 ML",
     "qualityTier": "Generico",
     "capacityMl": 6,
@@ -3486,7 +3486,7 @@ export const BOTTLES: Bottle[] = [
     "price": 4700
   },
   {
-    "id": "rep-1201",
+    "id": "rep-1201-3",
     "name": "PERFUMERO PLASTICO 3 ML",
     "qualityTier": "Generico",
     "capacityMl": 3,
@@ -3494,7 +3494,7 @@ export const BOTTLES: Bottle[] = [
     "price": 3000
   },
   {
-    "id": "rep-1202",
+    "id": "rep-1202-8",
     "name": "PERFUMERO PLASTICO 8 ML",
     "qualityTier": "Generico",
     "capacityMl": 8,
@@ -3502,7 +3502,7 @@ export const BOTTLES: Bottle[] = [
     "price": 5800
   },
   {
-    "id": "rep-1292",
+    "id": "rep-1292-25",
     "name": "PLASTICO GENERICO 25 ML",
     "qualityTier": "Generico",
     "capacityMl": 25,
@@ -3510,7 +3510,7 @@ export const BOTTLES: Bottle[] = [
     "price": 12500
   },
   {
-    "id": "rep-1268",
+    "id": "rep-1268-100",
     "name": "POLO ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3521,7 +3521,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1380",
+    "id": "rep-1380-55",
     "name": "POLO ROSCA REPLICA 55 ML",
     "qualityTier": "AA",
     "capacityMl": 55,
@@ -3532,7 +3532,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1327",
+    "id": "rep-1327-80",
     "name": "PURE XS F ROSCA REPLICA 80 ML",
     "qualityTier": "AA",
     "capacityMl": 80,
@@ -3543,7 +3543,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1361",
+    "id": "rep-1361-100",
     "name": "RALPH AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3554,7 +3554,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1283",
+    "id": "rep-1283-50",
     "name": "RELOJ ROSCA LUJO 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3562,7 +3562,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25000
   },
   {
-    "id": "rep-1346",
+    "id": "rep-1346-30",
     "name": "RICCI ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3570,7 +3570,7 @@ export const BOTTLES: Bottle[] = [
     "price": 17500
   },
   {
-    "id": "rep-1337",
+    "id": "rep-1337-50",
     "name": "RICCI ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3578,7 +3578,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26000
   },
   {
-    "id": "rep-1391",
+    "id": "rep-1391-100",
     "name": "ROBOT (FAME) AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3586,7 +3586,7 @@ export const BOTTLES: Bottle[] = [
     "price": 48000
   },
   {
-    "id": "rep-1390",
+    "id": "rep-1390-100",
     "name": "ROBOT (PHANTOM) AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3597,7 +3597,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1388",
+    "id": "rep-1388-30",
     "name": "ROBOT (PHANTOM) ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3608,7 +3608,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1389",
+    "id": "rep-1389-50",
     "name": "ROBOT (PHANTOM) ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3619,7 +3619,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1338",
+    "id": "rep-1338-100",
     "name": "SAUVAGE ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3630,7 +3630,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1306",
+    "id": "rep-1306-100",
     "name": "SCANDAL F AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3642,7 +3642,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1376",
+    "id": "rep-1376-30",
     "name": "SULTAN ROSCA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3650,7 +3650,7 @@ export const BOTTLES: Bottle[] = [
     "price": 17500
   },
   {
-    "id": "rep-1363",
+    "id": "rep-1363-90",
     "name": "SWISS ARMY ROSCA REPLICA  90 ML",
     "qualityTier": "AA",
     "capacityMl": 90,
@@ -3661,7 +3661,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1351",
+    "id": "rep-1351-30",
     "name": "TACON (GOOD GIRL) ROSCA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3672,7 +3672,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1331",
+    "id": "rep-1331-50",
     "name": "TACON (GOOD GIRL) ROSCA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3683,7 +3683,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1345",
+    "id": "rep-1345-90",
     "name": "TACON (GOOD GIRL) ROSCA 90 ML",
     "qualityTier": "AA",
     "capacityMl": 90,
@@ -3694,7 +3694,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1393",
+    "id": "rep-1393-100-2",
     "name": "THANK U (ARIANA) AGRAFE 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3702,7 +3702,7 @@ export const BOTTLES: Bottle[] = [
     "price": 51000
   },
   {
-    "id": "rep-1349",
+    "id": "rep-1349-35",
     "name": "TIED ROSCA LUJO 35 ML",
     "qualityTier": "AA",
     "capacityMl": 35,
@@ -3710,7 +3710,7 @@ export const BOTTLES: Bottle[] = [
     "price": 19500
   },
   {
-    "id": "rep-1350",
+    "id": "rep-1350-55",
     "name": "TIED ROSCA LUJO 55 ML",
     "qualityTier": "AA",
     "capacityMl": 55,
@@ -3718,7 +3718,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26500
   },
   {
-    "id": "rep-1317",
+    "id": "rep-1317-75",
     "name": "TOM ROSCA LUJO 75 ML",
     "qualityTier": "AA",
     "capacityMl": 75,
@@ -3726,7 +3726,7 @@ export const BOTTLES: Bottle[] = [
     "price": 31000
   },
   {
-    "id": "rep-1263",
+    "id": "rep-1263-90",
     "name": "TOMMY ROSCA REPLICA 90 ML",
     "qualityTier": "AA",
     "capacityMl": 90,
@@ -3737,7 +3737,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1302",
+    "id": "rep-1302-100",
     "name": "VALENTINO ROSCA REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3745,7 +3745,7 @@ export const BOTTLES: Bottle[] = [
     "price": 39000
   },
   {
-    "id": "rep-1300",
+    "id": "rep-1300-30-2",
     "name": "VALENTINO ROSCA REPLICA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3753,7 +3753,7 @@ export const BOTTLES: Bottle[] = [
     "price": 17500
   },
   {
-    "id": "rep-1301",
+    "id": "rep-1301-50",
     "name": "VALENTINO ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3761,7 +3761,7 @@ export const BOTTLES: Bottle[] = [
     "price": 25000
   },
   {
-    "id": "rep-1249",
+    "id": "rep-1249-100",
     "name": "VIP BALA AGRAFE REPLICA 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3769,7 +3769,7 @@ export const BOTTLES: Bottle[] = [
     "price": 40000
   },
   {
-    "id": "rep-1340",
+    "id": "rep-1340-50",
     "name": "VIP BALA ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3777,7 +3777,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26000
   },
   {
-    "id": "rep-1250",
+    "id": "rep-1250-85",
     "name": "VIP BALA ROSCA REPLICA 85 ML",
     "qualityTier": "AA",
     "capacityMl": 85,
@@ -3785,7 +3785,7 @@ export const BOTTLES: Bottle[] = [
     "price": 38000
   },
   {
-    "id": "rep-1384",
+    "id": "rep-1384-100",
     "name": "VIP MEN AGRAFE REPLICA 100 ML AA",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3793,7 +3793,7 @@ export const BOTTLES: Bottle[] = [
     "price": 45000
   },
   {
-    "id": "rep-1392",
+    "id": "rep-1392-100",
     "name": "YARA (LATTAFA) AGRAFE 100 ML",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3804,7 +3804,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1277",
+    "id": "rep-1277-30",
     "name": "YARA (LATTAFA) ROSCA 30 ML",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3815,7 +3815,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-1347",
+    "id": "rep-1347-30",
     "name": "YARA (LATTAFA) ROSCA 30 ML AA",
     "qualityTier": "AA",
     "capacityMl": 30,
@@ -3826,7 +3826,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-rep-199",
+    "id": "rep-rep-199-50",
     "name": "MANDARIN ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3834,7 +3834,7 @@ export const BOTTLES: Bottle[] = [
     "price": 31000
   },
   {
-    "id": "rep-rep-200",
+    "id": "rep-rep-200-50",
     "name": "ARABE ROSCA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -3842,7 +3842,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26000
   },
   {
-    "id": "rep-rep-201",
+    "id": "rep-rep-201-100",
     "name": "212 VIP BLACK AGRAFE REPLICA 100 ML AA",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -3854,7 +3854,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-rep-202",
+    "id": "rep-rep-202-100",
     "name": "YARA CANDY AGRAFE 100 ML AAA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -3866,7 +3866,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-rep-203",
+    "id": "rep-rep-203-100",
     "name": "CLOUD AGRAFE 100 ML AAA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -3877,7 +3877,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-rep-204",
+    "id": "rep-rep-204-100",
     "name": "EROS AGRAFE 100 ML AAA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -3888,7 +3888,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-rep-205",
+    "id": "rep-rep-205-100",
     "name": "ERBA PURA AGRAFE 100 ML AAA CAJA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -3902,40 +3902,22 @@ export const BOTTLES: Bottle[] = [
 
 export const ALCOHOL_OPTIONS: LooseComponent[] = [
   {
-    "id": "alc-30-ml",
-    "name": "Alcohol Desodorizado",
-    "unit": "30 ML",
+    "id": "alc-30",
+    "name": "Alcohol Desodorizado (válvula spray)",
+    "unit": "30 ml",
     "price": 1600
   },
   {
-    "id": "alc-60-ml",
-    "name": "Alcohol Desodorizado",
-    "unit": "60 ML",
+    "id": "alc-60",
+    "name": "Alcohol Desodorizado (válvula spray)",
+    "unit": "60 ml",
     "price": 2200
   },
   {
-    "id": "alc-125-ml",
-    "name": "Alcohol Desodorizado",
-    "unit": "125 ML",
+    "id": "alc-125",
+    "name": "Alcohol Desodorizado (válvula spray)",
+    "unit": "125 ml",
     "price": 3500
-  },
-  {
-    "id": "alc-250-ml",
-    "name": "Alcohol Desodorizado",
-    "unit": "250 ML",
-    "price": 4000
-  },
-  {
-    "id": "alc-500-ml",
-    "name": "Alcohol Desodorizado",
-    "unit": "500 ML",
-    "price": 7400
-  },
-  {
-    "id": "alc-1000-ml",
-    "name": "Alcohol Desodorizado",
-    "unit": "1000 ML",
-    "price": 13500
   }
 ] as LooseComponent[];
 
@@ -12680,6 +12662,32 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
+    "id": "b-1258",
+    "handle": "fantasy-agrafe-replica-100-ml",
+    "title": "FANTASY AGRAFE REPLICA 100 ML",
+    "description": "Envase vacío AA · 100 ml · cierre Agrafe",
+    "department": "insumos",
+    "category": "envases",
+    "price": 6800,
+    "wholesalePrice": 6100,
+    "minQty": 6,
+    "metadata": {
+      "quality_tier": "AA",
+      "capacity_ml": 100,
+      "closure": "Agrafe",
+      "matches_fragrance_ids": [
+        "ess-16-M"
+      ],
+      "product_kind": "bottle",
+      "excel_code": "1258"
+    },
+    "tags": [
+      "envase",
+      "insumo",
+      "AA"
+    ]
+  },
+  {
     "id": "b-1315",
     "handle": "fantasy-rosca-replica-110-ml",
     "title": "FANTASY ROSCA REPLICA 110 ML",
@@ -12962,6 +12970,30 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "matches_fragrance_ids": [],
       "product_kind": "bottle",
       "excel_code": "1303"
+    },
+    "tags": [
+      "envase",
+      "insumo",
+      "AA"
+    ]
+  },
+  {
+    "id": "b-1287",
+    "handle": "granada-arsenal-agrafe-replica-100-ml",
+    "title": "GRANADA (ARSENAL) AGRAFE REPLICA 100 ML",
+    "description": "Envase vacío AA · 100 ml · cierre Agrafe",
+    "department": "insumos",
+    "category": "envases",
+    "price": 6800,
+    "wholesalePrice": 6100,
+    "minQty": 6,
+    "metadata": {
+      "quality_tier": "AA",
+      "capacity_ml": 100,
+      "closure": "Agrafe",
+      "matches_fragrance_ids": [],
+      "product_kind": "bottle",
+      "excel_code": "1287"
     },
     "tags": [
       "envase",
@@ -15107,7 +15139,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1251",
+    "id": "rep-1251-100",
     "handle": "1-million-agrafe-100-ml",
     "title": "1 MILLION AGRAFE 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15134,7 +15166,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1254",
+    "id": "rep-1254-100",
     "handle": "1-million-agrafe-100-ml-aaa",
     "title": "1 MILLION AGRAFE 100 ML AAA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15161,7 +15193,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1342",
+    "id": "rep-1342-30",
     "handle": "1-million-rosca-replica-30-ml-2",
     "title": "1 MILLION ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15188,7 +15220,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1341",
+    "id": "rep-1341-100",
     "handle": "212-rosca-replica-100-ml-2",
     "title": "212 ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15215,7 +15247,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1323",
+    "id": "rep-1323-100",
     "handle": "360-agrafe-replica-100-ml-2",
     "title": "360° AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15244,7 +15276,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1328",
+    "id": "rep-1328-100",
     "handle": "360-rosca-replica-100-ml-2",
     "title": "360° ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15273,7 +15305,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1266",
+    "id": "rep-1266-55",
     "handle": "agatha-lujo-rosca-55-ml-2",
     "title": "AGATHA LUJO ROSCA 55 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15300,7 +15332,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1393",
+    "id": "rep-1393-100",
     "handle": "amber-oud-agrafe-100-ml-aaa-caja",
     "title": "AMBER OUD AGRAFE 100 ML AAA (CAJA)",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15329,7 +15361,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1333",
+    "id": "rep-1333-100",
     "handle": "anthea-rosca-replica-100-ml",
     "title": "ANTHEA ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15356,7 +15388,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1335",
+    "id": "rep-1335-30",
     "handle": "arabia-rosca-30-ml-2",
     "title": "ARABIA ROSCA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15382,7 +15414,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1287",
+    "id": "rep-1287-100",
     "handle": "arsenal-agrafe-replica-100-ml",
     "title": "ARSENAL AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15409,7 +15441,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1355",
+    "id": "rep-1355-100",
     "handle": "arsenal-rosca-replica-100-ml",
     "title": "ARSENAL ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15435,7 +15467,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1360",
+    "id": "rep-1360-100",
     "handle": "asus-rosca-lujo-100-ml-2",
     "title": "ASUS ROSCA LUJO 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15461,7 +15493,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1358",
+    "id": "rep-1358-55",
     "handle": "beauty-rosca-lujo-55-ml-2",
     "title": "BEAUTY ROSCA LUJO 55 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15487,7 +15519,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1271",
+    "id": "rep-1271-100",
     "handle": "bella-rosca-replica-100-ml-2",
     "title": "BELLA ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15514,7 +15546,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1364",
+    "id": "rep-1364-30",
     "handle": "bella-rosca-replica-30-ml-2",
     "title": "BELLA ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15540,7 +15572,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1320",
+    "id": "rep-1320-45",
     "handle": "bella-rosca-replica-45-ml-2",
     "title": "BELLA ROSCA REPLICA 45 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15567,7 +15599,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1326",
+    "id": "rep-1326-50",
     "handle": "black-xs-f-rosca-replica-50-ml-2",
     "title": "BLACK XS F ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15597,7 +15629,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1298",
+    "id": "rep-1298-100",
     "handle": "black-xs-m-agrafe-replica-100-ml-2",
     "title": "BLACK XS M AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15627,7 +15659,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1286",
+    "id": "rep-1286-100",
     "handle": "black-xs-m-rosca-replica-100-ml-2",
     "title": "BLACK XS M ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15657,7 +15689,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1373",
+    "id": "rep-1373-110",
     "handle": "boy-rayo-rosca-replica-110-ml",
     "title": "BOY (RAYO) ROSCA REPLICA 110 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15683,7 +15715,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1377",
+    "id": "rep-1377-100",
     "handle": "bright-versace-rosca-replica-100-ml-2",
     "title": "BRIGHT (VERSACE) ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15709,7 +15741,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1344",
+    "id": "rep-1344-30",
     "handle": "bright-versace-rosca-replica-30-ml-2",
     "title": "BRIGHT (VERSACE) ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15736,7 +15768,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1348",
+    "id": "rep-1348-50",
     "handle": "bright-versace-rosca-replica-50-ml-2",
     "title": "BRIGHT (VERSACE) ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15763,7 +15795,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1265",
+    "id": "rep-1265-80",
     "handle": "butter-fly-rosca-lujo-80-ml-2",
     "title": "BUTTER FLY ROSCA LUJO 80 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15790,7 +15822,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1371",
+    "id": "rep-1371-60",
     "handle": "calabera-police-rosca-replica-60-ml",
     "title": "CALABERA (POLICE) ROSCA REPLICA  60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15817,7 +15849,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1288",
+    "id": "rep-1288-100",
     "handle": "camelot-agrafe-100-ml-2",
     "title": "CAMELOT AGRAFE 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15844,7 +15876,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1381",
+    "id": "rep-1381-100",
     "handle": "can-can-rosca-replica-100-ml-2",
     "title": "CAN CAN ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15872,7 +15904,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1241",
+    "id": "rep-1241-100",
     "handle": "canada-chanel-rosca-replica-100-ml-2",
     "title": "CANADA (CHANEL) ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15899,7 +15931,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1359",
+    "id": "rep-1359-100",
     "handle": "canal-rosca-lujo-100-ml",
     "title": "CANAL ROSCA LUJO 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15925,7 +15957,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1375",
+    "id": "rep-1375-60",
     "handle": "canal-rosca-lujo-60-ml",
     "title": "CANAL ROSCA LUJO 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15951,7 +15983,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1372",
+    "id": "rep-1372-60",
     "handle": "cat-rosca-replica-60-ml",
     "title": "CAT ROSCA REPLICA 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -15977,7 +16009,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1264",
+    "id": "rep-1264-75",
     "handle": "cat-rosca-replica-75-ml",
     "title": "CAT ROSCA REPLICA 75 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16004,7 +16036,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1378",
+    "id": "rep-1378-100",
     "handle": "ch-f-agrafe-replica-100-ml-2",
     "title": "CH F AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16030,7 +16062,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1386",
+    "id": "rep-1386-100",
     "handle": "ch-m-rosca-replica-100-ml-2",
     "title": "CH M ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16056,7 +16088,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1240",
+    "id": "rep-1240-60",
     "handle": "canada-chanel-rosca-replica-60-ml",
     "title": "CANADA (CHANEL) ROSCA REPLICA 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16083,7 +16115,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1293",
+    "id": "rep-1293-90",
     "handle": "cilindrico-agrafe-lujo-90-ml",
     "title": "CILINDRICO AGRAFE LUJO 90 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16109,7 +16141,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1214",
+    "id": "rep-1214-100",
     "handle": "cilindrico-rosca-lujo-100-ml-2",
     "title": "CILINDRICO ROSCA LUJO 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16136,7 +16168,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1211",
+    "id": "rep-1211-30",
     "handle": "cilindrico-rosca-lujo-30-ml-2",
     "title": "CILINDRICO ROSCA LUJO 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16163,7 +16195,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1212",
+    "id": "rep-1212-50",
     "handle": "cilindrico-rosca-lujo-50-ml-2",
     "title": "CILINDRICO ROSCA LUJO 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16190,7 +16222,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1213",
+    "id": "rep-1213-60",
     "handle": "cilindrico-rosca-lujo-60-ml-2",
     "title": "CILINDRICO ROSCA LUJO 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16217,7 +16249,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1248",
+    "id": "rep-1248-90",
     "handle": "cilindrico-rosca-lujo-90-ml-2",
     "title": "CILINDRICO ROSCA LUJO 90 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16244,7 +16276,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1247",
+    "id": "rep-1247-100",
     "handle": "cool-rosca-100-ml",
     "title": "COOL ROSCA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16271,7 +16303,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1239",
+    "id": "rep-1239-100",
     "handle": "copa-invictus-rosca-replica-100-ml-2",
     "title": "COPA (INVICTUS) ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16300,7 +16332,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1272",
+    "id": "rep-1272-30",
     "handle": "copa-invictus-rosca-replica-30-ml-2",
     "title": "COPA (INVICTUS) ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16329,7 +16361,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1238",
+    "id": "rep-1238-50",
     "handle": "copa-invictus-rosca-replica-50-ml-2",
     "title": "COPA (INVICTUS) ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16358,7 +16390,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1370",
+    "id": "rep-1370-100",
     "handle": "copa-victory-replica-rosca-100-ml-2",
     "title": "COPA (VICTORY) REPLICA ROSCA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16384,7 +16416,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1334",
+    "id": "rep-1334-30",
     "handle": "copa-victory-replica-rosca-30-ml-2",
     "title": "COPA (VICTORY) REPLICA ROSCA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16410,7 +16442,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1221",
+    "id": "rep-1221-50",
     "handle": "corazon-rosca-color-50-ml-2",
     "title": "CORAZON ROSCA COLOR 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16437,7 +16469,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1270",
+    "id": "rep-1270-60",
     "handle": "corazon-rosca-cristal-60-ml-2",
     "title": "CORAZON ROSCA CRISTAL 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16464,7 +16496,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1237",
+    "id": "rep-1237-100",
     "handle": "creed-rosca-replica-100-ml-2",
     "title": "CREED ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16491,7 +16523,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1236",
+    "id": "rep-1236-30",
     "handle": "creed-rosca-replica-30-ml-2",
     "title": "CREED ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16518,7 +16550,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1356",
+    "id": "rep-1356-50",
     "handle": "creed-rosca-replica-50-ml-2",
     "title": "CREED ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16544,7 +16576,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1227",
+    "id": "rep-1227-45",
     "handle": "cristal-rosca-45-ml-2",
     "title": "CRISTAL ROSCA 45 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16571,7 +16603,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1261",
+    "id": "rep-1261-50",
     "handle": "dorso-jpg-rosca-replica-50-ml",
     "title": "DORSO (JPG) ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16598,7 +16630,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1314",
+    "id": "rep-1314-100",
     "handle": "dorso-rosca-replica-100-ml",
     "title": "DORSO ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16625,7 +16657,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1300",
+    "id": "rep-1300-30",
     "handle": "dubai-rosca-lujo-30-ml",
     "title": "DUBAI ROSCA LUJO 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16652,7 +16684,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1304",
+    "id": "rep-1304-30",
     "handle": "eiffel-rosca-lujo-30-ml-2",
     "title": "EIFFEL ROSCA LUJO 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16679,7 +16711,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1313",
+    "id": "rep-1313-50",
     "handle": "eiffel-rosca-lujo-50-ml-2",
     "title": "EIFFEL ROSCA LUJO 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16706,7 +16738,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1307",
+    "id": "rep-1307-60",
     "handle": "emblem-rosca-replica-60-ml-2",
     "title": "EMBLEM ROSCA REPLICA  60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16735,7 +16767,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1325",
+    "id": "rep-1325-50",
     "handle": "eros-rosca-replica-50-ml",
     "title": "EROS ROSCA REPLICA  50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16764,7 +16796,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1368",
+    "id": "rep-1368-100",
     "handle": "eros-rosca-replica-100-ml",
     "title": "EROS ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16792,7 +16824,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1343",
+    "id": "rep-1343-25",
     "handle": "eros-rosca-replica-25-ml",
     "title": "EROS ROSCA REPLICA 25 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16821,7 +16853,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1267",
+    "id": "rep-1267-100",
     "handle": "fahrenheit-rosca-replica-100-ml-2",
     "title": "FAHRENHEIT ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16850,8 +16882,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1258",
-    "handle": "fantasy-agrafe-replica-100-ml",
+    "id": "rep-1258-100",
+    "handle": "fantasy-agrafe-replica-100-ml-2",
     "title": "FANTASY AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
     "department": "perfumeria",
@@ -16879,7 +16911,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1315",
+    "id": "rep-1315-110",
     "handle": "fantasy-rosca-replica-110-ml-2",
     "title": "FANTASY ROSCA REPLICA 110 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16908,7 +16940,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1366",
+    "id": "rep-1366-100",
     "handle": "ferrari-replica-rosca-100-ml-2",
     "title": "FERRARI REPLICA ROSCA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16934,7 +16966,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1311",
+    "id": "rep-1311-30",
     "handle": "flat-rosca-lujo-30-ml",
     "title": "FLAT ROSCA LUJO 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16961,7 +16993,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1312",
+    "id": "rep-1312-50",
     "handle": "flat-rosca-lujo-50-ml-2",
     "title": "FLAT ROSCA LUJO 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -16988,7 +17020,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1367",
+    "id": "rep-1367-100",
     "handle": "flor-lujo-rosca-100-ml-2",
     "title": "FLOR LUJO ROSCA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17014,7 +17046,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1383",
+    "id": "rep-1383-100",
     "handle": "gabbana-rosca-100-ml",
     "title": "GABBANA ROSCA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17040,7 +17072,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1230",
+    "id": "rep-1230-100",
     "handle": "generico-agrafe-100-ml-2",
     "title": "GENERICO AGRAFE 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17067,7 +17099,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1229",
+    "id": "rep-1229-50",
     "handle": "generico-agrafe-50-ml-2",
     "title": "GENERICO AGRAFE 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17094,7 +17126,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1210",
+    "id": "rep-1210-100",
     "handle": "generico-rosca-100-ml-vp-2",
     "title": "GENERICO ROSCA 100 ML VP",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17121,7 +17153,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1280",
+    "id": "rep-1280-25",
     "handle": "generico-rosca-25-ml-v-p",
     "title": "GENERICO ROSCA 25 ML V.P.",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17148,7 +17180,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1207",
+    "id": "rep-1207-30",
     "handle": "generico-rosca-30-ml-vp-2",
     "title": "GENERICO ROSCA 30 ML VP",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17175,7 +17207,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1275",
+    "id": "rep-1275-45",
     "handle": "generico-rosca-45-ml",
     "title": "GENERICO ROSCA 45 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17202,7 +17234,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1208",
+    "id": "rep-1208-50",
     "handle": "generico-rosca-50-ml-vp",
     "title": "GENERICO ROSCA 50 ML VP",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17229,7 +17261,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1209",
+    "id": "rep-1209-60",
     "handle": "generico-rosca-60-ml-vp-2",
     "title": "GENERICO ROSCA 60 ML VP",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17256,7 +17288,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1231",
+    "id": "rep-1231-100",
     "handle": "globo-agrafe-lujo-100-ml-2",
     "title": "GLOBO AGRAFE LUJO 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17283,7 +17315,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1260",
+    "id": "rep-1260-90",
     "handle": "golden-rosca-lujo-90-ml",
     "title": "GOLDEN ROSCA LUJO 90 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17310,7 +17342,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1234",
+    "id": "rep-1234-80",
     "handle": "gucci-conquer-agrafe-80-ml",
     "title": "GUCCI (CONQUER) AGRAFE 80 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17337,7 +17369,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1233",
+    "id": "rep-1233-70",
     "handle": "gucci-snake-agrafe-70-ml",
     "title": "GUCCI (SNAKE) AGRAFE 70 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17364,7 +17396,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1282",
+    "id": "rep-1282-60",
     "handle": "guitarra-rosca-60-ml-2",
     "title": "GUITARRA ROSCA 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17391,7 +17423,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1219",
+    "id": "rep-1219-100",
     "handle": "happy-rosca-replica-100-ml",
     "title": "HAPPY ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17420,7 +17452,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1218",
+    "id": "rep-1218-60",
     "handle": "happy-rosca-replica-60-ml-2",
     "title": "HAPPY ROSCA REPLICA 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17449,7 +17481,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1394",
+    "id": "rep-1394-100",
     "handle": "honor-glory-lataffa-agrafe-100-ml-aaa-2",
     "title": "HONOR & GLORY (LATAFFA) AGRAFE 100 ML AAA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17475,7 +17507,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1257",
+    "id": "rep-1257-100",
     "handle": "hugo-agrafe-replica-100-ml",
     "title": "HUGO AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17505,7 +17537,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1281",
+    "id": "rep-1281-100",
     "handle": "hugo-boss-rosca-replica-100-ml-2",
     "title": "HUGO BOSS ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17535,7 +17567,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1273",
+    "id": "rep-1273-60",
     "handle": "hugo-boss-rosca-replica-60-ml-2",
     "title": "HUGO BOSS ROSCA REPLICA 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17565,7 +17597,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1369",
+    "id": "rep-1369-120",
     "handle": "issey-miyake-rosca-replica-120-ml-2",
     "title": "ISSEY MIYAKE ROSCA REPLICA 120 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17591,7 +17623,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1374",
+    "id": "rep-1374-30",
     "handle": "issey-miyake-rosca-replica-30-ml-2",
     "title": "ISSEY MIYAKE ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17617,7 +17649,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1392",
+    "id": "rep-1392-30",
     "handle": "issey-miyake-rosca-replica-30-ml-3",
     "title": "ISSEY MIYAKE ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17643,7 +17675,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1224",
+    "id": "rep-1224-100",
     "handle": "j-adore-rosca-replica-100-ml-2",
     "title": "J´ADORE ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17670,7 +17702,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1223",
+    "id": "rep-1223-60",
     "handle": "j-adore-rosca-replica-60-ml-2",
     "title": "J´ADORE ROSCA REPLICA 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17697,7 +17729,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1297",
+    "id": "rep-1297-50",
     "handle": "jenifer-rosca-replica-50-ml-2",
     "title": "JENIFER ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17724,7 +17756,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1385",
+    "id": "rep-1385-45",
     "handle": "kalifa-rosca-lujo-45-ml-2",
     "title": "KALIFA ROSCA LUJO 45 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17750,7 +17782,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1330",
+    "id": "rep-1330-30",
     "handle": "lacoste-color-rosca-lujo-30-ml",
     "title": "LACOSTE COLOR ROSCA LUJO 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17776,7 +17808,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1305",
+    "id": "rep-1305-50",
     "handle": "lacoste-color-rosca-lujo-50-ml",
     "title": "LACOSTE COLOR ROSCA LUJO 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17803,7 +17835,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1274",
+    "id": "rep-1274-100",
     "handle": "lacoste-red-rosca-replica-100-ml-2",
     "title": "LACOSTE RED ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17832,7 +17864,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1279",
+    "id": "rep-1279-100",
     "handle": "lacoste-rosca-replica-100-ml-2",
     "title": "LACOSTE ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17859,7 +17891,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1284",
+    "id": "rep-1284-100",
     "handle": "lady-agrafe-lujo-100-ml",
     "title": "LADY AGRAFE LUJO 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17886,7 +17918,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1308",
+    "id": "rep-1308-100",
     "handle": "legend-rosca-replica-100-ml-2",
     "title": "LEGEND ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17915,7 +17947,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1308",
+    "id": "rep-1308-85",
     "handle": "legend-rosca-replica-85-ml-2",
     "title": "LEGEND ROSCA REPLICA 85 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17944,7 +17976,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1365",
+    "id": "rep-1365-100",
     "handle": "licor-rosca-lujo-100-ml",
     "title": "LICOR ROSCA LUJO 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17970,7 +18002,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1256",
+    "id": "rep-1256-100",
     "handle": "light-blue-m-rosca-replica-100-ml",
     "title": "LIGHT BLUE M ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -17999,7 +18031,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1294",
+    "id": "rep-1294-8",
     "handle": "maletin-doble-perfumero-3-y-8-ml-2",
     "title": "MALETIN DOBLE PERFUMERO 3 Y 8 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18026,7 +18058,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1232",
+    "id": "rep-1232-100",
     "handle": "manzana-agrafe-lujo-100-ml-2",
     "title": "MANZANA AGRAFE LUJO 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18053,7 +18085,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1321",
+    "id": "rep-1321-30",
     "handle": "manzana-rosca-color-30-ml",
     "title": "MANZANA ROSCA COLOR 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18080,7 +18112,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1244",
+    "id": "rep-1244-80",
     "handle": "martillado-rosca-generico-80-ml",
     "title": "MARTILLADO ROSCA GENERICO 80 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18107,7 +18139,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1216",
+    "id": "rep-1216-60",
     "handle": "moon-rosca-jujo-60-ml-2",
     "title": "MOON ROSCA JUJO 60 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18134,7 +18166,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1354",
+    "id": "rep-1354-100",
     "handle": "murano-rosca-lujo-100-ml-2",
     "title": "MURANO ROSCA LUJO 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18161,7 +18193,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1354",
+    "id": "rep-1354-50",
     "handle": "murano-rosca-lujo-50-ml-2",
     "title": "MURANO ROSCA LUJO 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18188,7 +18220,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1379",
+    "id": "rep-1379-55",
     "handle": "new-york-rosca-55-ml-2",
     "title": "NEW YORK ROSCA 55 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18214,7 +18246,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1235",
+    "id": "rep-1235-100",
     "handle": "olympea-rosca-replica-100-ml-2",
     "title": "OLYMPEA ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18243,7 +18275,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1324",
+    "id": "rep-1324-50",
     "handle": "olympea-rosca-replica-50-ml-2",
     "title": "OLYMPEA ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18272,7 +18304,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1336",
+    "id": "rep-1336-65",
     "handle": "omnia-rosca-replica-65-ml-2",
     "title": "OMNIA ROSCA REPLICA 65 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18299,7 +18331,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1316",
+    "id": "rep-1316-50",
     "handle": "only-the-brave-rosca-replica-50-ml-2",
     "title": "ONLY THE BRAVE ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18327,7 +18359,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1285",
+    "id": "rep-1285-80",
     "handle": "only-the-brave-rosca-replica-80-ml-2",
     "title": "ONLY THE BRAVE ROSCA REPLICA 80 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18356,7 +18388,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1382",
+    "id": "rep-1382-65",
     "handle": "osito-rosca-plastico-65-ml-2",
     "title": "OSITO ROSCA PLASTICO 65 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18383,7 +18415,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1387",
+    "id": "rep-1387-30",
     "handle": "oso-moshino-rosca-replica-30-ml-2",
     "title": "OSO (MOSHINO) ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18409,7 +18441,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1310",
+    "id": "rep-1310-50",
     "handle": "oso-moshino-rosca-replica-50-ml-2",
     "title": "OSO (MOSHINO) ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18436,7 +18468,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1276",
+    "id": "rep-1276-100",
     "handle": "oval-rosca-color-100-ml",
     "title": "OVAL ROSCA COLOR 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18463,7 +18495,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1362",
+    "id": "rep-1362-45",
     "handle": "oval-rosca-lujo-45-ml",
     "title": "OVAL ROSCA LUJO 45 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18489,7 +18521,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1339",
+    "id": "rep-1339-100",
     "handle": "paris-agrafe-replica-100-ml",
     "title": "PARIS AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18516,7 +18548,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1289",
+    "id": "rep-1289-3",
     "handle": "perfumero-esfero-lujo-3-ml-2",
     "title": "PERFUMERO ESFERO LUJO 3 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18543,7 +18575,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1291",
+    "id": "rep-1291-10",
     "handle": "perfumero-esfero-plastico-10-ml-2",
     "title": "PERFUMERO ESFERO PLASTICO 10 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18570,7 +18602,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1290",
+    "id": "rep-1290-8",
     "handle": "perfumero-esfero-plastico-8-ml-2",
     "title": "PERFUMERO ESFERO PLASTICO 8 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18597,7 +18629,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1204",
+    "id": "rep-1204-6",
     "handle": "perfumero-esfero-plastico-6-ml-2",
     "title": "PERFUMERO ESFERO PLASTICO 6 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18624,7 +18656,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1201",
+    "id": "rep-1201-3",
     "handle": "perfumero-plastico-3-ml-2",
     "title": "PERFUMERO PLASTICO 3 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18651,7 +18683,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1202",
+    "id": "rep-1202-8",
     "handle": "perfumero-plastico-8-ml-2",
     "title": "PERFUMERO PLASTICO 8 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18678,7 +18710,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1292",
+    "id": "rep-1292-25",
     "handle": "plastico-generico-25-ml-2",
     "title": "PLASTICO GENERICO 25 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18705,7 +18737,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1268",
+    "id": "rep-1268-100",
     "handle": "polo-rosca-replica-100-ml-2",
     "title": "POLO ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18734,7 +18766,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1380",
+    "id": "rep-1380-55",
     "handle": "polo-rosca-replica-55-ml-2",
     "title": "POLO ROSCA REPLICA 55 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18763,7 +18795,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1327",
+    "id": "rep-1327-80",
     "handle": "pure-xs-f-rosca-replica-80-ml-2",
     "title": "PURE XS F ROSCA REPLICA 80 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18792,7 +18824,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1361",
+    "id": "rep-1361-100",
     "handle": "ralph-agrafe-replica-100-ml-2",
     "title": "RALPH AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18821,7 +18853,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1283",
+    "id": "rep-1283-50",
     "handle": "reloj-rosca-lujo-50-ml",
     "title": "RELOJ ROSCA LUJO 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18848,7 +18880,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1346",
+    "id": "rep-1346-30",
     "handle": "ricci-rosca-replica-30-ml-2",
     "title": "RICCI ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18875,7 +18907,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1337",
+    "id": "rep-1337-50",
     "handle": "ricci-rosca-replica-50-ml-2",
     "title": "RICCI ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18902,7 +18934,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1391",
+    "id": "rep-1391-100",
     "handle": "robot-fame-agrafe-replica-100-ml-2",
     "title": "ROBOT (FAME) AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18928,7 +18960,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1390",
+    "id": "rep-1390-100",
     "handle": "robot-phantom-agrafe-replica-100-ml-2",
     "title": "ROBOT (PHANTOM) AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18956,7 +18988,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1388",
+    "id": "rep-1388-30",
     "handle": "robot-phantom-rosca-replica-30-ml-2",
     "title": "ROBOT (PHANTOM) ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -18984,7 +19016,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1389",
+    "id": "rep-1389-50",
     "handle": "robot-phantom-rosca-replica-50-ml-2",
     "title": "ROBOT (PHANTOM) ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19012,7 +19044,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1338",
+    "id": "rep-1338-100",
     "handle": "sauvage-rosca-replica-100-ml-2",
     "title": "SAUVAGE ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19041,7 +19073,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1306",
+    "id": "rep-1306-100",
     "handle": "scandal-f-agrafe-replica-100-ml-2",
     "title": "SCANDAL F AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19071,7 +19103,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1376",
+    "id": "rep-1376-30",
     "handle": "sultan-rosca-30-ml-2",
     "title": "SULTAN ROSCA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19097,7 +19129,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1363",
+    "id": "rep-1363-90",
     "handle": "swiss-army-rosca-replica-90-ml-2",
     "title": "SWISS ARMY ROSCA REPLICA  90 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19125,7 +19157,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1351",
+    "id": "rep-1351-30",
     "handle": "tacon-good-girl-rosca-30-ml-2",
     "title": "TACON (GOOD GIRL) ROSCA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19154,7 +19186,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1331",
+    "id": "rep-1331-50",
     "handle": "tacon-good-girl-rosca-50-ml-2",
     "title": "TACON (GOOD GIRL) ROSCA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19183,7 +19215,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1345",
+    "id": "rep-1345-90",
     "handle": "tacon-good-girl-rosca-90-ml-2",
     "title": "TACON (GOOD GIRL) ROSCA 90 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19212,7 +19244,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1393",
+    "id": "rep-1393-100-2",
     "handle": "thank-u-ariana-agrafe-100-ml-2",
     "title": "THANK U (ARIANA) AGRAFE 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19238,7 +19270,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1349",
+    "id": "rep-1349-35",
     "handle": "tied-rosca-lujo-35-ml",
     "title": "TIED ROSCA LUJO 35 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19265,7 +19297,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1350",
+    "id": "rep-1350-55",
     "handle": "tied-rosca-lujo-55-ml",
     "title": "TIED ROSCA LUJO 55 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19292,7 +19324,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1317",
+    "id": "rep-1317-75",
     "handle": "tom-rosca-lujo-75-ml-2",
     "title": "TOM ROSCA LUJO 75 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19319,7 +19351,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1263",
+    "id": "rep-1263-90",
     "handle": "tommy-rosca-replica-90-ml-2",
     "title": "TOMMY ROSCA REPLICA 90 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19348,7 +19380,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1302",
+    "id": "rep-1302-100",
     "handle": "valentino-rosca-replica-100-ml-2",
     "title": "VALENTINO ROSCA REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19375,7 +19407,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1300",
+    "id": "rep-1300-30-2",
     "handle": "valentino-rosca-replica-30-ml-2",
     "title": "VALENTINO ROSCA REPLICA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19402,7 +19434,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1301",
+    "id": "rep-1301-50",
     "handle": "valentino-rosca-replica-50-ml-2",
     "title": "VALENTINO ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19429,7 +19461,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1249",
+    "id": "rep-1249-100",
     "handle": "vip-bala-agrafe-replica-100-ml-2",
     "title": "VIP BALA AGRAFE REPLICA 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19456,7 +19488,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1340",
+    "id": "rep-1340-50",
     "handle": "vip-bala-rosca-replica-50-ml",
     "title": "VIP BALA ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19483,7 +19515,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1250",
+    "id": "rep-1250-85",
     "handle": "vip-bala-rosca-replica-85-ml-2",
     "title": "VIP BALA ROSCA REPLICA 85 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19510,7 +19542,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1384",
+    "id": "rep-1384-100",
     "handle": "vip-men-agrafe-replica-100-ml-aa-2",
     "title": "VIP MEN AGRAFE REPLICA 100 ML AA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19536,7 +19568,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1392",
+    "id": "rep-1392-100",
     "handle": "yara-lattafa-agrafe-100-ml-2",
     "title": "YARA (LATTAFA) AGRAFE 100 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19564,7 +19596,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1277",
+    "id": "rep-1277-30",
     "handle": "yara-lattafa-rosca-30-ml-2",
     "title": "YARA (LATTAFA) ROSCA 30 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19593,7 +19625,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-1347",
+    "id": "rep-1347-30",
     "handle": "yara-lattafa-rosca-30-ml-aa-2",
     "title": "YARA (LATTAFA) ROSCA 30 ML AA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19622,7 +19654,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-199",
+    "id": "rep-rep-199-50",
     "handle": "mandarin-rosca-replica-50-ml-2",
     "title": "MANDARIN ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19649,7 +19681,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-200",
+    "id": "rep-rep-200-50",
     "handle": "arabe-rosca-50-ml",
     "title": "ARABE ROSCA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19676,7 +19708,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-201",
+    "id": "rep-rep-201-100",
     "handle": "212-vip-black-agrafe-replica-100-ml-aa",
     "title": "212 VIP BLACK AGRAFE REPLICA 100 ML AA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19705,7 +19737,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-202",
+    "id": "rep-rep-202-100",
     "handle": "yara-candy-agrafe-100-ml-aaa-2",
     "title": "YARA CANDY AGRAFE 100 ML AAA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19734,7 +19766,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-203",
+    "id": "rep-rep-203-100",
     "handle": "cloud-agrafe-100-ml-aaa-2",
     "title": "CLOUD AGRAFE 100 ML AAA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19762,7 +19794,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-204",
+    "id": "rep-rep-204-100",
     "handle": "eros-agrafe-100-ml-aaa-2",
     "title": "EROS AGRAFE 100 ML AAA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19790,7 +19822,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-205",
+    "id": "rep-rep-205-100",
     "handle": "erba-pura-agrafe-100-ml-aaa-caja-2",
     "title": "ERBA PURA AGRAFE 100 ML AAA CAJA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19824,7 +19856,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "cuidado",
     "price": 8000,
-    "wholesalePrice": 6800,
+    "wholesalePrice": 6400,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -19842,7 +19874,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10500,
-    "wholesalePrice": 8900,
+    "wholesalePrice": 8400,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -19860,7 +19892,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 12000,
-    "wholesalePrice": 10800,
+    "wholesalePrice": 9600,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -19878,7 +19910,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10000,
-    "wholesalePrice": 8500,
+    "wholesalePrice": 8000,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -19896,7 +19928,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10500,
-    "wholesalePrice": 8900,
+    "wholesalePrice": 8400,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -19914,7 +19946,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 12000,
-    "wholesalePrice": 10200,
+    "wholesalePrice": 9600,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -19932,7 +19964,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 11000,
-    "wholesalePrice": 9400,
+    "wholesalePrice": 8800,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -19950,7 +19982,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10000,
-    "wholesalePrice": 8500,
+    "wholesalePrice": 8000,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -19968,83 +20000,11 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10500,
-    "wholesalePrice": 8900,
+    "wholesalePrice": 8400,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
       "excel_code": "splash-14"
-    },
-    "tags": [
-      "ambientales",
-      "hogar"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-16",
-    "handle": "crema-perfumas-facial-y-corporal-30-ml",
-    "title": "CREMA PERFUMAS FACIAL Y CORPORAL 30 ML",
-    "department": "hogar",
-    "category": "ambientales",
-    "price": 2400,
-    "wholesalePrice": 2000,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "splash-16"
-    },
-    "tags": [
-      "ambientales",
-      "hogar"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-17",
-    "handle": "crema-perfumas-facial-y-corporal-60-ml",
-    "title": "CREMA PERFUMAS FACIAL Y CORPORAL 60 ML",
-    "department": "hogar",
-    "category": "ambientales",
-    "price": 3500,
-    "wholesalePrice": 3000,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "splash-17"
-    },
-    "tags": [
-      "ambientales",
-      "hogar"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-18",
-    "handle": "crema-perfumas-facial-y-corporal-125-ml",
-    "title": "CREMA PERFUMAS FACIAL Y CORPORAL 125 ML",
-    "department": "hogar",
-    "category": "ambientales",
-    "price": 5500,
-    "wholesalePrice": 4700,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "splash-18"
-    },
-    "tags": [
-      "ambientales",
-      "hogar"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-19",
-    "handle": "crema-perfumas-facial-y-corporal-250-ml",
-    "title": "CREMA PERFUMAS FACIAL Y CORPORAL 250 ML",
-    "department": "hogar",
-    "category": "ambientales",
-    "price": 10000,
-    "wholesalePrice": 8500,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "splash-19"
     },
     "tags": [
       "ambientales",
@@ -20058,7 +20018,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "cuidado",
     "price": 8500,
-    "wholesalePrice": 7200,
+    "wholesalePrice": 6800,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20066,204 +20026,6 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     },
     "tags": [
       "cuidado",
-      "hogar"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-26",
-    "handle": "alcohol-desodorizado-30-ml-valvula-spray",
-    "title": "ALCOHOL DESODORIZADO 30 ML VALVULA SPRAY",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 1600,
-    "wholesalePrice": 1280,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "alcohol",
-      "excel_code": "splash-26"
-    },
-    "tags": [
-      "alcohol",
-      "insumos"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-27",
-    "handle": "alcohol-desodorizado-60-ml-valvula-spray",
-    "title": "ALCOHOL DESODORIZADO 60 ML VALVULA SPRAY",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 2200,
-    "wholesalePrice": 1760,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "alcohol",
-      "excel_code": "splash-27"
-    },
-    "tags": [
-      "alcohol",
-      "insumos"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-28",
-    "handle": "alcohol-desodorizado-125-ml-valvula-spray",
-    "title": "ALCOHOL DESODORIZADO 125 ML VALVULA SPRAY",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 3500,
-    "wholesalePrice": 2800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "alcohol",
-      "excel_code": "splash-28"
-    },
-    "tags": [
-      "alcohol",
-      "insumos"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-29",
-    "handle": "alcohol-desodorizado-125-ml-100-gr",
-    "title": "ALCOHOL DESODORIZADO 125 ML (100 GR)",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 2300,
-    "wholesalePrice": 1700,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "alcohol",
-      "excel_code": "splash-29"
-    },
-    "tags": [
-      "alcohol",
-      "insumos"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-30",
-    "handle": "alcohol-desodorizado-250-ml-200-gr",
-    "title": "ALCOHOL DESODORIZADO 250 ML (200 GR)",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 4000,
-    "wholesalePrice": 3000,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "alcohol",
-      "excel_code": "splash-30"
-    },
-    "tags": [
-      "alcohol",
-      "insumos"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-31",
-    "handle": "alcohol-desodorizado-500-ml-400-gr",
-    "title": "ALCOHOL DESODORIZADO 500 ML (400 GR)",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 7400,
-    "wholesalePrice": 5600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "alcohol",
-      "excel_code": "splash-31"
-    },
-    "tags": [
-      "alcohol",
-      "insumos"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-32",
-    "handle": "alcohol-desodorizado-1000-ml-800-gr",
-    "title": "ALCOHOL DESODORIZADO 1000 ML (800 GR)",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 13500,
-    "wholesalePrice": 10100,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "alcohol",
-      "excel_code": "splash-32"
-    },
-    "tags": [
-      "alcohol",
-      "insumos"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-35",
-    "handle": "agua-de-linos-spray-30-ml",
-    "title": "AGUA DE LINOS SPRAY 30 ML",
-    "department": "hogar",
-    "category": "ambientales",
-    "price": 2400,
-    "wholesalePrice": 1800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "splash-35"
-    },
-    "tags": [
-      "ambientales",
-      "hogar"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-36",
-    "handle": "agua-de-linos-spray-60-ml",
-    "title": "AGUA DE LINOS SPRAY 60 ML",
-    "department": "hogar",
-    "category": "ambientales",
-    "price": 4000,
-    "wholesalePrice": 3000,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "splash-36"
-    },
-    "tags": [
-      "ambientales",
-      "hogar"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-37",
-    "handle": "agua-de-linos-spray-125-ml",
-    "title": "AGUA DE LINOS SPRAY 125 ML",
-    "department": "hogar",
-    "category": "ambientales",
-    "price": 7000,
-    "wholesalePrice": 5300,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "splash-37"
-    },
-    "tags": [
-      "ambientales",
-      "hogar"
-    ]
-  },
-  {
-    "id": "sku-splash-splash-38",
-    "handle": "agua-de-linos-spray-250-ml",
-    "title": "AGUA DE LINOS SPRAY 250 ML",
-    "department": "hogar",
-    "category": "ambientales",
-    "price": 13000,
-    "wholesalePrice": 9800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "splash-38"
-    },
-    "tags": [
-      "ambientales",
       "hogar"
     ]
   },
@@ -20286,9 +20048,9 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "alc-30-ml",
-    "handle": "alcohol-desodorizado-30-ml",
-    "title": "Alcohol Desodorizado 30 ML",
+    "id": "alc-30",
+    "handle": "alcohol-desodorizado-valvula-spray-30-ml",
+    "title": "Alcohol Desodorizado (válvula spray) 30 ml",
     "description": "Alcohol desodorizado especializado para perfumería.",
     "department": "insumos",
     "category": "alcohol",
@@ -20296,7 +20058,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "wholesalePrice": 1280,
     "minQty": 6,
     "metadata": {
-      "unit": "30 ML",
+      "unit": "30 ml",
       "product_kind": "alcohol"
     },
     "tags": [
@@ -20305,9 +20067,9 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "alc-60-ml",
-    "handle": "alcohol-desodorizado-60-ml",
-    "title": "Alcohol Desodorizado 60 ML",
+    "id": "alc-60",
+    "handle": "alcohol-desodorizado-valvula-spray-60-ml",
+    "title": "Alcohol Desodorizado (válvula spray) 60 ml",
     "description": "Alcohol desodorizado especializado para perfumería.",
     "department": "insumos",
     "category": "alcohol",
@@ -20315,7 +20077,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "wholesalePrice": 1760,
     "minQty": 6,
     "metadata": {
-      "unit": "60 ML",
+      "unit": "60 ml",
       "product_kind": "alcohol"
     },
     "tags": [
@@ -20324,9 +20086,9 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "alc-125-ml",
-    "handle": "alcohol-desodorizado-125-ml",
-    "title": "Alcohol Desodorizado 125 ML",
+    "id": "alc-125",
+    "handle": "alcohol-desodorizado-valvula-spray-125-ml",
+    "title": "Alcohol Desodorizado (válvula spray) 125 ml",
     "description": "Alcohol desodorizado especializado para perfumería.",
     "department": "insumos",
     "category": "alcohol",
@@ -20334,64 +20096,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "wholesalePrice": 2800,
     "minQty": 6,
     "metadata": {
-      "unit": "125 ML",
-      "product_kind": "alcohol"
-    },
-    "tags": [
-      "alcohol",
-      "insumo"
-    ]
-  },
-  {
-    "id": "alc-250-ml",
-    "handle": "alcohol-desodorizado-250-ml",
-    "title": "Alcohol Desodorizado 250 ML",
-    "description": "Alcohol desodorizado especializado para perfumería.",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 4000,
-    "wholesalePrice": 3200,
-    "minQty": 6,
-    "metadata": {
-      "unit": "250 ML",
-      "product_kind": "alcohol"
-    },
-    "tags": [
-      "alcohol",
-      "insumo"
-    ]
-  },
-  {
-    "id": "alc-500-ml",
-    "handle": "alcohol-desodorizado-500-ml",
-    "title": "Alcohol Desodorizado 500 ML",
-    "description": "Alcohol desodorizado especializado para perfumería.",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 7400,
-    "wholesalePrice": 5920,
-    "minQty": 6,
-    "metadata": {
-      "unit": "500 ML",
-      "product_kind": "alcohol"
-    },
-    "tags": [
-      "alcohol",
-      "insumo"
-    ]
-  },
-  {
-    "id": "alc-1000-ml",
-    "handle": "alcohol-desodorizado-1000-ml",
-    "title": "Alcohol Desodorizado 1000 ML",
-    "description": "Alcohol desodorizado especializado para perfumería.",
-    "department": "insumos",
-    "category": "alcohol",
-    "price": 13500,
-    "wholesalePrice": 10800,
-    "minQty": 6,
-    "metadata": {
-      "unit": "1000 ML",
+      "unit": "125 ml",
       "product_kind": "alcohol"
     },
     "tags": [
@@ -20406,7 +20111,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 9000,
+    "wholesalePrice": 8000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20424,7 +20129,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 20000,
-    "wholesalePrice": 18000,
+    "wholesalePrice": 16000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20442,7 +20147,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 9000,
+    "wholesalePrice": 8000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20460,7 +20165,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 9000,
+    "wholesalePrice": 8000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20478,7 +20183,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 9000,
+    "wholesalePrice": 8000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20496,7 +20201,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 15000,
-    "wholesalePrice": 13500,
+    "wholesalePrice": 12000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20514,7 +20219,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 9000,
+    "wholesalePrice": 8000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20532,7 +20237,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 12000,
-    "wholesalePrice": 10800,
+    "wholesalePrice": 9600,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20550,7 +20255,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 15000,
-    "wholesalePrice": 13500,
+    "wholesalePrice": 12000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20568,7 +20273,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 9000,
+    "wholesalePrice": 8000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20586,7 +20291,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 20000,
-    "wholesalePrice": 18000,
+    "wholesalePrice": 16000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20604,7 +20309,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 5000,
-    "wholesalePrice": 4500,
+    "wholesalePrice": 4000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21558,7 +21263,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 12000,
-    "wholesalePrice": 11400,
+    "wholesalePrice": 9600,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21575,96 +21280,11 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 25000,
-    "wholesalePrice": 23800,
+    "wholesalePrice": 20000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
       "excel_code": "1901"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1902",
-    "handle": "cartuchera-peluche",
-    "title": "CARTUCHERA PELUCHE",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 8000,
-    "wholesalePrice": 7600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1902"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1902",
-    "handle": "cartuchera-grande",
-    "title": "CARTUCHERA GRANDE",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 10000,
-    "wholesalePrice": 9500,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1902"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1902",
-    "handle": "cartuchera-mediana",
-    "title": "CARTUCHERA MEDIANA",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 7000,
-    "wholesalePrice": 6700,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1902"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1903",
-    "handle": "cartuchera-lapiz",
-    "title": "CARTUCHERA LAPIZ",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 4000,
-    "wholesalePrice": 3800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1903"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1904",
-    "handle": "mini-monedero",
-    "title": "MINI MONEDERO",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 2500,
-    "wholesalePrice": 2400,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1904"
     },
     "tags": [
       "accesorios"
@@ -21677,28 +21297,11 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 20000,
-    "wholesalePrice": 19000,
+    "wholesalePrice": 16000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
       "excel_code": "1910"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1950",
-    "handle": "billetera-sintetico-grande-f",
-    "title": "BILLETERA SINTETICO GRANDE F",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 38000,
-    "wholesalePrice": 36100,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1950"
     },
     "tags": [
       "accesorios"
@@ -21711,28 +21314,11 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 25000,
-    "wholesalePrice": 23800,
+    "wholesalePrice": 20000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
       "excel_code": "1951"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1952",
-    "handle": "billetera-sintetica-cuadrada-mediana-f",
-    "title": "BILLETERA SINTETICA CUADRADA MEDIANA F",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 25000,
-    "wholesalePrice": 23800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1952"
     },
     "tags": [
       "accesorios"
@@ -21745,96 +21331,11 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 24000,
-    "wholesalePrice": 22800,
+    "wholesalePrice": 19200,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
       "excel_code": "1953"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1961",
-    "handle": "billetera-cuero-eco-m",
-    "title": "BILLETERA CUERO ECO M",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 25000,
-    "wholesalePrice": 23800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1961"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1963",
-    "handle": "billetera-cuero-fina-m",
-    "title": "BILLETERA CUERO FINA M",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 30000,
-    "wholesalePrice": 28500,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1963"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1964",
-    "handle": "billetera-cuero-cortaunas-m",
-    "title": "BILLETERA CUERO + CORTAUÑAS M",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 28000,
-    "wholesalePrice": 26600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1964"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1964",
-    "handle": "billetera-cuero-portadocumentos-m",
-    "title": "BILLETERA CUERO + PORTADOCUMENTOS M",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 27000,
-    "wholesalePrice": 25700,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1964"
-    },
-    "tags": [
-      "accesorios"
-    ]
-  },
-  {
-    "id": "acc-1980",
-    "handle": "cinturon-sintetica-f",
-    "title": "CINTURON SINTETICA F",
-    "department": "accesorios",
-    "category": "marroquineria",
-    "price": 12000,
-    "wholesalePrice": 11400,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "accessory",
-      "excel_code": "1980"
     },
     "tags": [
       "accesorios"
@@ -21847,7 +21348,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 22000,
-    "wholesalePrice": 20900,
+    "wholesalePrice": 17600,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21864,7 +21365,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 25000,
-    "wholesalePrice": 23800,
+    "wholesalePrice": 20000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21881,7 +21382,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 15000,
-    "wholesalePrice": 14300,
+    "wholesalePrice": 12000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21910,294 +21411,6 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "hog-plas-plas-4",
-    "handle": "valvula-spray-plastica",
-    "title": "VALVULA SPRAY PLASTICA",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 600,
-    "wholesalePrice": 480,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-4"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-5",
-    "handle": "envase-crema-30-ml-fliptop",
-    "title": "ENVASE CREMA 30 ML FLIPTOP",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1200,
-    "wholesalePrice": 960,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-5"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-6",
-    "handle": "envase-crema-30-ml-valvula-plastica",
-    "title": "ENVASE CREMA 30 ML VALVULA PLASTICA",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1200,
-    "wholesalePrice": 960,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-6"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-7",
-    "handle": "envase-crema-60-ml-fliptop",
-    "title": "ENVASE CREMA 60 ML FLIPTOP",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1300,
-    "wholesalePrice": 1040,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-7"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-8",
-    "handle": "envase-crema-60-ml-valvula-plastica",
-    "title": "ENVASE CREMA 60 ML VALVULA PLASTICA",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1400,
-    "wholesalePrice": 1120,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-8"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-9",
-    "handle": "envase-crema-125-ml-fliptop",
-    "title": "ENVASE CREMA 125 ML FLIPTOP",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1600,
-    "wholesalePrice": 1280,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-9"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-10",
-    "handle": "envase-crema-125-ml-valvula-plastica",
-    "title": "ENVASE CREMA 125 ML VALVULA PLASTICA",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1700,
-    "wholesalePrice": 1360,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-10"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-11",
-    "handle": "envase-crema-250-ml-fliptop",
-    "title": "ENVASE CREMA 250 ML FLIPTOP",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 2200,
-    "wholesalePrice": 1760,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-11"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-12",
-    "handle": "envase-crema-250-ml-valvula-plastica",
-    "title": "ENVASE CREMA 250 ML VALVULA PLASTICA",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 2300,
-    "wholesalePrice": 1840,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-12"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-13",
-    "handle": "envase-plastico-30-ml-tapa-seguridad",
-    "title": "ENVASE PLASTICO 30 ML TAPA SEGURIDAD",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 800,
-    "wholesalePrice": 640,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-13"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-14",
-    "handle": "envase-plastico-60-ml-tapa-seguridad",
-    "title": "ENVASE PLASTICO 60 ML TAPA SEGURIDAD",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 900,
-    "wholesalePrice": 720,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-14"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-15",
-    "handle": "envase-plastico-125-ml-tapa-seguridad",
-    "title": "ENVASE PLASTICO 125 ML TAPA SEGURIDAD",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1000,
-    "wholesalePrice": 800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-15"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-16",
-    "handle": "envase-plastico-250-ml-tapa-seguridad",
-    "title": "ENVASE PLASTICO 250 ML TAPA SEGURIDAD",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1200,
-    "wholesalePrice": 960,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-16"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-17",
-    "handle": "envase-plastico-500-ml-tapa-seguridad",
-    "title": "ENVASE PLASTICO 500 ML TAPA SEGURIDAD",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1400,
-    "wholesalePrice": 1120,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-17"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-18",
-    "handle": "envase-plastico-1000-ml-tapa-seguridad",
-    "title": "ENVASE PLASTICO 1000 ML TAPA SEGURIDAD",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1600,
-    "wholesalePrice": 1280,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-18"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-19",
-    "handle": "bala-plastica-250-ml-tapa-aplicadora",
-    "title": "BALA PLASTICA 250 ML TAPA APLICADORA",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 1900,
-    "wholesalePrice": 1520,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-19"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
     "id": "hog-plas-plas-20",
     "handle": "caja-replica-aa",
     "title": "CAJA REPLICA AA",
@@ -22213,528 +21426,6 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "tags": [
       "hogar",
       "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-21",
-    "handle": "caja-generica-para-cilindricos",
-    "title": "CAJA GENERICA PARA CILINDRICOS",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 2000,
-    "wholesalePrice": 1600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-21"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-plas-plas-22",
-    "handle": "caja-para-regalo",
-    "title": "CAJA PARA REGALO",
-    "department": "hogar",
-    "category": "empaques",
-    "price": 3000,
-    "wholesalePrice": 2400,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "plas-22"
-    },
-    "tags": [
-      "hogar",
-      "plas"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-4",
-    "handle": "jabon-liquido-lavadora-1-2-litro",
-    "title": "JABON LIQUIDO LAVADORA 1/2 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 3100,
-    "wholesalePrice": 2800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-4"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-5",
-    "handle": "jabon-liquido-lavadora-1-litro",
-    "title": "JABON LIQUIDO LAVADORA 1 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 5500,
-    "wholesalePrice": 5000,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-5"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-6",
-    "handle": "jabon-liquido-lavadora-galon-4-litros",
-    "title": "JABON LIQUIDO LAVADORA GALON 4 LITROS",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 19600,
-    "wholesalePrice": 17600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-6"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-7",
-    "handle": "jabon-liquido-rey-1-2-litro",
-    "title": "JABON LIQUIDO (REY) 1/2 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 2900,
-    "wholesalePrice": 2600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-7"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-8",
-    "handle": "jabon-liquido-rey-1-litro",
-    "title": "JABON LIQUIDO (REY) 1 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 5200,
-    "wholesalePrice": 4700,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-8"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-9",
-    "handle": "jabon-liquido-rey-galon-4-litros",
-    "title": "JABON LIQUIDO (REY) GALON 4 LITROS",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 17600,
-    "wholesalePrice": 15800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-9"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-10",
-    "handle": "jabon-liquido-lavaloza-500-ml",
-    "title": "JABON LIQUIDO LAVALOZA 500 ML",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 2800,
-    "wholesalePrice": 2500,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-10"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-11",
-    "handle": "jabon-liquido-lavaloza-1000-ml",
-    "title": "JABON LIQUIDO LAVALOZA 1000 ML",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 5000,
-    "wholesalePrice": 4500,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-11"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-12",
-    "handle": "jabon-liquido-lavaloza-galon-4-litro",
-    "title": "JABON LIQUIDO LAVALOZA GALON 4 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 17300,
-    "wholesalePrice": 15600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-12"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-13",
-    "handle": "jabon-liquido-para-manos-1-2-litro",
-    "title": "JABON LIQUIDO PARA MANOS 1/2 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 2400,
-    "wholesalePrice": 2200,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-13"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-14",
-    "handle": "jabon-liquido-para-manos-1-litro",
-    "title": "JABON LIQUIDO PARA MANOS 1 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 4400,
-    "wholesalePrice": 4000,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-14"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-15",
-    "handle": "jabon-liquido-para-manos-galon-4-litros",
-    "title": "JABON LIQUIDO PARA MANOS GALON 4 LITROS",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 15000,
-    "wholesalePrice": 13500,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-15"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-16",
-    "handle": "vinagre-industrial-1-2-litro",
-    "title": "VINAGRE INDUSTRIAL 1/2 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 2300,
-    "wholesalePrice": 2100,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-16"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-17",
-    "handle": "vinagre-industrial-1-litro",
-    "title": "VINAGRE INDUSTRIAL 1 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 3900,
-    "wholesalePrice": 3500,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-17"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-18",
-    "handle": "vinagre-industrial-galon-4-litros",
-    "title": "VINAGRE INDUSTRIAL GALON 4 LITROS",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 13300,
-    "wholesalePrice": 12000,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-18"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-19",
-    "handle": "desmanchador-ropa-color-1-2-litro",
-    "title": "DESMANCHADOR ROPA COLOR 1/2 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 2100,
-    "wholesalePrice": 1900,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-19"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-20",
-    "handle": "desmanchador-ropa-color-1-litro",
-    "title": "DESMANCHADOR ROPA COLOR 1 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 3400,
-    "wholesalePrice": 3100,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-20"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-21",
-    "handle": "desmanchador-ropa-color-galon-4-litros",
-    "title": "DESMANCHADOR ROPA COLOR GALON 4 LITROS",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 10800,
-    "wholesalePrice": 9700,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-21"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-22",
-    "handle": "suavizante-para-ropa-1-2-litro",
-    "title": "SUAVIZANTE PARA ROPA 1/2 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 2800,
-    "wholesalePrice": 2500,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-22"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-23",
-    "handle": "suavizante-para-ropa-1-litro",
-    "title": "SUAVIZANTE PARA ROPA 1 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 4900,
-    "wholesalePrice": 4400,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-23"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-24",
-    "handle": "suavizante-para-ropa-galon-4-litros",
-    "title": "SUAVIZANTE PARA ROPA GALON 4 LITROS",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 11900,
-    "wholesalePrice": 10700,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-24"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-25",
-    "handle": "limpia-pisos-1-2-litro",
-    "title": "LIMPIA PISOS 1/2 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 2300,
-    "wholesalePrice": 2100,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-25"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-26",
-    "handle": "limpia-pisos-1-litro",
-    "title": "LIMPIA PISOS 1 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 4000,
-    "wholesalePrice": 3600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-26"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-27",
-    "handle": "limpia-pisos-galon-4-litros",
-    "title": "LIMPIA PISOS GALON 4 LITROS",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 13800,
-    "wholesalePrice": 12400,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-27"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-28",
-    "handle": "desengrasante-industrial-1-2-litro",
-    "title": "DESENGRASANTE INDUSTRIAL 1/2 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 2900,
-    "wholesalePrice": 2600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-28"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-29",
-    "handle": "desengrasante-industrial-1-litro",
-    "title": "DESENGRASANTE INDUSTRIAL 1 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 5100,
-    "wholesalePrice": 4600,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-29"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
-    ]
-  },
-  {
-    "id": "hog-aseo-aseo-30",
-    "handle": "desengrasante-industrial-galon-4-litro",
-    "title": "DESENGRASANTE INDUSTRIAL GALON 4 LITRO",
-    "department": "hogar",
-    "category": "aseo",
-    "price": 17600,
-    "wholesalePrice": 15800,
-    "minQty": 6,
-    "metadata": {
-      "product_kind": "home_care",
-      "excel_code": "aseo-30"
-    },
-    "tags": [
-      "hogar",
-      "aseo"
     ]
   },
   {
@@ -22835,8 +21526,7 @@ export const CATALOG_SUMMARY = {
   "essences": 289,
   "bottles": 172,
   "preparedReplicas": 172,
-  "alcohol": 6,
-  "catalogProducts": 786,
-  "seedProducts": 786,
-  "unisex_fragrances": 18
+  "alcohol": 3,
+  "catalogProducts": 713,
+  "seedProducts": 713
 } as const;
