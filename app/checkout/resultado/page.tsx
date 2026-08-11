@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
+import { Section } from "../../../components/layout/Section";
 import { useCartStore } from "../../../store/useCartStore";
 
 const LAST_ORDER_KEY = "perfumas_last_order";
@@ -120,64 +121,66 @@ function ResultadoInner() {
       (!wompiTxnId && !loading));
 
   return (
-    <div className="mx-auto max-w-lg px-4 py-16 text-center">
-      <Badge className="mb-4">
-        {paid ? "Pago recibido" : failed ? "Pago no completado" : "Pedido registrado"}
-      </Badge>
-      <h1 className="font-display text-3xl text-bone mb-4">
-        {paid
-          ? "¡Pago confirmado!"
-          : failed
-            ? "No se completó el pago"
-            : "Estamos confirmando tu pago"}
-      </h1>
-      {orderId ? (
-        <>
-          <p className="text-bone-60 mb-2">Referencia de pedido</p>
-          <p className="font-mono text-gold-400 mb-6 break-all">{orderId}</p>
-        </>
-      ) : null}
-      {wompiTxnId ? (
-        <p className="text-xs text-bone-60 mb-4 font-mono break-all">
-          Transacción Wompi: {wompiTxnId}
-        </p>
-      ) : null}
-      {loading ? (
-        <p className="text-sm text-bone-60 mb-8">Consultando estado del pago…</p>
-      ) : (
-        <p className="text-sm text-bone-60 mb-8">
-          {status ? (
+    <Section tone="light" className="min-h-[50vh]">
+      <div className="mx-auto max-w-lg px-4 py-16 text-center">
+        <Badge className="mb-4">
+          {paid ? "Pago recibido" : failed ? "Pago no completado" : "Pedido registrado"}
+        </Badge>
+        <h1 className="font-display text-3xl text-ink mb-4">
+          {paid
+            ? "¡Pago confirmado!"
+            : failed
+              ? "No se completó el pago"
+              : "Estamos confirmando tu pago"}
+        </h1>
+        {orderId ? (
+          <>
+            <p className="text-ink-60 mb-2">Referencia de pedido</p>
+            <p className="font-mono text-gold-400 mb-6 break-all">{orderId}</p>
+          </>
+        ) : null}
+        {wompiTxnId ? (
+          <p className="text-xs text-ink-60 mb-4 font-mono break-all">
+            Transacción Wompi: {wompiTxnId}
+          </p>
+        ) : null}
+        {loading ? (
+          <p className="text-sm text-ink-60 mb-8">Consultando estado del pago…</p>
+        ) : (
+          <p className="text-sm text-ink-60 mb-8">
+            {status ? (
+              <>
+                Estado: <span className="text-gold-400">{status}</span>
+                {statusDetail ? ` — ${statusDetail}` : null}
+              </>
+            ) : (
+              statusDetail
+            )}
+          </p>
+        )}
+        <div className="flex flex-wrap justify-center gap-3">
+          {failed || (!paid && cartQty > 0) ? (
             <>
-              Estado: <span className="text-gold-400">{status}</span>
-              {statusDetail ? ` — ${statusDetail}` : null}
+              <Button asChild>
+                <Link href="/checkout">Reintentar pago</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/carrito">Ver carrito</Link>
+              </Button>
             </>
           ) : (
-            statusDetail
+            <>
+              <Button asChild>
+                <Link href="/tienda">Seguir comprando</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/">Volver al inicio</Link>
+              </Button>
+            </>
           )}
-        </p>
-      )}
-      <div className="flex flex-wrap justify-center gap-3">
-        {failed || (!paid && cartQty > 0) ? (
-          <>
-            <Button asChild>
-              <Link href="/checkout">Reintentar pago</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/carrito">Ver carrito</Link>
-            </Button>
-          </>
-        ) : (
-          <>
-            <Button asChild>
-              <Link href="/tienda">Seguir comprando</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/">Volver al inicio</Link>
-            </Button>
-          </>
-        )}
+        </div>
       </div>
-    </div>
+    </Section>
   );
 }
 
@@ -185,9 +188,11 @@ export default function CheckoutResultadoPage() {
   return (
     <Suspense
       fallback={
-        <div className="mx-auto max-w-lg px-4 py-16 text-center text-bone-60">
-          Cargando resultado…
-        </div>
+        <Section tone="light" className="min-h-[50vh]">
+          <div className="mx-auto max-w-lg px-4 py-16 text-center text-ink-60">
+            Cargando resultado…
+          </div>
+        </Section>
       }
     >
       <ResultadoInner />

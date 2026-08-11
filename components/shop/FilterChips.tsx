@@ -24,7 +24,7 @@ export function PriceBandFilter({
             className={`rounded-sm border px-3 py-1.5 text-xs ${
               value === b.id
                 ? "border-gold-400 text-gold-400"
-                : "border-black/15 text-bone-60 hover:border-gold-400/40"
+                : "border-ink/15 text-ink-60 hover:border-gold-400/40"
             }`}
           >
             {b.label}
@@ -58,7 +58,7 @@ export function ChipFilter<T extends string | number>({
             className={`rounded-sm border px-3 py-1.5 text-xs ${
               value === o.id
                 ? "border-gold-400 text-gold-400"
-                : "border-black/15 text-bone-60 hover:border-gold-400/40"
+                : "border-ink/15 text-ink-60 hover:border-gold-400/40"
             }`}
           >
             {o.label}

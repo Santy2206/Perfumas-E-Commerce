@@ -26,12 +26,12 @@ export function StepIndicator() {
             <button type="button" disabled={!clickable} onClick={() => clickable && setStep(s.n)} className="flex items-center gap-2 disabled:cursor-not-allowed">
               <span
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold font-display ${
-                  isActive || isDone ? "bg-gold-400 text-wine-950" : "border border-gold-400/30 text-bone"
+                  isActive || isDone ? "bg-gold-400 text-wine-950" : "border border-gold-400/30 text-ink"
                 }`}
               >
                 {isDone ? "✓" : idx + 1}
               </span>
-              <span className={`text-xs uppercase tracking-widest hidden sm:inline ${isActive ? "text-gold-400" : "text-bone-60"}`}>{s.label}</span>
+              <span className={`text-xs uppercase tracking-widest hidden sm:inline ${isActive ? "text-gold-400" : "text-ink-60"}`}>{s.label}</span>
             </button>
             {idx < display.length - 1 && <span className="w-6 h-px bg-gold-400/30" />}
           </li>

@@ -61,7 +61,7 @@ export function GenderSelector() {
           key={g.id}
           onClick={() => setGender(gender === g.id ? null : g.id)}
           data-active={gender === g.id}
-          className="text-xs uppercase tracking-widest px-5 py-2.5 rounded-full border border-gold-400/30 text-bone-60 transition-colors data-[active=true]:bg-gold-400 data-[active=true]:text-wine-950 data-[active=true]:border-gold-400 hover:border-gold-400"
+          className="text-xs uppercase tracking-widest px-5 py-2.5 rounded-full border border-ink/15 text-ink-60 transition-colors data-[active=true]:bg-gold-400 data-[active=true]:text-wine-950 data-[active=true]:border-gold-400 hover:border-gold-400"
         >
           {g.label}
         </button>

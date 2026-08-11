@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { FavoriteItemCard } from "../../../components/favorites/FavoriteItemCard";
+import { Section } from "../../../components/layout/Section";
 import { Button } from "../../../components/ui/button";
 import {
   productKindLabel,
@@ -50,74 +51,80 @@ export default function MeGustaPage() {
 
   if (loading) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-        <p className="text-sm text-bone-60">Cargando…</p>
-      </div>
+      <Section tone="light" className="min-h-[50vh]">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
+          <p className="text-sm text-ink-60">Cargando…</p>
+        </div>
+      </Section>
     );
   }
 
   if (!customer) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-        <h1 className="font-display text-3xl text-bone mb-4">Me gusta</h1>
-        <p className="text-sm text-bone-60 mb-6">
-          Inicia sesión para guardar perfumes, esencias y creaciones.
-        </p>
-        <Button asChild>
-          <Link href="/cuenta/login?returnTo=/cuenta/me-gusta">
-            Iniciar sesión
-          </Link>
-        </Button>
-      </div>
+      <Section tone="light" className="min-h-[50vh]">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
+          <h1 className="font-display text-3xl text-ink mb-4">Me gusta</h1>
+          <p className="text-sm text-ink-60 mb-6">
+            Inicia sesión para guardar perfumes, esencias y creaciones.
+          </p>
+          <Button asChild>
+            <Link href="/cuenta/login?returnTo=/cuenta/me-gusta">
+              Iniciar sesión
+            </Link>
+          </Button>
+        </div>
+      </Section>
     );
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-      <h1 className="font-display text-3xl text-bone mb-2">Me gusta</h1>
-      <p className="text-sm text-bone-60 mb-8">
-        Tus favoritos, separados por tipo de producto.
-      </p>
-
-      {likes.length === 0 ? (
-        <p className="text-sm text-bone-60">
-          Aún no tienes me gusta. Toca el corazón en el catálogo o guarda una
-          creación en{" "}
-          <Link href="/crear" className="text-gold-400 underline">
-            Preparar
-          </Link>
-          .
+    <Section tone="light" className="min-h-[50vh]">
+      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
+        <h1 className="font-display text-3xl text-ink mb-2">Me gusta</h1>
+        <p className="text-sm text-ink-60 mb-8">
+          Tus favoritos, separados por tipo de producto.
         </p>
-      ) : (
-        <div className="space-y-10">
-          {sections.map((section) => (
-            <section key={section.key}>
-              <h2 className="font-display text-xl text-bone mb-4">
-                {section.label}
-              </h2>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {section.items.map((item, idx) => {
-                  const key =
-                    item.kind === "sku"
-                      ? `sku:${item.productId}`
-                      : `build:${item.id}`;
-                  return (
-                    <FavoriteItemCard
-                      key={`${key}-${idx}`}
-                      item={item}
-                      removing={busyKey === key}
-                      onRemove={() => {
-                        setBusyKey(key);
-                        void removeLike(item).finally(() => setBusyKey(null));
-                      }}
-                    />
-                  );
-                })}
-              </div>
-            </section>
-          ))}
-        </div>
-      )}
-    </div>
+
+        {likes.length === 0 ? (
+          <p className="text-sm text-ink-60">
+            Aún no tienes me gusta. Toca el corazón en el catálogo o guarda una
+            creación en{" "}
+            <Link href="/crear" className="text-gold-400 underline">
+              Preparar
+            </Link>
+            .
+          </p>
+        ) : (
+          <div className="space-y-10">
+            {sections.map((section) => (
+              <section key={section.key}>
+                <h2 className="font-display text-xl text-ink mb-4">
+                  {section.label}
+                </h2>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {section.items.map((item, idx) => {
+                    const key =
+                      item.kind === "sku"
+                        ? `sku:${item.productId}`
+                        : `build:${item.id}`;
+                    return (
+                      <FavoriteItemCard
+                        key={`${key}-${idx}`}
+                        item={item}
+                        removing={busyKey === key}
+                        onRemove={() => {
+                          setBusyKey(key);
+                          void removeLike(item).finally(() => setBusyKey(null));
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
+          </div>
+        )}
+      </div>
+    </Section>
   );
 }

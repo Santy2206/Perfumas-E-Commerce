@@ -13,6 +13,7 @@ import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Badge } from "../../components/ui/badge";
+import { Section } from "../../components/layout/Section";
 
 const LAST_ORDER_KEY = "perfumas_last_order";
 const DEFAULT_PAYMENT = "wompi";
@@ -107,39 +108,43 @@ export default function CheckoutPage() {
 
   if (lines.length === 0 && !orderId) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-16 text-center">
-        <p className="text-bone-60 mb-6">Tu carrito está vacío.</p>
-        <Button asChild>
-          <Link href="/tienda">Ir a la tienda</Link>
-        </Button>
-      </div>
+      <Section tone="light" className="min-h-[50vh]">
+        <div className="mx-auto max-w-lg px-4 py-16 text-center">
+          <p className="text-ink-60 mb-6">Tu carrito está vacío.</p>
+          <Button asChild>
+            <Link href="/tienda">Ir a la tienda</Link>
+          </Button>
+        </div>
+      </Section>
     );
   }
 
   if (orderId) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-16 text-center">
-        <Badge className="mb-4">Pedido confirmado</Badge>
-        <h1 className="font-display text-3xl text-bone mb-4">¡Gracias por tu compra!</h1>
-        <p className="text-bone-60 mb-2">Número de pedido</p>
-        <p className="font-mono text-gold-400 mb-6">{orderId}</p>
-        <p className="text-sm text-bone-60 mb-4">
-          Te contactaremos al correo/WhatsApp si necesitamos confirmar algo del pedido.
-        </p>
-        {paymentNote ? (
-          <p className="text-sm text-gold-400 mb-8">{paymentNote}</p>
-        ) : (
-          <div className="mb-8" />
-        )}
-        <div className="flex flex-wrap justify-center gap-3">
-          <Button asChild>
-            <Link href="/cuenta">Ver mi cuenta</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/">Volver al inicio</Link>
-          </Button>
+      <Section tone="light" className="min-h-[50vh]">
+        <div className="mx-auto max-w-lg px-4 py-16 text-center">
+          <Badge className="mb-4">Pedido confirmado</Badge>
+          <h1 className="font-display text-3xl text-ink mb-4">¡Gracias por tu compra!</h1>
+          <p className="text-ink-60 mb-2">Número de pedido</p>
+          <p className="font-mono text-gold-400 mb-6">{orderId}</p>
+          <p className="text-sm text-ink-60 mb-4">
+            Te contactaremos al correo/WhatsApp si necesitamos confirmar algo del pedido.
+          </p>
+          {paymentNote ? (
+            <p className="text-sm text-gold-400 mb-8">{paymentNote}</p>
+          ) : (
+            <div className="mb-8" />
+          )}
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button asChild>
+              <Link href="/cuenta">Ver mi cuenta</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/">Volver al inicio</Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      </Section>
     );
   }
 
@@ -275,165 +280,163 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-      <h1 className="font-display text-3xl text-bone mb-2">Checkout</h1>
-      <p className="text-sm text-bone-60 mb-8">
-        Colombia · COP
-        {isB2B ? " · Cuenta mayorista" : ""}
-      </p>
+    <Section tone="light" className="min-h-[50vh]">
+      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
+        <h1 className="font-display text-3xl text-ink mb-2">Checkout</h1>
+        <p className="text-sm text-ink-60 mb-8">
+          Colombia · COP
+          {isB2B ? " · Cuenta mayorista" : ""}
+        </p>
 
-      <div className="space-y-8">
-        <section className="rounded-sm border border-gold-400/25 bg-wine-900/80 p-5 space-y-4">
-          <h2 className="font-display text-lg text-bone">Datos de contacto</h2>
-          <div>
-            <Label htmlFor="name">Nombre completo</Label>
-            <Input id="name" value={name} onChange={(e) => setName(e.target.value)} className="bg-wine-950" />
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+        <div className="space-y-8">
+          <section className="rounded-sm border border-gold-400/25 bg-white p-5 space-y-4">
+            <h2 className="font-display text-lg text-ink">Datos de contacto</h2>
             <div>
-              <Label htmlFor="email">Correo</Label>
-              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="bg-wine-950" />
+              <Label htmlFor="name">Nombre completo</Label>
+              <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
-            <div>
-              <Label htmlFor="phone">Teléfono / WhatsApp</Label>
-              <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="bg-wine-950" />
-            </div>
-          </div>
-        </section>
-
-        <section className="rounded-sm border border-gold-400/25 bg-wine-900/80 p-5 space-y-3">
-          <h2 className="font-display text-lg text-bone mb-2">Envío / recogida</h2>
-          {SHIPPING_METHODS.map((m) => (
-            <label
-              key={m.id}
-              className={`flex cursor-pointer items-start gap-3 rounded-sm border p-3 ${
-                shippingMethodId === m.id
-                  ? "border-gold-400 bg-gold-400/10"
-                  : "border-gold-400/15 bg-wine-950/60"
-              }`}
-            >
-              <input
-                type="radio"
-                name="shipping"
-                checked={shippingMethodId === m.id}
-                onChange={() => setShippingMethodId(m.id)}
-                className="mt-1"
-              />
-              <div className="flex-1">
-                <p className="text-sm text-bone">{m.name}</p>
-                <p className="text-xs text-bone-60">{m.description}</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <Label htmlFor="email">Correo</Label>
+                <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
               </div>
-              <span className="text-sm text-gold-400">
-                {m.price === 0 ? "Gratis" : formatCOP(m.price)}
-              </span>
-            </label>
-          ))}
+              <div>
+                <Label htmlFor="phone">Teléfono / WhatsApp</Label>
+                <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              </div>
+            </div>
+          </section>
 
-          {needsAddress ? (
-            <div className="mt-4 space-y-4 border-t border-gold-400/15 pt-4">
-              {needsLocality ? (
+          <section className="rounded-sm border border-gold-400/25 bg-white p-5 space-y-3">
+            <h2 className="font-display text-lg text-ink mb-2">Envío / recogida</h2>
+            {SHIPPING_METHODS.map((m) => (
+              <label
+                key={m.id}
+                className={`flex cursor-pointer items-start gap-3 rounded-sm border p-3 ${
+                  shippingMethodId === m.id
+                    ? "border-gold-400 bg-gold-400/10"
+                    : "border-gold-400/20 bg-paper-soft"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="shipping"
+                  checked={shippingMethodId === m.id}
+                  onChange={() => setShippingMethodId(m.id)}
+                  className="mt-1"
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-ink">{m.name}</p>
+                  <p className="text-xs text-ink-60">{m.description}</p>
+                </div>
+                <span className="text-sm text-gold-400">
+                  {m.price === 0 ? "Gratis" : formatCOP(m.price)}
+                </span>
+              </label>
+            ))}
+
+            {needsAddress ? (
+              <div className="mt-4 space-y-4 border-t border-gold-400/20 pt-4">
+                {needsLocality ? (
+                  <div>
+                    <Label htmlFor="locality">Localidad (Bogotá)</Label>
+                    <select
+                      id="locality"
+                      value={locality}
+                      onChange={(e) => setLocality(e.target.value)}
+                      className="mt-1 flex h-10 w-full rounded-sm border border-gold-400/30 bg-paper px-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-gold-400"
+                    >
+                      <option value="">Selecciona localidad…</option>
+                      {BOGOTA_LOCALITIES.map((loc) => (
+                        <option key={loc} value={loc}>
+                          {loc}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="mt-1 text-xs text-ink-60">
+                      Usamos la localidad para despachar desde el hub más cercano (Fontibón o Bonanza).
+                    </p>
+                  </div>
+                ) : null}
+
+                {needsNationalCity ? (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <Label htmlFor="city">Ciudad</Label>
+                      <Input
+                        id="city"
+                        value={city === "Bogotá" ? "" : city}
+                        onChange={(e) => setCity(e.target.value)}
+                        placeholder="Medellín, Cali…"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="department">Departamento (opcional)</Label>
+                      <Input
+                        id="department"
+                        value={department}
+                        onChange={(e) => setDepartment(e.target.value)}
+                        placeholder="Antioquia…"
+                      />
+                    </div>
+                  </div>
+                ) : null}
+
                 <div>
-                  <Label htmlFor="locality">Localidad (Bogotá)</Label>
-                  <select
-                    id="locality"
-                    value={locality}
-                    onChange={(e) => setLocality(e.target.value)}
-                    className="mt-1 flex h-10 w-full rounded-sm border border-gold-400/30 bg-wine-950 px-3 text-sm text-bone focus:outline-none focus:ring-2 focus:ring-gold-400"
-                  >
-                    <option value="">Selecciona localidad…</option>
-                    {BOGOTA_LOCALITIES.map((loc) => (
-                      <option key={loc} value={loc}>
-                        {loc}
-                      </option>
-                    ))}
-                  </select>
-                  <p className="mt-1 text-xs text-bone-60">
-                    Usamos la localidad para despachar desde el hub más cercano (Fontibón o Bonanza).
-                  </p>
+                  <Label htmlFor="address">Dirección de entrega</Label>
+                  <Input
+                    id="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    placeholder="Calle, número, barrio, referencias"
+                  />
                 </div>
-              ) : null}
-
-              {needsNationalCity ? (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <Label htmlFor="city">Ciudad</Label>
-                    <Input
-                      id="city"
-                      value={city === "Bogotá" ? "" : city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder="Medellín, Cali…"
-                      className="bg-wine-950"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="department">Departamento (opcional)</Label>
-                    <Input
-                      id="department"
-                      value={department}
-                      onChange={(e) => setDepartment(e.target.value)}
-                      placeholder="Antioquia…"
-                      className="bg-wine-950"
-                    />
-                  </div>
+                <div>
+                  <Label htmlFor="postal">
+                    Código postal
+                    {needsNationalCity ? " (requerido)" : " (opcional)"}
+                  </Label>
+                  <Input
+                    id="postal"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                    placeholder="110111"
+                    required={needsNationalCity}
+                  />
                 </div>
-              ) : null}
+              </div>
+            ) : null}
+          </section>
 
-              <div>
-                <Label htmlFor="address">Dirección de entrega</Label>
-                <Input
-                  id="address"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  placeholder="Calle, número, barrio, referencias"
-                  className="bg-wine-950"
-                />
-              </div>
-              <div>
-                <Label htmlFor="postal">
-                  Código postal
-                  {needsNationalCity ? " (requerido)" : " (opcional)"}
-                </Label>
-                <Input
-                  id="postal"
-                  value={postalCode}
-                  onChange={(e) => setPostalCode(e.target.value)}
-                  placeholder="110111"
-                  required={needsNationalCity}
-                  className="bg-wine-950"
-                />
-              </div>
+          <section className="rounded-sm border border-gold-400/25 bg-white p-5">
+            <div className="flex justify-between text-sm text-ink-60 mb-1">
+              <span>Subtotal</span>
+              <span className="text-ink">{formatCOP(subtotal())}</span>
             </div>
-          ) : null}
-        </section>
-
-        <section className="rounded-sm border border-gold-400/25 bg-wine-900/80 p-5">
-          <div className="flex justify-between text-sm text-bone-60 mb-1">
-            <span>Subtotal</span>
-            <span>{formatCOP(subtotal())}</span>
-          </div>
-          <div className="flex justify-between text-sm text-bone-60 mb-3">
-            <span>Envío</span>
-            <span>
-              {shipping ? (shipping.price === 0 ? "Gratis" : formatCOP(shipping.price)) : "—"}
-            </span>
-          </div>
-          <div className="flex justify-between font-display text-xl text-bone mb-4">
-            <span>Total</span>
-            <span className="text-gold-400">{formatCOP(total)}</span>
-          </div>
-          <p className="mb-6 text-xs leading-relaxed text-bone-60">
-            Al confirmar se abre el pago seguro. Puedes pagar con{" "}
-            <span className="text-bone">tarjeta débito o crédito</span>,{" "}
-            <span className="text-bone">PSE</span>,{" "}
-            <span className="text-bone">Nequi</span>,{" "}
-            <span className="text-bone">Bancolombia</span> u otros medios disponibles.
-          </p>
-          {error ? <p className="text-sm text-red-400 mb-4">{error}</p> : null}
-          <Button className="w-full" disabled={placing} onClick={placeOrder}>
-            {placing ? placingStep || "Procesando…" : "Confirmar pedido"}
-          </Button>
-        </section>
+            <div className="flex justify-between text-sm text-ink-60 mb-3">
+              <span>Envío</span>
+              <span className="text-ink">
+                {shipping ? (shipping.price === 0 ? "Gratis" : formatCOP(shipping.price)) : "—"}
+              </span>
+            </div>
+            <div className="flex justify-between font-display text-xl text-ink mb-4">
+              <span>Total</span>
+              <span className="text-gold-400">{formatCOP(total)}</span>
+            </div>
+            <p className="mb-6 text-xs leading-relaxed text-ink-60">
+              Al confirmar se abre el pago seguro. Puedes pagar con{" "}
+              <span className="text-ink">tarjeta débito o crédito</span>,{" "}
+              <span className="text-ink">PSE</span>,{" "}
+              <span className="text-ink">Nequi</span>,{" "}
+              <span className="text-ink">Bancolombia</span> u otros medios disponibles.
+            </p>
+            {error ? <p className="text-sm text-red-600 mb-4">{error}</p> : null}
+            <Button className="w-full" disabled={placing} onClick={placeOrder}>
+              {placing ? placingStep || "Procesando…" : "Confirmar pedido"}
+            </Button>
+          </section>
+        </div>
       </div>
-    </div>
+    </Section>
   );
 }

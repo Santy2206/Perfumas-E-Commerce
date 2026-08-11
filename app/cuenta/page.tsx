@@ -9,6 +9,7 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { AccountAccessPanel } from "../../components/account/AccountAccessPanel";
 import { AccountDangerZone } from "../../components/account/AccountDangerZone";
+import { Section } from "../../components/layout/Section";
 import {
   needsProfileCompletion,
   repairCustomerEmail,
@@ -194,31 +195,35 @@ export default function CuentaPage() {
 
   if (loadingCustomer) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-        <p className="text-sm text-bone-60">Cargando cuenta…</p>
-      </div>
+      <Section tone="light" className="min-h-[50vh]">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
+          <p className="text-sm text-ink-60">Cargando cuenta…</p>
+        </div>
+      </Section>
     );
   }
 
   if (!customer) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-        <h1 className="font-display text-3xl text-bone mb-4">Mi cuenta</h1>
-        <p className="text-sm text-bone-60 mb-6">
-          Inicia sesión para ver tu historial de compras y volver a pedir con un clic.
-        </p>
-        <div className="flex flex-wrap gap-2">
-          <Button asChild>
-            <Link href="/cuenta/login">Iniciar sesión</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/cuenta/registro">Crear cuenta</Link>
-          </Button>
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/mayoristas">Portal mayoristas</Link>
-          </Button>
+      <Section tone="light" className="min-h-[50vh]">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
+          <h1 className="font-display text-3xl text-ink mb-4">Mi cuenta</h1>
+          <p className="text-sm text-ink-60 mb-6">
+            Inicia sesión para ver tu historial de compras y volver a pedir con un clic.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Button asChild>
+              <Link href="/cuenta/login">Iniciar sesión</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/cuenta/registro">Crear cuenta</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/mayoristas">Portal mayoristas</Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      </Section>
     );
   }
 
@@ -231,11 +236,11 @@ export default function CuentaPage() {
   ) => (
     <div className="space-y-4">
       {ordersLoading && (
-        <p className="text-sm text-bone-60">Cargando pedidos…</p>
+        <p className="text-sm text-ink-60">Cargando pedidos…</p>
       )}
-      {ordersError && <p className="text-sm text-red-300">{ordersError}</p>}
+      {ordersError && <p className="text-sm text-red-600">{ordersError}</p>}
       {!ordersLoading && !ordersError && list.length === 0 && (
-        <p className="text-sm text-bone-60">{opts.empty}</p>
+        <p className="text-sm text-ink-60">{opts.empty}</p>
       )}
       {list.map((order) => {
         const orderKey = order.id;
@@ -249,14 +254,14 @@ export default function CuentaPage() {
         return (
           <div
             key={orderKey}
-            className="border border-gold-400/20 rounded-sm p-4 space-y-3"
+            className="rounded-sm border border-gold-400/25 bg-white p-4 space-y-3"
           >
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <div>
-                <p className="text-bone font-medium">
+                <p className="text-ink font-medium">
                   Pedido #{order.display_id ?? order.id.slice(-6)}
                 </p>
-                <p className="text-xs text-bone-60">{created}</p>
+                <p className="text-xs text-ink-60">{created}</p>
                 <p className="mt-1 text-xs uppercase tracking-widest text-gold-400">
                   {orderStatusLabel(order)}
                 </p>
@@ -274,7 +279,7 @@ export default function CuentaPage() {
                     key={lineKey}
                     className="flex flex-wrap items-center justify-between gap-2 text-sm"
                   >
-                    <span className="text-bone-60">
+                    <span className="text-ink-60">
                       {item.title || "Artículo"} × {item.quantity || 1}
                     </span>
                     {opts.showReorder && (
@@ -300,14 +305,15 @@ export default function CuentaPage() {
   );
 
   return (
+    <Section tone="light" className="min-h-[50vh]">
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-      <h1 className="font-display text-3xl text-bone mb-8">Mi cuenta</h1>
+      <h1 className="font-display text-3xl text-ink mb-8">Mi cuenta</h1>
 
       {showCompleteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-wine-950/80 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-sm border border-gold-400/30 bg-wine-900 p-6 shadow-xl">
-            <h2 className="font-display text-2xl text-bone mb-2">Completa tu perfil</h2>
-            <p className="text-sm text-bone-60 mb-6">
+          <div className="w-full max-w-md rounded-sm border border-gold-400/25 bg-white p-6 shadow-xl">
+            <h2 className="font-display text-2xl text-ink mb-2">Completa tu perfil</h2>
+            <p className="text-sm text-ink-60 mb-6">
               Para continuar, necesitamos tu teléfono y cumpleaños.
             </p>
             <form
@@ -336,7 +342,7 @@ export default function CuentaPage() {
                 />
               </div>
               {profileError && (
-                <p className="text-sm text-red-300">{profileError}</p>
+                <p className="text-sm text-red-600">{profileError}</p>
               )}
               <Button type="submit" className="w-full" disabled={saving}>
                 {saving ? "Guardando…" : "Guardar y continuar"}
@@ -356,26 +362,26 @@ export default function CuentaPage() {
               <div className="space-y-4">
                 <dl className="space-y-3 text-sm">
                   <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-bone-60">Nombre:</dt>
-                    <dd className="text-bone font-medium">
+                    <dt className="text-ink-60">Nombre:</dt>
+                    <dd className="text-ink font-medium">
                       {[customer.first_name, customer.last_name]
                         .filter(Boolean)
                         .join(" ") || "—"}
                     </dd>
                   </div>
                   <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-bone-60">Correo:</dt>
-                    <dd className="text-bone font-medium">{displayEmail}</dd>
+                    <dt className="text-ink-60">Correo:</dt>
+                    <dd className="text-ink font-medium">{displayEmail}</dd>
                   </div>
                   <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-bone-60">Teléfono:</dt>
-                    <dd className="text-bone font-medium">
+                    <dt className="text-ink-60">Teléfono:</dt>
+                    <dd className="text-ink font-medium">
                       {customer.phone || "—"}
                     </dd>
                   </div>
                   <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-bone-60">Cumpleaños:</dt>
-                    <dd className="text-bone font-medium">
+                    <dt className="text-ink-60">Cumpleaños:</dt>
+                    <dd className="text-ink font-medium">
                       {formatBirthdayDisplay(customer.birthday)}
                     </dd>
                   </div>
@@ -384,8 +390,8 @@ export default function CuentaPage() {
                   <p className="text-sm text-gold-400">{profileMsg}</p>
                 )}
                 {!customer.email && (
-                  <div className="space-y-2 rounded-sm border border-red-400/30 bg-red-950/30 p-3">
-                    <p className="text-sm text-red-200">
+                  <div className="space-y-2 rounded-sm border border-red-400/30 bg-red-50 p-3">
+                    <p className="text-sm text-red-600">
                       No pudimos leer tu correo. Repara la cuenta con Google
                       (vuelve a autenticarte) o crea una contraseña abajo si ya
                       tienes correo válido en el proveedor.
@@ -458,7 +464,7 @@ export default function CuentaPage() {
                 </div>
                 <div className="space-y-2">
                   <Label>Correo</Label>
-                  <p className="text-sm text-bone">{displayEmail}</p>
+                  <p className="text-sm text-ink">{displayEmail}</p>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Teléfono</Label>
@@ -473,9 +479,9 @@ export default function CuentaPage() {
                 <div className="space-y-2">
                   <Label htmlFor="birthday">Cumpleaños</Label>
                   {birthdayLocked ? (
-                    <p className="text-sm text-bone">
+                    <p className="text-sm text-ink">
                       {formatBirthdayDisplay(customer.birthday)}
-                      <span className="mt-1 block text-xs text-bone-60">
+                      <span className="mt-1 block text-xs text-ink-60">
                         No se puede cambiar después de guardarlo.
                       </span>
                     </p>
@@ -490,7 +496,7 @@ export default function CuentaPage() {
                   )}
                 </div>
                 {profileError && (
-                  <p className="text-sm text-red-300">{profileError}</p>
+                  <p className="text-sm text-red-600">{profileError}</p>
                 )}
                 {profileMsg && (
                   <p className="text-sm text-gold-400">{profileMsg}</p>
@@ -528,12 +534,12 @@ export default function CuentaPage() {
             <CardHeader>
               <CardTitle>Mayorista</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-bone-60">
+            <CardContent className="space-y-3 text-sm text-ink-60">
               <p>
-                <span className="text-bone">Negocio:</span> {b2bProfile.businessName}
+                <span className="text-ink">Negocio:</span> {b2bProfile.businessName}
               </p>
               <p>
-                <span className="text-bone">NIT:</span> {b2bProfile.nit}
+                <span className="text-ink">NIT:</span> {b2bProfile.nit}
               </p>
               <p className="flex items-center gap-2">
                 Estado:{" "}
@@ -558,7 +564,7 @@ export default function CuentaPage() {
             <CardTitle>Carrito actual</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-bone-60 mb-3">{itemCount} artículo(s) en el carrito</p>
+            <p className="text-sm text-ink-60 mb-3">{itemCount} artículo(s) en el carrito</p>
             <Button asChild size="sm" variant="outline">
               <Link href="/carrito">Ver carrito</Link>
             </Button>
@@ -570,13 +576,13 @@ export default function CuentaPage() {
             <CardTitle>Pedidos</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-xs text-bone-60">
+            <p className="text-xs text-ink-60">
               Pedidos en empaque, envío o listos para recoger.
             </p>
             {reorderMsg && (
               <p className="text-sm text-gold-400">
                 {reorderMsg}{" "}
-                <Link href="/carrito" className="underline hover:text-gold-100">
+                <Link href="/carrito" className="underline hover:text-gold-300">
                   Ir al carrito
                 </Link>
               </p>
@@ -593,7 +599,7 @@ export default function CuentaPage() {
             <CardTitle>Historial</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-xs text-bone-60">
+            <p className="text-xs text-ink-60">
               Compras completadas: entregadas o ya recogidas.
             </p>
             {renderOrderList(historyOrders as AccountOrder[], {
@@ -613,5 +619,6 @@ export default function CuentaPage() {
         </Card>
       </div>
     </div>
+    </Section>
   );
 }

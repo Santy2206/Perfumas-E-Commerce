@@ -55,12 +55,12 @@ export function GoogleAccountMergeForm({
   return (
     <form onSubmit={(e) => void submit(e)} className="space-y-4 text-left">
       <div>
-        <h1 className="font-display text-2xl text-bone mb-2">
+        <h1 className="font-display text-2xl text-ink mb-2">
           Esta cuenta ya existe
         </h1>
-        <p className="text-sm text-bone-60">
+        <p className="text-sm text-ink-60">
           El correo{" "}
-          <span className="text-bone font-medium">{conflict.email}</span> ya
+          <span className="text-ink font-medium">{conflict.email}</span> ya
           tiene acceso con correo y contraseña. Confirma tu contraseña para
           unir Google a esa misma cuenta.
         </p>
@@ -76,7 +76,7 @@ export function GoogleAccountMergeForm({
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      {error && <p className="text-sm text-red-300">{error}</p>}
+      {error && <p className="text-sm text-red-600">{error}</p>}
       <div className="flex flex-wrap gap-2">
         <Button type="submit" disabled={busy || password.length < 1}>
           {busy ? "Uniendo…" : "Unir cuentas"}

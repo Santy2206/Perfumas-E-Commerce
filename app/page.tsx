@@ -2,11 +2,12 @@ import Link from "next/link";
 import { DEPARTMENTS } from "../lib/catalog";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { Section } from "../components/layout/Section";
 
 export default function Home() {
   return (
     <div>
-      <section className="relative overflow-hidden px-4 py-20 sm:px-8 sm:py-28">
+      <Section tone="dark" className="relative overflow-hidden px-4 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-gold-400 uppercase tracking-[0.3em] text-xs mb-4">Perfumas · Bogotá desde 2015</p>
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-bone mb-6 max-w-3xl mx-auto">
@@ -27,11 +28,11 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="px-4 pb-20 sm:px-8">
+      <Section tone="light" className="px-4 py-16 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <h2 className="font-display text-2xl text-bone mb-8 text-center">Nuestros departamentos</h2>
+          <h2 className="font-display text-2xl text-ink mb-8 text-center">Nuestros departamentos</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {DEPARTMENTS.map((d) => (
               <Link key={d.id} href={d.href}>
@@ -48,7 +49,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

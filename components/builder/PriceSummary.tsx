@@ -12,25 +12,25 @@ export function PriceSummary() {
   const resetSelection = useBuilderStore((s) => s.resetSelection);
 
   return (
-    <div className="bg-white/5 border border-gold-400/20 rounded-sm p-5">
+    <div className="bg-white border border-gold-400/25 rounded-sm p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-display text-lg text-bone">Tu carrito</h3>
-        <span className="text-xs text-bone-60">
+        <h3 className="font-display text-lg text-ink">Tu carrito</h3>
+        <span className="text-xs text-ink-60">
           {lines.length} {lines.length === 1 ? "artículo" : "artículos"}
         </span>
       </div>
 
-      {lines.length === 0 && <p className="text-sm text-bone-60">Aún no has agregado nada.</p>}
+      {lines.length === 0 && <p className="text-sm text-ink-60">Aún no has agregado nada.</p>}
 
       <ul className="space-y-3 mb-4">
         {lines.map((item) => (
           <li
             key={item.id}
-            className="flex justify-between items-start gap-3 text-sm border-t border-white/10 pt-3 first:border-0 first:pt-0"
+            className="flex justify-between items-start gap-3 text-sm border-t border-ink/10 pt-3 first:border-0 first:pt-0"
           >
             <div>
-              <p className="font-medium text-bone">{item.title}</p>
-              <p className="text-xs text-bone-60">
+              <p className="font-medium text-ink">{item.title}</p>
+              <p className="text-xs text-ink-60">
                 {item.kind === "build"
                   ? "Fragancia personalizada"
                   : item.isWholesale
@@ -40,8 +40,8 @@ export function PriceSummary() {
               </p>
             </div>
             <div className="text-right shrink-0">
-              <p className="text-bone">{formatCOP(item.price * item.quantity)}</p>
-              <button onClick={() => removeLine(item.id)} className="text-xs text-bone-60 underline">
+              <p className="text-ink">{formatCOP(item.price * item.quantity)}</p>
+              <button onClick={() => removeLine(item.id)} className="text-xs text-ink-60 underline">
                 Quitar
               </button>
             </div>
@@ -64,7 +64,7 @@ export function PriceSummary() {
       </Link>
       <button
         onClick={resetSelection}
-        className="w-full text-center text-sm text-bone-60 hover:text-gold-400 underline"
+        className="w-full text-center text-sm text-ink-60 hover:text-gold-400 underline"
       >
         + Preparar otra fragancia
       </button>

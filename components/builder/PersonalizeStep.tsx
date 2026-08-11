@@ -70,7 +70,7 @@ export function PersonalizeStep() {
   const [likeMsg, setLikeMsg] = useState<string | null>(null);
 
   if (!fragrance || !bottle) {
-    return <p className="text-sm text-bone-60">Completa los pasos 1 y 2 primero.</p>;
+    return <p className="text-sm text-ink-60">Completa los pasos 1 y 2 primero.</p>;
   }
 
   const selectedPheromones = PHEROMONES.filter((p) => selectedPheromoneIds.includes(p.id));
@@ -117,8 +117,8 @@ export function PersonalizeStep() {
   return (
     <div className="grid lg:grid-cols-[1fr_320px] gap-10">
       <div>
-        <h2 className="font-display text-2xl sm:text-3xl text-bone mb-2">Personaliza tu fragancia</h2>
-        <p className="text-sm text-bone-60 mb-8">Los últimos detalles antes de agregarla al carrito.</p>
+        <h2 className="font-display text-2xl sm:text-3xl text-ink mb-2">Personaliza tu fragancia</h2>
+        <p className="text-sm text-ink-60 mb-8">Los últimos detalles antes de agregarla al carrito.</p>
 
         <label className="block text-xs uppercase tracking-widest text-gold-400 mb-2">
           Texto para la etiqueta (opcional)
@@ -129,7 +129,7 @@ export function PersonalizeStep() {
           value={labelText}
           onChange={(e) => setLabelText(e.target.value)}
           placeholder='Ej: "Para Ana ♥"'
-          className="w-full bg-white/5 border border-gold-400/30 rounded-sm px-4 py-3 text-sm text-bone placeholder:text-bone-60 mb-6 focus:outline-none focus:ring-2 focus:ring-gold-400"
+          className="w-full bg-paper border border-gold-400/30 rounded-sm px-4 py-3 text-sm text-ink placeholder:text-ink-60 mb-6 focus:outline-none focus:ring-2 focus:ring-gold-400"
         />
 
         <p className="block text-xs uppercase tracking-widest text-gold-400 mb-3">Feromonas (opcional)</p>
@@ -137,7 +137,7 @@ export function PersonalizeStep() {
           {PHEROMONES.map((p) => (
             <label
               key={p.id}
-              className="flex cursor-pointer items-center justify-between gap-3 rounded-sm border border-white/10 bg-white/5 px-4 py-3"
+              className="flex cursor-pointer items-center justify-between gap-3 rounded-sm border border-gold-400/25 bg-white px-4 py-3"
             >
               <span className="flex items-center gap-3">
                 <input
@@ -146,25 +146,25 @@ export function PersonalizeStep() {
                   onChange={() => togglePheromone(p.id)}
                   className="w-4 h-4"
                 />
-                <span className="text-sm text-bone">{p.title}</span>
+                <span className="text-sm text-ink">{p.title}</span>
               </span>
-              <span className="text-xs text-bone-60">+{formatCOP(p.price)}</span>
+              <span className="text-xs text-ink-60">+{formatCOP(p.price)}</span>
             </label>
           ))}
         </div>
 
         <label className="flex items-center gap-3 mb-10 cursor-pointer">
           <input type="checkbox" checked={giftWrap} onChange={toggleGiftWrap} className="w-4 h-4" />
-          <span className="text-sm text-bone">Envolver para regalo (+{formatCOP(GIFT_WRAP_FEE)})</span>
+          <span className="text-sm text-ink">Envolver para regalo (+{formatCOP(GIFT_WRAP_FEE)})</span>
         </label>
 
-        <h3 className="font-display text-xl text-bone mb-4">Explora la tienda</h3>
+        <h3 className="font-display text-xl text-ink mb-4">Explora la tienda</h3>
         <div className="grid sm:grid-cols-3 gap-4">
           {SHOP_LINKS.map((p) => (
             <Link
               key={p.href}
               href={p.href}
-              className="group overflow-hidden rounded-sm border border-white/10 bg-white/5 transition-colors hover:border-gold-400/40"
+              className="group overflow-hidden rounded-sm border border-gold-400/25 bg-white transition-colors hover:border-gold-400/40"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -179,25 +179,25 @@ export function PersonalizeStep() {
                 </span>
               </div>
               <div className="px-4 py-3">
-                <p className="text-sm text-bone">{p.label}</p>
-                <p className="text-xs text-bone-60">{p.blurb}</p>
+                <p className="text-sm text-ink">{p.label}</p>
+                <p className="text-xs text-ink-60">{p.blurb}</p>
               </div>
             </Link>
           ))}
         </div>
 
-        <button onClick={() => setStep(2)} className="text-sm text-bone-60 hover:text-gold-400 underline mt-8">
+        <button onClick={() => setStep(2)} className="text-sm text-ink-60 hover:text-gold-400 underline mt-8">
           ← Volver a envases
         </button>
       </div>
 
-      <div className="bg-white/5 border border-gold-400/20 rounded-sm p-6 h-fit sticky top-8">
-        <h4 className="font-display text-lg text-bone mb-4">Resumen</h4>
-        <dl className="text-sm space-y-2 text-bone/80">
+      <div className="bg-white border border-gold-400/25 rounded-sm p-6 h-fit sticky top-8">
+        <h4 className="font-display text-lg text-ink mb-4">Resumen</h4>
+        <dl className="text-sm space-y-2 text-ink/80">
           <div className="flex justify-between gap-3">
             <dt>
               {fragrance.contratipo} · {bottle.capacityMl} ml
-              <span className="block text-xs text-bone-60">{bottle.name}</span>
+              <span className="block text-xs text-ink-60">{bottle.name}</span>
             </dt>
             <dd className="shrink-0">{formatCOP(coreTotal)}</dd>
           </div>
@@ -218,7 +218,7 @@ export function PersonalizeStep() {
           <span className="font-display text-lg text-gold-400">Total</span>
           <span className="font-display text-lg text-gold-400">{formatCOP(currentBuildTotal())}</span>
         </div>
-        {error && <p className="mt-3 text-xs text-red-300">{error}</p>}
+        {error && <p className="mt-3 text-xs text-red-600">{error}</p>}
         {likeMsg && <p className="mt-3 text-xs text-gold-400">{likeMsg}</p>}
         <div className="mt-6 space-y-2">
           <AddToListButton

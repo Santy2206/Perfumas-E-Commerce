@@ -52,13 +52,13 @@ export function GramsQuantityInput({
 
   return (
     <div className={cn("space-y-1", className)}>
-      <label className="flex items-center gap-2 text-xs text-bone-60">
+      <label className="flex items-center gap-2 text-xs text-ink-60">
         <span className="uppercase tracking-widest text-gold-400">{label}</span>
-        <div className="flex items-center overflow-hidden rounded-sm border border-gold-400/30 bg-white/5">
+        <div className="flex items-center overflow-hidden rounded-sm border border-gold-400/30 bg-paper">
           <button
             type="button"
             aria-label="Menos gramos"
-            className="h-9 w-8 text-bone hover:bg-white/10 disabled:opacity-30"
+            className="h-9 w-8 text-ink hover:bg-paper-soft disabled:opacity-30"
             disabled={value <= min}
             onClick={() => step(-1)}
           >
@@ -82,14 +82,14 @@ export function GramsQuantityInput({
               }
             }}
             className={cn(
-              "h-9 w-16 border-x border-gold-400/20 bg-transparent px-2 text-center text-bone outline-none",
+              "h-9 w-16 border-x border-gold-400/20 bg-transparent px-2 text-center text-ink outline-none",
               inputClassName
             )}
           />
           <button
             type="button"
             aria-label="Más gramos"
-            className="h-9 w-8 text-bone hover:bg-white/10"
+            className="h-9 w-8 text-ink hover:bg-paper-soft"
             onClick={() => step(1)}
           >
             +
@@ -97,7 +97,7 @@ export function GramsQuantityInput({
         </div>
       </label>
       {showMinHint && (
-        <p className="text-xs text-bone-60">mín. {min} g</p>
+        <p className="text-xs text-ink-60">mín. {min} g</p>
       )}
     </div>
   );

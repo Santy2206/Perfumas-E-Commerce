@@ -72,7 +72,7 @@ export function ProductCard({
         <div
           className={cn(
             "group/image relative mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-sm",
-            product.imageUrl ? "bg-white" : "bg-wine-900"
+            "bg-paper-soft"
           )}
         >
           {product.imageUrl ? (
@@ -97,7 +97,7 @@ export function ProductCard({
               )}
             </>
           ) : (
-            <span className="font-display text-3xl text-gold-400/40">{product.title.charAt(0)}</span>
+            <span className="font-display text-3xl text-gold-400/50">{product.title.charAt(0)}</span>
           )}
           <LikeButton
             productId={product.id}
@@ -119,15 +119,15 @@ export function ProductCard({
       </CardHeader>
       <CardContent className="flex-1">
         {product.description && (
-          <p className="text-xs text-bone-60 line-clamp-2">{product.description}</p>
+          <p className="text-xs text-ink-60 line-clamp-2">{product.description}</p>
         )}
         {showPrice ? (
-          <p className="mt-3 font-semibold text-bone">
+          <p className="mt-3 font-semibold text-ink">
             {formatCOP(price)}
             {isEssence ? " / gramo" : ""}
           </p>
         ) : isEssence ? (
-          <p className="mt-3 text-xs text-bone-60">
+          <p className="mt-3 text-xs text-ink-60">
             Prepara tu perfume personalizado con esta esencia
           </p>
         ) : null}
@@ -138,13 +138,13 @@ export function ProductCard({
               min={minQty}
               onChange={setGrams}
             />
-            <p className="text-xs text-bone-60">
+            <p className="text-xs text-ink-60">
               mín. {minQty} g · total {formatCOP(price * grams)}
             </p>
           </div>
         )}
         {showPrice && wholesale && product.minQty ? (
-          <p className="text-xs text-bone-60 mt-1">Mín. {product.minQty} uds</p>
+          <p className="text-xs text-ink-60 mt-1">Mín. {product.minQty} uds</p>
         ) : null}
         {error && <p className="mt-2 text-xs text-red-300">{error}</p>}
       </CardContent>

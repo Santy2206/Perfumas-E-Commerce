@@ -40,7 +40,7 @@ export function PaginatedProductGrid({
   const remaining = products.length - slice.length;
 
   if (products.length === 0) {
-    return <p className="text-bone-60">No hay productos con estos filtros.</p>;
+    return <p className="text-ink-60">No hay productos con estos filtros.</p>;
   }
 
   return (
@@ -58,7 +58,7 @@ export function PaginatedProductGrid({
       </div>
       {remaining > 0 ? (
         <div className="mt-8 flex flex-col items-center gap-3">
-          <p className="text-xs text-bone-60">
+          <p className="text-xs text-ink-60">
             Mostrando {slice.length} de {products.length}
           </p>
           <Button
@@ -70,7 +70,7 @@ export function PaginatedProductGrid({
           </Button>
         </div>
       ) : (
-        <p className="mt-6 text-xs text-bone-60">{products.length} productos</p>
+        <p className="mt-6 text-xs text-ink-60">{products.length} productos</p>
       )}
     </div>
   );

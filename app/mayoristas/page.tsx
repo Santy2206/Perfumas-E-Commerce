@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Section } from "../../components/layout/Section";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
@@ -18,78 +19,84 @@ export default function MayoristasPage() {
 
   if (isB2B && b2bProfile) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-        <Badge variant="b2b" className="mb-4">Cuenta aprobada</Badge>
-        <h1 className="font-display text-3xl text-bone mb-2">Hola, {b2bProfile.businessName}</h1>
-        <p className="text-bone-60 mb-8">
-          Estás viendo precios mayoristas. Compra insumos con cantidades mínimas (MOQ).
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <Button asChild>
-            <Link href="/mayoristas/insumos">Ver catálogo de insumos</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/carrito">Ir al carrito</Link>
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={() => setB2BSession(null)}
-          >
-            Cerrar sesión mayorista
-          </Button>
+      <Section tone="light" className="min-h-[50vh]">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
+          <Badge variant="b2b" className="mb-4">Cuenta aprobada</Badge>
+          <h1 className="font-display text-3xl text-ink mb-2">Hola, {b2bProfile.businessName}</h1>
+          <p className="text-ink-60 mb-8">
+            Estás viendo precios mayoristas. Compra insumos con cantidades mínimas (MOQ).
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href="/mayoristas/insumos">Ver catálogo de insumos</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/carrito">Ir al carrito</Link>
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => setB2BSession(null)}
+            >
+              Cerrar sesión mayorista
+            </Button>
+          </div>
         </div>
-      </div>
+      </Section>
     );
   }
 
   if (b2bProfile?.status === "pending") {
     return (
-      <div className="mx-auto max-w-lg px-4 py-16 text-center">
-        <Badge variant="secondary" className="mb-4">Pendiente de aprobación</Badge>
-        <h1 className="font-display text-2xl text-bone mb-4">Solicitud recibida</h1>
-        <p className="text-bone-60 mb-6">
-          Revisaremos el NIT de <strong className="text-bone">{b2bProfile.businessName}</strong> y te
-          avisaremos por correo/WhatsApp. Mientras tanto puedes comprar a precios de venta al público.
-        </p>
-        <Button variant="outline" onClick={() => setB2BSession(null)}>
-          Volver
-        </Button>
-      </div>
+      <Section tone="light" className="min-h-[50vh]">
+        <div className="mx-auto max-w-lg px-4 py-16 text-center">
+          <Badge variant="secondary" className="mb-4">Pendiente de aprobación</Badge>
+          <h1 className="font-display text-2xl text-ink mb-4">Solicitud recibida</h1>
+          <p className="text-ink-60 mb-6">
+            Revisaremos el NIT de <strong className="text-ink">{b2bProfile.businessName}</strong> y te
+            avisaremos por correo/WhatsApp. Mientras tanto puedes comprar a precios de venta al público.
+          </p>
+          <Button variant="outline" onClick={() => setB2BSession(null)}>
+            Volver
+          </Button>
+        </div>
+      </Section>
     );
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8">
-      <div className="grid gap-10 lg:grid-cols-2">
-        <div>
-          <p className="text-xs uppercase tracking-widest text-gold-400 mb-3">Portal B2B</p>
-          <h1 className="font-display text-3xl text-bone mb-4">Mayoristas / Emprendedores</h1>
-          <p className="text-bone-60 mb-6">
-            Accede a precios especiales en esencias, envases, alcohol y feromonas. Tras el registro,
-            el equipo Perfumas aprueba tu cuenta (revisión de NIT) y te asigna al grupo{" "}
-            <em>emprendedores</em>.
-          </p>
-          <ul className="space-y-2 text-sm text-bone-60 mb-8">
-            <li>· Descuento mayorista (~20% sobre lista retail por defecto)</li>
-            <li>· Cantidades mínimas (MOQ) por producto</li>
-            <li>· Mismo carrito unificado con retail</li>
-          </ul>
-          <Card>
-            <CardHeader>
-              <CardTitle>¿Ya tienes cuenta?</CardTitle>
-              <CardDescription>
-                Inicia sesión en tu cuenta Perfumas. Solo cuentas aprobadas en{" "}
-                <em>emprendedores</em> ven precios mayoristas.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ApprovedLogin />
-            </CardContent>
-          </Card>
+    <Section tone="light" className="min-h-[50vh]">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-gold-400 mb-3">Portal B2B</p>
+            <h1 className="font-display text-3xl text-ink mb-4">Mayoristas / Emprendedores</h1>
+            <p className="text-ink-60 mb-6">
+              Accede a precios especiales en esencias, envases, alcohol y feromonas. Tras el registro,
+              el equipo Perfumas aprueba tu cuenta (revisión de NIT) y te asigna al grupo{" "}
+              <em>emprendedores</em>.
+            </p>
+            <ul className="space-y-2 text-sm text-ink-60 mb-8">
+              <li>· Descuento mayorista (~20% sobre lista retail por defecto)</li>
+              <li>· Cantidades mínimas (MOQ) por producto</li>
+              <li>· Mismo carrito unificado con retail</li>
+            </ul>
+            <Card>
+              <CardHeader>
+                <CardTitle>¿Ya tienes cuenta?</CardTitle>
+                <CardDescription>
+                  Inicia sesión en tu cuenta Perfumas. Solo cuentas aprobadas en{" "}
+                  <em>emprendedores</em> ven precios mayoristas.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ApprovedLogin />
+              </CardContent>
+            </Card>
+          </div>
+          <B2BRegisterForm />
         </div>
-        <B2BRegisterForm />
       </div>
-    </div>
+    </Section>
   );
 }
 
@@ -145,7 +152,7 @@ function ApprovedLogin() {
 
   return (
     <div className="space-y-3">
-      <p className="text-sm text-bone-60">
+      <p className="text-sm text-ink-60">
         Usa el mismo login de la tienda (correo o Google). Luego activa precios mayoristas aquí.
       </p>
       <div className="flex flex-wrap gap-2">
@@ -156,7 +163,7 @@ function ApprovedLogin() {
           {loading ? "Verificando…" : "Activar precios mayoristas"}
         </Button>
       </div>
-      {msg ? <p className="text-sm text-red-300">{msg}</p> : null}
+      {msg ? <p className="text-sm text-red-600">{msg}</p> : null}
     </div>
   );
 }
@@ -232,7 +239,7 @@ function B2BRegisterForm() {
             <Label htmlFor="email">Correo</Label>
             <Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
-          {msg && <p className="text-sm text-red-300">{msg}</p>}
+          {msg && <p className="text-sm text-red-600">{msg}</p>}
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Enviando…" : "Enviar solicitud"}
           </Button>

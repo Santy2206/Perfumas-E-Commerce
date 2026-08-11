@@ -43,7 +43,7 @@ export function CollectionFilterChips({
       "rounded-sm border px-3 py-1.5 text-xs uppercase tracking-widest",
       active
         ? "border-gold-400 text-gold-400"
-        : "border-white/15 text-bone-60 hover:border-gold-400/40"
+        : "border-ink/15 text-ink-60 hover:border-gold-400/40"
     );
 
   return (

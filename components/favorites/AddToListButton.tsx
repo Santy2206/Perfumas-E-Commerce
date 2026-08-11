@@ -129,12 +129,12 @@ export function AddToListButton({
         <p className="mt-1 text-center text-[10px] text-gold-400">{msg}</p>
       )}
       {open && (
-        <div className="absolute left-0 right-0 z-40 mt-1 rounded-sm border border-gold-400/30 bg-wine-950 p-3 shadow-lg">
-          <p className="mb-2 text-[10px] uppercase tracking-widest text-bone-60">
+        <div className="absolute left-0 right-0 z-40 mt-1 rounded-sm border border-gold-400/30 bg-paper p-3 shadow-lg">
+          <p className="mb-2 text-[10px] uppercase tracking-widest text-ink-60">
             Tus listas
           </p>
           {lists.length === 0 ? (
-            <p className="mb-3 text-xs text-bone-60">Aún no tienes listas.</p>
+            <p className="mb-3 text-xs text-ink-60">Aún no tienes listas.</p>
           ) : (
             <ul className="mb-3 max-h-40 space-y-1 overflow-y-auto">
               {lists.map((list) => {
@@ -147,7 +147,7 @@ export function AddToListButton({
                       type="button"
                       disabled={busy || already}
                       onClick={() => void addTo(list.id)}
-                      className="w-full rounded-sm px-2 py-2 text-left text-xs text-bone hover:bg-wine-900 disabled:opacity-40"
+                      className="w-full rounded-sm px-2 py-2 text-left text-xs text-ink hover:bg-paper-soft disabled:opacity-40"
                     >
                       {list.name}
                       {already ? " · ya está" : ""}
@@ -157,8 +157,8 @@ export function AddToListButton({
               })}
             </ul>
           )}
-          <div className="space-y-2 border-t border-gold-400/15 pt-2">
-            <p className="text-[10px] uppercase tracking-widest text-bone-60">
+          <div className="space-y-2 border-t border-gold-400/20 pt-2">
+            <p className="text-[10px] uppercase tracking-widest text-ink-60">
               Crear nueva lista
             </p>
             <Input

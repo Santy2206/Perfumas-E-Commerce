@@ -25,7 +25,7 @@ export function HouseGroupAccordion({
           <button
             type="button"
             onClick={() => onSelect(null)}
-            className="text-xs text-bone-60 underline hover:text-gold-400"
+            className="text-xs text-ink-60 underline hover:text-gold-400"
           >
             Quitar filtro: {selected}
           </button>
@@ -41,8 +41,8 @@ export function HouseGroupAccordion({
             <div
               key={g.id}
               className={`rounded-sm border ${
-                hasSelected ? "border-gold-400/50" : "border-black/10"
-              } bg-wine-900`}
+                hasSelected ? "border-gold-400/50" : "border-ink/10"
+              } bg-white`}
             >
               <button
                 type="button"
@@ -50,14 +50,14 @@ export function HouseGroupAccordion({
                 className="flex w-full items-center justify-between px-4 py-3 text-left"
                 aria-expanded={open}
               >
-                <span className="text-sm text-bone">
+                <span className="text-sm text-ink">
                   {g.label}
-                  <span className="ml-2 text-xs text-bone-60">({g.houses.length})</span>
+                  <span className="ml-2 text-xs text-ink-60">({g.houses.length})</span>
                 </span>
                 <span className="text-gold-400 text-xs">{open ? "▲" : "▼"}</span>
               </button>
               {open ? (
-                <div className="flex flex-wrap gap-2 border-t border-black/10 px-4 py-3">
+                <div className="flex flex-wrap gap-2 border-t border-ink/10 px-4 py-3">
                   {g.houses.map((h) => {
                     const active = selected ? housesMatch(h, selected) : false;
                     return (
@@ -68,7 +68,7 @@ export function HouseGroupAccordion({
                         className={`rounded-sm border px-3 py-1.5 text-xs transition-colors ${
                           active
                             ? "border-gold-400 bg-gold-400/15 text-gold-400"
-                            : "border-black/15 text-bone-60 hover:border-gold-400/40"
+                            : "border-ink/15 text-ink-60 hover:border-gold-400/40"
                         }`}
                       >
                         {h}

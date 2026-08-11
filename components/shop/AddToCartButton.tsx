@@ -42,7 +42,7 @@ export function AddToCartButton({
       {isEssence && (
         <p className="text-sm text-gold-400">
           {formatCOP(unitPrice)} / gramo
-          <span className="text-bone-60">
+          <span className="text-ink-60">
             {" "}
             · total {formatCOP(unitPrice * qty)}
           </span>
@@ -69,12 +69,12 @@ export function AddToCartButton({
             onChange={(e) =>
               setQty(Math.max(minQty, Number(e.target.value) || minQty))
             }
-            className="h-11 w-24 rounded-sm border border-gold-400/30 bg-white/5 px-3 text-bone"
+            className="h-11 w-24 rounded-sm border border-gold-400/30 bg-paper px-3 text-ink"
           />
         </div>
       )}
       <Button onClick={onAdd}>Agregar al carrito</Button>
-      {msg && <p className="text-sm text-bone-60">{msg}</p>}
+      {msg && <p className="text-sm text-ink-60">{msg}</p>}
     </div>
   );
 }

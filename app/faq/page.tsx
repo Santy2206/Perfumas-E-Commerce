@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Section } from "../../components/layout/Section";
 
 export const metadata = { title: "Preguntas frecuentes" };
 
@@ -31,22 +32,24 @@ const FAQS = [
 
 export default function FaqPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-      <h1 className="font-display text-3xl text-bone mb-8">Preguntas frecuentes</h1>
-      <dl className="space-y-6">
-        {FAQS.map((f) => (
-          <div key={f.q} className="rounded-sm border border-gold-400/20 bg-white/5 p-5">
-            <dt className="font-display text-lg text-bone mb-2">{f.q}</dt>
-            <dd className="text-sm text-bone-60">{f.a}</dd>
-          </div>
-        ))}
-      </dl>
-      <p className="mt-10 text-sm text-bone-60">
-        ¿Más dudas?{" "}
-        <Link href="https://wa.me/573503370279" className="text-gold-400 underline">
-          Escríbenos por WhatsApp
-        </Link>
-      </p>
-    </div>
+    <Section tone="light" className="min-h-[50vh]">
+      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
+        <h1 className="font-display text-3xl text-ink mb-8">Preguntas frecuentes</h1>
+        <dl className="space-y-6">
+          {FAQS.map((f) => (
+            <div key={f.q} className="rounded-sm border border-gold-400/25 bg-white p-5">
+              <dt className="font-display text-lg text-ink mb-2">{f.q}</dt>
+              <dd className="text-sm text-ink-60">{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-10 text-sm text-ink-60">
+          ¿Más dudas?{" "}
+          <Link href="https://wa.me/573503370279" className="text-gold-400 underline">
+            Escríbenos por WhatsApp
+          </Link>
+        </p>
+      </div>
+    </Section>
   );
 }

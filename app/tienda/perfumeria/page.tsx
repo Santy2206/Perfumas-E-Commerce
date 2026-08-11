@@ -1,5 +1,6 @@
 import { listCatalogProducts } from "../../../lib/medusa-catalog";
 import { PerfumeriaBrowser } from "../../../components/shop/PerfumeriaBrowser";
+import { Section } from "../../../components/layout/Section";
 
 export const metadata = { title: "Preparadas" };
 export const revalidate = 120;
@@ -22,12 +23,14 @@ export default async function PerfumeriaPage() {
       : "Catálogo local (Medusa no disponible)";
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8">
-      <PerfumeriaBrowser
-        replicas={replicas}
-        essences={essences}
-        sourceLabel={sourceLabel}
-      />
-    </div>
+    <Section tone="light" className="min-h-[50vh]">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8">
+        <PerfumeriaBrowser
+          replicas={replicas}
+          essences={essences}
+          sourceLabel={sourceLabel}
+        />
+      </div>
+    </Section>
   );
 }

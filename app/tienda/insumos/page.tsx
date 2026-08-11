@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { listCatalogProducts } from "../../../lib/medusa-catalog";
 import { InsumosBrowser } from "../../../components/shop/InsumosBrowser";
+import { Section } from "../../../components/layout/Section";
 
 export const metadata = { title: "Insumos" };
 export const revalidate = 120;
@@ -19,14 +20,16 @@ export default async function InsumosPage({
       : "Catálogo local (Medusa no disponible)";
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8">
-      <Suspense fallback={<p className="text-bone-60">Cargando insumos…</p>}>
-        <InsumosBrowser
-          products={products}
-          wholesale={wholesale}
-          sourceLabel={sourceLabel}
-        />
-      </Suspense>
-    </div>
+    <Section tone="light" className="min-h-[50vh]">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8">
+        <Suspense fallback={<p className="text-ink-60">Cargando insumos…</p>}>
+          <InsumosBrowser
+            products={products}
+            wholesale={wholesale}
+            sourceLabel={sourceLabel}
+          />
+        </Suspense>
+      </div>
+    </Section>
   );
 }

@@ -79,11 +79,11 @@ export function HogarBrowser({
 
   return (
     <div>
-      <h1 className="font-display text-3xl text-bone mb-2">Hogar y cuidado</h1>
-      <p className="text-sm text-bone-60 mb-2">
+      <h1 className="font-display text-3xl text-ink mb-2">Hogar y cuidado</h1>
+      <p className="text-sm text-ink-60 mb-2">
         Splash, cremas, aromatizantes, aseo y empaques.
       </p>
-      <p className="mb-6 text-xs uppercase tracking-widest text-bone-60">{sourceLabel}</p>
+      <p className="mb-6 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
 
       <SearchSuggestInput
         className="mb-6 w-full max-w-md"

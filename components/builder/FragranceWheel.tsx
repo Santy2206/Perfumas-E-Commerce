@@ -95,7 +95,7 @@ export function FragranceWheel({ selected, onSelect }: Props) {
         })}
         <circle cx={100} cy={100} r={16} fill="#f5efe1" />
       </svg>
-      <p className="text-center text-xs text-bone-60 mt-3 min-h-[1.5rem]">
+      <p className="text-center text-xs text-ink-60 mt-3 min-h-[1.5rem]">
         {selected
           ? groupLabel(selected)
           : "Toca una familia olfativa para filtrar"}

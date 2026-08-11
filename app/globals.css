@@ -23,6 +23,12 @@
 
   --color-bone: #f5efe1;
   --color-bone-60: rgba(245, 239, 225, 0.6);
+
+  /* Light commerce surfaces (black / white / gold rhythm) */
+  --color-paper: #ffffff;
+  --color-paper-soft: #f7f4ec;
+  --color-ink: #0a0a0a;
+  --color-ink-60: rgba(10, 10, 10, 0.6);
 }
 
 body {

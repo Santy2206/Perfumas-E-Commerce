@@ -44,12 +44,12 @@ export function FragranceStep() {
 
   return (
     <div>
-      <h2 className="font-display text-2xl sm:text-3xl text-bone mb-2">Encuentra tu fragancia</h2>
-      <p className="text-sm text-bone-60 mb-8">
+      <h2 className="font-display text-2xl sm:text-3xl text-ink mb-2">Encuentra tu fragancia</h2>
+      <p className="text-sm text-ink-60 mb-8">
         Busca por nombre o casa (sin importar mayúsculas), filtra por género y ordena la lista.
       </p>
       {pendingBottleId && (
-        <p className="mb-6 rounded-sm border border-gold-400/40 bg-gold-400/10 px-4 py-3 text-sm text-bone">
+        <p className="mb-6 rounded-sm border border-gold-400/40 bg-gold-400/10 px-4 py-3 text-sm text-ink">
           Envase listo para tu creación. Elige una esencia y pasaremos directo a{" "}
           <strong className="text-gold-400">Personalizar</strong>.
         </p>
@@ -71,12 +71,12 @@ export function FragranceStep() {
       </div>
 
       <div id="search-results" className="scroll-mt-24">
-      <p className="mb-4 text-xs text-bone-60">{results.length} fragancias</p>
+      <p className="mb-4 text-xs text-ink-60">{results.length} fragancias</p>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {results.map((f) => (
-          <div key={f.id} className="bg-white/5 border border-gold-400/20 rounded-sm p-5">
-            <div className="relative w-full aspect-square rounded-sm mb-4 overflow-hidden bg-wine-900 flex items-center justify-center">
+          <div key={f.id} className="bg-white border border-gold-400/25 rounded-sm p-5">
+            <div className="relative w-full aspect-square rounded-sm mb-4 overflow-hidden bg-paper-soft flex items-center justify-center">
               {f.imageUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={f.imageUrl} alt={f.contratipo} className="w-full h-full object-cover" />
@@ -91,8 +91,8 @@ export function FragranceStep() {
               />
             </div>
             <p className="text-[10px] uppercase tracking-widest text-gold-400 mb-2">{groupLabel(f.group)}</p>
-            <h3 className="font-display text-lg text-bone mb-1">{f.contratipo}</h3>
-            <p className="text-xs text-bone-60 mb-4">{f.house}</p>
+            <h3 className="font-display text-lg text-ink mb-1">{f.contratipo}</h3>
+            <p className="text-xs text-ink-60 mb-4">{f.house}</p>
             <div className="flex flex-col gap-2">
               <AddToListButton
                 target={{
@@ -110,7 +110,7 @@ export function FragranceStep() {
               </button>
               <Link
                 href={`/tienda/insumos?cat=esencias&essence=${encodeURIComponent(f.id)}`}
-                className="text-center text-xs text-bone-60 hover:text-gold-400 underline py-1"
+                className="text-center text-xs text-ink-60 hover:text-gold-400 underline py-1"
               >
                 ¿Solo el aceite? Ver en Insumos
               </Link>
@@ -118,7 +118,7 @@ export function FragranceStep() {
           </div>
         ))}
         {results.length === 0 && (
-          <p className="col-span-full text-center text-sm text-bone-60 py-10">
+          <p className="col-span-full text-center text-sm text-ink-60 py-10">
             Ninguna fragancia coincide con estos filtros.
           </p>
         )}

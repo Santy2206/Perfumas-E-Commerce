@@ -50,12 +50,12 @@ export function FavoriteItemCard({
     const bottle = BOTTLES.find((b) => b.id === item.build.bottleId);
     const href = `/crear?fragrance=${encodeURIComponent(item.build.fragranceId)}&bottle=${encodeURIComponent(item.build.bottleId)}`;
     return (
-      <div className="rounded-sm border border-gold-400/20 p-4 space-y-3">
+      <div className="rounded-sm border border-gold-400/25 bg-white p-4 space-y-3">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div>
             <Badge variant="outline">{productKindLabel("custom_build")}</Badge>
-            <p className="mt-2 font-display text-lg text-bone">{item.title}</p>
-            <p className="text-xs text-bone-60">
+            <p className="mt-2 font-display text-lg text-ink">{item.title}</p>
+            <p className="text-xs text-ink-60">
               {fragrance?.contratipo || item.build.fragranceId}
               {bottle ? ` · ${bottle.name}` : ""}
             </p>
@@ -94,12 +94,12 @@ export function FavoriteItemCard({
           : product?.category || null;
 
   return (
-    <div className="rounded-sm border border-gold-400/20 p-4 space-y-3">
+    <div className="rounded-sm border border-gold-400/25 bg-white p-4 space-y-3">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <Badge variant="outline">{productKindLabel(kind)}</Badge>
-          <p className="mt-2 font-display text-lg text-bone">{title}</p>
-          {subtitle && <p className="text-xs text-bone-60">{subtitle}</p>}
+          <p className="mt-2 font-display text-lg text-ink">{title}</p>
+          {subtitle && <p className="text-xs text-ink-60">{subtitle}</p>}
         </div>
         <Button
           type="button"

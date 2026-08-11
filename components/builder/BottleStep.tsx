@@ -114,7 +114,7 @@ export function BottleStep() {
   );
 
   if (!fragrance) {
-    return <p className="text-sm text-bone-60">Primero elige una fragancia en el paso 1.</p>;
+    return <p className="text-sm text-ink-60">Primero elige una fragancia en el paso 1.</p>;
   }
 
   const otherSizeSelected =
@@ -122,23 +122,23 @@ export function BottleStep() {
 
   return (
     <div>
-      <h2 className="font-display text-2xl sm:text-3xl text-bone mb-2">
+      <h2 className="font-display text-2xl sm:text-3xl text-ink mb-2">
         Elige tu réplica preparada
       </h2>
-      <p className="text-sm text-bone-60 mb-6">
+      <p className="text-sm text-ink-60 mb-6">
         Para: <strong className="text-gold-400">{fragrance.contratipo}</strong>
-        <span className="text-bone-60"> ({fragrance.house})</span>. Primero las réplicas
+        <span className="text-ink-60"> ({fragrance.house})</span>. Primero las réplicas
         asociadas o con nombre parecido (ej. One Million ↔ 1 Million).
       </p>
 
       {recommended ? (
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 bg-gold-400/10 border border-gold-400/40 rounded-sm p-4 mb-6">
           <div className="flex-1">
-            <p className="text-sm text-bone">
+            <p className="text-sm text-ink">
               <span className="text-gold-400">★ Recomendado:</span>{" "}
               <strong>{recommended.name}</strong>
             </p>
-            <p className="text-xs text-bone-60 mt-1">
+            <p className="text-xs text-ink-60 mt-1">
               {recommended.qualityTier} · {bottleSizeMl(recommended)} ml ·{" "}
               {formatCOP(recommended.price)}
             </p>
@@ -174,7 +174,7 @@ export function BottleStep() {
             className={`rounded-sm border px-3 py-1.5 text-xs ${
               sizeMl === "all"
                 ? "border-gold-400 text-gold-400"
-                : "border-white/15 text-bone-60 hover:border-gold-400/40"
+                : "border-ink/15 text-ink-60 hover:border-gold-400/40"
             }`}
           >
             Todos
@@ -187,7 +187,7 @@ export function BottleStep() {
               className={`rounded-sm border px-3 py-1.5 text-xs ${
                 sizeMl === s
                   ? "border-gold-400 text-gold-400"
-                  : "border-white/15 text-bone-60 hover:border-gold-400/40"
+                  : "border-ink/15 text-ink-60 hover:border-gold-400/40"
               }`}
             >
               {s} ml
@@ -201,10 +201,10 @@ export function BottleStep() {
                 const v = e.target.value;
                 setSizeMl(v ? Number(v) : "all");
               }}
-              className={`rounded-sm border bg-wine-950 px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-gold-400 ${
+              className={`rounded-sm border bg-paper text-ink px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-gold-400 ${
                 otherSizeSelected
                   ? "border-gold-400 text-gold-400"
-                  : "border-white/15 text-bone-60"
+                  : "border-ink/15 text-ink-60"
               }`}
             >
               <option value="">Otros tamaños…</option>
@@ -219,7 +219,7 @@ export function BottleStep() {
       </div>
       <PriceBandFilter value={priceBand} onChange={setPriceBand} />
 
-      <label className="mb-6 flex items-center gap-2 text-sm text-bone-60 cursor-pointer">
+      <label className="mb-6 flex items-center gap-2 text-sm text-ink-60 cursor-pointer">
         <input
           type="checkbox"
           checked={matchedOnly}
@@ -230,14 +230,14 @@ export function BottleStep() {
       </label>
 
       <div id="search-results" className="scroll-mt-24">
-      <p className="mb-4 text-xs text-bone-60">
+      <p className="mb-4 text-xs text-ink-60">
         {filtered.length} réplicas preparadas
         {tier !== "all" ? ` · ${tier}` : ""}
         {sizeMl !== "all" ? ` · ${sizeMl} ml` : ""}
       </p>
 
       {filtered.length === 0 ? (
-        <p className="text-sm text-bone-60 mb-8">
+        <p className="text-sm text-ink-60 mb-8">
           Ninguna réplica coincide. Prueba otro tamaño, quitar calidad o desmarcar el filtro de
           asociadas.
         </p>
@@ -258,9 +258,9 @@ export function BottleStep() {
       )}
       </div>
 
-      <p className="text-sm text-bone-60">
+      <p className="text-sm text-ink-60">
         ¿Buscas envases vacíos (sin contenido)?{" "}
-        <Link href="/tienda/insumos?cat=envases" className="text-gold-400 underline hover:text-bone">
+        <Link href="/tienda/insumos?cat=envases" className="text-gold-400 underline hover:text-ink">
           Ver en Insumos
         </Link>
       </p>
@@ -279,8 +279,8 @@ function BottleCard({
 }) {
   const ml = bottleSizeMl(bottle);
   return (
-    <div className="bg-white/5 border border-gold-400/20 rounded-sm p-5 flex flex-col">
-      <div className="relative aspect-square bg-white/5 rounded-sm mb-4 flex items-center justify-center text-bone-60 text-xs">
+    <div className="bg-white border border-gold-400/25 rounded-sm p-5 flex flex-col">
+      <div className="relative aspect-square bg-paper-soft rounded-sm mb-4 flex items-center justify-center text-ink-60 text-xs">
         Réplica preparada
         <LikeButton
           productId={bottle.id}
@@ -298,18 +298,18 @@ function BottleCard({
             Asociada
           </span>
         ) : match.kind === "similar" ? (
-          <span className="inline-block text-[10px] uppercase tracking-widest border border-white/20 text-bone-60 px-2 py-1 rounded-sm">
+          <span className="inline-block text-[10px] uppercase tracking-widest border border-ink/15 text-ink-60 px-2 py-1 rounded-sm">
             {match.reason || "Parecida"}
           </span>
         ) : null}
       </div>
-      <p className="text-[10px] text-bone-60 mb-2">{TIER_BLURB[bottle.qualityTier]}</p>
-      <h3 className="font-display text-base text-bone mb-1">{bottle.name}</h3>
-      <p className="text-xs text-bone-60 mb-1">
+      <p className="text-[10px] text-ink-60 mb-2">{TIER_BLURB[bottle.qualityTier]}</p>
+      <h3 className="font-display text-base text-ink mb-1">{bottle.name}</h3>
+      <p className="text-xs text-ink-60 mb-1">
         {ml} ml · {bottle.closure}
       </p>
-      <p className="text-sm font-semibold text-bone mb-1 mt-auto">{formatCOP(bottle.price)}</p>
-      <p className="text-[10px] text-bone-60 mb-4">Precio unitario (con contenido)</p>
+      <p className="text-sm font-semibold text-ink mb-1 mt-auto">{formatCOP(bottle.price)}</p>
+      <p className="text-[10px] text-ink-60 mb-4">Precio unitario (con contenido)</p>
       <div className="flex flex-col gap-2">
         <AddToListButton
           target={{

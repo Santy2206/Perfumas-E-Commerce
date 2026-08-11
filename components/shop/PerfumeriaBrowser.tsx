@@ -133,11 +133,11 @@ export function PerfumeriaBrowser({
 
   return (
     <div>
-      <h1 className="font-display text-3xl text-bone mb-2">Preparadas</h1>
-      <p className="text-sm text-bone-60 mb-2">
+      <h1 className="font-display text-3xl text-ink mb-2">Preparadas</h1>
+      <p className="text-sm text-ink-60 mb-2">
         Réplicas preparadas listas para llevar, o elige una esencia e inspira tu creación.
       </p>
-      <p className="mb-6 text-xs uppercase tracking-widest text-bone-60">{sourceLabel}</p>
+      <p className="mb-6 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
 
       <SearchSuggestInput
         className="mb-6 w-full max-w-md"
@@ -161,8 +161,8 @@ export function PerfumeriaBrowser({
 
       <section id="search-results" className="mb-14 scroll-mt-24">
         <div className="mb-6">
-          <h2 className="font-display text-2xl text-bone">Réplicas preparadas</h2>
-          <p className="text-sm text-bone-60">
+          <h2 className="font-display text-2xl text-ink">Réplicas preparadas</h2>
+          <p className="text-sm text-ink-60">
             Perfume listo en envase de fragancia (sin genéricos ni plásticos) —{" "}
             {filteredReplicas.length} resultados
           </p>
@@ -173,18 +173,18 @@ export function PerfumeriaBrowser({
       <section>
         <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="font-display text-2xl text-bone">Prepara con una esencia</h2>
-            <p className="text-sm text-bone-60">
+            <h2 className="font-display text-2xl text-ink">Prepara con una esencia</h2>
+            <p className="text-sm text-ink-60">
               Filtra por género, grupo olfativo y casa.
             </p>
           </div>
           <div className="flex gap-3 text-sm">
-            <Link href="/crear" className="text-gold-400 underline hover:text-bone">
+            <Link href="/crear" className="text-gold-400 underline hover:text-ink">
               Ir a Preparar
             </Link>
             <Link
               href="/tienda/insumos?cat=esencias"
-              className="text-bone-60 underline hover:text-gold-400"
+              className="text-ink-60 underline hover:text-gold-400"
             >
               Comprar esencias en Insumos
             </Link>

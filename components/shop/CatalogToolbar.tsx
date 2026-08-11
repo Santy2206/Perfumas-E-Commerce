@@ -54,7 +54,7 @@ export function CatalogToolbar({
                 className={`rounded-sm border px-3 py-1.5 text-xs uppercase tracking-widest ${
                   gender === g.id
                     ? "border-gold-400 text-gold-400"
-                    : "border-white/15 text-bone-60 hover:border-gold-400/40"
+                    : "border-ink/15 text-ink-60 hover:border-gold-400/40"
                 }`}
               >
                 {g.label}
@@ -64,12 +64,12 @@ export function CatalogToolbar({
         ) : (
           <div />
         )}
-        <label className="flex items-center gap-2 text-xs text-bone-60">
+        <label className="flex items-center gap-2 text-xs text-ink-60">
           <span className="uppercase tracking-widest">Ordenar</span>
           <select
             value={sort}
             onChange={(e) => onSort(e.target.value as CatalogSort)}
-            className="rounded-sm border border-gold-400/30 bg-wine-950 px-3 py-2 text-xs text-bone focus:outline-none focus:ring-2 focus:ring-gold-400"
+            className="rounded-sm border border-gold-400/30 bg-paper px-3 py-2 text-xs text-ink focus:outline-none focus:ring-2 focus:ring-gold-400"
           >
             {CATALOG_SORT_OPTIONS.map((o) => (
               <option key={o.id} value={o.id}>

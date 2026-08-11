@@ -174,15 +174,15 @@ export function InsumosBrowser({
 
   return (
     <div>
-      <h1 className="font-display text-3xl text-bone mb-2">Insumos</h1>
-      <p className="text-sm text-bone-60 mb-2">
+      <h1 className="font-display text-3xl text-ink mb-2">Insumos</h1>
+      <p className="text-sm text-ink-60 mb-2">
         Esencias, envases, alcohol y feromonas — compra por separado o úsalos en{" "}
         <a href="/crear" className="text-gold-400 underline">
           Preparar
         </a>
         .
       </p>
-      <p className="mb-6 text-xs uppercase tracking-widest text-bone-60">{sourceLabel}</p>
+      <p className="mb-6 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
 
       <div className="flex flex-wrap gap-2 mb-6">
         {CATS.map((c) => (
@@ -193,7 +193,7 @@ export function InsumosBrowser({
             className={`rounded-sm px-3 py-2 text-xs uppercase tracking-widest border transition-colors ${
               cat === c.id
                 ? "border-gold-400 bg-gold-400/10 text-gold-400"
-                : "border-white/15 text-bone-60 hover:border-gold-400/40"
+                : "border-ink/15 text-ink-60 hover:border-gold-400/40"
             }`}
           >
             {c.label}
@@ -258,7 +258,7 @@ export function InsumosBrowser({
                   className={`rounded-sm px-3 py-1.5 text-xs border ${
                     tier === t.id
                       ? "border-gold-400 text-gold-400"
-                      : "border-white/15 text-bone-60"
+                      : "border-ink/15 text-ink-60"
                   }`}
                 >
                   {t.label}
