@@ -22,8 +22,8 @@ import { cn } from "../../lib/utils";
 import { MARKETING_HOME_URL } from "../../lib/site";
 
 const NAV = [
-  { href: "/crear", label: "Crear" },
-  { href: "/tienda/perfumeria", label: "Perfumería" },
+  { href: "/crear", label: "Preparar" },
+  { href: "/tienda/perfumeria", label: "Preparadas" },
   { href: "/tienda/insumos", label: "Insumos" },
   { href: "/tienda/hogar", label: "Hogar" },
   { href: "/tienda/accesorios", label: "Accesorios" },

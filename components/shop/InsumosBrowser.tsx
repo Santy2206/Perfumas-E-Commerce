@@ -178,7 +178,7 @@ export function InsumosBrowser({
       <p className="text-sm text-bone-60 mb-2">
         Esencias, envases, alcohol y feromonas — compra por separado o úsalos en{" "}
         <a href="/crear" className="text-gold-400 underline">
-          Crear
+          Preparar
         </a>
         .
       </p>

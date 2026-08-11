@@ -84,7 +84,7 @@ export default function MeGustaPage() {
           Aún no tienes me gusta. Toca el corazón en el catálogo o guarda una
           creación en{" "}
           <Link href="/crear" className="text-gold-400 underline">
-            Crear
+            Preparar
           </Link>
           .
         </p>

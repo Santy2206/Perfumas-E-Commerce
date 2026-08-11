@@ -38,6 +38,16 @@ function customerName(order: ShippingOrderRow): string {
   return full || order.email || "Cliente Perfumas";
 }
 
+function assertOrderPaid(meta: Record<string, unknown>) {
+  const wompi = String(meta.wompi_status || "").toUpperCase();
+  const payment = String(meta.payment_status || "").toLowerCase();
+  if (wompi === "APPROVED" || payment === "paid") return null;
+  if (String(meta.shipping_status || "") === "awaiting_payment") {
+    return "Pedido sin pago aprobado (awaiting_payment). Espera el webhook de Wompi.";
+  }
+  return "Pedido sin pago Wompi aprobado — no generar guía.";
+}
+
 export async function GET(req: Request) {
   const auth = assertOpsAuth(req);
   if (!auth.ok) {
@@ -96,6 +106,10 @@ export async function POST(req: Request) {
     }
 
     const meta = order.metadata || {};
+    const unpaid = assertOrderPaid(meta);
+    if (unpaid) {
+      return NextResponse.json({ ok: false, message: unpaid }, { status: 402 });
+    }
     const hub = (meta.shipping_hub as DispatchHub | undefined) || "fontibon";
     const method = String(meta.shipping_method_id || "");
     if (meta.shipping_status === "pickup_ready") {
@@ -224,6 +238,10 @@ export async function POST(req: Request) {
     }
 
     const meta = order.metadata || {};
+    const unpaid = assertOrderPaid(meta);
+    if (unpaid) {
+      return NextResponse.json({ ok: false, message: unpaid }, { status: 402 });
+    }
     const hub = (meta.shipping_hub as DispatchHub | undefined) || "fontibon";
     if (meta.shipping_status === "pickup_ready") {
       return NextResponse.json(

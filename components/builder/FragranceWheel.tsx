@@ -73,7 +73,7 @@ export function FragranceWheel({ selected, onSelect }: Props) {
                 textAnchor="middle"
                 dominantBaseline="middle"
                 className="pointer-events-none select-none font-sans font-semibold"
-                fill={isSelected ? "#230a0b" : "#f5efe1"}
+                fill={isSelected ? "#0a0a0a" : "#f5efe1"}
                 fontSize={10.5}
               >
                 {g.wheelLines.map((line, i) => (

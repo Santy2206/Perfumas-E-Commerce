@@ -133,7 +133,7 @@ export function PerfumeriaBrowser({
 
   return (
     <div>
-      <h1 className="font-display text-3xl text-bone mb-2">Perfumería</h1>
+      <h1 className="font-display text-3xl text-bone mb-2">Preparadas</h1>
       <p className="text-sm text-bone-60 mb-2">
         Réplicas preparadas listas para llevar, o elige una esencia e inspira tu creación.
       </p>
@@ -145,7 +145,7 @@ export function PerfumeriaBrowser({
         onChange={setSearch}
         suggestions={searchSuggestions}
         placeholder="Buscar por nombre o casa…"
-        aria-label="Buscar en perfumería"
+        aria-label="Buscar en preparadas"
         resultsAnchorId="search-results"
       />
 
@@ -173,14 +173,14 @@ export function PerfumeriaBrowser({
       <section>
         <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="font-display text-2xl text-bone">Crea con una esencia</h2>
+            <h2 className="font-display text-2xl text-bone">Prepara con una esencia</h2>
             <p className="text-sm text-bone-60">
               Filtra por género, grupo olfativo y casa.
             </p>
           </div>
           <div className="flex gap-3 text-sm">
             <Link href="/crear" className="text-gold-400 underline hover:text-bone">
-              Ir a Crear
+              Ir a Preparar
             </Link>
             <Link
               href="/tienda/insumos?cat=esencias"

@@ -7,6 +7,8 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
+import { fetchB2BStatus } from "../../lib/b2b";
+import { getCustomer } from "../../lib/auth";
 import { useCartStore } from "../../store/useCartStore";
 
 export default function MayoristasPage() {
@@ -75,10 +77,13 @@ export default function MayoristasPage() {
           <Card>
             <CardHeader>
               <CardTitle>¿Ya tienes cuenta?</CardTitle>
-              <CardDescription>Demo: inicia sesión con un NIT aprobado de prueba.</CardDescription>
+              <CardDescription>
+                Inicia sesión en tu cuenta Perfumas. Solo cuentas aprobadas en{" "}
+                <em>emprendedores</em> ven precios mayoristas.
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <DemoLogin />
+              <ApprovedLogin />
             </CardContent>
           </Card>
         </div>
@@ -88,36 +93,70 @@ export default function MayoristasPage() {
   );
 }
 
-function DemoLogin() {
+function ApprovedLogin() {
   const setB2BSession = useCartStore((s) => s.setB2BSession);
-  const [email, setEmail] = useState("mayorista@perfumas.com.co");
-  const [nit, setNit] = useState("900123456-1");
+  const [msg, setMsg] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const activate = async () => {
+    setLoading(true);
+    setMsg(null);
+    try {
+      const customer = await getCustomer();
+      if (!customer?.id) {
+        setMsg("Inicia sesión primero en tu cuenta.");
+        return;
+      }
+      const status = await fetchB2BStatus(customer.id);
+      if (!status.approved) {
+        setMsg(
+          status.status === "pending"
+            ? "Tu solicitud sigue pendiente de aprobación."
+            : "Esta cuenta aún no está en el grupo emprendedores. Contacta a Perfumas."
+        );
+        if (status.status === "pending") {
+          setB2BSession({
+            businessName: status.business_name || customer.email,
+            nit: status.nit || "",
+            phone: status.phone || customer.phone || "",
+            city: status.city || "",
+            email: status.email || customer.email,
+            status: "pending",
+            customerId: customer.id,
+          });
+        }
+        return;
+      }
+      setB2BSession({
+        businessName: status.business_name || customer.email,
+        nit: status.nit || "",
+        phone: status.phone || customer.phone || "",
+        city: status.city || "",
+        email: status.email || customer.email,
+        status: "approved",
+        customerId: customer.id,
+      });
+    } catch {
+      setMsg("No pudimos verificar el acceso mayorista.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="space-y-3">
-      <div>
-        <Label>Correo</Label>
-        <Input value={email} onChange={(e) => setEmail(e.target.value)} />
+      <p className="text-sm text-bone-60">
+        Usa el mismo login de la tienda (correo o Google). Luego activa precios mayoristas aquí.
+      </p>
+      <div className="flex flex-wrap gap-2">
+        <Button asChild variant="outline">
+          <Link href="/cuenta/login">Iniciar sesión</Link>
+        </Button>
+        <Button className="flex-1" disabled={loading} onClick={activate}>
+          {loading ? "Verificando…" : "Activar precios mayoristas"}
+        </Button>
       </div>
-      <div>
-        <Label>NIT</Label>
-        <Input value={nit} onChange={(e) => setNit(e.target.value)} />
-      </div>
-      <Button
-        className="w-full"
-        onClick={() =>
-          setB2BSession({
-            businessName: "Emprendedor Demo SAS",
-            nit,
-            phone: "3503370279",
-            city: "Bogotá",
-            email,
-            status: "approved",
-          })
-        }
-      >
-        Entrar (demo aprobada)
-      </Button>
+      {msg ? <p className="text-sm text-red-300">{msg}</p> : null}
     </div>
   );
 }

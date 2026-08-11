@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Perfumas",
   },
   description:
-    "Crea tu fragancia personalizada, compra insumos para emprendedores, ambientadores y accesorios. Perfumería familiar en Bogotá desde 2015.",
+    "Prepara tu fragancia personalizada, compra insumos para emprendedores, ambientadores y accesorios. Perfumería familiar en Bogotá desde 2015.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://perfumas.com.co"),
   openGraph: {
     type: "website",

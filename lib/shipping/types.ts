@@ -1,6 +1,7 @@
 import type { DispatchHub } from "./hub-routing";
 
 export type ShippingStatus =
+  | "awaiting_payment"
   | "pending_dispatch"
   | "label_created"
   | "dispatched"

@@ -98,6 +98,12 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
   const nextMetadata = {
     ...(order.metadata || {}),
     payment_provider_local: "wompi",
+    payment_status:
+      status === "APPROVED"
+        ? "paid"
+        : status === "DECLINED" || status === "ERROR" || status === "VOIDED"
+          ? "failed"
+          : "awaiting_wompi",
     wompi_transaction_id: transaction.id || null,
     wompi_status: status,
     wompi_amount_in_cents: transaction.amount_in_cents ?? null,

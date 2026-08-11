@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { computeBuildPrice } from "../../../lib/build-pricing";
 import type { BuildPayload } from "../../../lib/build-pricing";
+import { verifyB2BApprovedServer } from "../../../lib/b2b";
 import { isMedusaConfigured, medusa } from "../../../lib/medusa";
 import {
   ensureMedusaCart,
@@ -14,6 +15,26 @@ import {
   isWompiConfigured,
 } from "../../../lib/wompi";
 import { resolveDispatchHub } from "../../../lib/shipping/hub-routing";
+
+function allowLocalCheckoutFallback() {
+  if (process.env.ALLOW_LOCAL_CHECKOUT_FALLBACK === "true") return true;
+  if (process.env.ALLOW_LOCAL_CHECKOUT_FALLBACK === "false") return false;
+  return process.env.NODE_ENV !== "production";
+}
+
+/** Prefer Medusa order total (pesos). Guard against minor-unit totals. */
+function amountPesosFromOrder(
+  orderTotal: number | null | undefined,
+  fallbackPesos: number
+) {
+  if (typeof orderTotal !== "number" || !Number.isFinite(orderTotal) || orderTotal <= 0) {
+    return Math.round(fallbackPesos);
+  }
+  if (fallbackPesos > 0 && orderTotal >= fallbackPesos * 50) {
+    return Math.round(orderTotal / 100);
+  }
+  return Math.round(orderTotal);
+}
 
 type CheckoutLine = {
   id: string;
@@ -148,6 +169,7 @@ async function completeMedusaCheckout(body: CheckoutBody) {
     billing_address: address,
     metadata: {
       payment_provider_local: body.paymentProviderId,
+      payment_status: "awaiting_wompi",
       is_b2b: Boolean(body.isB2B),
       shipping_method_id: body.shippingMethodId,
       shipping_locality: body.customer.locality || null,
@@ -157,8 +179,8 @@ async function completeMedusaCheckout(body: CheckoutBody) {
       shipping_hub_label: hub.label,
       shipping_hub_address: hub.address,
       shipping_hub_reason: hub.reason,
-      shipping_status:
-        hub.mode === "pickup" ? "pickup_ready" : "pending_dispatch",
+      // Do not show in Ops until Wompi captures (webhook → pending_dispatch).
+      shipping_status: "awaiting_payment",
       shipping_provider: hub.mode === "pickup" ? "none" : "manual_pibox",
       customer_name: body.customer.name,
       customer_phone: body.customer.phone,
@@ -201,9 +223,15 @@ async function completeMedusaCheckout(body: CheckoutBody) {
 
   const result = await medusa.store.cart.complete(cartId);
   if (result.type === "order" && result.order) {
+    const order = result.order as {
+      id: string;
+      display_id?: number | string;
+      total?: number | null;
+    };
     return {
-      orderId: result.order.id,
-      displayId: result.order.display_id,
+      orderId: order.id,
+      displayId: order.display_id,
+      totalPesos: amountPesosFromOrder(order.total, body.total),
       source: "medusa" as const,
     };
   }
@@ -216,7 +244,8 @@ async function completeMedusaCheckout(body: CheckoutBody) {
 }
 
 /**
- * Creates an order. Prefer Medusa complete-cart; fall back to local in-memory order.
+ * Creates an order. Prefer Medusa complete-cart.
+ * Local in-memory fallback is disabled in production.
  */
 export async function POST(req: Request) {
   let body: CheckoutBody;
@@ -254,6 +283,36 @@ export async function POST(req: Request) {
       { status: 400 }
     );
   }
+  if (
+    body.shippingMethodId === "delivery-nacional" &&
+    !body.customer.postalCode?.trim()
+  ) {
+    return NextResponse.json(
+      { error: "Indica el código postal para el envío nacional." },
+      { status: 400 }
+    );
+  }
+
+  const wantsWholesale =
+    Boolean(body.isB2B) || body.lines.some((l) => l.isWholesale);
+  if (wantsWholesale) {
+    if (!body.customerId?.trim()) {
+      return NextResponse.json(
+        {
+          error:
+            "Para precios mayoristas inicia sesión con una cuenta aprobada en emprendedores.",
+        },
+        { status: 403 }
+      );
+    }
+    const b2b = await verifyB2BApprovedServer(body.customerId);
+    if (!b2b.approved) {
+      return NextResponse.json(
+        { error: b2b.message || "Cuenta mayorista no aprobada" },
+        { status: 403 }
+      );
+    }
+  }
 
   for (const line of body.lines) {
     if (line.kind === "build" && line.build) {
@@ -276,11 +335,12 @@ export async function POST(req: Request) {
   try {
     const medusaOrder = await completeMedusaCheckout(body);
     if (medusaOrder) {
+      const amountPesos = medusaOrder.totalPesos ?? body.total;
       const wompi =
         body.paymentProviderId === "wompi" && isWompiConfigured()
           ? buildWompiCheckoutReference({
               orderId: medusaOrder.orderId,
-              amountPesos: body.total,
+              amountPesos,
               customerEmail: body.customer.email,
             })
           : null;
@@ -288,6 +348,7 @@ export async function POST(req: Request) {
         orderId: medusaOrder.orderId,
         displayId: medusaOrder.displayId,
         source: "medusa",
+        amountPesos,
         paymentProviderId: body.paymentProviderId,
         payment:
           body.paymentProviderId === "wompi"
@@ -308,7 +369,27 @@ export async function POST(req: Request) {
       });
     }
   } catch (error) {
-    console.warn("[checkout] Medusa complete failed, using local fallback:", error);
+    console.warn("[checkout] Medusa complete failed:", error);
+    if (!allowLocalCheckoutFallback()) {
+      return NextResponse.json(
+        {
+          error:
+            "No pudimos crear el pedido en Medusa. Intenta de nuevo en unos minutos.",
+          detail: error instanceof Error ? error.message : undefined,
+        },
+        { status: 503 }
+      );
+    }
+  }
+
+  if (!allowLocalCheckoutFallback()) {
+    return NextResponse.json(
+      {
+        error:
+          "Checkout no disponible: Medusa no respondió. Revisa el backend y vuelve a intentar.",
+      },
+      { status: 503 }
+    );
   }
 
   const orderId = `PF-${Date.now().toString(36).toUpperCase()}`;

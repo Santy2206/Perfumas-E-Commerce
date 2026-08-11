@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #230a0b;
+  --background: #0a0a0a;
   --foreground: #f5efe1;
 }
 
@@ -12,10 +12,11 @@
   --font-sans: var(--font-work-sans);
   --font-display: var(--font-fraunces);
 
-  --color-wine-950: #230a0b;
-  --color-wine-900: #3a1010;
-  --color-wine-800: #5c1a1a;
-  --color-wine-700: #7a2222;
+  /* Ink scale (kept as wine-* class names for compatibility) */
+  --color-wine-950: #0a0a0a;
+  --color-wine-900: #141414;
+  --color-wine-800: #1f1f1f;
+  --color-wine-700: #2a2a2a;
 
   --color-gold-100: #f2e4c2;
   --color-gold-400: #caa969;

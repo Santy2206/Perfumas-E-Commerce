@@ -11,6 +11,13 @@ const adminDisabled =
   process.env.DISABLE_MEDUSA_ADMIN === "true" ||
   process.env.ADMIN_DISABLED === "true"
 
+const s3Configured = Boolean(
+  process.env.S3_BUCKET?.trim() &&
+    process.env.S3_ACCESS_KEY_ID?.trim() &&
+    process.env.S3_SECRET_ACCESS_KEY?.trim() &&
+    process.env.S3_FILE_URL?.trim()
+)
+
 module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
@@ -72,5 +79,33 @@ module.exports = defineConfig({
         ],
       },
     },
+    // Durable product images in production (Supabase Storage / AWS / R2).
+    // When unset, Medusa keeps the default local `static/` provider.
+    ...(s3Configured
+      ? [
+          {
+            resolve: "@medusajs/medusa/file",
+            options: {
+              providers: [
+                {
+                  resolve: "@medusajs/medusa/file-s3",
+                  id: "s3",
+                  options: {
+                    file_url: process.env.S3_FILE_URL,
+                    access_key_id: process.env.S3_ACCESS_KEY_ID,
+                    secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+                    region: process.env.S3_REGION || "us-east-1",
+                    bucket: process.env.S3_BUCKET,
+                    endpoint: process.env.S3_ENDPOINT || undefined,
+                    additional_client_config: process.env.S3_FORCE_PATH_STYLE
+                      ? { forcePathStyle: true }
+                      : undefined,
+                  },
+                },
+              ],
+            },
+          },
+        ]
+      : []),
   ],
 })

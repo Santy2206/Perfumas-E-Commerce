@@ -17,7 +17,7 @@ export function SiteFooter() {
         <div>
           <p className="text-xs uppercase tracking-widest text-gold-400 mb-3">Explorar</p>
           <ul className="space-y-2 text-sm text-bone-60">
-            <li><Link href="/crear" className="hover:text-gold-400">Crear fragancia</Link></li>
+            <li><Link href="/crear" className="hover:text-gold-400">Preparar fragancia</Link></li>
             <li><Link href="/tienda" className="hover:text-gold-400">Tienda</Link></li>
             <li><Link href="/mayoristas" className="hover:text-gold-400">Mayoristas</Link></li>
             <li><a href={`${MARKETING_HOME_URL}/#faq`} className="hover:text-gold-400">Preguntas (marca)</a></li>

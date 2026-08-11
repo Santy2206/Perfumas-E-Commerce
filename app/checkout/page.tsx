@@ -283,7 +283,7 @@ export default function CheckoutPage() {
       </p>
 
       <div className="space-y-8">
-        <section className="rounded-sm border border-gold-400/20 bg-white/5 p-5 space-y-4">
+        <section className="rounded-sm border border-gold-400/20 bg-gold-100/55 p-5 space-y-4">
           <h2 className="font-display text-lg text-bone">Datos de contacto</h2>
           <div>
             <Label htmlFor="name">Nombre completo</Label>
@@ -301,13 +301,13 @@ export default function CheckoutPage() {
           </div>
         </section>
 
-        <section className="rounded-sm border border-gold-400/20 bg-white/5 p-5 space-y-3">
+        <section className="rounded-sm border border-gold-400/20 bg-gold-100/55 p-5 space-y-3">
           <h2 className="font-display text-lg text-bone mb-2">Envío / recogida</h2>
           {SHIPPING_METHODS.map((m) => (
             <label
               key={m.id}
               className={`flex cursor-pointer items-start gap-3 rounded-sm border p-3 ${
-                shippingMethodId === m.id ? "border-gold-400 bg-gold-400/10" : "border-white/10"
+                shippingMethodId === m.id ? "border-gold-400 bg-gold-400/10" : "border-gold-400/25"
               }`}
             >
               <input
@@ -336,7 +336,7 @@ export default function CheckoutPage() {
                     id="locality"
                     value={locality}
                     onChange={(e) => setLocality(e.target.value)}
-                    className="mt-1 flex h-10 w-full rounded-sm border border-gold-400/30 bg-wine-950 px-3 text-sm text-bone focus:outline-none focus:ring-2 focus:ring-gold-400"
+                    className="mt-1 flex h-10 w-full rounded-sm border border-gold-400/40 bg-gold-100/70 px-3 text-sm text-bone focus:outline-none focus:ring-2 focus:ring-gold-400"
                   >
                     <option value="">Selecciona localidad…</option>
                     {BOGOTA_LOCALITIES.map((loc) => (
@@ -400,7 +400,7 @@ export default function CheckoutPage() {
           ) : null}
         </section>
 
-        <section className="rounded-sm border border-gold-400/20 bg-white/5 p-5">
+        <section className="rounded-sm border border-gold-400/20 bg-gold-100/55 p-5">
           <div className="flex justify-between text-sm text-bone-60 mb-1">
             <span>Subtotal</span>
             <span>{formatCOP(subtotal())}</span>

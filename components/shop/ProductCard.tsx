@@ -128,7 +128,7 @@ export function ProductCard({
           </p>
         ) : isEssence ? (
           <p className="mt-3 text-xs text-bone-60">
-            Crea tu perfume personalizado con esta esencia
+            Prepara tu perfume personalizado con esta esencia
           </p>
         ) : null}
         {sellByGram && (
@@ -152,7 +152,7 @@ export function ProductCard({
         <AddToListButton target={listTarget} />
         {isEssence && mode === "create" ? (
           <Button asChild className="w-full" size="sm">
-            <Link href={`/crear?fragrance=${product.id}`}>Crear con esta</Link>
+            <Link href={`/crear?fragrance=${product.id}`}>Preparar con esta</Link>
           </Button>
         ) : (
           <Button className="w-full" size="sm" onClick={onAdd}>

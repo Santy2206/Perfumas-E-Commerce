@@ -1,7 +1,7 @@
 import { listCatalogProducts } from "../../../lib/medusa-catalog";
 import { PerfumeriaBrowser } from "../../../components/shop/PerfumeriaBrowser";
 
-export const metadata = { title: "Perfumería" };
+export const metadata = { title: "Preparadas" };
 export const revalidate = 120;
 
 export default async function PerfumeriaPage() {

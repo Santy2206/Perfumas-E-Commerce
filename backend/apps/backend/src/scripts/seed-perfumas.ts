@@ -502,7 +502,8 @@ export default async function seedPerfumas({
                 currency_code: price.currency_code.toLowerCase(),
               })),
               metadata: v.metadata || {},
-              manage_inventory: true,
+              // Launch: do not block sales on stock (align with catalog:sync).
+              manage_inventory: false,
             })),
           }
         }),

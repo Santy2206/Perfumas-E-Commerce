@@ -41,8 +41,8 @@ export function HouseGroupAccordion({
             <div
               key={g.id}
               className={`rounded-sm border ${
-                hasSelected ? "border-gold-400/50" : "border-white/10"
-              } bg-white/5`}
+                hasSelected ? "border-gold-400/50" : "border-black/10"
+              } bg-wine-900`}
             >
               <button
                 type="button"
@@ -57,7 +57,7 @@ export function HouseGroupAccordion({
                 <span className="text-gold-400 text-xs">{open ? "▲" : "▼"}</span>
               </button>
               {open ? (
-                <div className="flex flex-wrap gap-2 border-t border-white/10 px-4 py-3">
+                <div className="flex flex-wrap gap-2 border-t border-black/10 px-4 py-3">
                   {g.houses.map((h) => {
                     const active = selected ? housesMatch(h, selected) : false;
                     return (
@@ -68,7 +68,7 @@ export function HouseGroupAccordion({
                         className={`rounded-sm border px-3 py-1.5 text-xs transition-colors ${
                           active
                             ? "border-gold-400 bg-gold-400/15 text-gold-400"
-                            : "border-white/15 text-bone-60 hover:border-gold-400/40"
+                            : "border-black/15 text-bone-60 hover:border-gold-400/40"
                         }`}
                       >
                         {h}

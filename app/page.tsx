@@ -10,14 +10,14 @@ export default function Home() {
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-gold-400 uppercase tracking-[0.3em] text-xs mb-4">Perfumas · Bogotá desde 2015</p>
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-bone mb-6 max-w-3xl mx-auto">
-            Crea tu fragancia. Abastece tu negocio. Completa tu ritual.
+            Prepara tu fragancia. Abastece tu negocio. Completa tu ritual.
           </h1>
           <p className="text-bone-60 max-w-2xl mx-auto mb-10 text-base sm:text-lg">
             Perfumería personalizada, insumos para emprendedores, cuidado del hogar y accesorios — todo en un solo lugar.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild size="lg">
-              <Link href="/crear">Crear mi fragancia →</Link>
+              <Link href="/crear">Preparar mi fragancia →</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/tienda">Explorar tienda</Link>

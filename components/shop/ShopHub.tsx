@@ -6,22 +6,22 @@ const DEPT_VISUAL: Record<
   { accent: string; motif: string; hint: string }
 > = {
   perfumeria: {
-    accent: "from-[#5c1a1a] via-[#3a1010] to-[#230a0b]",
+    accent: "from-[#1a1a1a] via-[#121212] to-[#0a0a0a]",
     motif: "Eau",
     hint: "Réplicas · Personalizadas",
   },
   insumos: {
-    accent: "from-[#4a2818] via-[#3a1010] to-[#230a0b]",
+    accent: "from-[#1c1c1c] via-[#141414] to-[#0a0a0a]",
     motif: "Base",
     hint: "Esencias · Envases · Alcohol",
   },
   hogar: {
-    accent: "from-[#3a2420] via-[#2a1210] to-[#230a0b]",
+    accent: "from-[#181818] via-[#111111] to-[#0a0a0a]",
     motif: "Aura",
     hint: "Ambiente · Cuidado",
   },
   accesorios: {
-    accent: "from-[#4a2030] via-[#3a1018] to-[#230a0b]",
+    accent: "from-[#1f1f1f] via-[#151515] to-[#0a0a0a]",
     motif: "Toque",
     hint: "Complementos",
   },
@@ -33,7 +33,7 @@ export function ShopHub() {
       {/* Atmosphere */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(202,169,105,0.14),_transparent_55%),radial-gradient(ellipse_at_bottom_right,_rgba(122,34,34,0.45),_transparent_50%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(202,169,105,0.16),_transparent_55%),radial-gradient(ellipse_at_bottom_right,_rgba(202,169,105,0.08),_transparent_50%)]"
       />
       <div
         aria-hidden
@@ -60,13 +60,13 @@ export function ShopHub() {
             href="/crear"
             className="inline-flex items-center rounded-sm bg-gold-400 px-5 py-3 text-xs font-semibold uppercase tracking-widest text-wine-950 transition-colors hover:bg-gold-100"
           >
-            Crear mi fragancia
+            Preparar mi fragancia
           </Link>
           <Link
             href="/tienda/perfumeria"
             className="inline-flex items-center rounded-sm border border-gold-400/40 px-5 py-3 text-xs font-semibold uppercase tracking-widest text-gold-400 transition-colors hover:bg-gold-400/10"
           >
-            Ver perfumería
+            Ver preparadas
           </Link>
         </div>
       </section>

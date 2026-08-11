@@ -84,7 +84,8 @@ class WompiPaymentProviderService extends AbstractPaymentProvider<WompiOptions> 
   async authorizePayment(
     input: AuthorizePaymentInput
   ): Promise<AuthorizePaymentOutput> {
-    // Allow cart.complete without waiting for Wompi webhook (ops confirm later).
+    // Order is created before Widget pay; shipping stays awaiting_payment until
+    // /hooks/wompi captures APPROVED. Ops refuses labels until paid.
     return {
       status: PaymentSessionStatus.AUTHORIZED,
       data: {

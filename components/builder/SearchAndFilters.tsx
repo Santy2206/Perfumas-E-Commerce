@@ -20,7 +20,11 @@ export function GlobalSearchBar() {
   const setSearch = useBuilderStore((s) => s.setSearch);
 
   const suggestions = useMemo(() => {
-    const houses = availableHouses(FRAGRANCES, {});
+    const houses = availableHouses(FRAGRANCES, {
+      gender: null,
+      group: null,
+      search: "",
+    });
     return buildSearchSuggestions(
       search,
       FRAGRANCES.map((f) => ({

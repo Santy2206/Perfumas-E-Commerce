@@ -95,6 +95,7 @@ export async function buildDispatchForOrder(
   const metadata = {
     ...(input.existingMetadata || {}),
     ...shippingMeta,
+    payment_status: "paid",
   };
 
   // Emails (best-effort)

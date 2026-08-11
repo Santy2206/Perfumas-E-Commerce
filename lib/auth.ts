@@ -534,6 +534,27 @@ async function afterAuthSuccess(): Promise<AuthResult> {
     };
   }
   await transferCartToCustomer(customer.id);
+  // Sync wholesale session from Medusa (group emprendedores / b2b_status).
+  try {
+    const { fetchB2BStatus } = await import("./b2b");
+    const status = await fetchB2BStatus(customer.id);
+    if (status.approved) {
+      useCartStore.getState().setB2BSession({
+        businessName: status.business_name || customer.email,
+        nit: status.nit || "",
+        phone: status.phone || customer.phone || "",
+        city: status.city || "",
+        email: status.email || customer.email,
+        status: "approved",
+        customerId: customer.id,
+      });
+    } else if (useCartStore.getState().isB2B) {
+      // Drop stale client-side wholesale if Medusa says not approved.
+      useCartStore.getState().setB2BSession(null);
+    }
+  } catch {
+    /* non-blocking */
+  }
   return { ok: true, customer };
 }
 

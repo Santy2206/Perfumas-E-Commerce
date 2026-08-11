@@ -7,8 +7,10 @@ import { Badge } from "../ui/badge";
 
 export function MayoristasGate({ children }: { children: React.ReactNode }) {
   const isB2B = useCartStore((s) => s.isB2B);
+  const profile = useCartStore((s) => s.b2bProfile);
+  const approved = isB2B && profile?.status === "approved" && Boolean(profile.customerId);
 
-  if (!isB2B) {
+  if (!approved) {
     return (
       <div className="mx-auto max-w-lg px-4 py-16 text-center">
         <Badge variant="secondary" className="mb-4">

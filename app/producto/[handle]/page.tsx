@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: Props) {
                   href={`/crear?fragrance=${product.id}`}
                   className="inline-flex h-11 items-center rounded-sm bg-gold-400 px-6 text-sm font-semibold uppercase tracking-widest text-wine-950 hover:bg-gold-100"
                 >
-                  Crear fragancia con esta esencia
+                  Preparar fragancia con esta esencia
                 </Link>
                 <AddToCartButton product={product} />
               </div>

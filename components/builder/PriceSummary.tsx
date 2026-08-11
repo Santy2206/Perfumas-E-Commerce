@@ -66,7 +66,7 @@ export function PriceSummary() {
         onClick={resetSelection}
         className="w-full text-center text-sm text-bone-60 hover:text-gold-400 underline"
       >
-        + Crear otra fragancia
+        + Preparar otra fragancia
       </button>
     </div>
   );

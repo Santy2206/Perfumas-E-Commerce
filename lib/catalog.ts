@@ -24,10 +24,10 @@ export const DEPARTMENTS: {
 }[] = [
   {
     id: "perfumeria",
-    label: "Perfumería",
+    label: "Preparadas",
     href: "/tienda/perfumeria",
     description:
-      "Réplicas preparadas listas para llevar, o crea tu fragancia personalizada.",
+      "Réplicas preparadas listas para llevar, o prepara tu fragancia personalizada.",
   },
   {
     id: "insumos",

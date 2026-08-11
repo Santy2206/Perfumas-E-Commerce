@@ -63,7 +63,27 @@ npm run catalog:images -- --dir "..." --also-prepared
 npm run catalog:images -- --dir "..." --force
 ```
 
-Files are stored under the Medusa local `static/` folder (`http://localhost:9000/static/...`). For production, configure S3 (or sync that `static/` folder with the deployed backend).
+Files are stored under the Medusa local `static/` folder (`http://localhost:9000/static/...`) unless S3 is configured.
+
+### Production images (S3 / Supabase Storage / R2)
+
+Set on the **Medusa host** (Railway):
+
+```env
+S3_BUCKET=medusa
+S3_REGION=us-east-1
+S3_ACCESS_KEY_ID=...
+S3_SECRET_ACCESS_KEY=...
+S3_FILE_URL=https://<project>.supabase.co/storage/v1/object/public/medusa
+S3_ENDPOINT=https://<project>.supabase.co/storage/v1/s3
+S3_FORCE_PATH_STYLE=true
+```
+
+Redeploy Medusa, then re-run `npm run catalog:images` so URLs point at the bucket. Without S3, images on ephemeral disk can disappear after redeploy.
+
+### Inventory (launch policy)
+
+At launch we **do not block sales** on stock: `catalog:sync` sets `manage_inventory: false`. Seed may create levels for reference only. When you want real stock later, turn `manage_inventory: true` on variants and maintain levels in Admin.
 
 ### Collections
 
@@ -76,6 +96,8 @@ Files are stored under the Medusa local `static/` folder (`http://localhost:9000
 - `/tienda/insumos` — buy components with filters
 
 ## B2B (emprendedores)
+
+Wholesale prices require a real Medusa customer in group **emprendedores** (demo login removed). Checkout rejects `isB2B` / wholesale lines unless `/store/perfumas/b2b/status` returns approved. Price list **Wholesale emprendedores** applies when the cart customer is in that group.
 
 1. Admin → Customer Groups → **emprendedores** (created by `npm run backend:seed`).
 2. Create a **Price List** (type: override) targeting that group with wholesale prices (seed creates **Wholesale emprendedores**).

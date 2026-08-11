@@ -13,7 +13,7 @@ const FAQS = [
   },
   {
     q: "¿Puedo personalizar mi perfume?",
-    a: "Sí. En /crear eliges fragancia, envase (AAA / AA / Genérico), feromonas opcionales, texto de etiqueta y envoltura de regalo.",
+    a: "Sí. En Preparar eliges fragancia, envase (AAA / AA / Genérico), feromonas opcionales, texto de etiqueta y envoltura de regalo.",
   },
   {
     q: "¿Venden insumos al por mayor?",
