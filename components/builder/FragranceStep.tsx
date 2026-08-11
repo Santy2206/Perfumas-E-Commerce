@@ -4,27 +4,54 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { filterFragrances, sortFragrances } from "../../lib/filters";
 import { FRAGRANCES, OLFACTIVE_GROUPS } from "../../lib/mock-data";
+import { scrollToResults } from "../../lib/scroll-to-results";
 import { useBuilderStore } from "../../store/useBuilderStore";
 import type { CatalogSort } from "../../lib/house-groups";
 import { FragranceWheel } from "./FragranceWheel";
 import { GlobalSearchBar, HouseSelector } from "./SearchAndFilters";
 import { CatalogToolbar } from "../shop/CatalogToolbar";
+import {
+  CatalogAdvancedFilters,
+  type AdvancedFilterChip,
+} from "../shop/CatalogAdvancedFilters";
+import {
+  CollectionFilterChips,
+  type CollectionFilter,
+} from "../shop/CollectionFilterChips";
 import { LikeButton } from "../favorites/LikeButton";
 import { AddToListButton } from "../favorites/AddToListButton";
 import { likedSkuIds, listSkuIds } from "../../lib/favorites";
 import { useFavoritesStore } from "../../store/useFavoritesStore";
-import type { CollectionFilter } from "../shop/CollectionFilterChips";
+
+const RESULTS_ID = "search-results";
+
+function collectionLabel(
+  collection: CollectionFilter,
+  lists: { id: string; name: string }[]
+): string | null {
+  if (!collection) return null;
+  if (collection === "likes") return "Me gusta";
+  if (collection === "any-list") return "En mis listas";
+  if (collection.startsWith("list:")) {
+    const id = collection.slice(5);
+    return lists.find((l) => l.id === id)?.name ?? "Lista";
+  }
+  return null;
+}
 
 export function FragranceStep() {
   const filters = useBuilderStore((s) => s.filters);
   const setGroup = useBuilderStore((s) => s.setGroup);
   const setGender = useBuilderStore((s) => s.setGender);
+  const setHouse = useBuilderStore((s) => s.setHouse);
   const selectFragrance = useBuilderStore((s) => s.selectFragrance);
   const [sort, setSort] = useState<CatalogSort>("alpha-asc");
   const [collection, setCollection] = useState<CollectionFilter>(null);
   const likes = useFavoritesStore((s) => s.likes);
   const lists = useFavoritesStore((s) => s.lists);
   const pendingBottleId = useBuilderStore((s) => s.pendingBottleId);
+
+  const goToResults = () => scrollToResults(RESULTS_ID);
 
   const results = useMemo(() => {
     let list = sortFragrances(filterFragrances(FRAGRANCES, filters), sort);
@@ -42,6 +69,42 @@ export function FragranceStep() {
   }, [filters, sort, collection, likes, lists]);
   const groupLabel = (id: string) => OLFACTIVE_GROUPS.find((g) => g.id === id)?.label ?? id;
 
+  const advancedChips = useMemo(() => {
+    const chips: AdvancedFilterChip[] = [];
+    if (filters.group) {
+      chips.push({
+        id: "group",
+        label: groupLabel(filters.group),
+        onClear: () => {
+          setGroup(filters.group!);
+          goToResults();
+        },
+      });
+    }
+    if (filters.house) {
+      chips.push({
+        id: "house",
+        label: filters.house,
+        onClear: () => {
+          setHouse(filters.house);
+          goToResults();
+        },
+      });
+    }
+    const colLabel = collectionLabel(collection, lists);
+    if (colLabel) {
+      chips.push({
+        id: "collection",
+        label: colLabel,
+        onClear: () => {
+          setCollection(null);
+          goToResults();
+        },
+      });
+    }
+    return chips;
+  }, [filters.group, filters.house, collection, lists, setGroup, setHouse]);
+
   return (
     <div>
       <h2 className="font-display text-2xl sm:text-3xl text-ink mb-2">Encuentra tu fragancia</h2>
@@ -58,71 +121,111 @@ export function FragranceStep() {
       <GlobalSearchBar />
       <CatalogToolbar
         gender={filters.gender}
-        onGender={setGender}
+        onGender={(g) => {
+          setGender(g);
+          goToResults();
+        }}
         sort={sort}
-        onSort={setSort}
+        onSort={(s) => {
+          setSort(s);
+          goToResults();
+        }}
         showUnisex
-        collection={collection}
-        onCollection={setCollection}
+        showCollections={false}
       />
-      <FragranceWheel selected={filters.group} onSelect={setGroup} />
-      <div className="mt-6">
-        <HouseSelector />
-      </div>
 
-      <div id="search-results" className="scroll-mt-24">
-      <p className="mb-4 text-xs text-ink-60">{results.length} fragancias</p>
+      <CatalogAdvancedFilters chips={advancedChips} label="Familia y casa">
+        <CollectionFilterChips
+          value={collection}
+          onChange={(c) => {
+            setCollection(c);
+            goToResults();
+          }}
+          label="Me gusta y listas"
+          className="mb-0"
+        />
+        <FragranceWheel
+          size="md"
+          selected={filters.group}
+          onSelect={(g) => {
+            setGroup(g);
+            goToResults();
+          }}
+        />
+        <div className="mt-2">
+          <HouseSelector
+            onAfterSelect={() => {
+              goToResults();
+            }}
+          />
+        </div>
+      </CatalogAdvancedFilters>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-        {results.map((f) => (
-          <div key={f.id} className="bg-white border border-gold-400/25 rounded-sm p-5">
-            <div className="relative w-full aspect-square rounded-sm mb-4 overflow-hidden bg-paper-soft flex items-center justify-center">
-              {f.imageUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={f.imageUrl} alt={f.contratipo} className="w-full h-full object-cover" />
-              ) : (
-                <span className="font-display text-3xl text-gold-400/40">{f.contratipo.charAt(0)}</span>
-              )}
-              <LikeButton
-                productId={f.id}
-                productKind="essence"
+      <div id={RESULTS_ID} className="scroll-mt-24">
+        <p className="mb-4 text-xs text-ink-60">{results.length} fragancias</p>
+
+        <div className="mt-4 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {results.map((f) => (
+            <div
+              key={f.id}
+              className="flex h-full flex-col rounded-sm border border-gold-400/25 bg-white p-5"
+            >
+              <div className="relative mb-4 flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-paper-soft">
+                {f.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={f.imageUrl} alt={f.contratipo} className="h-full w-full object-cover" />
+                ) : (
+                  <span className="font-display text-3xl text-gold-400/40">{f.contratipo.charAt(0)}</span>
+                )}
+                <LikeButton
+                  productId={f.id}
+                  productKind="essence"
+                  title={f.contratipo}
+                  className="absolute right-2 top-2"
+                />
+              </div>
+              <p className="mb-2 text-[10px] uppercase tracking-widest text-gold-400">
+                {groupLabel(f.group)}
+              </p>
+              <h3
+                className="mb-1 min-h-[3.25rem] font-display text-lg leading-snug text-ink line-clamp-2"
                 title={f.contratipo}
-                className="absolute right-2 top-2"
-              />
-            </div>
-            <p className="text-[10px] uppercase tracking-widest text-gold-400 mb-2">{groupLabel(f.group)}</p>
-            <h3 className="font-display text-lg text-ink mb-1">{f.contratipo}</h3>
-            <p className="text-xs text-ink-60 mb-4">{f.house}</p>
-            <div className="flex flex-col gap-2">
-              <AddToListButton
-                target={{
-                  type: "sku",
-                  productId: f.id,
-                  productKind: "essence",
-                  title: f.contratipo,
-                }}
-              />
-              <button
-                onClick={() => selectFragrance(f)}
-                className="bg-gold-400 hover:bg-gold-100 text-wine-950 text-xs font-semibold uppercase tracking-widest rounded-sm py-3 transition-colors"
               >
-                Seleccionar y continuar
-              </button>
-              <Link
-                href={`/tienda/insumos?cat=esencias&essence=${encodeURIComponent(f.id)}`}
-                className="text-center text-xs text-ink-60 hover:text-gold-400 underline py-1"
-              >
-                ¿Solo el aceite? Ver en Insumos
-              </Link>
+                {f.contratipo}
+              </h3>
+              <p className="mb-4 truncate text-xs text-ink-60" title={f.house}>
+                {f.house}
+              </p>
+              <div className="mt-auto flex flex-col gap-2">
+                <AddToListButton
+                  target={{
+                    type: "sku",
+                    productId: f.id,
+                    productKind: "essence",
+                    title: f.contratipo,
+                  }}
+                />
+                <button
+                  onClick={() => selectFragrance(f)}
+                  className="rounded-sm bg-gold-400 py-3 text-xs font-semibold uppercase tracking-widest text-wine-950 transition-colors hover:bg-gold-100"
+                >
+                  Seleccionar y continuar
+                </button>
+                <Link
+                  href={`/tienda/insumos?cat=esencias&essence=${encodeURIComponent(f.id)}`}
+                  className="py-1 text-center text-xs text-ink-60 underline hover:text-gold-400"
+                >
+                  ¿Solo el aceite? Ver en Insumos
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
-        {results.length === 0 && (
-          <p className="col-span-full text-center text-sm text-ink-60 py-10">
-            Ninguna fragancia coincide con estos filtros.
-          </p>
-        )}
-      </div>
+          ))}
+          {results.length === 0 && (
+            <p className="col-span-full text-center text-sm text-ink-60 py-10">
+              Ninguna fragancia coincide con estos filtros.
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import type { SearchSuggestion } from "../../lib/search-suggestions";
+import { scrollToResults } from "../../lib/scroll-to-results";
 import { cn } from "../../lib/utils";
 
 type Props = {
@@ -17,17 +18,6 @@ type Props = {
   /** Element id to scroll into view on Enter / suggestion pick */
   resultsAnchorId?: string;
 };
-
-function scrollToResults(anchorId?: string) {
-  if (!anchorId || typeof document === "undefined") return;
-  // Wait so filtered results can paint after onChange
-  window.setTimeout(() => {
-    document.getElementById(anchorId)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, 50);
-}
 
 export function SearchSuggestInput({
   value,
@@ -73,7 +63,7 @@ export function SearchSuggestInput({
     <div ref={rootRef} className={cn("relative", className)}>
       {withIcon && (
         <svg
-          className="pointer-events-none absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-ink-60"
+          className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-gold-400"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -82,7 +72,7 @@ export function SearchSuggestInput({
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
+            strokeWidth={2.25}
             d="M21 21l-4.35-4.35M17 10a7 7 0 11-14 0 7 7 0 0114 0z"
           />
         </svg>
@@ -128,8 +118,8 @@ export function SearchSuggestInput({
           }
         }}
         className={cn(
-          "w-full rounded-sm border border-gold-400/30 bg-paper text-sm text-ink placeholder:text-ink-60 focus:outline-none focus:ring-2 focus:ring-gold-400",
-          withIcon ? "py-3 pl-11 pr-4" : "px-4 py-2.5",
+          "w-full rounded-sm border-2 border-gold-400 bg-white text-base text-ink shadow-[0_2px_0_0_rgba(202,169,105,0.35)] placeholder:text-ink/50 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-paper",
+          withIcon ? "py-3.5 pl-12 pr-4" : "px-4 py-3.5",
           inputClassName
         )}
       />
@@ -137,7 +127,7 @@ export function SearchSuggestInput({
         <ul
           id={listId}
           role="listbox"
-          className="absolute left-0 right-0 z-40 mt-1 max-h-64 overflow-auto rounded-sm border border-gold-400/30 bg-paper py-1 shadow-lg"
+          className="absolute left-0 right-0 z-40 mt-1 max-h-64 overflow-auto rounded-sm border-2 border-gold-400/50 bg-white py-1 shadow-lg"
         >
           {suggestions.map((s, i) => (
             <li key={s.id} role="option" aria-selected={i === active}>

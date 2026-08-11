@@ -15,6 +15,8 @@ import {
   isWompiConfigured,
 } from "../../../lib/wompi";
 import { resolveDispatchHub } from "../../../lib/shipping/hub-routing";
+import { getShippingQuote } from "../../../lib/shipping/pricing";
+import { getProductById } from "../../../lib/catalog";
 
 function allowLocalCheckoutFallback() {
   if (process.env.ALLOW_LOCAL_CHECKOUT_FALLBACK === "true") return true;
@@ -47,6 +49,7 @@ type CheckoutLine = {
   variantId?: string;
   medusaLineId?: string;
   isWholesale?: boolean;
+  productKind?: string;
 };
 
 type CheckoutBody = {
@@ -188,9 +191,23 @@ async function completeMedusaCheckout(body: CheckoutBody) {
   });
 
   const shippingOptions = await listShippingOptionsForCart(cartId);
+  const shippingQuote = getShippingQuote({
+    methodId: body.shippingMethodId,
+    lines: body.lines.map((l) => ({
+      kind: l.kind,
+      productId: l.productId,
+      productKind: l.productKind,
+      amount: l.price * l.quantity,
+      department: l.productId
+        ? getProductById(l.productId)?.department
+        : undefined,
+    })),
+    subtotal: body.lines.reduce((s, l) => s + l.price * l.quantity, 0),
+  });
   const optionId = matchShippingOptionId(
     shippingOptions,
-    body.shippingMethodId
+    body.shippingMethodId,
+    { preferFree: shippingQuote.free }
   );
   if (optionId) {
     await medusa.store.cart.addShippingMethod(cartId, { option_id: optionId });
@@ -331,6 +348,51 @@ export async function POST(req: Request) {
       }
     }
   }
+
+  const computedSubtotal = body.lines.reduce(
+    (sum, line) => sum + line.price * line.quantity,
+    0
+  );
+  const shippingQuote = getShippingQuote({
+    methodId: body.shippingMethodId,
+    lines: body.lines.map((l) => ({
+      kind: l.kind,
+      productId: l.productId,
+      productKind: l.productKind,
+      amount: l.price * l.quantity,
+      department: l.productId
+        ? getProductById(l.productId)?.department
+        : undefined,
+    })),
+    subtotal: computedSubtotal,
+  });
+  if (
+    typeof body.shippingPrice === "number" &&
+    body.shippingPrice !== shippingQuote.price
+  ) {
+    return NextResponse.json(
+      {
+        error: `Precio de envío desactualizado (esperado ${shippingQuote.price}, recibido ${body.shippingPrice})`,
+        correctedShippingPrice: shippingQuote.price,
+        shippingReason: shippingQuote.reason,
+      },
+      { status: 409 }
+    );
+  }
+  const expectedTotal = computedSubtotal + shippingQuote.price;
+  if (typeof body.total === "number" && body.total !== expectedTotal) {
+    return NextResponse.json(
+      {
+        error: `Total desactualizado (esperado ${expectedTotal}, recibido ${body.total})`,
+        correctedTotal: expectedTotal,
+      },
+      { status: 409 }
+    );
+  }
+  // Prefer server totals for payment
+  body.subtotal = computedSubtotal;
+  body.shippingPrice = shippingQuote.price;
+  body.total = expectedTotal;
 
   try {
     const medusaOrder = await completeMedusaCheckout(body);

@@ -1,5 +1,6 @@
 "use client";
 
+import { Heart, List } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useCustomerStore } from "../../store/useCustomerStore";
 import { useFavoritesStore } from "../../store/useFavoritesStore";
@@ -40,21 +41,28 @@ export function CollectionFilterChips({
 
   const chip = (active: boolean) =>
     cn(
-      "rounded-sm border px-3 py-1.5 text-xs uppercase tracking-widest",
+      "inline-flex items-center gap-1.5 rounded-sm border px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-widest transition-colors",
       active
-        ? "border-gold-400 text-gold-400"
-        : "border-ink/15 text-ink-60 hover:border-gold-400/40"
+        ? "border-gold-400 bg-gold-400 text-ink"
+        : "border-ink/20 bg-paper-soft text-ink hover:border-gold-400 hover:text-gold-400"
     );
 
   return (
-    <div className={cn("mb-4", className)}>
-      <p className="mb-2 text-xs uppercase tracking-widest text-gold-400">{label}</p>
-      <div className="flex flex-wrap gap-2" role="group" aria-label={label}>
+    <div className={cn(className)}>
+      <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+        {label}
+      </p>
+      <div className="flex flex-wrap gap-1.5" role="group" aria-label={label}>
         <button
           type="button"
           onClick={() => select("likes")}
           className={chip(value === "likes")}
         >
+          <Heart
+            className={cn("h-3 w-3", value === "likes" && "fill-ink")}
+            strokeWidth={1.75}
+            aria-hidden
+          />
           Mis me gusta
         </button>
         <button
@@ -62,6 +70,7 @@ export function CollectionFilterChips({
           onClick={() => select("any-list")}
           className={chip(value === "any-list")}
         >
+          <List className="h-3 w-3" strokeWidth={1.75} aria-hidden />
           En mis listas
         </button>
         {customer &&

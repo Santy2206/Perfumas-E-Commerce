@@ -4,9 +4,14 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { formatCOP } from "../../lib/utils";
 import { getProductById, SHIPPING_METHODS } from "../../lib/catalog";
+import {
+  getShippingQuote,
+  shippingProgressMessage,
+} from "../../lib/shipping/pricing";
 import { useCartStore } from "../../store/useCartStore";
 import { Button } from "../../components/ui/button";
 import { GramsQuantityInput } from "../../components/shop/GramsQuantityInput";
+import { FreeShippingNotice } from "../../components/shop/FreeShippingNotice";
 import { preloadWompiScript } from "../../lib/wompi-client";
 import { Section } from "../../components/layout/Section";
 
@@ -20,24 +25,62 @@ export default function CarritoPage() {
   const updateQty = useCartStore((s) => s.updateQty);
   const subtotal = useCartStore((s) => s.subtotal);
   const shippingMethodId = useCartStore((s) => s.shippingMethodId);
-  const shipping = SHIPPING_METHODS.find((m) => m.id === shippingMethodId);
-  const total = subtotal() + (shipping?.price ?? 0);
+  const shippingMeta = SHIPPING_METHODS.find((m) => m.id === shippingMethodId);
+  const quoteLines = lines.map((l) => ({
+    kind: l.kind,
+    productId: l.kind === "sku" ? l.productId : undefined,
+    productKind: l.kind === "sku" ? l.productKind : undefined,
+    amount: l.price * l.quantity,
+    department:
+      l.kind === "sku" ? getProductById(l.productId)?.department : undefined,
+  }));
+  const shippingQuote = shippingMethodId
+    ? getShippingQuote({
+        methodId: shippingMethodId,
+        lines: quoteLines,
+        subtotal: subtotal(),
+      })
+    : null;
+  const total = subtotal() + (shippingQuote?.price ?? 0);
+  const shippingHint = shippingQuote
+    ? shippingProgressMessage(shippingQuote)
+    : shippingProgressMessage(
+        getShippingQuote({
+          methodId: "delivery-bogota",
+          lines: quoteLines,
+          subtotal: subtotal(),
+        })
+      );
 
   return (
     <Section tone="light" className="min-h-[50vh]">
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-        <h1 className="font-display text-3xl text-ink mb-8">Tu carrito</h1>
+        <header className="mb-8 border-b-2 border-gold-400/40 pb-5">
+          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-400">
+            Perfumas
+          </p>
+          <h1 className="font-display text-3xl text-ink sm:text-4xl">Tu carrito</h1>
+          {lines.length > 0 ? (
+            <p className="mt-2 text-sm text-ink-60">
+              {lines.length} {lines.length === 1 ? "producto" : "productos"} en tu pedido
+            </p>
+          ) : null}
+        </header>
+
+        {lines.length > 0 ? (
+          <FreeShippingNotice variant="general" className="mb-6" />
+        ) : null}
 
         {lines.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-ink-60 mb-6">Aún no has agregado nada.</p>
-            <Button asChild>
+          <div className="rounded-sm border-2 border-ink/10 bg-white px-6 py-16 text-center">
+            <p className="mb-6 text-base text-ink">Aún no has agregado nada.</p>
+            <Button asChild size="lg">
               <Link href="/tienda">Ir a la tienda</Link>
             </Button>
           </div>
         ) : (
           <>
-            <ul className="space-y-4 mb-8">
+            <ul className="mb-8 space-y-3">
               {lines.map((line) => {
                 const catalog =
                   line.kind === "sku" ? getProductById(line.productId) : null;
@@ -57,11 +100,13 @@ export default function CarritoPage() {
                 return (
                   <li
                     key={line.id}
-                    className="flex flex-col gap-3 rounded-sm border border-gold-400/25 bg-white p-4 sm:flex-row sm:items-center sm:justify-between"
+                    className="flex flex-col gap-4 rounded-sm border-2 border-ink/10 bg-white p-4 shadow-[0_2px_0_0_rgba(202,169,105,0.2)] sm:flex-row sm:items-center sm:justify-between sm:p-5"
                   >
-                    <div>
-                      <p className="font-medium text-ink">{line.title}</p>
-                      <p className="text-xs text-ink-60">
+                    <div className="min-w-0 flex-1">
+                      <p className="font-display text-lg leading-snug text-ink">
+                        {line.title}
+                      </p>
+                      <p className="mt-1 text-[11px] font-semibold uppercase tracking-widest text-gold-400">
                         {line.kind === "build"
                           ? "Fragancia personalizada"
                           : isEssence
@@ -71,20 +116,25 @@ export default function CarritoPage() {
                               : "Producto"}
                       </p>
                       {isEssence ? (
-                        <p className="mt-1 text-sm text-gold-400">
-                          {formatCOP(line.price)} / gramo
-                          <span className="text-ink-60">
+                        <p className="mt-2 text-sm font-semibold text-ink">
+                          {formatCOP(line.price)}
+                          <span className="font-normal text-ink-60"> / gramo</span>
+                          <span className="font-normal text-ink-60">
                             {" "}
-                            · {line.quantity} g · total {formatCOP(lineTotal)}
+                            · {line.quantity} g ·{" "}
                           </span>
+                          <span className="text-gold-400">{formatCOP(lineTotal)}</span>
                         </p>
                       ) : (
-                        <p className="mt-1 text-sm text-gold-400">
+                        <p className="mt-2 text-sm font-semibold text-ink">
                           {formatCOP(line.price)}
                           {line.quantity > 1 ? (
-                            <span className="text-ink-60">
+                            <span className="font-normal text-ink-60">
                               {" "}
-                              · total {formatCOP(lineTotal)}
+                              · total{" "}
+                              <span className="font-semibold text-gold-400">
+                                {formatCOP(lineTotal)}
+                              </span>
                             </span>
                           ) : null}
                         </p>
@@ -101,8 +151,8 @@ export default function CarritoPage() {
                           }}
                         />
                       ) : (
-                        <label className="flex items-center gap-2 text-xs text-ink-60">
-                          <span className="uppercase tracking-widest">Cant.</span>
+                        <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-ink">
+                          <span>Cant.</span>
                           <input
                             type="number"
                             min={minQty}
@@ -115,14 +165,14 @@ export default function CarritoPage() {
                               );
                               if (!r.ok) alert(r.error);
                             }}
-                            className="h-10 w-24 rounded-sm border border-gold-400/30 bg-paper px-2 text-ink"
+                            className="h-10 w-24 rounded-sm border-2 border-ink/20 bg-white px-2 text-ink focus:outline-none focus:ring-2 focus:ring-gold-400"
                           />
                         </label>
                       )}
                       <button
                         type="button"
                         onClick={() => removeLine(line.id)}
-                        className="text-xs text-ink-60 underline hover:text-gold-400"
+                        className="text-xs font-semibold uppercase tracking-widest text-ink-60 underline hover:text-gold-400"
                       >
                         Quitar
                       </button>
@@ -132,22 +182,40 @@ export default function CarritoPage() {
               })}
             </ul>
 
-            <div className="rounded-sm border border-gold-400/25 bg-white p-5 mb-6 space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-ink-60">Subtotal</span>
-                <span className="text-ink">{formatCOP(subtotal())}</span>
+            <div className="mb-6 overflow-hidden rounded-sm border-2 border-gold-400/40 bg-white">
+              <div className="border-b border-gold-400/30 bg-ink px-5 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+                  Resumen
+                </p>
               </div>
-              {shipping && (
+              <div className="space-y-3 p-5">
                 <div className="flex justify-between text-sm">
-                  <span className="text-ink-60">{shipping.name}</span>
-                  <span className="text-ink">
-                    {shipping.price === 0 ? "Gratis" : formatCOP(shipping.price)}
-                  </span>
+                  <span className="text-ink-60">Subtotal</span>
+                  <span className="font-semibold text-ink">{formatCOP(subtotal())}</span>
                 </div>
-              )}
-              <div className="flex justify-between border-t border-gold-400/30 pt-3 font-display text-lg text-gold-400">
-                <span>Total</span>
-                <span>{formatCOP(total)}</span>
+                {shippingMeta && shippingQuote ? (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-ink-60">{shippingMeta.name}</span>
+                    <span className="font-semibold text-ink">
+                      {shippingQuote.free
+                        ? "Gratis"
+                        : formatCOP(shippingQuote.price)}
+                    </span>
+                  </div>
+                ) : (
+                  <p className="text-xs leading-relaxed text-ink-60">
+                    Elige el envío en el checkout. Domicilio Bogotá gratis desde
+                    $100.000 y nacional desde $200.000 con perfumería
+                    (hogar/accesorios ok; insumos solo si perfume &gt; insumos).
+                  </p>
+                )}
+                {shippingHint ? (
+                  <p className="text-xs text-ink-60">{shippingHint}</p>
+                ) : null}
+                <div className="flex justify-between border-t-2 border-gold-400/30 pt-3 font-display text-xl text-ink">
+                  <span>Total</span>
+                  <span className="text-gold-400">{formatCOP(total)}</span>
+                </div>
               </div>
             </div>
 

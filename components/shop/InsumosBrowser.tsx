@@ -15,18 +15,29 @@ import {
   textIncludes,
   type CatalogSort,
 } from "../../lib/house-groups";
+import { OLFACTIVE_GROUPS } from "../../lib/mock-data";
+import { scrollToResults } from "../../lib/scroll-to-results";
+import { cn } from "../../lib/utils";
 import { FragranceWheel } from "../builder/FragranceWheel";
 import { HouseGroupAccordion } from "./HouseGroupAccordion";
 import { CatalogToolbar } from "./CatalogToolbar";
+import { FreeShippingNotice } from "./FreeShippingNotice";
+import {
+  CatalogAdvancedFilters,
+  type AdvancedFilterChip,
+} from "./CatalogAdvancedFilters";
 import {
   CollectionFilterChips,
   type CollectionFilter,
 } from "./CollectionFilterChips";
+import { ChipFilter } from "./FilterChips";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
 import { matchesCollectionFilter } from "../../lib/collection-filter";
 import { buildSearchSuggestions } from "../../lib/search-suggestions";
 import { useFavoritesStore } from "../../store/useFavoritesStore";
 import { SearchSuggestInput } from "../ui/SearchSuggestInput";
+
+const RESULTS_ID = "search-results";
 
 const CATS: { id: InsumosCat; label: string }[] = [
   { id: "esencias", label: "Esencias" },
@@ -43,8 +54,34 @@ const TIERS: { id: QualityTier | "all"; label: string }[] = [
   { id: "Generico", label: "Genérico" },
 ];
 
+/** Popular sizes first; remaining capacities under "Otros". */
+const SIZE_PRESETS = [30, 50, 60, 75, 90, 100] as const;
+
 function houseOf(p: CatalogProduct): string {
   return typeof p.metadata?.house === "string" ? p.metadata.house : "";
+}
+
+/** Prefer metadata.capacity_ml; fall back to ml in the title. */
+function bottleSizeMl(p: CatalogProduct): number | null {
+  const meta = p.metadata?.capacity_ml;
+  if (typeof meta === "number" && Number.isFinite(meta)) return meta;
+  if (typeof meta === "string" && /^\d+$/.test(meta)) return Number(meta);
+  const fromTitle = p.title.match(/(\d+)\s*ml/i);
+  return fromTitle ? Number(fromTitle[1]) : null;
+}
+
+function collectionLabel(
+  collection: CollectionFilter,
+  lists: { id: string; name: string }[]
+): string | null {
+  if (!collection) return null;
+  if (collection === "likes") return "Me gusta";
+  if (collection === "any-list") return "En mis listas";
+  if (collection.startsWith("list:")) {
+    const id = collection.slice(5);
+    return lists.find((l) => l.id === id)?.name ?? "Lista";
+  }
+  return null;
 }
 
 export function InsumosBrowser({
@@ -67,6 +104,7 @@ export function InsumosBrowser({
   const [group, setGroup] = useState<OlfactiveGroup | null>(null);
   const [house, setHouse] = useState<string | null>(null);
   const [tier, setTier] = useState<QualityTier | "all">("all");
+  const [sizeMl, setSizeMl] = useState<number | "all">("all");
   const [sort, setSort] = useState<CatalogSort>("alpha-asc");
   const [collection, setCollection] = useState<CollectionFilter>(null);
   const likes = useFavoritesStore((s) => s.likes);
@@ -94,8 +132,27 @@ export function InsumosBrowser({
     return Array.from(map.values());
   }, [buckets.esencias, gender, group]);
 
+  const sizeOptions = useMemo(() => {
+    const present = new Set<number>();
+    for (const p of buckets.envases) {
+      const ml = bottleSizeMl(p);
+      if (ml != null) present.add(ml);
+    }
+    const presets = SIZE_PRESETS.filter((s) => present.has(s));
+    const other = [...present]
+      .filter(
+        (s) =>
+          !(SIZE_PRESETS as readonly number[]).includes(
+            s as (typeof SIZE_PRESETS)[number]
+          )
+      )
+      .sort((a, b) => a - b);
+    return { presets, other };
+  }, [buckets.envases]);
+
   const filtered = useMemo(() => {
     const base = buckets[cat] ?? buckets.todos;
+    const sizeFilter = sizeMl === "all" ? null : Number(sizeMl);
 
     const list = base.filter((p) => {
       if (!productMatchesInsumosCat(p, cat)) return false;
@@ -105,8 +162,9 @@ export function InsumosBrowser({
         if (group && p.metadata?.group !== group) return false;
         if (house && !housesMatch(houseOf(p), house)) return false;
       }
-      if (cat === "envases" && tier !== "all") {
-        if (p.metadata?.quality_tier !== tier) return false;
+      if (cat === "envases") {
+        if (tier !== "all" && p.metadata?.quality_tier !== tier) return false;
+        if (sizeFilter != null && bottleSizeMl(p) !== sizeFilter) return false;
       }
 
       if (search.trim()) {
@@ -133,12 +191,15 @@ export function InsumosBrowser({
     group,
     house,
     tier,
+    sizeMl,
     sort,
     collection,
     likes,
     lists,
     essenceFocus,
   ]);
+
+  const goToResults = () => scrollToResults(RESULTS_ID);
 
   const selectCat = (next: InsumosCat) => {
     setCat(next);
@@ -148,12 +209,16 @@ export function InsumosBrowser({
       setGroup(null);
       setHouse(null);
     }
-    if (next !== "envases") setTier("all");
+    if (next !== "envases") {
+      setTier("all");
+      setSizeMl("all");
+    }
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.set("cat", next);
       window.history.replaceState({}, "", url.toString());
     }
+    goToResults();
   };
 
   const showEssenceFilters = cat === "esencias" || cat === "todos";
@@ -172,6 +237,91 @@ export function InsumosBrowser({
     [search, buckets, cat, availableHouses, showEssenceFilters]
   );
 
+  const advancedChips = useMemo(() => {
+    const chips: AdvancedFilterChip[] = [];
+    if (group) {
+      const label =
+        OLFACTIVE_GROUPS.find((g) => g.id === group)?.label ?? group;
+      chips.push({
+        id: "group",
+        label,
+        onClear: () => {
+          setGroup(null);
+          goToResults();
+        },
+      });
+    }
+    if (house) {
+      chips.push({
+        id: "house",
+        label: house,
+        onClear: () => {
+          setHouse(null);
+          goToResults();
+        },
+      });
+    }
+    const colLabel = collectionLabel(collection, lists);
+    if (colLabel) {
+      chips.push({
+        id: "collection",
+        label: colLabel,
+        onClear: () => {
+          setCollection(null);
+          goToResults();
+        },
+      });
+    }
+    return chips;
+  }, [group, house, collection, lists]);
+
+  const envaseChips = useMemo(() => {
+    const chips: AdvancedFilterChip[] = [];
+    if (tier !== "all") {
+      chips.push({
+        id: "tier",
+        label: tier,
+        onClear: () => {
+          setTier("all");
+          goToResults();
+        },
+      });
+    }
+    if (sizeMl !== "all") {
+      chips.push({
+        id: "size",
+        label: `${sizeMl} ml`,
+        onClear: () => {
+          setSizeMl("all");
+          goToResults();
+        },
+      });
+    }
+    const colLabel = collectionLabel(collection, lists);
+    if (colLabel) {
+      chips.push({
+        id: "collection",
+        label: colLabel,
+        onClear: () => {
+          setCollection(null);
+          goToResults();
+        },
+      });
+    }
+    return chips;
+  }, [tier, sizeMl, collection, lists]);
+
+  const otherSizeSelected =
+    typeof sizeMl === "number" && sizeOptions.other.includes(sizeMl);
+
+  const sizeChip = (active: boolean) =>
+    cn(
+      "rounded-sm border px-2.5 py-1.5 text-[11px] font-semibold transition-colors",
+      active
+        ? "border-gold-400 bg-gold-400 text-ink"
+        : "border-ink/20 bg-paper-soft text-ink hover:border-gold-400 hover:text-gold-400"
+    );
+
   return (
     <div>
       <h1 className="font-display text-3xl text-ink mb-2">Insumos</h1>
@@ -182,7 +332,8 @@ export function InsumosBrowser({
         </a>
         .
       </p>
-      <p className="mb-6 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
+      <p className="mb-4 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
+      <FreeShippingNotice variant="insumos" className="mb-4" />
 
       <div className="flex flex-wrap gap-2 mb-6">
         {CATS.map((c) => (
@@ -203,81 +354,154 @@ export function InsumosBrowser({
       </div>
 
       <SearchSuggestInput
-        className="mb-6 w-full max-w-md"
+        className="mb-6 w-full max-w-2xl"
         value={search}
         onChange={setSearch}
         suggestions={searchSuggestions}
         placeholder="Buscar por nombre o casa (chanel, dior…)…"
         aria-label="Buscar insumos"
-        resultsAnchorId="search-results"
+        withIcon
+        resultsAnchorId={RESULTS_ID}
       />
 
       <CatalogToolbar
         gender={showEssenceFilters ? gender : null}
-        onGender={setGender}
+        onGender={(g) => {
+          setGender(g);
+          goToResults();
+        }}
         sort={sort}
-        onSort={setSort}
+        onSort={(s) => {
+          setSort(s);
+          goToResults();
+        }}
         showGender={showEssenceFilters}
         showUnisex={showEssenceFilters}
-        collection={collection}
-        onCollection={setCollection}
-        showCollections={showEssenceFilters}
+        showCollections={false}
       />
 
       {showEssenceFilters && (
-        <div className="mb-8 space-y-4">
+        <CatalogAdvancedFilters
+          chips={advancedChips}
+          label="Familia y casa"
+        >
+          <CollectionFilterChips
+            value={collection}
+            onChange={(c) => {
+              setCollection(c);
+              goToResults();
+            }}
+            label="Me gusta y listas"
+            className="mb-0"
+          />
           <FragranceWheel
+            size="md"
             selected={group}
-            onSelect={(g) => setGroup((prev) => (prev === g ? null : g))}
+            onSelect={(g) => {
+              setGroup((prev) => (prev === g ? null : g));
+              goToResults();
+            }}
           />
           <HouseGroupAccordion
             houses={availableHouses}
             selected={house}
-            onSelect={setHouse}
+            onSelect={(h) => {
+              setHouse(h);
+              goToResults();
+            }}
           />
-        </div>
+        </CatalogAdvancedFilters>
       )}
 
       {cat === "envases" && (
-        <div className="mb-8 space-y-4">
+        <CatalogAdvancedFilters chips={envaseChips} label="Filtros de envase">
           <CollectionFilterChips
             value={collection}
-            onChange={setCollection}
+            onChange={(c) => {
+              setCollection(c);
+              goToResults();
+            }}
             label="Me gusta y listas"
+            className="mb-0"
+          />
+          <ChipFilter
+            label="Calidad"
+            options={TIERS}
+            value={tier}
+            onChange={(t) => {
+              setTier(t);
+              goToResults();
+            }}
           />
           <div>
-            <p className="mb-2 text-xs uppercase tracking-widest text-gold-400">
-              Calidad
+            <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+              Tamaño
             </p>
-            <div className="flex flex-wrap gap-2">
-              {TIERS.map((t) => (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => {
+                  setSizeMl("all");
+                  goToResults();
+                }}
+                className={sizeChip(sizeMl === "all")}
+              >
+                Todos
+              </button>
+              {sizeOptions.presets.map((s) => (
                 <button
-                  key={t.id}
+                  key={s}
                   type="button"
-                  onClick={() => setTier(t.id)}
-                  className={`rounded-sm px-3 py-1.5 text-xs border ${
-                    tier === t.id
-                      ? "border-gold-400 text-gold-400"
-                      : "border-ink/15 text-ink-60"
-                  }`}
+                  onClick={() => {
+                    setSizeMl(s);
+                    goToResults();
+                  }}
+                  className={sizeChip(sizeMl === s)}
                 >
-                  {t.label}
+                  {s} ml
                 </button>
               ))}
+              {sizeOptions.other.length > 0 ? (
+                <select
+                  aria-label="Otros tamaños"
+                  value={otherSizeSelected ? String(sizeMl) : ""}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setSizeMl(v ? Number(v) : "all");
+                    goToResults();
+                  }}
+                  className={cn(
+                    "rounded-sm border bg-white px-2.5 py-1.5 text-[11px] font-semibold focus:outline-none focus:ring-2 focus:ring-gold-400",
+                    otherSizeSelected
+                      ? "border-gold-400 bg-gold-400 text-ink"
+                      : "border-ink/20 text-ink"
+                  )}
+                >
+                  <option value="">Otros…</option>
+                  {sizeOptions.other.map((ml) => (
+                    <option key={ml} value={String(ml)}>
+                      {ml} ml
+                    </option>
+                  ))}
+                </select>
+              ) : null}
             </div>
           </div>
-        </div>
+        </CatalogAdvancedFilters>
       )}
 
       {(cat === "alcohol" || cat === "feromonas") && (
         <CollectionFilterChips
           value={collection}
-          onChange={setCollection}
+          onChange={(c) => {
+            setCollection(c);
+            goToResults();
+          }}
           label="Me gusta y listas"
         />
       )}
 
-      <div id="search-results" className="scroll-mt-24">
+      <div id={RESULTS_ID} className="scroll-mt-24">
         <PaginatedProductGrid
           products={filtered}
           wholesale={wholesale}

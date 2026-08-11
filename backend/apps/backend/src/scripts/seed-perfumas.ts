@@ -51,13 +51,13 @@ const SHIPPING_OPTIONS = [
   {
     name: "Pickup Fontibón",
     code: "pickup_fontibon",
-    description: "Retiro en tienda Fontibón",
+    description: "Retiro en tienda Fontibón — Calle 18 #103a-26",
     amount: 0,
   },
   {
     name: "Pickup Bonanza",
     code: "pickup_bonanza",
-    description: "Retiro en tienda Bonanza",
+    description: "Retiro en tienda Bonanza — Av. Calle 72 #70-90",
     amount: 0,
   },
   {
@@ -67,10 +67,22 @@ const SHIPPING_OPTIONS = [
     amount: 8000,
   },
   {
+    name: "Bogotá delivery free",
+    code: "bogota_delivery_free",
+    description: "Envío gratis Bogotá (perfumería ≥ $100.000)",
+    amount: 0,
+  },
+  {
     name: "National shipping",
     code: "national_shipping",
-    description: "Envío nacional Colombia",
-    amount: 15000,
+    description: "Envío nacional Colombia (Envia)",
+    amount: 18000,
+  },
+  {
+    name: "National shipping free",
+    code: "national_shipping_free",
+    description: "Envío gratis nacional (perfumería ≥ $200.000)",
+    amount: 0,
   },
 ]
 

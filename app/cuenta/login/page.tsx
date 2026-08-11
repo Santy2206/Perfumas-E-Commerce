@@ -54,56 +54,73 @@ function LoginForm() {
   return (
     <Section tone="light" className="min-h-[50vh]">
       <div className="mx-auto max-w-md px-4 py-12 sm:px-8">
-        <h1 className="font-display text-3xl text-ink mb-2">Iniciar sesión</h1>
-        <p className="text-sm text-ink-60 mb-8">
-          Accede a tu historial de pedidos y vuelve a comprar con un clic.
-        </p>
+        <header className="mb-8 border-b-2 border-gold-400/40 pb-5">
+          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-400">
+            Perfumas
+          </p>
+          <h1 className="font-display text-3xl text-ink sm:text-4xl">Iniciar sesión</h1>
+          <p className="mt-2 text-sm leading-relaxed text-ink-60">
+            Accede a tu historial de pedidos y vuelve a comprar con un clic.
+          </p>
+        </header>
 
-        <form onSubmit={onSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Correo</Label>
-            <Input
-              id="email"
-              type="email"
-              autoComplete="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="tu@correo.com"
-            />
+        <div className="overflow-hidden rounded-sm border-2 border-ink/10 bg-white shadow-[0_2px_0_0_rgba(202,169,105,0.2)]">
+          <div className="border-b border-gold-400/30 bg-ink px-5 py-3">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+              Tu cuenta
+            </p>
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Contraseña</Label>
-            <Input
-              id="password"
-              type="password"
-              autoComplete="current-password"
-              required
-              minLength={8}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-            />
+          <div className="p-5 sm:p-6">
+            <form onSubmit={onSubmit} className="space-y-5">
+              <div>
+                <Label htmlFor="email">Correo</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="tu@correo.com"
+                />
+              </div>
+              <div>
+                <Label htmlFor="password">Contraseña</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  minLength={8}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                />
+              </div>
+
+              {error && <p className="text-sm text-red-600">{error}</p>}
+
+              <Button type="submit" className="w-full" size="lg" disabled={submitting}>
+                {submitting ? "Entrando…" : "Entrar"}
+              </Button>
+            </form>
+
+            <div className="my-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-ink-60">
+              <span className="h-px flex-1 bg-ink/15" />
+              o
+              <span className="h-px flex-1 bg-ink/15" />
+            </div>
+
+            <GoogleLoginButton className="w-full" variant="outline" onError={setError} />
           </div>
-
-          {error && <p className="text-sm text-red-600">{error}</p>}
-
-          <Button type="submit" className="w-full" disabled={submitting}>
-            {submitting ? "Entrando…" : "Entrar"}
-          </Button>
-        </form>
-
-        <div className="my-6 flex items-center gap-3 text-xs uppercase tracking-widest text-ink-60">
-          <span className="h-px flex-1 bg-gold-400/20" />
-          o
-          <span className="h-px flex-1 bg-gold-400/20" />
         </div>
 
-        <GoogleLoginButton className="w-full" variant="outline" onError={setError} />
-
-        <p className="mt-8 text-sm text-ink-60">
+        <p className="mt-6 text-center text-sm text-ink-60">
           ¿No tienes cuenta?{" "}
-          <Link href="/cuenta/registro" className="text-gold-400 hover:underline">
+          <Link
+            href="/cuenta/registro"
+            className="font-semibold text-ink underline decoration-gold-400 underline-offset-4 hover:text-gold-400"
+          >
             Crear cuenta
           </Link>
         </p>

@@ -146,7 +146,17 @@ Deferred — use transfer or Wompi for now.
 
 ## Shipping
 
-Storefront methods (fixed prices):
+### Free shipping (storefront)
+
+- Pickup Fontibón / Bonanza: always **$0**
+  - Fontibón: Calle 18 #103a-26
+  - Bonanza: Av. Calle 72 #70-90
+- Domicilio Bogotá: **$8.000**, free when cart has **perfumería** (prepared replicas or `/crear` builds), subtotal ≥ **$100.000**, and composition rules: hogar/accesorios may mix freely; insumos only if perfume line total **>** insumos line total
+- Envío nacional (Envia): **$18.000**, free with the same category rule and subtotal ≥ **$200.000**
+- Carts with only hogar / accesorios / insumos (no perfumería) do **not** get free delivery
+- Medusa needs paid + free options (`Bogotá delivery` / `Bogotá delivery free`, `National shipping` / `National shipping free`). Re-run seed or create free options in Admin; set national paid amount to **18000** if an older seed left **15000**.
+
+Storefront methods (base prices):
 
 - Pickup Fontibón / Bonanza ($0)
 - Domicilio Bogotá ($8.000) — requires **localidad**; routes to hub Bonanza (norte) or Fontibón (sur/default)

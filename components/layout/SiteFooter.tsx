@@ -27,6 +27,7 @@ export function SiteFooter() {
           <p className="text-xs uppercase tracking-widest text-gold-400 mb-3">Contacto</p>
           <ul className="space-y-2 text-sm text-bone-60">
             <li>Calle 18 #103a-26, Fontibón</li>
+            <li>Av. Calle 72 #70-90, Bonanza</li>
             <li>
               <a href="mailto:perfumas2015@gmail.com" className="hover:text-gold-400">
                 perfumas2015@gmail.com

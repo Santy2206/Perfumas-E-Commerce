@@ -23,7 +23,7 @@ export const HUB_ADDRESSES: Record<
   },
   bonanza: {
     label: "Bonanza",
-    address: "Tienda Perfumas Bonanza, Bogotá",
+    address: "Av. Calle 72 #70-90, Bonanza, Bogotá",
   },
 };
 

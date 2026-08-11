@@ -64,100 +64,117 @@ export default function RegisterPage() {
   return (
     <Section tone="light" className="min-h-[50vh]">
       <div className="mx-auto max-w-md px-4 py-12 sm:px-8">
-        <h1 className="font-display text-3xl text-ink mb-2">Crear cuenta</h1>
-        <p className="text-sm text-ink-60 mb-8">
-          Guarda tus pedidos y vuelve a comprar tus fragancias favoritas.
-        </p>
+        <header className="mb-8 border-b-2 border-gold-400/40 pb-5">
+          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-400">
+            Perfumas
+          </p>
+          <h1 className="font-display text-3xl text-ink sm:text-4xl">Crear cuenta</h1>
+          <p className="mt-2 text-sm leading-relaxed text-ink-60">
+            Guarda tus pedidos y vuelve a comprar tus fragancias favoritas.
+          </p>
+        </header>
 
-        <form onSubmit={onSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-2">
-              <Label htmlFor="firstName">Nombre</Label>
-              <Input
-                id="firstName"
-                required
-                autoComplete="given-name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
+        <div className="overflow-hidden rounded-sm border-2 border-ink/10 bg-white shadow-[0_2px_0_0_rgba(202,169,105,0.2)]">
+          <div className="border-b border-gold-400/30 bg-ink px-5 py-3">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+              Registro
+            </p>
+          </div>
+          <div className="p-5 sm:p-6">
+            <form onSubmit={onSubmit} className="space-y-5">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label htmlFor="firstName">Nombre</Label>
+                  <Input
+                    id="firstName"
+                    required
+                    autoComplete="given-name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="lastName">Apellido</Label>
+                  <Input
+                    id="lastName"
+                    required
+                    autoComplete="family-name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div>
+                <Label htmlFor="email">Correo</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="tu@correo.com"
+                />
+              </div>
+              <div>
+                <Label htmlFor="phone">Teléfono</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="3001234567"
+                />
+              </div>
+              <div>
+                <Label htmlFor="birthday">Cumpleaños</Label>
+                <Input
+                  id="birthday"
+                  type="date"
+                  required
+                  value={birthday}
+                  onChange={(e) => setBirthday(e.target.value)}
+                />
+              </div>
+              <div>
+                <Label htmlFor="password">Contraseña</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  minLength={8}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Mínimo 8 caracteres"
+                />
+              </div>
+
+              {error && <p className="text-sm text-red-600">{error}</p>}
+
+              <Button type="submit" className="w-full" size="lg" disabled={submitting}>
+                {submitting ? "Creando…" : "Crear cuenta"}
+              </Button>
+            </form>
+
+            <div className="my-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-ink-60">
+              <span className="h-px flex-1 bg-ink/15" />
+              o
+              <span className="h-px flex-1 bg-ink/15" />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="lastName">Apellido</Label>
-              <Input
-                id="lastName"
-                required
-                autoComplete="family-name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Correo</Label>
-            <Input
-              id="email"
-              type="email"
-              autoComplete="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="tu@correo.com"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="phone">Teléfono</Label>
-            <Input
-              id="phone"
-              type="tel"
-              autoComplete="tel"
-              required
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="3001234567"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="birthday">Cumpleaños</Label>
-            <Input
-              id="birthday"
-              type="date"
-              required
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Contraseña</Label>
-            <Input
-              id="password"
-              type="password"
-              autoComplete="new-password"
-              required
-              minLength={8}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Mínimo 8 caracteres"
-            />
-          </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
-
-          <Button type="submit" className="w-full" disabled={submitting}>
-            {submitting ? "Creando…" : "Crear cuenta"}
-          </Button>
-        </form>
-
-        <div className="my-6 flex items-center gap-3 text-xs uppercase tracking-widest text-ink-60">
-          <span className="h-px flex-1 bg-gold-400/20" />
-          o
-          <span className="h-px flex-1 bg-gold-400/20" />
+            <GoogleLoginButton className="w-full" variant="outline" onError={setError} />
+          </div>
         </div>
 
-        <GoogleLoginButton className="w-full" variant="outline" onError={setError} />
-
-        <p className="mt-8 text-sm text-ink-60">
+        <p className="mt-6 text-center text-sm text-ink-60">
           ¿Ya tienes cuenta?{" "}
-          <Link href="/cuenta/login" className="text-gold-400 hover:underline">
+          <Link
+            href="/cuenta/login"
+            className="font-semibold text-ink underline decoration-gold-400 underline-offset-4 hover:text-gold-400"
+          >
             Iniciar sesión
           </Link>
         </p>

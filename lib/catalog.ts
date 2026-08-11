@@ -59,19 +59,21 @@ export const SHIPPING_METHODS = [
   {
     id: "pickup-bonanza",
     name: "Recoger en Bonanza",
-    description: "Tienda Perfumas Bonanza, Bogotá",
+    description: "Av. Calle 72 #70-90, Bonanza, Bogotá",
     price: 0,
   },
   {
     id: "delivery-bogota",
     name: "Domicilio Bogotá",
-    description: "Entrega en 1–2 días hábiles dentro de Bogotá",
+    description:
+      "Entrega en 1–2 días hábiles. Gratis desde $100.000 en perfumería.",
     price: 8000,
   },
   {
     id: "delivery-nacional",
     name: "Envío nacional",
-    description: "Envío a ciudades principales de Colombia (2–5 días)",
+    description:
+      "Envia a ciudades principales (2–5 días). Gratis desde $200.000 en perfumería.",
     price: 18000,
   },
 ];

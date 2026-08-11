@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { DEPARTMENTS } from "../../lib/catalog";
 import { Section } from "../layout/Section";
+import { FreeShippingNotice } from "./FreeShippingNotice";
 
 const DEPT_VISUAL: Record<
   (typeof DEPARTMENTS)[number]["id"],
@@ -74,6 +75,7 @@ export function ShopHub() {
 
       <Section tone="light-soft" className="relative px-4 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto max-w-6xl">
+          <FreeShippingNotice variant="general" className="mb-6" />
           <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
             {DEPARTMENTS.map((d, index) => {
               const visual = DEPT_VISUAL[d.id];

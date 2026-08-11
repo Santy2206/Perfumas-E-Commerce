@@ -4,6 +4,16 @@ import {
   PRICE_BANDS,
   type PriceBand,
 } from "../../lib/department-taxonomy";
+import { cn } from "../../lib/utils";
+
+function chipClass(active: boolean) {
+  return cn(
+    "rounded-sm border px-2.5 py-1.5 text-[11px] font-semibold transition-colors",
+    active
+      ? "border-gold-400 bg-gold-400 text-ink"
+      : "border-ink/20 bg-paper-soft text-ink hover:border-gold-400 hover:text-gold-400"
+  );
+}
 
 export function PriceBandFilter({
   value,
@@ -13,19 +23,17 @@ export function PriceBandFilter({
   onChange: (band: PriceBand) => void;
 }) {
   return (
-    <div className="mb-4">
-      <p className="mb-2 text-xs uppercase tracking-widest text-gold-400">Precio</p>
-      <div className="flex flex-wrap gap-2">
+    <div className="mb-3 last:mb-0">
+      <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+        Precio
+      </p>
+      <div className="flex flex-wrap gap-1.5">
         {PRICE_BANDS.map((b) => (
           <button
             key={b.id}
             type="button"
             onClick={() => onChange(b.id)}
-            className={`rounded-sm border px-3 py-1.5 text-xs ${
-              value === b.id
-                ? "border-gold-400 text-gold-400"
-                : "border-ink/15 text-ink-60 hover:border-gold-400/40"
-            }`}
+            className={chipClass(value === b.id)}
           >
             {b.label}
           </button>
@@ -47,19 +55,17 @@ export function ChipFilter<T extends string | number>({
   onChange: (id: T) => void;
 }) {
   return (
-    <div className="mb-4">
-      <p className="mb-2 text-xs uppercase tracking-widest text-gold-400">{label}</p>
-      <div className="flex flex-wrap gap-2">
+    <div className="mb-3 last:mb-0">
+      <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+        {label}
+      </p>
+      <div className="flex flex-wrap gap-1.5">
         {options.map((o) => (
           <button
             key={o.id}
             type="button"
             onClick={() => onChange(o.id)}
-            className={`rounded-sm border px-3 py-1.5 text-xs ${
-              value === o.id
-                ? "border-gold-400 text-gold-400"
-                : "border-ink/15 text-ink-60 hover:border-gold-400/40"
-            }`}
+            className={chipClass(value === o.id)}
           >
             {o.label}
           </button>

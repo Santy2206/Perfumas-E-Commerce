@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "¿Hacen envíos?",
-    a: "Ofrecemos recogida en Fontibón y Bonanza, domicilio en Bogotá y envío nacional a ciudades principales.",
+    a: "Ofrecemos recogida en Fontibón (Calle 18 #103a-26) y Bonanza (Av. Calle 72 #70-90), domicilio en Bogotá y envío nacional con Envia. El domicilio es gratis en Bogotá desde $100.000 y a nivel nacional desde $200.000 si hay perfumería (Preparar o Preparadas). Puedes sumar hogar y accesorios; los insumos solo cuentan para el gratis si su valor es menor que el de perfumería.",
   },
   {
     q: "¿Cuánto se demora en preparar un perfume?",

@@ -257,12 +257,28 @@ export async function listShippingOptionsForCart(cartId: string) {
 
 export function matchShippingOptionId(
   options: { id: string; name?: string | null }[],
-  localShippingId: string
+  localShippingId: string,
+  opts?: { preferFree?: boolean }
 ): string | null {
   const needles = SHIPPING_NAME_MAP[localShippingId] || [localShippingId];
-  const found = options.find((o) => {
+  const matching = options.filter((o) => {
     const name = (o.name || "").toLowerCase();
     return needles.some((n) => name.includes(n));
   });
-  return found?.id ?? options[0]?.id ?? null;
+  if (!matching.length) {
+    return options[0]?.id ?? null;
+  }
+
+  const isFreeName = (name: string) =>
+    name.includes("free") || name.includes("gratis");
+
+  if (opts?.preferFree) {
+    const free = matching.find((o) => isFreeName((o.name || "").toLowerCase()));
+    if (free) return free.id;
+  } else {
+    const paid = matching.find((o) => !isFreeName((o.name || "").toLowerCase()));
+    if (paid) return paid.id;
+  }
+
+  return matching[0]?.id ?? null;
 }

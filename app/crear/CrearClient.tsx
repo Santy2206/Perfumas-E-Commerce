@@ -8,6 +8,7 @@ import { PersonalizeStep } from "../../components/builder/PersonalizeStep";
 import { PriceSummary } from "../../components/builder/PriceSummary";
 import { StepIndicator } from "../../components/builder/StepIndicator";
 import { Section } from "../../components/layout/Section";
+import { FreeShippingNotice } from "../../components/shop/FreeShippingNotice";
 import { useBuilderStore } from "../../store/useBuilderStore";
 import { useCartStore } from "../../store/useCartStore";
 import { BOTTLES, FRAGRANCES } from "../../lib/mock-data";
@@ -59,6 +60,7 @@ export default function CrearClient() {
       <Section tone="light" className="px-4 sm:px-8 py-10 pb-28 lg:pb-10">
         <div className="max-w-6xl mx-auto">
           <StepIndicator />
+          <FreeShippingNotice variant="eligible" className="mt-4 mb-6" />
 
           <div className="grid lg:grid-cols-[1fr_320px] gap-10">
             <div>

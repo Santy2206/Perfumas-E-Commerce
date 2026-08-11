@@ -22,6 +22,7 @@ import { CatalogToolbar } from "./CatalogToolbar";
 import { ChipFilter, PriceBandFilter } from "./FilterChips";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
 import { SearchSuggestInput } from "../ui/SearchSuggestInput";
+import { FreeShippingNotice } from "./FreeShippingNotice";
 
 function categoryOf(p: CatalogProduct): string {
   return String(p.category ?? "")
@@ -132,15 +133,17 @@ export function AccesoriosBrowser({
       <p className="text-sm text-ink-60 mb-2">
         Bisutería y marroquinería — filtra por tipo, material y precio.
       </p>
-      <p className="mb-6 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
+      <p className="mb-4 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
+      <FreeShippingNotice variant="companion" className="mb-4" />
 
       <SearchSuggestInput
-        className="mb-6 w-full max-w-md"
+        className="mb-6 w-full max-w-2xl"
         value={search}
         onChange={setSearch}
         suggestions={searchSuggestions}
         placeholder="Buscar…"
         aria-label="Buscar accesorios"
+        withIcon
         resultsAnchorId="search-results"
       />
 

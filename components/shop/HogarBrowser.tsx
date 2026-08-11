@@ -19,6 +19,7 @@ import { CatalogToolbar } from "./CatalogToolbar";
 import { ChipFilter, PriceBandFilter } from "./FilterChips";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
 import { SearchSuggestInput } from "../ui/SearchSuggestInput";
+import { FreeShippingNotice } from "./FreeShippingNotice";
 
 export function HogarBrowser({
   products,
@@ -83,15 +84,17 @@ export function HogarBrowser({
       <p className="text-sm text-ink-60 mb-2">
         Splash, cremas, aromatizantes, aseo y empaques.
       </p>
-      <p className="mb-6 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
+      <p className="mb-4 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
+      <FreeShippingNotice variant="companion" className="mb-4" />
 
       <SearchSuggestInput
-        className="mb-6 w-full max-w-md"
+        className="mb-6 w-full max-w-2xl"
         value={search}
         onChange={setSearch}
         suggestions={searchSuggestions}
         placeholder="Buscar…"
         aria-label="Buscar en hogar"
+        withIcon
         resultsAnchorId="search-results"
       />
 

@@ -9,21 +9,33 @@ import { useBuilderStore } from "../../store/useBuilderStore";
 import type { Bottle, QualityTier } from "../../lib/types";
 import {
   matchesPriceBand,
+  PRICE_BANDS,
   type PriceBand,
 } from "../../lib/department-taxonomy";
 import { PriceBandFilter, ChipFilter } from "../shop/FilterChips";
-import { textIncludes } from "../../lib/house-groups";
+import {
+  CATALOG_SORT_OPTIONS,
+  textIncludes,
+  type CatalogSort,
+} from "../../lib/house-groups";
 import { buildSearchSuggestions } from "../../lib/search-suggestions";
-import { formatCOP } from "../../lib/utils";
+import { scrollToResults } from "../../lib/scroll-to-results";
+import { cn, formatCOP } from "../../lib/utils";
 import { SearchSuggestInput } from "../ui/SearchSuggestInput";
 import { LikeButton } from "../favorites/LikeButton";
 import { AddToListButton } from "../favorites/AddToListButton";
+import {
+  CatalogAdvancedFilters,
+  type AdvancedFilterChip,
+} from "../shop/CatalogAdvancedFilters";
 import {
   CollectionFilterChips,
   type CollectionFilter,
 } from "../shop/CollectionFilterChips";
 import { likedSkuIds, listSkuIds } from "../../lib/favorites";
 import { useFavoritesStore } from "../../store/useFavoritesStore";
+
+const RESULTS_ID = "search-results";
 
 const TIER_OPTS: { id: QualityTier | "all"; label: string }[] = [
   { id: "all", label: "Todas" },
@@ -41,6 +53,11 @@ const TIER_BLURB: Record<QualityTier, string> = {
 /** Popular sizes first; remaining capacities collapsed under "Otros". */
 const SIZE_PRESETS = [30, 50, 60, 75, 90, 100] as const;
 
+const BOTTLE_SORT_OPTIONS = [
+  { id: "relevance" as const, label: "Relevancia" },
+  ...CATALOG_SORT_OPTIONS,
+];
+
 /** Prefer ml parsed from the product name when present (source of truth in Excel titles). */
 function bottleSizeMl(bottle: Bottle): number {
   const fromName = bottle.name.match(/(\d+)\s*ml/i);
@@ -57,6 +74,7 @@ export function BottleStep() {
   const [search, setSearch] = useState("");
   const [matchedOnly, setMatchedOnly] = useState(false);
   const [collection, setCollection] = useState<CollectionFilter>(null);
+  const [sort, setSort] = useState<CatalogSort | "relevance">("relevance");
   const likes = useFavoritesStore((s) => s.likes);
   const lists = useFavoritesStore((s) => s.lists);
 
@@ -83,7 +101,7 @@ export function BottleStep() {
 
     const sizeFilter = sizeMl === "all" ? null : Number(sizeMl);
 
-    return ranked.filter(({ bottle, match }) => {
+    const list = ranked.filter(({ bottle, match }) => {
       if (tier !== "all" && bottle.qualityTier !== tier) return false;
       if (!matchesPriceBand(bottle.price, priceBand)) return false;
       if (sizeFilter != null && bottleSizeMl(bottle) !== sizeFilter) return false;
@@ -98,7 +116,47 @@ export function BottleStep() {
       }
       return true;
     });
-  }, [ranked, fragrance, tier, priceBand, sizeMl, matchedOnly, search, collection, likes, lists]);
+
+    if (sort === "relevance") return list;
+
+    const copy = [...list];
+    copy.sort((a, b) => {
+      switch (sort) {
+        case "alpha-desc":
+          return b.bottle.name.localeCompare(a.bottle.name, "es", {
+            sensitivity: "base",
+          });
+        case "price-asc":
+          return (
+            a.bottle.price - b.bottle.price ||
+            a.bottle.name.localeCompare(b.bottle.name, "es")
+          );
+        case "price-desc":
+          return (
+            b.bottle.price - a.bottle.price ||
+            a.bottle.name.localeCompare(b.bottle.name, "es")
+          );
+        case "alpha-asc":
+        default:
+          return a.bottle.name.localeCompare(b.bottle.name, "es", {
+            sensitivity: "base",
+          });
+      }
+    });
+    return copy;
+  }, [
+    ranked,
+    fragrance,
+    tier,
+    priceBand,
+    sizeMl,
+    matchedOnly,
+    search,
+    collection,
+    likes,
+    lists,
+    sort,
+  ]);
 
   const searchSuggestions = useMemo(
     () =>
@@ -113,12 +171,98 @@ export function BottleStep() {
     [search]
   );
 
+  const goToResults = () => scrollToResults(RESULTS_ID);
+
+  const advancedChips = useMemo(() => {
+    const chips: AdvancedFilterChip[] = [];
+    if (tier !== "all") {
+      chips.push({
+        id: "tier",
+        label: tier,
+        onClear: () => {
+          setTier("all");
+          goToResults();
+        },
+      });
+    }
+    if (sizeMl !== "all") {
+      chips.push({
+        id: "size",
+        label: `${sizeMl} ml`,
+        onClear: () => {
+          setSizeMl("all");
+          goToResults();
+        },
+      });
+    }
+    if (priceBand !== "all") {
+      const label =
+        PRICE_BANDS.find((b) => b.id === priceBand)?.label ?? priceBand;
+      chips.push({
+        id: "price",
+        label,
+        onClear: () => {
+          setPriceBand("all");
+          goToResults();
+        },
+      });
+    }
+    if (collection === "likes") {
+      chips.push({
+        id: "collection",
+        label: "Me gusta",
+        onClear: () => {
+          setCollection(null);
+          goToResults();
+        },
+      });
+    } else if (collection === "any-list") {
+      chips.push({
+        id: "collection",
+        label: "En mis listas",
+        onClear: () => {
+          setCollection(null);
+          goToResults();
+        },
+      });
+    } else if (collection?.startsWith("list:")) {
+      const id = collection.slice(5);
+      chips.push({
+        id: "collection",
+        label: lists.find((l) => l.id === id)?.name ?? "Lista",
+        onClear: () => {
+          setCollection(null);
+          goToResults();
+        },
+      });
+    }
+    if (matchedOnly) {
+      chips.push({
+        id: "matched",
+        label: "Solo asociadas",
+        onClear: () => {
+          setMatchedOnly(false);
+          goToResults();
+        },
+      });
+    }
+    return chips;
+  }, [tier, sizeMl, priceBand, collection, matchedOnly, lists]);
+
   if (!fragrance) {
     return <p className="text-sm text-ink-60">Primero elige una fragancia en el paso 1.</p>;
   }
 
   const otherSizeSelected =
     typeof sizeMl === "number" && sizeOptions.other.includes(sizeMl);
+
+  const sizeChip = (active: boolean) =>
+    cn(
+      "rounded-sm border px-2.5 py-1.5 text-[11px] font-semibold transition-colors",
+      active
+        ? "border-gold-400 bg-gold-400 text-ink"
+        : "border-ink/20 bg-paper-soft text-ink hover:border-gold-400 hover:text-gold-400"
+    );
 
   return (
     <div>
@@ -132,13 +276,13 @@ export function BottleStep() {
       </p>
 
       {recommended ? (
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3 bg-gold-400/10 border border-gold-400/40 rounded-sm p-4 mb-6">
+        <div className="mb-6 flex flex-col gap-3 rounded-sm border-2 border-gold-400/50 bg-gold-400/10 p-4 sm:flex-row sm:items-center">
           <div className="flex-1">
             <p className="text-sm text-ink">
               <span className="text-gold-400">★ Recomendado:</span>{" "}
               <strong>{recommended.name}</strong>
             </p>
-            <p className="text-xs text-ink-60 mt-1">
+            <p className="mt-1 text-xs text-ink-60">
               {recommended.qualityTier} · {bottleSizeMl(recommended)} ml ·{" "}
               {formatCOP(recommended.price)}
             </p>
@@ -146,90 +290,138 @@ export function BottleStep() {
           <button
             type="button"
             onClick={() => selectBottle(recommended)}
-            className="shrink-0 bg-gold-400 hover:bg-gold-100 text-wine-950 text-xs font-semibold uppercase tracking-widest rounded-sm px-4 py-3"
+            className="shrink-0 rounded-sm bg-gold-400 px-4 py-3 text-xs font-semibold uppercase tracking-widest text-wine-950 hover:bg-gold-100"
           >
             Usar recomendado
           </button>
         </div>
       ) : null}
 
-      <SearchSuggestInput
-        className="mb-4 w-full max-w-md"
-        value={search}
-        onChange={setSearch}
-        suggestions={searchSuggestions}
-        placeholder="Buscar réplica…"
-        aria-label="Buscar envase réplica"
-        resultsAnchorId="search-results"
-      />
-
-      <CollectionFilterChips value={collection} onChange={setCollection} />
-      <ChipFilter label="Calidad" options={TIER_OPTS} value={tier} onChange={setTier} />
-      <div className="mb-4">
-        <p className="mb-2 text-xs uppercase tracking-widest text-gold-400">Tamaño</p>
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setSizeMl("all")}
-            className={`rounded-sm border px-3 py-1.5 text-xs ${
-              sizeMl === "all"
-                ? "border-gold-400 text-gold-400"
-                : "border-ink/15 text-ink-60 hover:border-gold-400/40"
-            }`}
-          >
-            Todos
-          </button>
-          {sizeOptions.presets.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setSizeMl(s)}
-              className={`rounded-sm border px-3 py-1.5 text-xs ${
-                sizeMl === s
-                  ? "border-gold-400 text-gold-400"
-                  : "border-ink/15 text-ink-60 hover:border-gold-400/40"
-              }`}
-            >
-              {s} ml
-            </button>
-          ))}
-          {sizeOptions.other.length > 0 ? (
-            <select
-              aria-label="Otros tamaños"
-              value={otherSizeSelected ? String(sizeMl) : ""}
-              onChange={(e) => {
-                const v = e.target.value;
-                setSizeMl(v ? Number(v) : "all");
-              }}
-              className={`rounded-sm border bg-paper text-ink px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-gold-400 ${
-                otherSizeSelected
-                  ? "border-gold-400 text-gold-400"
-                  : "border-ink/15 text-ink-60"
-              }`}
-            >
-              <option value="">Otros tamaños…</option>
-              {sizeOptions.other.map((ml) => (
-                <option key={ml} value={String(ml)}>
-                  {ml} ml
-                </option>
-              ))}
-            </select>
-          ) : null}
-        </div>
-      </div>
-      <PriceBandFilter value={priceBand} onChange={setPriceBand} />
-
-      <label className="mb-6 flex items-center gap-2 text-sm text-ink-60 cursor-pointer">
-        <input
-          type="checkbox"
-          checked={matchedOnly}
-          onChange={(e) => setMatchedOnly(e.target.checked)}
-          className="h-4 w-4"
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+        <SearchSuggestInput
+          className="w-full max-w-2xl"
+          value={search}
+          onChange={setSearch}
+          suggestions={searchSuggestions}
+          placeholder="Buscar réplica…"
+          aria-label="Buscar envase réplica"
+          withIcon
+          resultsAnchorId={RESULTS_ID}
         />
-        Solo asociadas o parecidas a esta fragancia
-      </label>
+        <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-ink">
+          <span>Ordenar</span>
+          <select
+            value={sort}
+            onChange={(e) => {
+              setSort(e.target.value as CatalogSort | "relevance");
+              goToResults();
+            }}
+            className="rounded-sm border-2 border-ink/25 bg-white px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:ring-2 focus:ring-gold-400"
+          >
+            {BOTTLE_SORT_OPTIONS.map((o) => (
+              <option key={o.id} value={o.id}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
-      <div id="search-results" className="scroll-mt-24">
+      <CatalogAdvancedFilters chips={advancedChips} label="Filtros de envase">
+        <CollectionFilterChips
+          value={collection}
+          onChange={(c) => {
+            setCollection(c);
+            goToResults();
+          }}
+          label="Me gusta y listas"
+          className="mb-0"
+        />
+        <ChipFilter
+          label="Calidad"
+          options={TIER_OPTS}
+          value={tier}
+          onChange={(t) => {
+            setTier(t);
+            goToResults();
+          }}
+        />
+        <div>
+          <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+            Tamaño
+          </p>
+          <div className="flex flex-wrap items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => {
+                setSizeMl("all");
+                goToResults();
+              }}
+              className={sizeChip(sizeMl === "all")}
+            >
+              Todos
+            </button>
+            {sizeOptions.presets.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => {
+                  setSizeMl(s);
+                  goToResults();
+                }}
+                className={sizeChip(sizeMl === s)}
+              >
+                {s} ml
+              </button>
+            ))}
+            {sizeOptions.other.length > 0 ? (
+              <select
+                aria-label="Otros tamaños"
+                value={otherSizeSelected ? String(sizeMl) : ""}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setSizeMl(v ? Number(v) : "all");
+                  goToResults();
+                }}
+                className={cn(
+                  "rounded-sm border bg-white px-2.5 py-1.5 text-[11px] font-semibold focus:outline-none focus:ring-2 focus:ring-gold-400",
+                  otherSizeSelected
+                    ? "border-gold-400 bg-gold-400 text-ink"
+                    : "border-ink/20 text-ink"
+                )}
+              >
+                <option value="">Otros…</option>
+                {sizeOptions.other.map((ml) => (
+                  <option key={ml} value={String(ml)}>
+                    {ml} ml
+                  </option>
+                ))}
+              </select>
+            ) : null}
+          </div>
+        </div>
+        <PriceBandFilter
+          value={priceBand}
+          onChange={(b) => {
+            setPriceBand(b);
+            goToResults();
+          }}
+        />
+        <label className="flex cursor-pointer items-center gap-2 rounded-sm border border-ink/15 bg-paper-soft px-3 py-2 text-xs font-medium text-ink">
+          <input
+            type="checkbox"
+            checked={matchedOnly}
+            onChange={(e) => {
+              setMatchedOnly(e.target.checked);
+              goToResults();
+            }}
+            className="h-3.5 w-3.5 accent-gold-400"
+          />
+          Solo asociadas o parecidas a esta fragancia
+        </label>
+      </CatalogAdvancedFilters>
+
+      <div id={RESULTS_ID} className="scroll-mt-24">
       <p className="mb-4 text-xs text-ink-60">
         {filtered.length} réplicas preparadas
         {tier !== "all" ? ` · ${tier}` : ""}
@@ -290,15 +482,15 @@ function BottleCard({
         />
       </div>
       <div className="mb-2 flex flex-wrap gap-2">
-        <span className="inline-block text-[10px] uppercase tracking-widest bg-wine-950 text-gold-400 px-2 py-1 rounded-sm">
+        <span className="inline-block rounded-sm border-2 border-gold-400 bg-gold-400/15 px-2 py-1 text-[10px] font-semibold uppercase tracking-widest text-ink">
           {bottle.qualityTier}
         </span>
         {match.kind === "exact" ? (
-          <span className="inline-block text-[10px] uppercase tracking-widest border border-gold-400/50 text-gold-400 px-2 py-1 rounded-sm">
+          <span className="inline-block rounded-sm border-2 border-gold-400 bg-gold-400 px-2 py-1 text-[10px] font-semibold uppercase tracking-widest text-ink">
             Asociada
           </span>
         ) : match.kind === "similar" ? (
-          <span className="inline-block text-[10px] uppercase tracking-widest border border-ink/15 text-ink-60 px-2 py-1 rounded-sm">
+          <span className="inline-block rounded-sm border-2 border-gold-400/50 bg-paper-soft px-2 py-1 text-[10px] font-semibold uppercase tracking-widest text-ink">
             {match.reason || "Parecida"}
           </span>
         ) : null}

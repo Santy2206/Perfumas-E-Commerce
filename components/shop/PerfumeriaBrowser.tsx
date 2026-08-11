@@ -10,16 +10,29 @@ import {
   textIncludes,
   type CatalogSort,
 } from "../../lib/house-groups";
+import { OLFACTIVE_GROUPS } from "../../lib/mock-data";
+import { scrollToResults } from "../../lib/scroll-to-results";
 import { CatalogToolbar } from "./CatalogToolbar";
-import type { CollectionFilter } from "./CollectionFilterChips";
+import {
+  CatalogAdvancedFilters,
+  type AdvancedFilterChip,
+} from "./CatalogAdvancedFilters";
+import {
+  CollectionFilterChips,
+  type CollectionFilter,
+} from "./CollectionFilterChips";
 import { HouseGroupAccordion } from "./HouseGroupAccordion";
 import { FragranceWheel } from "../builder/FragranceWheel";
+import { FreeShippingNotice } from "./FreeShippingNotice";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
 import Link from "next/link";
 import { matchesCollectionFilter } from "../../lib/collection-filter";
 import { buildSearchSuggestions } from "../../lib/search-suggestions";
 import { useFavoritesStore } from "../../store/useFavoritesStore";
 import { SearchSuggestInput } from "../ui/SearchSuggestInput";
+
+const REPLICA_RESULTS_ID = "search-results";
+const ESSENCE_RESULTS_ID = "essence-results";
 
 function houseOf(p: CatalogProduct): string {
   return typeof p.metadata?.house === "string" ? p.metadata.house : "";
@@ -31,6 +44,20 @@ function genderOf(p: CatalogProduct): string {
 
 function groupOf(p: CatalogProduct): string {
   return typeof p.metadata?.group === "string" ? p.metadata.group : "";
+}
+
+function collectionLabel(
+  collection: CollectionFilter,
+  lists: { id: string; name: string }[]
+): string | null {
+  if (!collection) return null;
+  if (collection === "likes") return "Me gusta";
+  if (collection === "any-list") return "En mis listas";
+  if (collection.startsWith("list:")) {
+    const id = collection.slice(5);
+    return lists.find((l) => l.id === id)?.name ?? "Lista";
+  }
+  return null;
 }
 
 /** Shop-facing replicas: branded glass bottles only — no genéricos / plásticos / perfumeros. */
@@ -131,35 +158,101 @@ export function PerfumeriaBrowser({
     return buildSearchSuggestions(search, items, { houses });
   }, [search, replicas, essences, houses]);
 
+  const goToReplicaResults = () => scrollToResults(REPLICA_RESULTS_ID);
+  const goToEssenceResults = () => scrollToResults(ESSENCE_RESULTS_ID);
+
+  const essenceAdvancedChips = useMemo(() => {
+    const chips: AdvancedFilterChip[] = [];
+    if (olfactive) {
+      const label =
+        OLFACTIVE_GROUPS.find((g) => g.id === olfactive)?.label ?? olfactive;
+      chips.push({
+        id: "olfactive",
+        label,
+        onClear: () => {
+          setOlfactive(null);
+          goToEssenceResults();
+        },
+      });
+    }
+    if (house) {
+      chips.push({
+        id: "house",
+        label: house,
+        onClear: () => {
+          setHouse(null);
+          goToEssenceResults();
+        },
+      });
+    }
+    return chips;
+  }, [olfactive, house]);
+
+  const replicaCollectionChip = useMemo(() => {
+    const label = collectionLabel(collection, lists);
+    if (!label) return [] as AdvancedFilterChip[];
+    return [
+      {
+        id: "collection",
+        label,
+        onClear: () => {
+          setCollection(null);
+          goToReplicaResults();
+        },
+      },
+    ];
+  }, [collection, lists]);
+
   return (
     <div>
       <h1 className="font-display text-3xl text-ink mb-2">Preparadas</h1>
       <p className="text-sm text-ink-60 mb-2">
         Réplicas preparadas listas para llevar, o elige una esencia e inspira tu creación.
       </p>
-      <p className="mb-6 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
+      <p className="mb-4 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
+      <FreeShippingNotice variant="eligible" className="mb-4" />
 
       <SearchSuggestInput
-        className="mb-6 w-full max-w-md"
+        className="mb-6 w-full max-w-2xl"
         value={search}
         onChange={setSearch}
         suggestions={searchSuggestions}
         placeholder="Buscar por nombre o casa…"
         aria-label="Buscar en preparadas"
-        resultsAnchorId="search-results"
+        withIcon
+        resultsAnchorId={REPLICA_RESULTS_ID}
       />
 
       <CatalogToolbar
         gender={gender}
-        onGender={setGender}
+        onGender={(g) => {
+          setGender(g);
+          goToReplicaResults();
+        }}
         sort={sortReplicas}
-        onSort={setSortReplicas}
+        onSort={(s) => {
+          setSortReplicas(s);
+          goToReplicaResults();
+        }}
         showUnisex
-        collection={collection}
-        onCollection={setCollection}
+        showCollections={false}
       />
 
-      <section id="search-results" className="mb-14 scroll-mt-24">
+      <CatalogAdvancedFilters
+        chips={replicaCollectionChip}
+        label="Colecciones"
+      >
+        <CollectionFilterChips
+          value={collection}
+          onChange={(c) => {
+            setCollection(c);
+            goToReplicaResults();
+          }}
+          className="mb-0"
+        />
+      </CatalogAdvancedFilters>
+
+      <section id={REPLICA_RESULTS_ID} className="mb-14 scroll-mt-24">
         <div className="mb-6">
           <h2 className="font-display text-2xl text-ink">Réplicas preparadas</h2>
           <p className="text-sm text-ink-60">
@@ -193,23 +286,44 @@ export function PerfumeriaBrowser({
 
         <CatalogToolbar
           gender={gender}
-          onGender={setGender}
+          onGender={(g) => {
+            setGender(g);
+            goToEssenceResults();
+          }}
           sort={sortEssences}
-          onSort={setSortEssences}
+          onSort={(s) => {
+            setSortEssences(s);
+            goToEssenceResults();
+          }}
           showUnisex
-          collection={collection}
-          onCollection={setCollection}
           showCollections={false}
         />
-        <div className="mb-6">
-          <FragranceWheel
-            selected={olfactive}
-            onSelect={(g) => setOlfactive((prev) => (prev === g ? null : g))}
-          />
-        </div>
-        <HouseGroupAccordion houses={houses} selected={house} onSelect={setHouse} />
 
-        <PaginatedProductGrid products={filteredEssences} intent="create" />
+        <CatalogAdvancedFilters
+          chips={essenceAdvancedChips}
+          label="Familia y casa"
+        >
+          <FragranceWheel
+            size="md"
+            selected={olfactive}
+            onSelect={(g) => {
+              setOlfactive((prev) => (prev === g ? null : g));
+              goToEssenceResults();
+            }}
+          />
+          <HouseGroupAccordion
+            houses={houses}
+            selected={house}
+            onSelect={(h) => {
+              setHouse(h);
+              goToEssenceResults();
+            }}
+          />
+        </CatalogAdvancedFilters>
+
+        <div id={ESSENCE_RESULTS_ID} className="scroll-mt-24">
+          <PaginatedProductGrid products={filteredEssences} intent="create" />
+        </div>
       </section>
     </div>
   );

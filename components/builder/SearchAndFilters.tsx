@@ -38,7 +38,7 @@ export function GlobalSearchBar() {
 
   return (
     <SearchSuggestInput
-      className="mx-auto mb-8 max-w-xl"
+      className="mb-8 w-full max-w-2xl"
       value={search}
       onChange={setSearch}
       suggestions={suggestions}
@@ -70,7 +70,11 @@ export function GenderSelector() {
   );
 }
 
-export function HouseSelector() {
+export function HouseSelector({
+  onAfterSelect,
+}: {
+  onAfterSelect?: () => void;
+} = {}) {
   const filters = useBuilderStore((s) => s.filters);
   const setHouse = useBuilderStore((s) => s.setHouse);
   const houses = availableHouses(FRAGRANCES, {
@@ -83,7 +87,10 @@ export function HouseSelector() {
     <HouseGroupAccordion
       houses={houses}
       selected={filters.house}
-      onSelect={setHouse}
+      onSelect={(house) => {
+        setHouse(house);
+        onAfterSelect?.();
+      }}
     />
   );
 }

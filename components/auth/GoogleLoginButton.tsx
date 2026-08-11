@@ -48,7 +48,7 @@ export function GoogleLoginButton({
         disabled={loading}
         onClick={() => void handleClick()}
         className={cn(
-          "inline-flex h-11 w-full items-center justify-center gap-3 rounded-sm border border-gold-400/40 bg-transparent px-4 text-sm font-semibold uppercase tracking-widest text-gold-400 transition-colors hover:bg-gold-400/10 disabled:opacity-40",
+          "inline-flex h-12 w-full items-center justify-center gap-3 rounded-sm border-2 border-ink/20 bg-white px-4 text-sm font-semibold uppercase tracking-widest text-ink transition-colors hover:border-gold-400 hover:bg-gold-400/10 disabled:opacity-40",
           className
         )}
       >

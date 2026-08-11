@@ -111,8 +111,12 @@ export function ProductCard({
           <Badge variant="outline">{product.category}</Badge>
           {wholesale && <Badge variant="b2b">Mayorista</Badge>}
         </div>
-        <CardTitle>
-          <Link href={`/producto/${product.handle}`} className="hover:text-gold-400">
+        <CardTitle className="min-h-[2.75rem] leading-snug">
+          <Link
+            href={`/producto/${product.handle}`}
+            className="line-clamp-2 hover:text-gold-400"
+            title={product.title}
+          >
             {product.title}
           </Link>
         </CardTitle>
