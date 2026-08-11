@@ -29,6 +29,14 @@ export const metadata: Metadata = {
   description:
     "Prepara tu fragancia personalizada, compra insumos para emprendedores, ambientadores y accesorios. Perfumería familiar en Bogotá desde 2015.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://perfumas.com.co"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "64x64" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "es_CO",
