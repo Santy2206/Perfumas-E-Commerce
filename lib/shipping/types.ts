@@ -9,7 +9,7 @@ export type ShippingStatus =
   | "failed"
   | "pickup_ready";
 
-export type ShippingProviderId = "manual_pibox" | "pibox" | "none";
+export type ShippingProviderId = "manual_pibox" | "pibox" | "envia" | "none";
 
 export type OrderShippingMetadata = {
   shipping_method_id?: string;
@@ -26,6 +26,8 @@ export type OrderShippingMetadata = {
   label_url?: string | null;
   pibox_shipment_id?: string | null;
   pibox_package_id?: string | null;
+  envia_shipment_id?: string | null;
+  envia_carrier?: string | null;
   pickup_validation_code?: string | null;
   estimated_weight_kg?: number;
   shipping_updated_at?: string | null;

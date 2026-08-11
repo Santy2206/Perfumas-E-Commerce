@@ -77,6 +77,14 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
     typeof req.query.pibox_package_id === "string"
       ? req.query.pibox_package_id
       : undefined
+  const trackingNumber =
+    typeof req.query.tracking_number === "string"
+      ? req.query.tracking_number
+      : undefined
+  const enviaShipmentId =
+    typeof req.query.envia_shipment_id === "string"
+      ? req.query.envia_shipment_id
+      : undefined
 
   try {
     const query = req.scope.resolve("query")
@@ -103,6 +111,12 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
       if (piboxId) return String(meta.pibox_shipment_id || "") === piboxId
       if (piboxPackageId) {
         return String(meta.pibox_package_id || "") === piboxPackageId
+      }
+      if (trackingNumber) {
+        return String(meta.tracking_number || "") === trackingNumber
+      }
+      if (enviaShipmentId) {
+        return String(meta.envia_shipment_id || "") === enviaShipmentId
       }
       if (!meta.shipping_hub && !meta.shipping_status) return false
       if (hub && String(meta.shipping_hub) !== hub) return false

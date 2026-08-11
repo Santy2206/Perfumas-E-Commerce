@@ -135,12 +135,70 @@ export default function OpsEnviosPage() {
     }
   };
 
+  const createEnvia = async (order: ShippingOrder) => {
+    setError(null);
+    setBusyId(order.id);
+    try {
+      const res = await fetch("/api/ops/shipping", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-ops-secret": secret,
+        },
+        body: JSON.stringify({
+          action: "create_envia",
+          orderId: order.id,
+        }),
+      });
+      const data = (await res.json()) as { ok?: boolean; message?: string };
+      if (!res.ok || !data.ok) {
+        setError(data.message || "No se pudo crear el envío Envia");
+        return;
+      }
+      await load();
+    } finally {
+      setBusyId(null);
+    }
+  };
+
+  const registerEnviaWebhook = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/ops/shipping", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-ops-secret": secret,
+        },
+        body: JSON.stringify({
+          action: "register_envia_webhook",
+        }),
+      });
+      const data = (await res.json()) as {
+        ok?: boolean;
+        message?: string;
+        id?: number;
+      };
+      if (!res.ok || !data.ok) {
+        setError(data.message || "No se pudo registrar el webhook Envia");
+        return;
+      }
+      setError(null);
+      alert(
+        `Webhook Envia registrado (id ${data.id ?? "ok"}). URL: /api/shipping/envia/webhook`
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-8">
       <h1 className="font-display text-3xl text-bone mb-2">Ops · Envíos</h1>
       <p className="text-sm text-bone-60 mb-8">
-        Pedidos por hub (Fontibón / Bonanza). Crea el envío en Picap o pega el
-        tracking manualmente.
+        Pedidos por hub (Fontibón / Bonanza). Bogotá → Picap · Nacional → Envia.
+        También puedes pegar el tracking manualmente.
       </p>
 
       <section className="mb-8 grid gap-4 rounded-sm border border-gold-400/20 bg-white/5 p-5 sm:grid-cols-4">
@@ -184,9 +242,17 @@ export default function OpsEnviosPage() {
             <option value="pickup_ready">Recogida</option>
           </select>
         </div>
-        <div className="sm:col-span-4">
+        <div className="sm:col-span-4 flex flex-wrap gap-2">
           <Button type="button" onClick={load} disabled={!secret || loading}>
             {loading ? "Cargando…" : "Cargar pedidos"}
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => void registerEnviaWebhook()}
+            disabled={!secret || loading}
+          >
+            Registrar webhook Envia
           </Button>
         </div>
       </section>
@@ -200,8 +266,22 @@ export default function OpsEnviosPage() {
           orders.map((o) => {
             const meta = o.metadata || {};
             const statusStr = String(meta.shipping_status || "");
+            const method = String(meta.shipping_method_id || "");
+            const isNational =
+              method === "delivery-nacional" ||
+              String(meta.shipping_hub_reason || "")
+                .toLowerCase()
+                .includes("nacional");
+            const isBogota = method === "delivery-bogota";
             const canCreatePibox =
-              statusStr === "pending_dispatch" && !meta.pibox_shipment_id;
+              isBogota &&
+              statusStr === "pending_dispatch" &&
+              !meta.pibox_shipment_id;
+            const canCreateEnvia =
+              isNational &&
+              statusStr === "pending_dispatch" &&
+              !meta.envia_shipment_id &&
+              !meta.tracking_number;
             const showManual =
               statusStr !== "dispatched" &&
               statusStr !== "delivered" &&
@@ -250,21 +330,53 @@ export default function OpsEnviosPage() {
                       : ""}
                   </p>
                 ) : null}
+                {meta.envia_shipment_id ? (
+                  <p className="text-xs text-gold-400">
+                    Envia ID: {String(meta.envia_shipment_id)}
+                    {meta.envia_carrier
+                      ? ` · ${String(meta.envia_carrier)}`
+                      : ""}
+                  </p>
+                ) : null}
                 {meta.tracking_number ? (
                   <p className="text-sm text-gold-400">
                     Tracking: {String(meta.tracking_number)}
+                    {meta.label_url ? (
+                      <>
+                        {" · "}
+                        <a
+                          href={String(meta.label_url)}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline"
+                        >
+                          Ver guía
+                        </a>
+                      </>
+                    ) : null}
                   </p>
                 ) : null}
 
-                {canCreatePibox ? (
-                  <div className="pt-1">
-                    <Button
-                      type="button"
-                      onClick={() => createPibox(o)}
-                      disabled={busyId === o.id}
-                    >
-                      {busyId === o.id ? "Creando…" : "Crear envío Picap"}
-                    </Button>
+                {canCreatePibox || canCreateEnvia ? (
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {canCreatePibox ? (
+                      <Button
+                        type="button"
+                        onClick={() => createPibox(o)}
+                        disabled={busyId === o.id}
+                      >
+                        {busyId === o.id ? "Creando…" : "Crear envío Picap"}
+                      </Button>
+                    ) : null}
+                    {canCreateEnvia ? (
+                      <Button
+                        type="button"
+                        onClick={() => createEnvia(o)}
+                        disabled={busyId === o.id}
+                      >
+                        {busyId === o.id ? "Creando…" : "Crear envío Envia"}
+                      </Button>
+                    ) : null}
                   </div>
                 ) : null}
 

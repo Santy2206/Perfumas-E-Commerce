@@ -24,7 +24,9 @@ import {
 } from "./CollectionFilterChips";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
 import { matchesCollectionFilter } from "../../lib/collection-filter";
+import { buildSearchSuggestions } from "../../lib/search-suggestions";
 import { useFavoritesStore } from "../../store/useFavoritesStore";
+import { SearchSuggestInput } from "../ui/SearchSuggestInput";
 
 const CATS: { id: InsumosCat; label: string }[] = [
   { id: "esencias", label: "Esencias" },
@@ -156,6 +158,20 @@ export function InsumosBrowser({
 
   const showEssenceFilters = cat === "esencias" || cat === "todos";
 
+  const searchSuggestions = useMemo(
+    () =>
+      buildSearchSuggestions(
+        search,
+        (buckets[cat] ?? buckets.todos).map((p) => ({
+          id: p.id,
+          title: p.title,
+          subtitle: houseOf(p) || undefined,
+        })),
+        { houses: showEssenceFilters ? availableHouses : [] }
+      ),
+    [search, buckets, cat, availableHouses, showEssenceFilters]
+  );
+
   return (
     <div>
       <h1 className="font-display text-3xl text-bone mb-2">Insumos</h1>
@@ -186,12 +202,14 @@ export function InsumosBrowser({
         ))}
       </div>
 
-      <input
-        type="search"
+      <SearchSuggestInput
+        className="mb-6 w-full max-w-md"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={setSearch}
+        suggestions={searchSuggestions}
         placeholder="Buscar por nombre o casa (chanel, dior…)…"
-        className="mb-6 w-full max-w-md rounded-sm border border-gold-400/30 bg-white/5 px-4 py-2.5 text-sm text-bone placeholder:text-bone-60 focus:outline-none focus:ring-2 focus:ring-gold-400"
+        aria-label="Buscar insumos"
+        resultsAnchorId="search-results"
       />
 
       <CatalogToolbar
@@ -259,12 +277,14 @@ export function InsumosBrowser({
         />
       )}
 
-      <PaginatedProductGrid
-        products={filtered}
-        wholesale={wholesale}
-        intent="buy"
-        highlightId={essenceFocus}
-      />
+      <div id="search-results" className="scroll-mt-24">
+        <PaginatedProductGrid
+          products={filtered}
+          wholesale={wholesale}
+          intent="buy"
+          highlightId={essenceFocus}
+        />
+      </div>
     </div>
   );
 }

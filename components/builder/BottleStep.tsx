@@ -13,7 +13,9 @@ import {
 } from "../../lib/department-taxonomy";
 import { PriceBandFilter, ChipFilter } from "../shop/FilterChips";
 import { textIncludes } from "../../lib/house-groups";
+import { buildSearchSuggestions } from "../../lib/search-suggestions";
 import { formatCOP } from "../../lib/utils";
+import { SearchSuggestInput } from "../ui/SearchSuggestInput";
 import { LikeButton } from "../favorites/LikeButton";
 import { AddToListButton } from "../favorites/AddToListButton";
 import {
@@ -98,6 +100,19 @@ export function BottleStep() {
     });
   }, [ranked, fragrance, tier, priceBand, sizeMl, matchedOnly, search, collection, likes, lists]);
 
+  const searchSuggestions = useMemo(
+    () =>
+      buildSearchSuggestions(
+        search,
+        BOTTLES.map((b) => ({
+          id: b.id,
+          title: b.name,
+          subtitle: b.qualityTier,
+        }))
+      ),
+    [search]
+  );
+
   if (!fragrance) {
     return <p className="text-sm text-bone-60">Primero elige una fragancia en el paso 1.</p>;
   }
@@ -138,12 +153,14 @@ export function BottleStep() {
         </div>
       ) : null}
 
-      <input
-        type="search"
+      <SearchSuggestInput
+        className="mb-4 w-full max-w-md"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={setSearch}
+        suggestions={searchSuggestions}
         placeholder="Buscar réplica…"
-        className="mb-4 w-full max-w-md rounded-sm border border-gold-400/30 bg-white/5 px-4 py-2.5 text-sm text-bone placeholder:text-bone-60 focus:outline-none focus:ring-2 focus:ring-gold-400"
+        aria-label="Buscar envase réplica"
+        resultsAnchorId="search-results"
       />
 
       <CollectionFilterChips value={collection} onChange={setCollection} />
@@ -212,6 +229,7 @@ export function BottleStep() {
         Solo asociadas o parecidas a esta fragancia
       </label>
 
+      <div id="search-results" className="scroll-mt-24">
       <p className="mb-4 text-xs text-bone-60">
         {filtered.length} réplicas preparadas
         {tier !== "all" ? ` · ${tier}` : ""}
@@ -238,6 +256,7 @@ export function BottleStep() {
           ))}
         </div>
       )}
+      </div>
 
       <p className="text-sm text-bone-60">
         ¿Buscas envases vacíos (sin contenido)?{" "}

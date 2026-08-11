@@ -132,7 +132,7 @@ Ops panel: `https://tienda.perfumas.com.co/ops/envios` (secret = `OPS_PANEL_SECR
 
 After Wompi `APPROVED`, order metadata includes `shipping_hub`, `shipping_status: pending_dispatch` (delivery) or `pickup_ready`, and emails fire via Resend when configured. **Picap bookings are not created on payment** — from Ops click **Crear envío Picap** (or paste tracking manually).
 
-### Picap / Pibox
+### Picap / Pibox (Bogotá)
 
 Env (Vercel):
 
@@ -143,6 +143,24 @@ Env (Vercel):
 
 Webhooks in Picap (event_cd `0` booking + `1` package):  
 `POST https://tienda.perfumas.com.co/api/shipping/pibox/webhook`
+
+### Envia.com (nacional)
+
+Envíos fuera de Bogotá. Cotiza/genera guía desde Ops (**Crear envío Envia**), no al pagar.
+
+Env (Vercel):
+
+- `ENVIA_TOKEN` — API key (nunca en git)
+- `ENVIA_API_URL=https://api.envia.com`
+- `ENVIA_QUERIES_URL=https://queries.envia.com`
+- `ENVIA_DEFAULT_CARRIERS=…` — carriers a cotizar; se elige la tarifa más barata
+- `ENVIA_ORIGIN_*` — dirección Fontibón (street, city `Bogota`, state `DC`, postal code)
+
+Webhook tracking:
+
+`POST https://tienda.perfumas.com.co/api/shipping/envia/webhook`
+
+Registrar en el panel Envia (**Webhooks → + Agregar**) o en Ops con **Registrar webhook Envia**.
 
 Create matching shipping options in Medusa for region Colombia (COP).
 

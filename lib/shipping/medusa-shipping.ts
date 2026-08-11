@@ -62,6 +62,8 @@ export async function listShippingOrders(opts?: {
   orderId?: string;
   piboxShipmentId?: string;
   piboxPackageId?: string;
+  trackingNumber?: string;
+  enviaShipmentId?: string;
 }) {
   const base = medusaBase();
   const secret = internalSecret();
@@ -78,6 +80,8 @@ export async function listShippingOrders(opts?: {
   if (opts?.orderId) qs.set("order_id", opts.orderId);
   if (opts?.piboxShipmentId) qs.set("pibox_shipment_id", opts.piboxShipmentId);
   if (opts?.piboxPackageId) qs.set("pibox_package_id", opts.piboxPackageId);
+  if (opts?.trackingNumber) qs.set("tracking_number", opts.trackingNumber);
+  if (opts?.enviaShipmentId) qs.set("envia_shipment_id", opts.enviaShipmentId);
   const res = await fetch(`${base}/hooks/shipping/list?${qs}`, {
     headers: {
       "x-perfumas-internal-secret": secret,
@@ -103,6 +107,7 @@ export async function updateShippingOrder(input: {
   shippingProvider?: string;
   piboxShipmentId?: string;
   piboxPackageId?: string;
+  enviaShipmentId?: string;
   pickupValidationCode?: string | null;
   extraMetadata?: Record<string, unknown>;
 }) {
@@ -124,6 +129,9 @@ export async function updateShippingOrder(input: {
   }
   if (input.piboxPackageId != null) {
     meta.pibox_package_id = input.piboxPackageId;
+  }
+  if (input.enviaShipmentId != null) {
+    meta.envia_shipment_id = input.enviaShipmentId;
   }
   if (input.pickupValidationCode !== undefined) {
     meta.pickup_validation_code = input.pickupValidationCode;

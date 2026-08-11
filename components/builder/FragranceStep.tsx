@@ -70,6 +70,7 @@ export function FragranceStep() {
         <HouseSelector />
       </div>
 
+      <div id="search-results" className="scroll-mt-24">
       <p className="mb-4 text-xs text-bone-60">{results.length} fragancias</p>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
@@ -121,6 +122,7 @@ export function FragranceStep() {
             Ninguna fragancia coincide con estos filtros.
           </p>
         )}
+      </div>
       </div>
     </div>
   );

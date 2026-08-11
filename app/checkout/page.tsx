@@ -165,6 +165,10 @@ export default function CheckoutPage() {
       setError("Indica la ciudad de destino.");
       return;
     }
+    if (needsNationalCity && !postalCode.trim()) {
+      setError("Indica el código postal (requerido para envíos nacionales).");
+      return;
+    }
 
     setPlacing(true);
     setPlacingStep("Creando pedido…");
@@ -380,12 +384,16 @@ export default function CheckoutPage() {
                 />
               </div>
               <div>
-                <Label htmlFor="postal">Código postal (opcional)</Label>
+                <Label htmlFor="postal">
+                  Código postal
+                  {needsNationalCity ? " (requerido)" : " (opcional)"}
+                </Label>
                 <Input
                   id="postal"
                   value={postalCode}
                   onChange={(e) => setPostalCode(e.target.value)}
                   placeholder="110111"
+                  required={needsNationalCity}
                 />
               </div>
             </div>

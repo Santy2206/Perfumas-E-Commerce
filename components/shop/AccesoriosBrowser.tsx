@@ -17,9 +17,11 @@ import {
   textIncludes,
   type CatalogSort,
 } from "../../lib/house-groups";
+import { buildSearchSuggestions } from "../../lib/search-suggestions";
 import { CatalogToolbar } from "./CatalogToolbar";
 import { ChipFilter, PriceBandFilter } from "./FilterChips";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
+import { SearchSuggestInput } from "../ui/SearchSuggestInput";
 
 function categoryOf(p: CatalogProduct): string {
   return String(p.category ?? "")
@@ -111,6 +113,19 @@ export function AccesoriosBrowser({
     return sortByTitleAndPrice(list, sort);
   }, [products, kind, material, priceBand, search, sort]);
 
+  const searchSuggestions = useMemo(
+    () =>
+      buildSearchSuggestions(
+        search,
+        products.map((p) => ({
+          id: p.id,
+          title: p.title,
+          subtitle: p.category || undefined,
+        }))
+      ),
+    [search, products]
+  );
+
   return (
     <div>
       <h1 className="font-display text-3xl text-bone mb-2">Accesorios</h1>
@@ -119,12 +134,14 @@ export function AccesoriosBrowser({
       </p>
       <p className="mb-6 text-xs uppercase tracking-widest text-bone-60">{sourceLabel}</p>
 
-      <input
-        type="search"
+      <SearchSuggestInput
+        className="mb-6 w-full max-w-md"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={setSearch}
+        suggestions={searchSuggestions}
         placeholder="Buscar…"
-        className="mb-6 w-full max-w-md rounded-sm border border-gold-400/30 bg-white/5 px-4 py-2.5 text-sm text-bone placeholder:text-bone-60 focus:outline-none focus:ring-2 focus:ring-gold-400"
+        aria-label="Buscar accesorios"
+        resultsAnchorId="search-results"
       />
 
       <CatalogToolbar
@@ -150,7 +167,9 @@ export function AccesoriosBrowser({
       ) : null}
       <PriceBandFilter value={priceBand} onChange={setPriceBand} />
 
-      <PaginatedProductGrid products={filtered} intent="buy" />
+      <div id="search-results" className="scroll-mt-24">
+        <PaginatedProductGrid products={filtered} intent="buy" />
+      </div>
     </div>
   );
 }

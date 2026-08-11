@@ -17,7 +17,9 @@ import { FragranceWheel } from "../builder/FragranceWheel";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
 import Link from "next/link";
 import { matchesCollectionFilter } from "../../lib/collection-filter";
+import { buildSearchSuggestions } from "../../lib/search-suggestions";
 import { useFavoritesStore } from "../../store/useFavoritesStore";
+import { SearchSuggestInput } from "../ui/SearchSuggestInput";
 
 function houseOf(p: CatalogProduct): string {
   return typeof p.metadata?.house === "string" ? p.metadata.house : "";
@@ -113,6 +115,22 @@ export function PerfumeriaBrowser({
     return sortByTitleAndPrice(list, sortEssences);
   }, [essences, search, gender, house, olfactive, sortEssences, collection, likes, lists]);
 
+  const searchSuggestions = useMemo(() => {
+    const items = [
+      ...replicas.filter(isBrandedPreparedReplica).map((p) => ({
+        id: p.id,
+        title: p.title,
+        subtitle: "Réplica" as string | undefined,
+      })),
+      ...essences.map((p) => ({
+        id: p.id,
+        title: p.title,
+        subtitle: houseOf(p) || undefined,
+      })),
+    ];
+    return buildSearchSuggestions(search, items, { houses });
+  }, [search, replicas, essences, houses]);
+
   return (
     <div>
       <h1 className="font-display text-3xl text-bone mb-2">Perfumería</h1>
@@ -121,12 +139,14 @@ export function PerfumeriaBrowser({
       </p>
       <p className="mb-6 text-xs uppercase tracking-widest text-bone-60">{sourceLabel}</p>
 
-      <input
-        type="search"
+      <SearchSuggestInput
+        className="mb-6 w-full max-w-md"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={setSearch}
+        suggestions={searchSuggestions}
         placeholder="Buscar por nombre o casa…"
-        className="mb-6 w-full max-w-md rounded-sm border border-gold-400/30 bg-white/5 px-4 py-2.5 text-sm text-bone placeholder:text-bone-60 focus:outline-none focus:ring-2 focus:ring-gold-400"
+        aria-label="Buscar en perfumería"
+        resultsAnchorId="search-results"
       />
 
       <CatalogToolbar
@@ -139,7 +159,7 @@ export function PerfumeriaBrowser({
         onCollection={setCollection}
       />
 
-      <section className="mb-14">
+      <section id="search-results" className="mb-14 scroll-mt-24">
         <div className="mb-6">
           <h2 className="font-display text-2xl text-bone">Réplicas preparadas</h2>
           <p className="text-sm text-bone-60">
