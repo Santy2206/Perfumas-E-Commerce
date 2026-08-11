@@ -65,6 +65,8 @@ npm run catalog:images -- --dir "..." --force
 
 Files are stored under the Medusa local `static/` folder (`http://localhost:9000/static/...`) unless S3 is configured.
 
+**Important:** if you upload images while Medusa runs on `localhost`, product thumbnails in the DB keep that host. Production storefront rewrites `localhost` → `NEXT_PUBLIC_MEDUSA_BACKEND_URL` (e.g. `https://api.perfumas.com.co`). Prefer uploading against the production API (or S3) so URLs are correct at the source.
+
 ### Production images (S3 / Supabase Storage / R2)
 
 Set on the **Medusa host** (Railway):

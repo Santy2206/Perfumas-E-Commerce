@@ -49,6 +49,27 @@ type MedusaProduct = {
 
 type MemoryEntry<T> = { at: number; value: T };
 
+/**
+ * Images uploaded while Medusa ran on localhost often bake
+ * `http://localhost:9000/static/...` into the DB. Rewrite those to the
+ * public storefront backend URL so production can load them.
+ */
+function publicMedusaAssetUrl(url?: string | null): string | undefined {
+  if (!url?.trim()) return undefined;
+  const backend =
+    process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL?.replace(/\/$/, "") || "";
+  if (!backend) return url;
+  try {
+    const parsed = new URL(url);
+    const isLoopback =
+      parsed.hostname === "localhost" || parsed.hostname === "127.0.0.1";
+    if (!isLoopback) return url;
+    return `${backend}${parsed.pathname}${parsed.search}`;
+  } catch {
+    return url;
+  }
+}
+
 const memoryCache = new Map<string, MemoryEntry<unknown>>();
 
 function memoryGet<T>(key: string): T | undefined {
@@ -118,13 +139,13 @@ function mapMedusaProduct(product: MedusaProduct): CatalogProduct | null {
     department;
 
   const imageUrl =
-    product.thumbnail ||
-    product.images?.[0]?.url ||
+    publicMedusaAssetUrl(product.thumbnail) ||
+    publicMedusaAssetUrl(product.images?.[0]?.url) ||
     local?.imageUrl ||
     undefined;
 
   const hoverImageUrl =
-    product.images?.[1]?.url ||
+    publicMedusaAssetUrl(product.images?.[1]?.url) ||
     local?.hoverImageUrl ||
     undefined;
 
@@ -275,14 +296,14 @@ async function fetchMedusaProductsRaw(
 
 const getCachedAllProducts = unstable_cache(
   async () => fetchMedusaProductsRaw(),
-  ["medusa-catalog-all-v2"],
+  ["medusa-catalog-all-v3"],
   { revalidate: CATALOG_REVALIDATE_SECONDS }
 );
 
 function getCachedDepartmentProducts(department: Department) {
   return unstable_cache(
     async () => fetchMedusaProductsRaw(department),
-    [`medusa-catalog-dept-v2-${department}`],
+    [`medusa-catalog-dept-v3-${department}`],
     { revalidate: CATALOG_REVALIDATE_SECONDS }
   )();
 }
