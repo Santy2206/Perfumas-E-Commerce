@@ -209,27 +209,27 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-gold-400/20 bg-wine-950/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-8">
-        <div className="flex items-center gap-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-8">
+        <div className="flex min-w-0 shrink-0 flex-col gap-0.5">
+          <a
+            href={MARKETING_HOME_URL}
+            className="hidden whitespace-nowrap text-[10px] uppercase leading-none tracking-widest text-bone-60 hover:text-gold-400 sm:inline"
+          >
+            ← Volver a Perfumas
+          </a>
           <Link
             href="/tienda"
-            className="group flex items-center gap-2.5 font-display text-xl text-gold-400 tracking-wide hover:text-gold-100 transition-colors"
+            className="group flex items-center gap-2.5 font-display text-xl tracking-wide text-gold-400 transition-colors hover:text-gold-100"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/perfumas-crown.png"
               alt=""
-              className="h-7 w-auto"
+              className="h-7 w-auto shrink-0"
               aria-hidden
             />
-            Perfumas
+            <span className="whitespace-nowrap">Perfumas</span>
           </Link>
-          <a
-            href={MARKETING_HOME_URL}
-            className="hidden sm:inline text-[10px] uppercase tracking-widest text-bone-60 hover:text-gold-400"
-          >
-            ← Volver a Perfumas
-          </a>
         </div>
 
         <nav className="hidden items-center gap-1 lg:flex">
