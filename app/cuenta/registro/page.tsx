@@ -23,6 +23,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [cedula, setCedula] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -39,8 +40,8 @@ export default function RegisterPage() {
       setError("La contraseña debe tener al menos 8 caracteres.");
       return;
     }
-    if (!phone.trim() || !birthday) {
-      setError("Teléfono y cumpleaños son obligatorios.");
+    if (!phone.trim() || !birthday || !cedula.trim()) {
+      setError("Teléfono, cumpleaños y cédula son obligatorios.");
       return;
     }
     setSubmitting(true);
@@ -51,6 +52,7 @@ export default function RegisterPage() {
       lastName,
       phone,
       birthday,
+      cedula,
     });
     setSubmitting(false);
     if (!result.ok) {
@@ -126,6 +128,21 @@ export default function RegisterPage() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="3001234567"
+                />
+              </div>
+              <div>
+                <Label htmlFor="cedula">Cédula</Label>
+                <Input
+                  id="cedula"
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="off"
+                  required
+                  value={cedula}
+                  onChange={(e) =>
+                    setCedula(e.target.value.replace(/\D/g, ""))
+                  }
+                  placeholder="1234567890"
                 />
               </div>
               <div>

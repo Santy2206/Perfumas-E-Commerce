@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { AccountAccessPanel } from "../../components/account/AccountAccessPanel";
@@ -53,6 +52,7 @@ export default function CuentaPage() {
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [cedula, setCedula] = useState("");
   const [saving, setSaving] = useState(false);
   const [profileMsg, setProfileMsg] = useState<string | null>(null);
   const [profileError, setProfileError] = useState<string | null>(null);
@@ -65,6 +65,7 @@ export default function CuentaPage() {
     setLastName(customer.last_name || "");
     setPhone(customer.phone || "");
     setBirthday(customer.birthday || "");
+    setCedula(customer.cedula || "");
     setShowCompleteModal(needsProfileCompletion(customer));
   }, [customer]);
 
@@ -120,6 +121,7 @@ export default function CuentaPage() {
   };
 
   const birthdayLocked = Boolean(customer?.birthday);
+  const cedulaLocked = Boolean(customer?.cedula);
 
   const resetProfileFields = () => {
     if (!customer) return;
@@ -127,6 +129,7 @@ export default function CuentaPage() {
     setLastName(customer.last_name || "");
     setPhone(customer.phone || "");
     setBirthday(customer.birthday || "");
+    setCedula(customer.cedula || "");
     setProfileError(null);
     setProfileMsg(null);
   };
@@ -141,6 +144,7 @@ export default function CuentaPage() {
     setProfileError(null);
     setProfileMsg(null);
     const lockedBirthday = Boolean(customer?.birthday);
+    const lockedCedula = Boolean(customer?.cedula);
     if (!phone.trim()) {
       setProfileError("El teléfono es obligatorio.");
       return;
@@ -149,12 +153,17 @@ export default function CuentaPage() {
       setProfileError("El cumpleaños es obligatorio.");
       return;
     }
+    if (!lockedCedula && !cedula.trim()) {
+      setProfileError("La cédula es obligatoria.");
+      return;
+    }
     setSaving(true);
     const result = await updateCustomerProfile({
       firstName,
       lastName,
       phone,
       ...(lockedBirthday ? {} : { birthday }),
+      ...(lockedCedula ? {} : { cedula }),
     });
     setSaving(false);
     if (!result.ok) {
@@ -207,20 +216,33 @@ export default function CuentaPage() {
     return (
       <Section tone="light" className="min-h-[50vh]">
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-          <h1 className="font-display text-3xl text-ink mb-4">Mi cuenta</h1>
-          <p className="text-sm text-ink-60 mb-6">
-            Inicia sesión para ver tu historial de compras y volver a pedir con un clic.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <Button asChild>
-              <Link href="/cuenta/login">Iniciar sesión</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/cuenta/registro">Crear cuenta</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/mayoristas">Portal mayoristas</Link>
-            </Button>
+          <header className="mb-8 border-b-2 border-gold-400/40 pb-5">
+            <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-400">
+              Perfumas
+            </p>
+            <h1 className="font-display text-3xl text-ink sm:text-4xl">Mi cuenta</h1>
+            <p className="mt-2 text-sm text-ink-60">
+              Inicia sesión para ver tu historial y volver a pedir con un clic.
+            </p>
+          </header>
+          <div className="overflow-hidden rounded-sm border-2 border-ink/10 bg-white p-5 shadow-[0_2px_0_0_rgba(202,169,105,0.2)] sm:p-6">
+            <div className="flex flex-wrap gap-2">
+              <Button asChild size="lg">
+                <Link href="/cuenta/login">Iniciar sesión</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/cuenta/registro">Crear cuenta</Link>
+              </Button>
+            </div>
+            <p className="mt-4 text-sm text-ink-60">
+              ¿Eres emprendedor?{" "}
+              <Link
+                href="/mayoristas"
+                className="font-semibold text-ink underline decoration-gold-400 underline-offset-4 hover:text-gold-400"
+              >
+                Portal mayoristas
+              </Link>
+            </p>
           </div>
         </div>
       </Section>
@@ -234,13 +256,15 @@ export default function CuentaPage() {
     list: AccountOrder[],
     opts: { empty: string; showReorder: boolean }
   ) => (
-    <div className="space-y-4">
+    <div className="space-y-2.5">
       {ordersLoading && (
         <p className="text-sm text-ink-60">Cargando pedidos…</p>
       )}
       {ordersError && <p className="text-sm text-red-600">{ordersError}</p>}
       {!ordersLoading && !ordersError && list.length === 0 && (
-        <p className="text-sm text-ink-60">{opts.empty}</p>
+        <p className="rounded-sm border border-dashed border-ink/15 bg-paper-soft px-3 py-4 text-sm text-ink-60">
+          {opts.empty}
+        </p>
       )}
       {list.map((order) => {
         const orderKey = order.id;
@@ -254,24 +278,24 @@ export default function CuentaPage() {
         return (
           <div
             key={orderKey}
-            className="rounded-sm border border-gold-400/25 bg-white p-4 space-y-3"
+            className="space-y-2 rounded-sm border-2 border-ink/10 bg-paper-soft p-3.5"
           >
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <div>
-                <p className="text-ink font-medium">
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <div className="min-w-0">
+                <p className="font-semibold text-ink">
                   Pedido #{order.display_id ?? order.id.slice(-6)}
                 </p>
                 <p className="text-xs text-ink-60">{created}</p>
-                <p className="mt-1 text-xs uppercase tracking-widest text-gold-400">
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-gold-400">
                   {orderStatusLabel(order)}
                 </p>
               </div>
-              <p className="text-sm text-gold-400">
+              <p className="text-sm font-semibold text-gold-400">
                 {formatCOP(order.total ?? 0)}
               </p>
             </div>
 
-            <ul className="space-y-2">
+            <ul className="space-y-1.5 border-t border-ink/10 pt-2">
               {(order.items || []).map((item, idx) => {
                 const lineKey = `${orderKey}-${item.id || idx}`;
                 return (
@@ -279,8 +303,9 @@ export default function CuentaPage() {
                     key={lineKey}
                     className="flex flex-wrap items-center justify-between gap-2 text-sm"
                   >
-                    <span className="text-ink-60">
-                      {item.title || "Artículo"} × {item.quantity || 1}
+                    <span className="text-ink">
+                      {item.title || "Artículo"}{" "}
+                      <span className="text-ink-60">× {item.quantity || 1}</span>
                     </span>
                     {opts.showReorder && (
                       <Button
@@ -306,319 +331,422 @@ export default function CuentaPage() {
 
   return (
     <Section tone="light" className="min-h-[50vh]">
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-8">
-      <h1 className="font-display text-3xl text-ink mb-8">Mi cuenta</h1>
-
-      {showCompleteModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-wine-950/80 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-sm border border-gold-400/25 bg-white p-6 shadow-xl">
-            <h2 className="font-display text-2xl text-ink mb-2">Completa tu perfil</h2>
-            <p className="text-sm text-ink-60 mb-6">
-              Para continuar, necesitamos tu teléfono y cumpleaños.
-            </p>
-            <form
-              onSubmit={(e) => void saveProfile(e, true)}
-              className="space-y-4"
+      <div className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
+        <header className="mb-6 border-b-2 border-gold-400/40 pb-4">
+          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-400">
+            Perfumas
+          </p>
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h1 className="font-display text-3xl text-ink sm:text-4xl">Mi cuenta</h1>
+              <p className="mt-1 text-sm text-ink-60">
+                {[customer.first_name, customer.last_name].filter(Boolean).join(" ") ||
+                  displayEmail}
+              </p>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              disabled={loggingOut}
+              onClick={() => void handleLogout()}
             >
-              <div className="space-y-2">
-                <Label htmlFor="modal-phone">Teléfono</Label>
-                <Input
-                  id="modal-phone"
-                  type="tel"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="3001234567"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="modal-birthday">Cumpleaños</Label>
-                <Input
-                  id="modal-birthday"
-                  type="date"
-                  required
-                  value={birthday}
-                  onChange={(e) => setBirthday(e.target.value)}
-                />
-              </div>
-              {profileError && (
-                <p className="text-sm text-red-600">{profileError}</p>
-              )}
-              <Button type="submit" className="w-full" disabled={saving}>
-                {saving ? "Guardando…" : "Guardar y continuar"}
-              </Button>
-            </form>
+              {loggingOut ? "Cerrando…" : "Cerrar sesión"}
+            </Button>
           </div>
-        </div>
-      )}
+        </header>
 
-      <div className="grid gap-4">
-        <Card id="detalles">
-          <CardHeader>
-            <CardTitle>Perfil</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {!editingProfile ? (
-              <div className="space-y-4">
-                <dl className="space-y-3 text-sm">
-                  <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-ink-60">Nombre:</dt>
-                    <dd className="text-ink font-medium">
-                      {[customer.first_name, customer.last_name]
-                        .filter(Boolean)
-                        .join(" ") || "—"}
-                    </dd>
-                  </div>
-                  <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-ink-60">Correo:</dt>
-                    <dd className="text-ink font-medium">{displayEmail}</dd>
-                  </div>
-                  <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-ink-60">Teléfono:</dt>
-                    <dd className="text-ink font-medium">
-                      {customer.phone || "—"}
-                    </dd>
-                  </div>
-                  <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-ink-60">Cumpleaños:</dt>
-                    <dd className="text-ink font-medium">
-                      {formatBirthdayDisplay(customer.birthday)}
-                    </dd>
-                  </div>
-                </dl>
-                {profileMsg && (
-                  <p className="text-sm text-gold-400">{profileMsg}</p>
-                )}
-                {!customer.email && (
-                  <div className="space-y-2 rounded-sm border border-red-400/30 bg-red-50 p-3">
-                    <p className="text-sm text-red-600">
-                      No pudimos leer tu correo. Repara la cuenta con Google
-                      (vuelve a autenticarte) o crea una contraseña abajo si ya
-                      tienes correo válido en el proveedor.
-                    </p>
-                    <Button
-                      type="button"
-                      size="sm"
-                      variant="outline"
-                      disabled={loggingOut}
-                      onClick={() => {
-                        void startGoogleLogin().then((result) => {
-                          if (
-                            result.ok &&
-                            "redirect" in result &&
-                            typeof result.redirect === "string"
-                          ) {
-                            window.location.href = result.redirect;
-                            return;
-                          }
-                          if (!result.ok) setProfileError(result.error);
-                        });
-                      }}
-                    >
-                      Reparar con Google
-                    </Button>
-                  </div>
-                )}
-                <div className="flex flex-wrap gap-2">
-                  <Button
-                    type="button"
-                    size="sm"
-                    onClick={() => {
-                      resetProfileFields();
-                      setEditingProfile(true);
-                    }}
-                  >
-                    Editar
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    disabled={loggingOut}
-                    onClick={() => void handleLogout()}
-                  >
-                    {loggingOut ? "Cerrando…" : "Cerrar sesión"}
-                  </Button>
-                </div>
-                <AccountAccessPanel />
+        {showCompleteModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 px-4 backdrop-blur-sm">
+            <div className="w-full max-w-md overflow-hidden rounded-sm border-2 border-ink/10 bg-white shadow-xl">
+              <div className="border-b border-gold-400/30 bg-ink px-5 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+                  Perfil incompleto
+                </p>
               </div>
-            ) : (
-              <form onSubmit={(e) => void saveProfile(e)} className="space-y-4">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">Nombre</Label>
+              <div className="p-5">
+                <h2 className="mb-2 font-display text-2xl text-ink">Completa tu perfil</h2>
+                <p className="mb-5 text-sm text-ink-60">
+                  Para continuar, necesitamos tu teléfono, cédula y cumpleaños.
+                </p>
+                <form
+                  onSubmit={(e) => void saveProfile(e, true)}
+                  className="space-y-4"
+                >
+                  <div>
+                    <Label htmlFor="modal-phone">Teléfono</Label>
                     <Input
-                      id="firstName"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Apellido</Label>
-                    <Input
-                      id="lastName"
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label>Correo</Label>
-                  <p className="text-sm text-ink">{displayEmail}</p>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Teléfono</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="3001234567"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="birthday">Cumpleaños</Label>
-                  {birthdayLocked ? (
-                    <p className="text-sm text-ink">
-                      {formatBirthdayDisplay(customer.birthday)}
-                      <span className="mt-1 block text-xs text-ink-60">
-                        No se puede cambiar después de guardarlo.
-                      </span>
-                    </p>
-                  ) : (
-                    <Input
-                      id="birthday"
-                      type="date"
+                      id="modal-phone"
+                      type="tel"
                       required
-                      value={birthday}
-                      onChange={(e) => setBirthday(e.target.value)}
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="3001234567"
                     />
+                  </div>
+                  {!cedulaLocked ? (
+                    <div>
+                      <Label htmlFor="modal-cedula">Cédula</Label>
+                      <Input
+                        id="modal-cedula"
+                        type="text"
+                        inputMode="numeric"
+                        required
+                        value={cedula}
+                        onChange={(e) =>
+                          setCedula(e.target.value.replace(/\D/g, ""))
+                        }
+                        placeholder="1234567890"
+                      />
+                    </div>
+                  ) : null}
+                  {!birthdayLocked ? (
+                    <div>
+                      <Label htmlFor="modal-birthday">Cumpleaños</Label>
+                      <Input
+                        id="modal-birthday"
+                        type="date"
+                        required
+                        value={birthday}
+                        onChange={(e) => setBirthday(e.target.value)}
+                      />
+                    </div>
+                  ) : null}
+                  {profileError && (
+                    <p className="text-sm text-red-600">{profileError}</p>
                   )}
-                </div>
-                {profileError && (
-                  <p className="text-sm text-red-600">{profileError}</p>
-                )}
-                {profileMsg && (
-                  <p className="text-sm text-gold-400">{profileMsg}</p>
-                )}
-                <div className="flex flex-wrap gap-2">
-                  <Button type="submit" size="sm" disabled={saving}>
-                    {saving ? "Guardando…" : "Guardar cambios"}
+                  <Button type="submit" className="w-full" disabled={saving}>
+                    {saving ? "Guardando…" : "Guardar y continuar"}
                   </Button>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    disabled={saving}
-                    onClick={cancelEditProfile}
-                  >
-                    Cancelar
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    disabled={loggingOut}
-                    onClick={() => void handleLogout()}
-                  >
-                    {loggingOut ? "Cerrando…" : "Cerrar sesión"}
-                  </Button>
-                </div>
-              </form>
-            )}
-          </CardContent>
-        </Card>
-
-        {b2bProfile && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Mayorista</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-ink-60">
-              <p>
-                <span className="text-ink">Negocio:</span> {b2bProfile.businessName}
-              </p>
-              <p>
-                <span className="text-ink">NIT:</span> {b2bProfile.nit}
-              </p>
-              <p className="flex items-center gap-2">
-                Estado:{" "}
-                <Badge variant={b2bProfile.status === "approved" ? "b2b" : "secondary"}>
-                  {b2bProfile.status === "approved" ? "Mayorista activo" : "Pendiente"}
-                </Badge>
-              </p>
-              {isB2B && (
-                <Button asChild size="sm">
-                  <Link href="/mayoristas/insumos">Catálogo mayorista</Link>
-                </Button>
-              )}
-              <Button variant="ghost" size="sm" onClick={() => setB2BSession(null)}>
-                Salir del portal mayorista
-              </Button>
-            </CardContent>
-          </Card>
+                </form>
+              </div>
+            </div>
+          </div>
         )}
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Carrito actual</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-ink-60 mb-3">{itemCount} artículo(s) en el carrito</p>
-            <Button asChild size="sm" variant="outline">
+        <div className="grid gap-4">
+          {/* Quick strip: cart */}
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-sm border-2 border-gold-400/40 bg-white px-4 py-3 shadow-[0_2px_0_0_rgba(202,169,105,0.2)]">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-400">
+                Carrito actual
+              </p>
+              <p className="mt-0.5 text-sm font-semibold text-ink">
+                {itemCount} artículo{itemCount === 1 ? "" : "s"}
+              </p>
+            </div>
+            <Button asChild size="sm">
               <Link href="/carrito">Ver carrito</Link>
             </Button>
-          </CardContent>
-        </Card>
+          </div>
 
-        <Card id="pedidos">
-          <CardHeader>
-            <CardTitle>Pedidos</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-xs text-ink-60">
-              Pedidos en empaque, envío o listos para recoger.
-            </p>
-            {reorderMsg && (
-              <p className="text-sm text-gold-400">
-                {reorderMsg}{" "}
-                <Link href="/carrito" className="underline hover:text-gold-300">
-                  Ir al carrito
-                </Link>
-              </p>
-            )}
-            {renderOrderList(activeOrders as AccountOrder[], {
-              empty: "No tienes pedidos en proceso ahora.",
-              showReorder: false,
-            })}
-          </CardContent>
-        </Card>
+          {/* Profile */}
+          <section
+            id="detalles"
+            className="overflow-hidden rounded-sm border-2 border-ink/10 bg-white shadow-[0_2px_0_0_rgba(202,169,105,0.2)]"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gold-400/30 bg-ink px-4 py-2.5 sm:px-5">
+              <h2 className="font-display text-lg text-white">Perfil</h2>
+              {!editingProfile ? (
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => {
+                    resetProfileFields();
+                    setEditingProfile(true);
+                  }}
+                >
+                  Editar
+                </Button>
+              ) : null}
+            </div>
+            <div className="p-4 sm:p-5">
+              {!editingProfile ? (
+                <div className="space-y-4">
+                  <dl className="grid gap-2 sm:grid-cols-2">
+                    <div className="rounded-sm border border-ink/10 bg-paper-soft px-3 py-2.5">
+                      <dt className="text-[10px] font-semibold uppercase tracking-widest text-ink-60">
+                        Nombre
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold text-ink">
+                        {[customer.first_name, customer.last_name]
+                          .filter(Boolean)
+                          .join(" ") || "—"}
+                      </dd>
+                    </div>
+                    <div className="rounded-sm border border-ink/10 bg-paper-soft px-3 py-2.5">
+                      <dt className="text-[10px] font-semibold uppercase tracking-widest text-ink-60">
+                        Correo
+                      </dt>
+                      <dd className="mt-1 truncate text-sm font-semibold text-ink">
+                        {displayEmail}
+                      </dd>
+                    </div>
+                    <div className="rounded-sm border border-ink/10 bg-paper-soft px-3 py-2.5">
+                      <dt className="text-[10px] font-semibold uppercase tracking-widest text-ink-60">
+                        Teléfono
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold text-ink">
+                        {customer.phone || "—"}
+                      </dd>
+                    </div>
+                    <div className="rounded-sm border border-ink/10 bg-paper-soft px-3 py-2.5">
+                      <dt className="text-[10px] font-semibold uppercase tracking-widest text-ink-60">
+                        Cédula
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold text-ink">
+                        {customer.cedula || "—"}
+                      </dd>
+                    </div>
+                    <div className="rounded-sm border border-ink/10 bg-paper-soft px-3 py-2.5">
+                      <dt className="text-[10px] font-semibold uppercase tracking-widest text-ink-60">
+                        Cumpleaños
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold text-ink">
+                        {formatBirthdayDisplay(customer.birthday)}
+                      </dd>
+                    </div>
+                  </dl>
+                  {profileMsg && (
+                    <p className="text-sm font-medium text-gold-400">{profileMsg}</p>
+                  )}
+                  {!customer.email && (
+                    <div className="space-y-2 rounded-sm border border-red-400/30 bg-red-50 p-3">
+                      <p className="text-sm text-red-700">
+                        No pudimos leer tu correo. Repara la cuenta con Google
+                        o crea una contraseña abajo si ya tienes correo válido.
+                      </p>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        disabled={loggingOut}
+                        onClick={() => {
+                          void startGoogleLogin().then((result) => {
+                            if (
+                              result.ok &&
+                              "redirect" in result &&
+                              typeof result.redirect === "string"
+                            ) {
+                              window.location.href = result.redirect;
+                              return;
+                            }
+                            if (!result.ok) setProfileError(result.error);
+                          });
+                        }}
+                      >
+                        Reparar con Google
+                      </Button>
+                    </div>
+                  )}
+                  <AccountAccessPanel />
+                </div>
+              ) : (
+                <form onSubmit={(e) => void saveProfile(e)} className="space-y-4">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <Label htmlFor="firstName">Nombre</Label>
+                      <Input
+                        id="firstName"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="lastName">Apellido</Label>
+                      <Input
+                        id="lastName"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Label>Correo</Label>
+                    <p className="text-sm font-semibold text-ink">{displayEmail}</p>
+                  </div>
+                  <div>
+                    <Label htmlFor="phone">Teléfono</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="3001234567"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="cedula">Cédula</Label>
+                    {cedulaLocked ? (
+                      <p className="text-sm font-semibold text-ink">
+                        {customer.cedula}
+                        <span className="mt-1 block text-xs font-normal text-ink-60">
+                          No se puede cambiar después de guardarla.
+                        </span>
+                      </p>
+                    ) : (
+                      <Input
+                        id="cedula"
+                        type="text"
+                        inputMode="numeric"
+                        required
+                        value={cedula}
+                        onChange={(e) =>
+                          setCedula(e.target.value.replace(/\D/g, ""))
+                        }
+                        placeholder="1234567890"
+                      />
+                    )}
+                  </div>
+                  <div>
+                    <Label htmlFor="birthday">Cumpleaños</Label>
+                    {birthdayLocked ? (
+                      <p className="text-sm font-semibold text-ink">
+                        {formatBirthdayDisplay(customer.birthday)}
+                        <span className="mt-1 block text-xs font-normal text-ink-60">
+                          No se puede cambiar después de guardarlo.
+                        </span>
+                      </p>
+                    ) : (
+                      <Input
+                        id="birthday"
+                        type="date"
+                        required
+                        value={birthday}
+                        onChange={(e) => setBirthday(e.target.value)}
+                      />
+                    )}
+                  </div>
+                  {profileError && (
+                    <p className="text-sm text-red-600">{profileError}</p>
+                  )}
+                  {profileMsg && (
+                    <p className="text-sm font-medium text-gold-400">{profileMsg}</p>
+                  )}
+                  <div className="flex flex-wrap gap-2">
+                    <Button type="submit" size="sm" disabled={saving}>
+                      {saving ? "Guardando…" : "Guardar cambios"}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={saving}
+                      onClick={cancelEditProfile}
+                    >
+                      Cancelar
+                    </Button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </section>
 
-        <Card id="historial">
-          <CardHeader>
-            <CardTitle>Historial</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-xs text-ink-60">
-              Compras completadas: entregadas o ya recogidas.
-            </p>
-            {renderOrderList(historyOrders as AccountOrder[], {
-              empty: "Aún no tienes compras completadas en el historial.",
-              showReorder: true,
-            })}
-          </CardContent>
-        </Card>
+          {b2bProfile && (
+            <section className="overflow-hidden rounded-sm border-2 border-ink/10 bg-white">
+              <div className="border-b border-gold-400/30 bg-ink px-4 py-2.5 sm:px-5">
+                <h2 className="font-display text-lg text-white">Mayorista</h2>
+              </div>
+              <div className="space-y-3 p-4 text-sm sm:p-5">
+                <div className="grid gap-2 sm:grid-cols-2">
+                  <p>
+                    <span className="text-ink-60">Negocio:</span>{" "}
+                    <span className="font-semibold text-ink">
+                      {b2bProfile.businessName}
+                    </span>
+                  </p>
+                  <p>
+                    <span className="text-ink-60">NIT:</span>{" "}
+                    <span className="font-semibold text-ink">{b2bProfile.nit}</span>
+                  </p>
+                </div>
+                <p className="flex items-center gap-2">
+                  Estado:{" "}
+                  <Badge
+                    variant={b2bProfile.status === "approved" ? "b2b" : "secondary"}
+                  >
+                    {b2bProfile.status === "approved"
+                      ? "Mayorista activo"
+                      : "Pendiente"}
+                  </Badge>
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {isB2B && (
+                    <Button asChild size="sm">
+                      <Link href="/mayoristas/insumos">Catálogo mayorista</Link>
+                    </Button>
+                  )}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setB2BSession(null)}
+                  >
+                    Salir del portal mayorista
+                  </Button>
+                </div>
+              </div>
+            </section>
+          )}
 
-        <Card id="zona-peligrosa">
-          <CardHeader>
-            <CardTitle>Zona peligrosa</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <AccountDangerZone />
-          </CardContent>
-        </Card>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <section
+              id="pedidos"
+              className="overflow-hidden rounded-sm border-2 border-ink/10 bg-white"
+            >
+              <div className="border-b border-gold-400/30 bg-ink px-4 py-2.5">
+                <h2 className="font-display text-lg text-white">Pedidos</h2>
+                <p className="mt-0.5 text-[11px] text-gold-400/90">
+                  En empaque, envío o listos para recoger
+                </p>
+              </div>
+              <div className="space-y-3 p-3.5">
+                {reorderMsg && (
+                  <p className="text-sm font-medium text-gold-400">
+                    {reorderMsg}{" "}
+                    <Link href="/carrito" className="underline hover:text-ink">
+                      Ir al carrito
+                    </Link>
+                  </p>
+                )}
+                {renderOrderList(activeOrders as AccountOrder[], {
+                  empty: "No tienes pedidos en proceso ahora.",
+                  showReorder: false,
+                })}
+              </div>
+            </section>
+
+            <section
+              id="historial"
+              className="overflow-hidden rounded-sm border-2 border-ink/10 bg-white"
+            >
+              <div className="border-b border-gold-400/30 bg-ink px-4 py-2.5">
+                <h2 className="font-display text-lg text-white">Historial</h2>
+                <p className="mt-0.5 text-[11px] text-gold-400/90">
+                  Entregados o ya recogidos
+                </p>
+              </div>
+              <div className="space-y-3 p-3.5">
+                {renderOrderList(historyOrders as AccountOrder[], {
+                  empty: "Aún no tienes compras completadas.",
+                  showReorder: true,
+                })}
+              </div>
+            </section>
+          </div>
+
+          <section
+            id="zona-peligrosa"
+            className="overflow-hidden rounded-sm border-2 border-red-600/25 bg-white"
+          >
+            <div className="border-b border-red-600/20 bg-ink px-4 py-2.5 sm:px-5">
+              <h2 className="font-display text-lg text-white">Zona peligrosa</h2>
+            </div>
+            <div className="p-4 sm:p-5">
+              <AccountDangerZone />
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
     </Section>
   );
 }

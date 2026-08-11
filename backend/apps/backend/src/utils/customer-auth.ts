@@ -69,6 +69,7 @@ export function customerProfileScore(customer: CustomerLike): number {
   if (customer.phone) score += 3
   if (meta.profile_complete === true) score += 3
   if (meta.birthday) score += 2
+  if (meta.cedula) score += 2
   if (Array.isArray(meta.likes) && meta.likes.length) score += 2
   if (Array.isArray(meta.lists) && meta.lists.length) score += 1
   if (customer.first_name) score += 1

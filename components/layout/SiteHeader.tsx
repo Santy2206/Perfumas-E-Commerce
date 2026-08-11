@@ -213,8 +213,15 @@ export function SiteHeader() {
         <div className="flex items-center gap-4">
           <Link
             href="/tienda"
-            className="font-display text-xl text-gold-400 tracking-wide hover:text-gold-100 transition-colors"
+            className="group flex items-center gap-2.5 font-display text-xl text-gold-400 tracking-wide hover:text-gold-100 transition-colors"
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/perfumas-crown.png"
+              alt=""
+              className="h-7 w-auto"
+              aria-hidden
+            />
             Perfumas
           </Link>
           <a

@@ -150,39 +150,48 @@ export function AccountAccessPanel() {
   if (!customer) return null;
 
   return (
-    <div id="acceso" className="space-y-4 border-t border-gold-400/15 pt-4">
-      <div>
-        <p className="text-xs uppercase tracking-widest text-gold-400 mb-2">
-          Acceso y correo
-        </p>
-        {loading ? (
-          <p className="text-sm text-bone-60">Cargando métodos de acceso…</p>
-        ) : (
-          <dl className="space-y-2 text-sm">
-            <div className="flex flex-wrap gap-x-2">
-              <dt className="text-bone-60">Correo de acceso:</dt>
-              <dd className="text-bone font-medium">
-                {providers?.email || customer.email || "—"}
-              </dd>
-            </div>
-            <div className="flex flex-wrap gap-x-2">
-              <dt className="text-bone-60">Google:</dt>
-              <dd className="text-bone font-medium">
-                {providers?.google ? "Vinculado" : "No vinculado"}
-              </dd>
-            </div>
-            <div className="flex flex-wrap gap-x-2">
-              <dt className="text-bone-60">Contraseña:</dt>
-              <dd className="text-bone font-medium">
-                {providers?.emailpass ? "Configurada" : "No configurada"}
-              </dd>
-            </div>
-          </dl>
-        )}
-      </div>
+    <div id="acceso" className="space-y-3 border-t-2 border-gold-400/30 pt-4">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink">
+        Acceso y correo
+      </p>
 
-      {error && <p className="text-sm text-red-300">{error}</p>}
-      {msg && <p className="text-sm text-gold-400">{msg}</p>}
+      {loading ? (
+        <p className="text-sm text-ink-60">Cargando métodos de acceso…</p>
+      ) : (
+        <dl className="grid gap-2 sm:grid-cols-3">
+          <div className="rounded-sm border border-ink/10 bg-paper-soft px-3 py-2.5">
+            <dt className="text-[10px] font-semibold uppercase tracking-widest text-ink-60">
+              Correo de acceso
+            </dt>
+            <dd className="mt-1 truncate text-sm font-semibold text-ink">
+              {providers?.email || customer.email || "—"}
+            </dd>
+          </div>
+          <div className="rounded-sm border border-ink/10 bg-paper-soft px-3 py-2.5">
+            <dt className="text-[10px] font-semibold uppercase tracking-widest text-ink-60">
+              Google
+            </dt>
+            <dd className="mt-1 text-sm font-semibold text-ink">
+              {providers?.google ? (
+                <span className="text-gold-400">Vinculado</span>
+              ) : (
+                "No vinculado"
+              )}
+            </dd>
+          </div>
+          <div className="rounded-sm border border-ink/10 bg-paper-soft px-3 py-2.5">
+            <dt className="text-[10px] font-semibold uppercase tracking-widest text-ink-60">
+              Contraseña
+            </dt>
+            <dd className="mt-1 text-sm font-semibold text-ink">
+              {providers?.emailpass ? "Configurada" : "No configurada"}
+            </dd>
+          </div>
+        </dl>
+      )}
+
+      {error && <p className="text-sm text-red-600">{error}</p>}
+      {msg && <p className="text-sm font-medium text-gold-400">{msg}</p>}
 
       <div className="flex flex-wrap gap-2">
         <Button
@@ -210,9 +219,7 @@ export function AccountAccessPanel() {
             setModal("email");
           }}
           title={
-            !providers?.emailpass
-              ? "Crea una contraseña primero"
-              : undefined
+            !providers?.emailpass ? "Crea una contraseña primero" : undefined
           }
         >
           Cambiar correo
@@ -246,152 +253,159 @@ export function AccountAccessPanel() {
       </div>
 
       {!providers?.emailpass && providers?.google && (
-        <p className="text-xs text-bone-60">
+        <p className="text-xs leading-relaxed text-ink-60">
           Tu cuenta entró con Google. Crea una contraseña para poder cambiar el
           correo o desvincular Google sin perder el acceso.
         </p>
       )}
 
       {modal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-wine-950/80 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-sm border border-gold-400/30 bg-wine-900 p-6 shadow-xl">
-            {modal === "password" && (
-              <form onSubmit={(e) => void onPassword(e)} className="space-y-4">
-                <h3 className="font-display text-xl text-bone">
-                  {providers?.emailpass
-                    ? "Cambiar contraseña"
-                    : "Crear contraseña"}
-                </h3>
-                {providers?.emailpass && (
-                  <div className="space-y-2">
-                    <Label htmlFor="current-password">Contraseña actual</Label>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 px-4 backdrop-blur-sm">
+          <div className="w-full max-w-md overflow-hidden rounded-sm border-2 border-ink/10 bg-white shadow-xl">
+            <div className="border-b border-gold-400/30 bg-ink px-5 py-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-400">
+                Seguridad
+              </p>
+            </div>
+            <div className="p-5">
+              {modal === "password" && (
+                <form onSubmit={(e) => void onPassword(e)} className="space-y-4">
+                  <h3 className="font-display text-xl text-ink">
+                    {providers?.emailpass
+                      ? "Cambiar contraseña"
+                      : "Crear contraseña"}
+                  </h3>
+                  {providers?.emailpass && (
+                    <div>
+                      <Label htmlFor="current-password">Contraseña actual</Label>
+                      <Input
+                        id="current-password"
+                        type="password"
+                        required
+                        minLength={8}
+                        value={currentPassword}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <Label htmlFor="new-password">Nueva contraseña</Label>
                     <Input
-                      id="current-password"
+                      id="new-password"
                       type="password"
                       required
                       minLength={8}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  {error && <p className="text-sm text-red-600">{error}</p>}
+                  <div className="flex flex-wrap gap-2">
+                    <Button type="submit" disabled={busy}>
+                      {busy ? "Guardando…" : "Guardar"}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      disabled={busy}
+                      onClick={closeModal}
+                    >
+                      Cancelar
+                    </Button>
+                  </div>
+                </form>
+              )}
+
+              {modal === "email" && emailStep === "request" && (
+                <form
+                  onSubmit={(e) => void onEmailRequest(e)}
+                  className="space-y-4"
+                >
+                  <h3 className="font-display text-xl text-ink">Cambiar correo</h3>
+                  <p className="text-sm text-ink-60">
+                    Confirma tu contraseña y el correo nuevo. Te enviaremos un
+                    código de verificación.
+                  </p>
+                  <div>
+                    <Label htmlFor="email-password">Contraseña actual</Label>
+                    <Input
+                      id="email-password"
+                      type="password"
+                      required
                       value={currentPassword}
                       onChange={(e) => setCurrentPassword(e.target.value)}
                     />
                   </div>
-                )}
-                <div className="space-y-2">
-                  <Label htmlFor="new-password">Nueva contraseña</Label>
-                  <Input
-                    id="new-password"
-                    type="password"
-                    required
-                    minLength={8}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                {error && <p className="text-sm text-red-300">{error}</p>}
-                <div className="flex flex-wrap gap-2">
-                  <Button type="submit" disabled={busy}>
-                    {busy ? "Guardando…" : "Guardar"}
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    disabled={busy}
-                    onClick={closeModal}
-                  >
-                    Cancelar
-                  </Button>
-                </div>
-              </form>
-            )}
+                  <div>
+                    <Label htmlFor="new-email">Correo nuevo</Label>
+                    <Input
+                      id="new-email"
+                      type="email"
+                      required
+                      value={newEmail}
+                      onChange={(e) => setNewEmail(e.target.value)}
+                    />
+                  </div>
+                  {error && <p className="text-sm text-red-600">{error}</p>}
+                  <div className="flex flex-wrap gap-2">
+                    <Button type="submit" disabled={busy}>
+                      {busy ? "Enviando…" : "Enviar código"}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      disabled={busy}
+                      onClick={closeModal}
+                    >
+                      Cancelar
+                    </Button>
+                  </div>
+                </form>
+              )}
 
-            {modal === "email" && emailStep === "request" && (
-              <form
-                onSubmit={(e) => void onEmailRequest(e)}
-                className="space-y-4"
-              >
-                <h3 className="font-display text-xl text-bone">Cambiar correo</h3>
-                <p className="text-sm text-bone-60">
-                  Confirma tu contraseña y el correo nuevo. Te enviaremos un
-                  código de verificación.
-                </p>
-                <div className="space-y-2">
-                  <Label htmlFor="email-password">Contraseña actual</Label>
-                  <Input
-                    id="email-password"
-                    type="password"
-                    required
-                    value={currentPassword}
-                    onChange={(e) => setCurrentPassword(e.target.value)}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="new-email">Correo nuevo</Label>
-                  <Input
-                    id="new-email"
-                    type="email"
-                    required
-                    value={newEmail}
-                    onChange={(e) => setNewEmail(e.target.value)}
-                  />
-                </div>
-                {error && <p className="text-sm text-red-300">{error}</p>}
-                <div className="flex flex-wrap gap-2">
-                  <Button type="submit" disabled={busy}>
-                    {busy ? "Enviando…" : "Enviar código"}
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    disabled={busy}
-                    onClick={closeModal}
-                  >
-                    Cancelar
-                  </Button>
-                </div>
-              </form>
-            )}
-
-            {modal === "email" && emailStep === "confirm" && (
-              <form
-                onSubmit={(e) => void onEmailConfirm(e)}
-                className="space-y-4"
-              >
-                <h3 className="font-display text-xl text-bone">
-                  Confirma el código
-                </h3>
-                <p className="text-sm text-bone-60">
-                  Revisa {newEmail} e ingresa el código de 6 dígitos.
-                </p>
-                {devCode && (
-                  <p className="text-xs text-gold-400">
-                    Modo local (sin Resend): {devCode}
+              {modal === "email" && emailStep === "confirm" && (
+                <form
+                  onSubmit={(e) => void onEmailConfirm(e)}
+                  className="space-y-4"
+                >
+                  <h3 className="font-display text-xl text-ink">
+                    Confirma el código
+                  </h3>
+                  <p className="text-sm text-ink-60">
+                    Revisa {newEmail} e ingresa el código de 6 dígitos.
                   </p>
-                )}
-                <div className="space-y-2">
-                  <Label htmlFor="email-code">Código</Label>
-                  <Input
-                    id="email-code"
-                    inputMode="numeric"
-                    required
-                    value={emailCode}
-                    onChange={(e) => setEmailCode(e.target.value)}
-                  />
-                </div>
-                {error && <p className="text-sm text-red-300">{error}</p>}
-                <div className="flex flex-wrap gap-2">
-                  <Button type="submit" disabled={busy}>
-                    {busy ? "Confirmando…" : "Confirmar correo"}
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    disabled={busy}
-                    onClick={closeModal}
-                  >
-                    Cancelar
-                  </Button>
-                </div>
-              </form>
-            )}
+                  {devCode && (
+                    <p className="text-xs font-medium text-gold-400">
+                      Modo local (sin Resend): {devCode}
+                    </p>
+                  )}
+                  <div>
+                    <Label htmlFor="email-code">Código</Label>
+                    <Input
+                      id="email-code"
+                      inputMode="numeric"
+                      required
+                      value={emailCode}
+                      onChange={(e) => setEmailCode(e.target.value)}
+                    />
+                  </div>
+                  {error && <p className="text-sm text-red-600">{error}</p>}
+                  <div className="flex flex-wrap gap-2">
+                    <Button type="submit" disabled={busy}>
+                      {busy ? "Confirmando…" : "Confirmar correo"}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      disabled={busy}
+                      onClick={closeModal}
+                    >
+                      Cancelar
+                    </Button>
+                  </div>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       )}

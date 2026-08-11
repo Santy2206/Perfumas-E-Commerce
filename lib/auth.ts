@@ -20,6 +20,7 @@ export type StoreCustomer = {
   phone?: string | null;
   avatar_url?: string | null;
   birthday?: string | null;
+  cedula?: string | null;
   profile_complete?: boolean;
 };
 
@@ -66,9 +67,11 @@ function asCustomer(customer: {
       : "";
   const birthday =
     typeof meta.birthday === "string" ? meta.birthday : null;
+  const cedula =
+    typeof meta.cedula === "string" ? meta.cedula : null;
   const profileComplete =
     meta.profile_complete === true ||
-    Boolean(customer.phone && birthday);
+    Boolean(customer.phone && birthday && cedula);
 
   return {
     id: customer.id,
@@ -78,6 +81,7 @@ function asCustomer(customer: {
     phone: customer.phone,
     avatar_url: avatar,
     birthday,
+    cedula,
     profile_complete: profileComplete,
   };
 }
@@ -593,6 +597,7 @@ export async function registerEmail(input: {
   lastName: string;
   phone: string;
   birthday: string;
+  cedula: string;
 }): Promise<AuthResult> {
   if (!isMedusaConfigured()) {
     return { ok: false, error: "El servicio de cuenta no está disponible ahora." };
@@ -603,9 +608,17 @@ export async function registerEmail(input: {
   const lastName = input.lastName.trim();
   const phone = input.phone.trim();
   const birthday = input.birthday.trim();
+  const cedula = input.cedula.trim().replace(/\D/g, "");
 
-  if (!phone || !birthday) {
-    return { ok: false, error: "Teléfono y cumpleaños son obligatorios." };
+  if (!phone || !birthday || !cedula) {
+    return {
+      ok: false,
+      error: "Teléfono, cumpleaños y cédula son obligatorios.",
+    };
+  }
+
+  if (cedula.length < 5) {
+    return { ok: false, error: "Ingresa una cédula válida." };
   }
 
   try {
@@ -646,6 +659,7 @@ export async function registerEmail(input: {
       phone,
       metadata: {
         birthday,
+        cedula,
         profile_complete: true,
       },
     });
@@ -657,6 +671,7 @@ export async function registerEmail(input: {
         phone,
         metadata: {
           birthday,
+          cedula,
           profile_complete: true,
         },
       });
@@ -933,6 +948,7 @@ export async function updateCustomerProfile(input: {
   lastName?: string;
   phone?: string;
   birthday?: string;
+  cedula?: string;
 }): Promise<AuthResult> {
   if (!isMedusaConfigured()) {
     return { ok: false, error: "El servicio de cuenta no está disponible ahora." };
@@ -945,12 +961,22 @@ export async function updateCustomerProfile(input: {
 
     const phone = input.phone?.trim();
     const birthdayInput = input.birthday?.trim();
+    const cedulaInput = input.cedula?.trim().replace(/\D/g, "") || "";
     const existingMeta = current.metadata || {};
     const existingBirthday =
       (typeof existingMeta.birthday === "string" && existingMeta.birthday.trim()) ||
       "";
-    // Birthday is immutable once set
+    const existingCedula =
+      (typeof existingMeta.cedula === "string" &&
+        existingMeta.cedula.trim().replace(/\D/g, "")) ||
+      "";
+    // Birthday and cédula are immutable once set
     const birthday = existingBirthday || birthdayInput || "";
+    const cedula = existingCedula || cedulaInput || "";
+
+    if (cedulaInput && !existingCedula && cedula.length < 5) {
+      return { ok: false, error: "Ingresa una cédula válida." };
+    }
 
     await medusa.store.customer.update({
       first_name: input.firstName?.trim() || undefined,
@@ -959,7 +985,8 @@ export async function updateCustomerProfile(input: {
       metadata: {
         ...existingMeta,
         ...(birthday ? { birthday } : {}),
-        ...(phone && birthday ? { profile_complete: true } : {}),
+        ...(cedula ? { cedula } : {}),
+        ...(phone && birthday && cedula ? { profile_complete: true } : {}),
       },
     });
     const customer = await getCustomer();
@@ -977,5 +1004,5 @@ export async function updateCustomerProfile(input: {
 
 export function needsProfileCompletion(customer: StoreCustomer | null): boolean {
   if (!customer) return false;
-  return !customer.phone || !customer.birthday;
+  return !customer.phone || !customer.birthday || !customer.cedula;
 }
