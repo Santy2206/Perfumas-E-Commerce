@@ -55,7 +55,14 @@ export async function POST(req: Request) {
               }
             : {}),
         },
-        body: JSON.stringify(body),
+        // Allowlist only — never forward client flags like auto_approve.
+        body: JSON.stringify({
+          businessName: body.businessName,
+          nit: body.nit,
+          phone: body.phone,
+          city: body.city,
+          email: body.email,
+        }),
       });
       if (res.ok) {
         const data = await res.json();

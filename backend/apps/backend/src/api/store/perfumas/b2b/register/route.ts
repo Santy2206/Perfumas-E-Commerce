@@ -14,7 +14,6 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
     phone?: string
     city?: string
     email?: string
-    auto_approve?: boolean
   }
 
   if (!body?.businessName || !body?.nit || !body?.email) {
@@ -76,34 +75,20 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
       group = result[0]
     }
 
-    // Do not auto-approve by default — Admin reviews NIT.
-    // If auto_approve flag is sent (dev), add to group immediately.
-    if (body.auto_approve && group) {
-      await customerModule.addCustomerToGroup({
-        customer_id: customer.id,
-        customer_group_id: group.id,
-      })
-      await customerModule.updateCustomers(customer.id, {
-        metadata: {
-          ...(customer.metadata || {}),
-          nit: body.nit,
-          city: body.city,
-          b2b_status: "approved",
-        },
-      })
-    }
+    // Never auto-approve from the public store API — Admin reviews NIT and
+    // assigns the emprendedores group. A client-controlled auto_approve flag
+    // previously allowed anyone to self-grant wholesale pricing.
 
     logger.info(`B2B application for ${body.email} → customer ${customer.id}`)
 
     return res.status(201).json({
       ok: true,
-      status: body.auto_approve ? "approved" : "pending",
+      status: "pending",
       customer_id: customer.id,
       customer_group_target: "emprendedores",
       customer_group_id: group?.id,
-      message: body.auto_approve
-        ? "Customer created and assigned to emprendedores."
-        : "Application received. Awaiting admin approval (assign emprendedores group).",
+      message:
+        "Application received. Awaiting admin approval (assign emprendedores group).",
     })
   } catch (error) {
     logger.error(
