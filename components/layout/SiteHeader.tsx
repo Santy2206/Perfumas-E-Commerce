@@ -210,24 +210,25 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-gold-400/20 bg-wine-950/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-8">
-        <div className="flex min-w-0 shrink-0 flex-col gap-0.5">
+        <div className="flex min-w-0 shrink-0 items-center gap-2.5">
           <a
             href={MARKETING_HOME_URL}
-            className="hidden whitespace-nowrap text-[10px] uppercase leading-none tracking-widest text-bone-60 hover:text-gold-400 sm:inline"
-          >
-            ← Volver a Perfumas
-          </a>
-          <Link
-            href="/tienda"
-            className="group flex items-center gap-2.5 font-display text-xl tracking-wide text-gold-400 transition-colors hover:text-gold-100"
+            className="shrink-0 transition-opacity hover:opacity-80"
+            aria-label="Ir a Perfumas"
+            title="Ir a Perfumas"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/perfumas-crown.png"
               alt=""
-              className="h-7 w-auto shrink-0"
+              className="h-7 w-auto"
               aria-hidden
             />
+          </a>
+          <Link
+            href="/tienda"
+            className="font-display text-xl tracking-wide text-gold-400 transition-colors hover:text-gold-100"
+          >
             <span className="whitespace-nowrap">Perfumas</span>
           </Link>
         </div>
@@ -288,14 +289,6 @@ export function SiteHeader() {
       {open && (
         <nav className="border-t border-gold-400/20 px-4 py-4 lg:hidden">
           <ul className="flex flex-col gap-1">
-            <li>
-              <a
-                href={MARKETING_HOME_URL}
-                className="block rounded-sm px-3 py-3 text-sm uppercase tracking-widest text-gold-400 hover:bg-wine-900"
-              >
-                ← Volver a Perfumas
-              </a>
-            </li>
             {NAV.map((item) => (
               <li key={item.href}>
                 <Link
