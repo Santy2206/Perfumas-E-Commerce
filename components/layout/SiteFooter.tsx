@@ -6,11 +6,20 @@ export function SiteFooter() {
     <footer className="mt-auto border-t border-gold-400/20 bg-wine-950">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-8 md:grid-cols-3">
         <div>
-          <p className="mb-2 flex items-center gap-2.5 font-display text-lg text-gold-400">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/perfumas-crown.png" alt="" className="h-6 w-auto" aria-hidden />
-            Perfumas
-          </p>
+          <div className="mb-2 flex items-center gap-2.5 font-display text-lg text-gold-400">
+            <a
+              href={MARKETING_HOME_URL}
+              className="shrink-0 transition-opacity hover:opacity-80"
+              aria-label="Ir al sitio Perfumas"
+              title="Sitio Perfumas"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/perfumas-crown.png" alt="" className="h-6 w-auto" aria-hidden />
+            </a>
+            <Link href="/tienda" className="transition-colors hover:text-gold-100">
+              Perfumas
+            </Link>
+          </div>
           <p className="text-sm text-bone-60">
             Perfumería familiar en Bogotá desde 2015. Fragancias inspiradas, insumos para emprendedores y más.
           </p>
