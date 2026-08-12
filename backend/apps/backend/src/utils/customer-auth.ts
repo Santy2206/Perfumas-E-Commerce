@@ -63,6 +63,46 @@ export function emailFromProviderIdentities(
   return { email, meta }
 }
 
+/**
+ * Email used for ensure / link / merge must come from the auth identity.
+ * A client-supplied body email must never retarget those flows to another
+ * account (account-takeover via silent merge).
+ */
+export function resolveTrustedEnsureEmail(input: {
+  bodyEmail?: string | null
+  providerEmail?: string | null
+  hasGoogleProvider: boolean
+}): { email: string; source: "provider" | "body" | "none"; mismatch: boolean } {
+  const provider = String(input.providerEmail || "")
+    .trim()
+    .toLowerCase()
+  const body = String(input.bodyEmail || "")
+    .trim()
+    .toLowerCase()
+  const bodyValid = isValidEmail(body)
+  const providerValid = isValidEmail(provider)
+
+  if (providerValid) {
+    return {
+      email: provider,
+      source: "provider",
+      mismatch: bodyValid && body !== provider,
+    }
+  }
+
+  // Google flows without provider email must not trust a client-supplied address
+  // for linking/merging — that would let an attacker point at any victim email.
+  if (input.hasGoogleProvider) {
+    return { email: "", source: "none", mismatch: bodyValid }
+  }
+
+  if (bodyValid) {
+    return { email: body, source: "body", mismatch: false }
+  }
+
+  return { email: "", source: "none", mismatch: false }
+}
+
 export function customerProfileScore(customer: CustomerLike): number {
   const meta = (customer.metadata || {}) as Record<string, unknown>
   let score = 0
