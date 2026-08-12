@@ -9,7 +9,11 @@
  *   4. Cart subtotal meets the threshold
  */
 
-import { getProductById, SHIPPING_METHODS } from "../catalog";
+import {
+  getProductById,
+  getProductKind,
+  SHIPPING_METHODS,
+} from "../catalog";
 
 export const FREE_SHIPPING_BOGOTA_MIN = 100_000;
 export const FREE_SHIPPING_NACIONAL_MIN = 200_000;
@@ -19,7 +23,11 @@ export type ShippingQuoteLine = {
   productId?: string;
   /** Line total (price × quantity) for composition checks */
   amount?: number;
-  /** Optional department if already known (e.g. from catalog) */
+  /**
+   * Optional department / productKind hints from the client.
+   * When `productId` resolves in the catalog these are ignored — never trust
+   * them alone to unlock free shipping.
+   */
   department?: string | null;
   productKind?: string | null;
 };
@@ -44,7 +52,6 @@ function basePriceForMethod(methodId: string): number {
 }
 
 function resolveDepartment(line: ShippingQuoteLine): string | null {
-  if (line.department) return line.department;
   if (line.productId) {
     const product = getProductById(line.productId);
     if (product?.department) return product.department;
@@ -56,18 +63,25 @@ function lineAmount(line: ShippingQuoteLine): number {
   return Math.max(0, Math.round(line.amount ?? 0));
 }
 
-/** Réplicas preparadas / perfumería department / custom builds. */
+/**
+ * Réplicas preparadas / perfumería / custom builds.
+ * Catalog identity wins over client `productKind` / `department` / spoofed `kind`.
+ */
 export function isPerfumeriaEligibleLine(line: ShippingQuoteLine): boolean {
-  if (line.kind === "build") return true;
-  if (line.department === "perfumeria") return true;
-  if (line.productKind === "prepared_replica") return true;
-
   if (line.productId) {
     const product = getProductById(line.productId);
-    if (product?.department === "perfumeria") return true;
+    if (product) {
+      if (product.department === "perfumeria") return true;
+      if (getProductKind(product) === "prepared_replica") return true;
+      // Known non-perfume catalog SKU — ignore client perfume flags.
+      return false;
+    }
+    // Unknown productId: do not grant perfume eligibility from client flags.
+    return false;
   }
 
-  return false;
+  // Custom builds are not catalog SKUs; only trust kind when there is no productId.
+  return line.kind === "build";
 }
 
 export function classifyShippingLine(
@@ -79,7 +93,9 @@ export function classifyShippingLine(
   if (department === "insumos") return "insumos";
   if (department === "hogar" || department === "accesorios") return "companion";
 
-  // Medusa essence SKUs without department on the local catalog
+  // Medusa-only SKUs missing from the local catalog: allow insumos hints so
+  // free-shipping composition stays conservative (harder to unlock free).
+  // Never treat client productKind as perfume (see isPerfumeriaEligibleLine).
   if (
     line.productKind === "essence" ||
     line.productKind === "alcohol" ||

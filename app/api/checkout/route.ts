@@ -16,7 +16,6 @@ import {
 } from "../../../lib/wompi";
 import { resolveDispatchHub } from "../../../lib/shipping/hub-routing";
 import { getShippingQuote } from "../../../lib/shipping/pricing";
-import { getProductById } from "../../../lib/catalog";
 
 function allowLocalCheckoutFallback() {
   if (process.env.ALLOW_LOCAL_CHECKOUT_FALLBACK === "true") return true;
@@ -194,13 +193,9 @@ async function completeMedusaCheckout(body: CheckoutBody) {
   const shippingQuote = getShippingQuote({
     methodId: body.shippingMethodId,
     lines: body.lines.map((l) => ({
-      kind: l.kind,
-      productId: l.productId,
-      productKind: l.productKind,
+      kind: l.kind === "build" && l.build ? "build" : "sku",
+      productId: l.kind === "sku" ? l.productId : undefined,
       amount: l.price * l.quantity,
-      department: l.productId
-        ? getProductById(l.productId)?.department
-        : undefined,
     })),
     subtotal: body.lines.reduce((s, l) => s + l.price * l.quantity, 0),
   });
@@ -332,7 +327,13 @@ export async function POST(req: Request) {
   }
 
   for (const line of body.lines) {
-    if (line.kind === "build" && line.build) {
+    if (line.kind === "build") {
+      if (!line.build) {
+        return NextResponse.json(
+          { error: "Fragancia personalizada incompleta en el carrito" },
+          { status: 400 }
+        );
+      }
       const priced = computeBuildPrice(line.build);
       if (!priced.ok) {
         return NextResponse.json({ error: priced.error }, { status: 400 });
@@ -353,16 +354,13 @@ export async function POST(req: Request) {
     (sum, line) => sum + line.price * line.quantity,
     0
   );
+  // Shipping composition must not trust client productKind / department.
   const shippingQuote = getShippingQuote({
     methodId: body.shippingMethodId,
     lines: body.lines.map((l) => ({
-      kind: l.kind,
-      productId: l.productId,
-      productKind: l.productKind,
+      kind: l.kind === "build" && l.build ? "build" : "sku",
+      productId: l.kind === "sku" ? l.productId : undefined,
       amount: l.price * l.quantity,
-      department: l.productId
-        ? getProductById(l.productId)?.department
-        : undefined,
     })),
     subtotal: computedSubtotal,
   });
