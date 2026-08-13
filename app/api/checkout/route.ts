@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { computeBuildPrice } from "../../../lib/build-pricing";
 import type { BuildPayload } from "../../../lib/build-pricing";
 import { verifyB2BApprovedServer } from "../../../lib/b2b";
+import { amountPesosFromOrder } from "../../../lib/checkout-amount";
 import { isMedusaConfigured, medusa } from "../../../lib/medusa";
 import {
   ensureMedusaCart,
@@ -16,7 +17,7 @@ import {
 } from "../../../lib/wompi";
 import { resolveDispatchHub } from "../../../lib/shipping/hub-routing";
 import { getShippingQuote } from "../../../lib/shipping/pricing";
-import { getProductById } from "../../../lib/catalog";
+import { getProductById, WHOLESALE_DISCOUNT } from "../../../lib/catalog";
 
 function allowLocalCheckoutFallback() {
   if (process.env.ALLOW_LOCAL_CHECKOUT_FALLBACK === "true") return true;
@@ -24,18 +25,20 @@ function allowLocalCheckoutFallback() {
   return process.env.NODE_ENV !== "production";
 }
 
-/** Prefer Medusa order total (pesos). Guard against minor-unit totals. */
-function amountPesosFromOrder(
-  orderTotal: number | null | undefined,
-  fallbackPesos: number
-) {
-  if (typeof orderTotal !== "number" || !Number.isFinite(orderTotal) || orderTotal <= 0) {
-    return Math.round(fallbackPesos);
+function expectedSkuUnitPrice(
+  productId: string | undefined,
+  isWholesale?: boolean
+): number | null {
+  if (!productId) return null;
+  const product = getProductById(productId);
+  if (!product) return null;
+  if (isWholesale) {
+    return (
+      product.wholesalePrice ??
+      Math.round(product.price * (1 - WHOLESALE_DISCOUNT))
+    );
   }
-  if (fallbackPesos > 0 && orderTotal >= fallbackPesos * 50) {
-    return Math.round(orderTotal / 100);
-  }
-  return Math.round(orderTotal);
+  return product.price;
 }
 
 type CheckoutLine = {
@@ -332,7 +335,14 @@ export async function POST(req: Request) {
   }
 
   for (const line of body.lines) {
-    if (line.kind === "build" && line.build) {
+    if (line.kind === "build") {
+      // Phantom build lines (no payload) must not inflate free-shipping thresholds.
+      if (!line.build) {
+        return NextResponse.json(
+          { error: "Fragancia personalizada incompleta en el carrito" },
+          { status: 400 }
+        );
+      }
       const priced = computeBuildPrice(line.build);
       if (!priced.ok) {
         return NextResponse.json({ error: priced.error }, { status: 400 });
@@ -342,6 +352,26 @@ export async function POST(req: Request) {
           {
             error: `Precio de fragancia personalizada desactualizado (esperado ${priced.total}, recibido ${line.price})`,
             correctedPrice: priced.total,
+          },
+          { status: 409 }
+        );
+      }
+      continue;
+    }
+
+    if (line.kind === "sku") {
+      const expected = expectedSkuUnitPrice(line.productId, line.isWholesale);
+      if (expected == null) {
+        return NextResponse.json(
+          { error: `Producto no encontrado: ${line.productId || line.title}` },
+          { status: 400 }
+        );
+      }
+      if (expected !== line.price) {
+        return NextResponse.json(
+          {
+            error: `Precio de producto desactualizado (esperado ${expected}, recibido ${line.price})`,
+            correctedPrice: expected,
           },
           { status: 409 }
         );
