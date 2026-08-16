@@ -148,6 +148,42 @@ async function completeMedusaCheckout(body: CheckoutBody) {
     await Promise.all(buildAdds);
   }
 
+  // Reject carts that already contain underpriced custom builds (direct API abuse).
+  const cartBeforeShip = await medusa.store.cart.retrieve(cartId, {
+    fields: "+items,*items.metadata",
+  });
+  for (const item of cartBeforeShip.cart?.items || []) {
+    const meta = (item.metadata || {}) as Record<string, unknown>;
+    if (meta.type !== "custom_build") continue;
+    const fragranceId = String(meta.fragrance_id || "");
+    const bottleId = String(meta.bottle_id || "");
+    if (!fragranceId || !bottleId) {
+      throw new Error(
+        "El carrito tiene una fragancia personalizada inválida. Vuelve a agregarla."
+      );
+    }
+    const pheromoneIds = Array.isArray(meta.pheromone_ids)
+      ? meta.pheromone_ids.map(String)
+      : [];
+    const priced = computeBuildPrice({
+      fragranceId,
+      bottleId,
+      pheromoneIds,
+      giftWrap: Boolean(meta.gift_wrap),
+      alcoholId:
+        meta.alcohol_id != null ? String(meta.alcohol_id) : undefined,
+    });
+    if (!priced.ok) {
+      throw new Error(priced.error);
+    }
+    const unit = Number(item.unit_price ?? 0);
+    if (unit !== priced.total) {
+      throw new Error(
+        `Precio de fragancia personalizada inválido en el carrito (esperado ${priced.total}, en carrito ${unit}). Vuelve a agregar la fragancia.`
+      );
+    }
+  }
+
   const hub = resolveDispatchHub({
     shippingMethodId: body.shippingMethodId,
     city: body.customer.city,
