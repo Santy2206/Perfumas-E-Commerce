@@ -8,6 +8,7 @@ import {
   addToCartWorkflow,
   createProductsWorkflow,
 } from "@medusajs/medusa/core-flows"
+import { computeBuildServerPrice } from "../../../../utils/build-pricing"
 
 type BuildBody = {
   fragranceId: string
@@ -17,6 +18,7 @@ type BuildBody = {
   giftWrap?: boolean
   alcoholId?: string
   cart_id?: string
+  /** Ignored for charging — kept for older clients; price is recomputed server-side. */
   serverPrice?: number
   quantity?: number
   title?: string
@@ -86,33 +88,43 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
       message: "fragranceId and bottleId are required",
     })
   }
-  if (typeof body.serverPrice !== "number" || body.serverPrice < 0) {
-    return res.status(400).json({ message: "serverPrice is required" })
-  }
   if (!body.cart_id) {
     return res.status(400).json({ message: "cart_id is required" })
+  }
+
+  const priced = computeBuildServerPrice({
+    fragranceId: body.fragranceId,
+    bottleId: body.bottleId,
+    pheromoneIds: body.pheromoneIds,
+    giftWrap: body.giftWrap,
+    alcoholId: body.alcoholId,
+  })
+  if (!priced.ok) {
+    return res.status(400).json({ message: priced.error })
   }
 
   const logger = req.scope.resolve(ContainerRegistrationKeys.LOGGER)
   const cartModule = req.scope.resolve(Modules.CART)
 
+  const alcoholId = body.alcoholId ?? "alc-30"
   const metadata = {
+    ...(body.metadata || {}),
     type: "custom_build",
     fragrance_id: body.fragranceId,
     bottle_id: body.bottleId,
     pheromone_ids: body.pheromoneIds ?? [],
     label_text: body.labelText ?? "",
     gift_wrap: Boolean(body.giftWrap),
-    alcohol_id: body.alcoholId ?? "alcohol-default",
+    alcohol_id: alcoholId,
+    priced_total: priced.total,
     build_components: {
       fragrance_id: body.fragranceId,
       bottle_id: body.bottleId,
       pheromone_ids: body.pheromoneIds ?? [],
-      alcohol_id: body.alcoholId ?? "alcohol-default",
+      alcohol_id: alcoholId,
       gift_wrap: Boolean(body.giftWrap),
       label_text: body.labelText ?? "",
     },
-    ...(body.metadata || {}),
   }
 
   try {
@@ -125,7 +137,7 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
           {
             variant_id: variantId,
             quantity: body.quantity ?? 1,
-            unit_price: body.serverPrice,
+            unit_price: priced.total,
             metadata,
           },
         ],
