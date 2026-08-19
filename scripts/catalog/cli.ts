@@ -6,6 +6,7 @@
  *   npx tsx scripts/catalog/cli.ts sync [--prune] [--dry-run]
  */
 
+import { config as loadEnv } from "dotenv";
 import { existsSync } from "fs";
 import { resolve } from "path";
 import { parseBothWorkbooks } from "./parse-xlsx";
@@ -14,6 +15,10 @@ import { writeCatalogOutputs } from "./write-outputs";
 import { syncMedusaCatalog } from "./sync-medusa";
 import { fetchMedusaThumbnails } from "./fetch-medusa-images";
 
+for (const file of [".env.local", ".env"]) {
+  const path = resolve(process.cwd(), file);
+  if (existsSync(path)) loadEnv({ path, override: true });
+}
 function argValue(argv: string[], name: string): string | undefined {
   const idx = argv.indexOf(name);
   if (idx >= 0 && argv[idx + 1]) return argv[idx + 1];

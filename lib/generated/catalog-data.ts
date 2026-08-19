@@ -6,7 +6,7 @@
 import type { Bottle, Fragrance, LooseComponent } from "../types";
 import type { CatalogProduct } from "../catalog-types";
 
-export const GENERATED_AT = "2026-08-10T21:11:35.654Z";
+export const GENERATED_AT = "2026-08-19T19:02:54.083Z";
 
 export const OLFACTIVE_GROUPS = [
   {
@@ -48,7 +48,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "GIORGIO ARMANI",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/acqua-di-gio-dama-01M0DJAF4T5M9HGS0PKXPCW905.jpeg"
   },
   {
     "id": "ess-2-M",
@@ -64,7 +65,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CACHAREL",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/amor-amor-dama-01M0DJAZDS7F9WNKZ8RXK15HN7.jpeg"
   },
   {
     "id": "ess-4-M",
@@ -72,7 +74,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CACHAREL",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/anais-anais-dama-01M0DJB1VMXSAZGN83MGZ0BKEM.jpeg"
   },
   {
     "id": "ess-5-M",
@@ -80,7 +83,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "GIVENCHY",
     "gender": "dama",
     "group": "maderas-orientales",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/ange-ou-demon-dama-01M0DJB45T7B9A85AZ4DVR8EFB.jpeg"
   },
   {
     "id": "ess-6-M",
@@ -104,7 +108,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PARIS HILTON",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/can-can-dama-01M0DJD55H8AHZ9QQ49WHQV93F.jpeg"
   },
   {
     "id": "ess-9-M",
@@ -168,7 +173,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BRITNEY SPEARS",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/fantasy-dama-01M0DJDS6P3HE605EQ6VKCZ0GG.jpeg"
   },
   {
     "id": "ess-17-M",
@@ -224,7 +230,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CHRISTIAN DIOR",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 440
+    "pricePerGram": 440,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/j-adore-dama-01M0DJEE3KP68DG9V081XV0FHT.jpeg"
   },
   {
     "id": "ess-24-M",
@@ -240,7 +247,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LANCOME",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/la-vie-est-belle-dama-01M0DJEQJFBC04JEWEQ1QYTJ81.jpeg"
   },
   {
     "id": "ess-26-M",
@@ -296,7 +304,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PARIS HILTON",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/paris-hilton-dama-01M0DJGAK7WZB9RQ7QMR8QMQHV.jpeg"
   },
   {
     "id": "ess-33-M",
@@ -304,7 +313,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "RALPH LAUREN",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/ralph-dama-01M0DJGVS5SNMVD6DPDJ4BC75P.jpeg"
   },
   {
     "id": "ess-34-M",
@@ -320,7 +330,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "SHAKIRA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/shakira-rock-dama-01M0DJHR7JZPN2BDVH3M37J6RJ.jpeg"
   },
   {
     "id": "ess-36-M",
@@ -328,7 +339,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "SOFIA VERGARA",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sofia-dama-01M0DJHX14ZTRKETCGDADBMV73.jpeg"
   },
   {
     "id": "ess-37-M",
@@ -336,7 +348,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LACOSTE",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/touch-of-pink-dama-01M0DJJXFEQSGN5SZ8YK643DSM.jpeg"
   },
   {
     "id": "ess-38-M",
@@ -360,7 +373,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-sexy-dama-01M0DJ9E7P4YEMFS6HA53NX1K6.jpeg"
   },
   {
     "id": "ess-41-M",
@@ -368,7 +382,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-vip-dama-01M0DJ9N7236XDYTS3CX2HSV3M.jpeg"
   },
   {
     "id": "ess-42-M",
@@ -376,7 +391,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BEVERLY HILLS",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/273-dama-01M0DJ9W87NAQ8S2WJDSM8T92M.jpeg"
   },
   {
     "id": "ess-43-M",
@@ -384,7 +400,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PERRY ELLIS",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/360-dama-01M0DJA383GPM9SS2NAG29H282.jpeg"
   },
   {
     "id": "ess-44-M",
@@ -392,7 +409,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "TOMMY HILFIGER",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/tommy-girl-dama-01M0DJJPPPKM8ASN6BD3M0DC7G.jpeg"
   },
   {
     "id": "ess-45-M",
@@ -400,7 +418,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LANCOME",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/tresor-dama-01M0DJK49NT76989Y95ZJHDDT1.jpeg"
   },
   {
     "id": "ess-46-M",
@@ -408,7 +427,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "GIVENCHY",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/amarige-dama-01M0DJAP49PR7E8RZFSH1VNTH3.jpeg"
   },
   {
     "id": "ess-48-M",
@@ -416,7 +436,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "GIVENCHY",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/organza-dama-01M0DJFTB40143C86YJEH3T7RA.jpeg"
   },
   {
     "id": "ess-49-M",
@@ -464,7 +485,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "THIERRY MUGLER",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/angel-dama-01M0DJB8RCZJF8Y1HX8J3WE6HG.jpeg"
   },
   {
     "id": "ess-56-M",
@@ -472,7 +494,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PALOMA PICASSO",
     "gender": "dama",
     "group": "maderas-orientales",
-    "pricePerGram": 420
+    "pricePerGram": 420,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/paloma-picasso-dama-01M0DJG5WGAZB4M2CDXWMG7V3G.jpeg"
   },
   {
     "id": "ess-57-M",
@@ -488,7 +511,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PERRY ELLIS",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/360-red-dama-01M0DJA7X7F3Z67JKW92MS28G7.jpeg"
   },
   {
     "id": "ess-60-M",
@@ -496,7 +520,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-dama-01M0DJ92J0A5078GA8STF37GEM.jpeg"
   },
   {
     "id": "ess-61-M",
@@ -504,7 +529,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-vip-rose-dama-01M0DJ9SXMB226SYCJG79MGZFH.jpeg"
   },
   {
     "id": "ess-62-M",
@@ -512,7 +538,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BVLGARI",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/omnia-amethyste-dama-01M0DJFA3GNWYS4K1WJRF8ZERE.jpeg"
   },
   {
     "id": "ess-63-M",
@@ -520,7 +547,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ELIZABETH TAYLOR",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/white-diamonds-dama-01M0DJKJABRFNTDBN8Z544KZ3C.jpeg"
   },
   {
     "id": "ess-64-M",
@@ -528,7 +556,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BVLGARI",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/omnia-coral-dama-01M0DJFCDVN3A3771Y1MMM9753.jpeg"
   },
   {
     "id": "ess-65-M",
@@ -560,7 +589,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PACO RABANNE",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/olympea-dama-01M0DJF5DVSVHC40KWS8T0C7G9.jpeg"
   },
   {
     "id": "ess-69-M",
@@ -592,7 +622,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "DONNA KARAN",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 430
+    "pricePerGram": 430,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/be-delicius-dama-01M0DJC72FYCJ508SF6E2VJ8ZB.jpeg"
   },
   {
     "id": "ess-73-M",
@@ -608,7 +639,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ESCADA",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sorbetto-rosso-dama-01M0DJHZAY7M7CTHGP11X3Y44E.jpeg"
   },
   {
     "id": "ess-77-M",
@@ -616,7 +648,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LACOSTE",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sparkling-dama-01M0DJJ1NBJW4P4T3NT0MYF8FE.jpeg"
   },
   {
     "id": "ess-78-M",
@@ -624,7 +657,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BURBERRY",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 500
+    "pricePerGram": 500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/body-dama-01M0DJCVY3S1XR42H9TNRDF0VA.jpeg"
   },
   {
     "id": "ess-79-M",
@@ -648,7 +682,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "OSCAR DE LA RENTA",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/oscar-dama-01M0DJFYYASFC131KPC5SBS5PX.jpeg"
   },
   {
     "id": "ess-83-M",
@@ -776,7 +811,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BVLGARI",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 210
+    "pricePerGram": 210,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/aqva-divina-dama-01M0DJBHWVYCKT1CEHR6E9MW8C.jpeg"
   },
   {
     "id": "ess-100-M",
@@ -856,7 +892,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "VICTORIA´S SECRET",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 350
+    "pricePerGram": 350,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/aqua-kiss-dama-01M0DJBDAZ7Z10Q0S7A9RDXCBW.jpeg"
   },
   {
     "id": "ess-110-M",
@@ -880,7 +917,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BENETTON",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/tribu-dama-01M0DJK6JAV7ZDAM11WSPJD0MQ.jpeg"
   },
   {
     "id": "ess-113-M",
@@ -920,7 +958,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "VERSACE",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bright-crystal-dama-01M0DJD2VPF7GJQRES5YEXTRJK.jpeg"
   },
   {
     "id": "ess-118-M",
@@ -928,7 +967,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "JEAN PAUL GAULTIER",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/scandal-dama-01M0DJHKKH4BBCGRZW9Y23HGY7.jpeg"
   },
   {
     "id": "ess-119-M",
@@ -960,7 +1000,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PACO RABANNE",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/black-xs-dama-01M0DJCGC8YSPY1K521YZWPH74.jpeg"
   },
   {
     "id": "ess-125-M",
@@ -968,7 +1009,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BEVERLY HILLS",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/touch-dama-01M0DJJV75AGWCZ91K07JH4D1Z.jpeg"
   },
   {
     "id": "ess-126-M",
@@ -976,7 +1018,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "VICTOR & ROLF",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bon-bon-dama-01M0DJCY81WT7KWQEY5HDVW917.jpeg"
   },
   {
     "id": "ess-127-M",
@@ -1040,7 +1083,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ANTONIO BANDERAS",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/blue-seduction-dama-01M0DJCSMH103245TA052AJDTA.jpeg"
   },
   {
     "id": "ess-135-M",
@@ -1048,7 +1092,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "MOSCHINO",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/toy-2-bubble-gum-dama-01M0DJJZQRDFVW1DTAJ1P4W7JZ.jpeg"
   },
   {
     "id": "ess-136-M",
@@ -1064,7 +1109,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ARIANA GRANDE",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sweet-like-candy-dama-01M0DJJ8KK7FAHR14Z363WBC6Y.jpeg"
   },
   {
     "id": "ess-138-M",
@@ -1088,7 +1134,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ARIANA GRANDE",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cloud-dama-01M0DJD9S7DEBFPRECVNVNC984.jpeg"
   },
   {
     "id": "ess-141-M",
@@ -1096,7 +1143,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ARIANA GRANDE",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/thank-u-next-dama-01M0DJJJ29N0DRGV8XGQRAK12E.jpeg"
   },
   {
     "id": "ess-142-M",
@@ -1104,7 +1152,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yara-dama-01M0DJKQEJSZTZS5QG183PJCK5.jpeg"
   },
   {
     "id": "ess-143-M",
@@ -1112,7 +1161,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yara-moi-dama-01M0DJKY7E20S64N2K2A222F56.jpeg"
   },
   {
     "id": "ess-144-M",
@@ -1128,7 +1178,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PERRY ELLIS",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/360-coral-dama-01M0DJA0XFZW92EC7HQAXYERT0.jpeg"
   },
   {
     "id": "ess-146-M",
@@ -1136,7 +1187,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-heroes-forever-young-dama-01M0DJ977452WE40JDWY4BA69J.jpeg"
   },
   {
     "id": "ess-147-M",
@@ -1144,7 +1196,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/amethyst-dama-01M0DJAX2B8ZATQKC7WDJ8M9PW.jpeg"
   },
   {
     "id": "ess-148-M",
@@ -1152,7 +1205,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "KIM KARDASHIAN",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bff-dama-01M0DJCBRVX7DNA6XE2YDCGZ10.jpeg"
   },
   {
     "id": "ess-149-M",
@@ -1168,7 +1222,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yara-candy-dama-01M0DJKMXYTN6AX6NKVQRGXGPG.jpeg"
   },
   {
     "id": "ess-151-M",
@@ -1192,7 +1247,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ARMAF",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yum-yum-dama-01M0DJM0FX6KTPGZ8H4AHYMSXB.jpeg"
   },
   {
     "id": "ess-154-M",
@@ -1224,7 +1280,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/berry-on-top-dama-01M0DJC9CEDW2PMRWPF2NSP5XR.jpeg"
   },
   {
     "id": "ess-158-M",
@@ -1240,7 +1297,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/whipped-pleasure-dama-01M0DJKFKYXTARF03JZTS3T831.jpeg"
   },
   {
     "id": "ess-1-H",
@@ -1248,7 +1306,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CHANEL",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/allure-sport-caballero-01M0DJAKT85GCWSGCZE9XWC726.jpeg"
   },
   {
     "id": "ess-2-H",
@@ -1256,7 +1315,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ANIMALE",
     "gender": "caballero",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/animale-caballero-01M0DJBB1QPN3TQDS0SVQSPXJN.jpeg"
   },
   {
     "id": "ess-3-H",
@@ -1272,7 +1332,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "GIVENCHY",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/blue-label-caballero-01M0DJCN04NEXF4HCEPN5EJGFQ.jpeg"
   },
   {
     "id": "ess-5-H",
@@ -1328,7 +1389,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CHRISTIAN DIOR",
     "gender": "caballero",
     "group": "maderas-orientales",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/fahrenheit-caballero-01M0DJDPVGMW5Z8045YSJ88W8C.jpeg"
   },
   {
     "id": "ess-13-H",
@@ -1376,7 +1438,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "OSCAR DE LA RENTA",
     "gender": "caballero",
     "group": "maderas-orientales",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/oscar-caballero-01M0DJFWMPPFJ5DHNT9CGB6B4H.jpeg"
   },
   {
     "id": "ess-20-H",
@@ -1384,7 +1447,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PACO RABANNE",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/invictus-caballero-01M0DJE75MMRFNPV7NHD9TP53N.jpeg"
   },
   {
     "id": "ess-21-H",
@@ -1480,7 +1544,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "RALPH LAUREN",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/polo-red-caballero-01M0DJGJ71QS7F8XCZBZC6ZDF6.jpeg"
   },
   {
     "id": "ess-34-H",
@@ -1496,7 +1561,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "SWISS ARMY",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/swiss-army-caballero-01M0DJJAY6X0EVH2FFNJPFW3CC.jpeg"
   },
   {
     "id": "ess-36-H",
@@ -1504,7 +1570,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CARTIER",
     "gender": "caballero",
     "group": "maderas-orientales",
-    "pricePerGram": 450
+    "pricePerGram": 450,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/santos-de-cartier-caballero-01M0DJHA4H9BRPAQ75QATT0GF4.jpeg"
   },
   {
     "id": "ess-37-H",
@@ -1512,7 +1579,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "TOMMY HILFIGER",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/tommy-caballero-01M0DJJMB6WBJHF4BE3408JRN9.jpeg"
   },
   {
     "id": "ess-38-H",
@@ -1528,7 +1596,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PERRY ELLIS",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/360-red-caballero-01M0DJA5JMTW4H2J8DX3WAZDB4.jpeg"
   },
   {
     "id": "ess-40-H",
@@ -1536,7 +1605,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PERRY ELLIS",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/360-caballero-01M0DJ9YJAD3C1PYVJQ8C6RVC7.jpeg"
   },
   {
     "id": "ess-41-H",
@@ -1544,7 +1614,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-vip-men-caballero-01M0DJ9QK9HDG17YTRG70FQDD6.jpeg"
   },
   {
     "id": "ess-42-H",
@@ -1552,7 +1623,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "DIESEL",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/only-the-brave-caballero-01M0DJFKCPR0HHT8SNA6A27CA9.jpeg"
   },
   {
     "id": "ess-43-H",
@@ -1560,7 +1632,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "VERSACE",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/eros-caballero-01M0DJDMHH15WQRD6N4BF8HCVY.jpeg"
   },
   {
     "id": "ess-44-H",
@@ -1576,7 +1649,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ANTONIO BANDERAS",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/blue-seduction-caballero-01M0DJCQ9T9FWBRW938R9JWEPH.jpeg"
   },
   {
     "id": "ess-46-H",
@@ -1600,7 +1674,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PACO RABANNE",
     "gender": "caballero",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/black-xs-caballero-01M0DJCE2DM51JG2XN7Q8B0V4A.jpeg"
   },
   {
     "id": "ess-49-H",
@@ -1616,7 +1691,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "THIERRY MUGLER",
     "gender": "caballero",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/angel-caballero-01M0DJB6FGAXXHJJFNP4PH9EB2.jpeg"
   },
   {
     "id": "ess-51-H",
@@ -1632,7 +1708,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "MONT BLANC",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/starwalker-caballero-01M0DJJ3ZVMBDYP7WHJVMGZZ8K.jpeg"
   },
   {
     "id": "ess-54-H",
@@ -1656,7 +1733,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BVLGARY",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 500
+    "pricePerGram": 500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/aqva-marine-caballero-01M0DJBM5X50JM2XF429R9CG30.jpeg"
   },
   {
     "id": "ess-58-H",
@@ -1680,7 +1758,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-men-caballero-01M0DJ9BXGM5HMRDHSVWN1NNGW.jpeg"
   },
   {
     "id": "ess-62-H",
@@ -1696,7 +1775,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "GIORGIO ARMANI",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/acqua-di-gio-caballero-01M0DJACTP5JFNMJX9T7BHARTZ.jpeg"
   },
   {
     "id": "ess-65-H",
@@ -1704,7 +1784,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CHANEL",
     "gender": "caballero",
     "group": "maderas-orientales",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bleu-caballero-01M0DJCJP0VYN3GQNR1TF30158.jpeg"
   },
   {
     "id": "ess-66-H",
@@ -1744,7 +1825,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CREED",
     "gender": "unisex",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/silver-mountain-caballero-01M0DJHTMAA7GKMQGCCBR1QSCG.jpeg"
   },
   {
     "id": "ess-72-H",
@@ -1752,7 +1834,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "RALPH LAUREN",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/polo-blue-caballero-01M0DJGFTZFFCXKRE0706BZTYJ.jpeg"
   },
   {
     "id": "ess-73-H",
@@ -1816,7 +1899,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BVLGARY",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 500
+    "pricePerGram": 500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/aqva-caballero-01M0DJBFMBVSXE67R36SWGZ2DD.jpeg"
   },
   {
     "id": "ess-82-H",
@@ -1832,7 +1916,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-men-aqua-caballero-01M0DJ99HHZPRBEFC310S9J5PJ.jpeg"
   },
   {
     "id": "ess-84-H",
@@ -1872,7 +1957,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "HUGO BOSS",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/boss-bottled-caballero-01M0DJD0J1PRT6CC4CJ1QMGMF3.jpeg"
   },
   {
     "id": "ess-89-H",
@@ -1928,7 +2014,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-sexy-men-caballero-01M0DJ9GJ5RFAC3VC4C0W819MT.jpeg"
   },
   {
     "id": "ess-96-H",
@@ -1944,7 +2031,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-vip-black-caballero-01M0DJ9JWF5S82401FDBS7WG28.jpeg"
   },
   {
     "id": "ess-98-H",
@@ -1968,7 +2056,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CHRISTIAN DIOR",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sauvage-caballero-01M0DJHCGV4EA4PW3ERQDT4WKB.jpeg"
   },
   {
     "id": "ess-102-H",
@@ -1992,7 +2081,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CREED",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/aventus-caballero-01M0DJBXFHZ4F7M5JMFT2GMTK1.jpeg"
   },
   {
     "id": "ess-105-H",
@@ -2032,7 +2122,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PACO RABANNE",
     "gender": "caballero",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/1-million-lucky-caballero-01M0DJ8XEAZ4H74FMCYVWCF9NX.jpeg"
   },
   {
     "id": "ess-110-H",
@@ -2048,7 +2139,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "DIESEL",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bad-caballero-01M0DJBZR2TW29CXS6WNXGZ353.jpeg"
   },
   {
     "id": "ess-112-H",
@@ -2064,7 +2156,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PACO RABANNE",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/phantom-caballero-01M0DJGD9C252NFE353YH29YGQ.jpeg"
   },
   {
     "id": "ess-114-H",
@@ -2072,7 +2165,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "AL HARAMAIN",
     "gender": "unisex",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/amber-oud-caballero-01M0DJAREH68V0RM40W7ZFJ7PX.jpeg"
   },
   {
     "id": "ess-115-H",
@@ -2096,7 +2190,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "JEAN PAUL GAULTIER",
     "gender": "caballero",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/scandal-caballero-01M0DJHH6VBM6EPEE8D46FHS2V.jpeg"
   },
   {
     "id": "ess-118-H",
@@ -2104,7 +2199,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "MOSCHINO",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/toy-boy-caballero-01M0DJK20D0SZS2E6AARV2B7R3.jpeg"
   },
   {
     "id": "ess-119-H",
@@ -2112,7 +2208,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-heroes-caballero-01M0DJ94WA962MFXYJ5WF6VZ9G.jpeg"
   },
   {
     "id": "ess-120-H",
@@ -2176,7 +2273,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "GIORGIO ARMANI",
     "gender": "caballero",
     "group": "maderas-orientales",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/acqua-di-gio-profumo-caballero-01M0DJAHFTRS2JWC6F5D3FVP45.jpeg"
   },
   {
     "id": "ess-128-H",
@@ -2200,7 +2298,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "unisex",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bade-e-al-oud-honor-glory-unisex-caballero-01M0DJC2D0NFQ4REWCWHAXDEEH.jpeg"
   },
   {
     "id": "ess-131-H",
@@ -2208,7 +2307,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "unisex",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bade-e-al-oud-oud-for-glory-caballero-01M0DJC4RE51QQHEHBG0WWJR8E.jpeg"
   },
   {
     "id": "ess-132-H",
@@ -2216,7 +2316,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PACO RABANNE",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/invictus-victory-caballero-01M0DJE9FMY4YX41YTZKMPP4S9.jpeg"
   },
   {
     "id": "ess-133-H",
@@ -2224,7 +2325,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "AFNAN",
     "gender": "caballero",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/9pm-caballero-01M0DJAAG9QHG6HQ01BPEKF1DT.jpeg"
   },
   {
     "id": "ess-134-H",
@@ -2272,7 +2374,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ORIENTICA",
     "gender": "unisex",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/amber-rouge-unisex-caballero-01M0DJATRNHT4MHGN2Y0A04PC7.jpeg"
   },
   {
     "id": "ess-140-H",
@@ -2296,7 +2399,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "PACO RABANNE",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/1-million-royal-caballero-01M0DJ908R4S9J2TD1GBSF16SS.jpeg"
   },
   {
     "id": "ess-143-H",
@@ -2328,7 +2432,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "MONTALE",
     "gender": "unisex",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arabians-tonka-unisex-caballero-01M0DJBPFDRHYWVC6V18M8M5FC.jpeg"
   },
   {
     "id": "ess-147-H",
@@ -2336,7 +2441,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "unisex",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/art-of-universe-caballero-01M0DJBRXS5TX4FEWBBBKFQP8Y.jpeg"
   },
   {
     "id": "ess-148-H",
@@ -2344,7 +2450,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LE LABO",
     "gender": "unisex",
     "group": "maderas-orientales",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/santal-33-caballero-01M0DJH7QEFY514FW98CEPZCAZ.jpeg"
   },
   {
     "id": "ess-149-H",
