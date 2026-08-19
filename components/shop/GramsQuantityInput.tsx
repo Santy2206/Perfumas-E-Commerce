@@ -53,12 +53,14 @@ export function GramsQuantityInput({
   return (
     <div className={cn("space-y-1", className)}>
       <label className="flex items-center gap-2 text-xs text-ink-60">
-        <span className="uppercase tracking-widest text-gold-400">{label}</span>
-        <div className="flex items-center overflow-hidden rounded-sm border border-gold-400/30 bg-paper">
+        <span className="text-[11px] font-bold uppercase tracking-widest text-gold-400">
+          {label}
+        </span>
+        <div className="flex items-center overflow-hidden rounded-md border-2 border-gold-400 shadow-[0_2px_0_0_rgba(202,169,105,0.25)]">
           <button
             type="button"
             aria-label="Menos gramos"
-            className="h-9 w-8 text-ink hover:bg-paper-soft disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center bg-gold-400 text-xl font-bold text-wine-950 transition-colors hover:bg-gold-100 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-gold-400"
             disabled={value <= min}
             onClick={() => step(-1)}
           >
@@ -82,14 +84,14 @@ export function GramsQuantityInput({
               }
             }}
             className={cn(
-              "h-9 w-16 border-x border-gold-400/20 bg-transparent px-2 text-center text-ink outline-none",
+              "h-11 w-20 border-x-2 border-gold-400 bg-white px-2 text-center text-base font-bold text-ink outline-none",
               inputClassName
             )}
           />
           <button
             type="button"
             aria-label="Más gramos"
-            className="h-9 w-8 text-ink hover:bg-paper-soft"
+            className="flex h-11 w-11 items-center justify-center bg-gold-400 text-xl font-bold text-wine-950 transition-colors hover:bg-gold-100"
             onClick={() => step(1)}
           >
             +

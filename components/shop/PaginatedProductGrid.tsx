@@ -12,11 +12,14 @@ export function PaginatedProductGrid({
   wholesale = false,
   intent,
   highlightId,
+  layout = "grid",
 }: {
   products: CatalogProduct[];
   wholesale?: boolean;
   intent?: "create" | "buy";
   highlightId?: string | null;
+  /** list = compact rows without images (used by the Insumos list view) */
+  layout?: "grid" | "list";
 }) {
   const [visible, setVisible] = useState(PAGE_SIZE);
 
@@ -45,7 +48,13 @@ export function PaginatedProductGrid({
 
   return (
     <div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={
+          layout === "list"
+            ? "divide-y divide-ink/10"
+            : "grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        }
+      >
         {slice.map((p) => (
           <ProductCard
             key={p.id}
@@ -53,6 +62,7 @@ export function PaginatedProductGrid({
             wholesale={wholesale}
             intent={intent}
             highlighted={p.id === highlightId}
+            layout={layout}
           />
         ))}
       </div>

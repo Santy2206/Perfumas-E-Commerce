@@ -3,6 +3,8 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { formatCOP } from "../../lib/utils";
+import { bulkDiscountPct } from "../../lib/bulk-discount";
+import { Badge } from "../../components/ui/badge";
 import { getProductById, SHIPPING_METHODS } from "../../lib/catalog";
 import {
   getShippingQuote,
@@ -96,6 +98,7 @@ export default function CarritoPage() {
                       (isEssence ? 30 : 1)
                     : 1;
                 const lineTotal = line.price * line.quantity;
+                const discountPct = isEssence ? bulkDiscountPct(line.quantity) : 0;
 
                 return (
                   <li
@@ -116,14 +119,19 @@ export default function CarritoPage() {
                               : "Producto"}
                       </p>
                       {isEssence ? (
-                        <p className="mt-2 text-sm font-semibold text-ink">
-                          {formatCOP(line.price)}
-                          <span className="font-normal text-ink-60"> / gramo</span>
-                          <span className="font-normal text-ink-60">
-                            {" "}
-                            · {line.quantity} g ·{" "}
+                        <p className="mt-2 flex flex-wrap items-center gap-2 text-sm font-semibold text-ink">
+                          <span>
+                            {formatCOP(line.price)}
+                            <span className="font-normal text-ink-60"> / gramo</span>
+                            <span className="font-normal text-ink-60">
+                              {" "}
+                              · {line.quantity} g ·{" "}
+                            </span>
+                            <span className="text-gold-400">{formatCOP(lineTotal)}</span>
                           </span>
-                          <span className="text-gold-400">{formatCOP(lineTotal)}</span>
+                          {discountPct > 0 && (
+                            <Badge>-{Math.round(discountPct * 100)}% dcto.</Badge>
+                          )}
                         </p>
                       ) : (
                         <p className="mt-2 text-sm font-semibold text-ink">

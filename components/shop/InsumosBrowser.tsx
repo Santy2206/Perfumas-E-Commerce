@@ -32,6 +32,7 @@ import {
 } from "./CollectionFilterChips";
 import { ChipFilter } from "./FilterChips";
 import { PaginatedProductGrid } from "./PaginatedProductGrid";
+import { BulkDiscountNotice } from "./BulkDiscountNotice";
 import { matchesCollectionFilter } from "../../lib/collection-filter";
 import { buildSearchSuggestions } from "../../lib/search-suggestions";
 import { useFavoritesStore } from "../../store/useFavoritesStore";
@@ -107,6 +108,7 @@ export function InsumosBrowser({
   const [sizeMl, setSizeMl] = useState<number | "all">("all");
   const [sort, setSort] = useState<CatalogSort>("alpha-asc");
   const [collection, setCollection] = useState<CollectionFilter>(null);
+  const [layout, setLayout] = useState<"grid" | "list">("grid");
   const likes = useFavoritesStore((s) => s.likes);
   const lists = useFavoritesStore((s) => s.lists);
 
@@ -335,23 +337,55 @@ export function InsumosBrowser({
       <p className="mb-4 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
       <FreeShippingNotice variant="insumos" className="mb-4" />
 
-      <div className="flex flex-wrap gap-2 mb-6">
-        {CATS.map((c) => (
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap gap-2">
+          {CATS.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              onClick={() => selectCat(c.id)}
+              className={`rounded-sm px-3 py-2 text-xs uppercase tracking-widest border transition-colors ${
+                cat === c.id
+                  ? "border-gold-400 bg-gold-400/10 text-gold-400"
+                  : "border-ink/15 text-ink-60 hover:border-gold-400/40"
+              }`}
+            >
+              {c.label}
+              <span className="ml-1 opacity-60">({buckets[c.id].length})</span>
+            </button>
+          ))}
+        </div>
+        <div
+          className="inline-flex items-center overflow-hidden rounded-sm border-2 border-ink/15"
+          role="group"
+          aria-label="Tipo de vista"
+        >
           <button
-            key={c.id}
             type="button"
-            onClick={() => selectCat(c.id)}
-            className={`rounded-sm px-3 py-2 text-xs uppercase tracking-widest border transition-colors ${
-              cat === c.id
-                ? "border-gold-400 bg-gold-400/10 text-gold-400"
-                : "border-ink/15 text-ink-60 hover:border-gold-400/40"
+            onClick={() => setLayout("grid")}
+            className={`px-3 py-2 text-xs font-semibold uppercase tracking-widest transition-colors ${
+              layout === "grid"
+                ? "bg-gold-400 text-wine-950"
+                : "bg-white text-ink-60 hover:text-gold-400"
             }`}
           >
-            {c.label}
-            <span className="ml-1 opacity-60">({buckets[c.id].length})</span>
+            Cuadrícula
           </button>
-        ))}
+          <button
+            type="button"
+            onClick={() => setLayout("list")}
+            className={`border-l-2 border-ink/15 px-3 py-2 text-xs font-semibold uppercase tracking-widest transition-colors ${
+              layout === "list"
+                ? "bg-gold-400 text-wine-950"
+                : "bg-white text-ink-60 hover:text-gold-400"
+            }`}
+          >
+            Lista sin imágenes
+          </button>
+        </div>
       </div>
+
+      {showEssenceFilters && <BulkDiscountNotice className="mb-4" />}
 
       <SearchSuggestInput
         className="mb-6 w-full max-w-2xl"
@@ -507,6 +541,7 @@ export function InsumosBrowser({
           wholesale={wholesale}
           intent="buy"
           highlightId={essenceFocus}
+          layout={layout}
         />
       </div>
     </div>

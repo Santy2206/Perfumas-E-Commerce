@@ -3,9 +3,12 @@
 import { useState } from "react";
 import type { CatalogProduct } from "../../lib/catalog-types";
 import { formatCOP } from "../../lib/utils";
+import { bulkDiscountPct, bulkDiscountedUnitPrice } from "../../lib/bulk-discount";
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { useCartStore } from "../../store/useCartStore";
 import { GramsQuantityInput } from "./GramsQuantityInput";
+import { BulkDiscountNotice } from "./BulkDiscountNotice";
 
 export function AddToCartButton({
   product,
@@ -28,6 +31,11 @@ export function AddToCartButton({
   const [qty, setQty] = useState(minQty);
   const [msg, setMsg] = useState<string | null>(null);
 
+  const discountPct = isEssence ? bulkDiscountPct(qty) : 0;
+  const discountedUnitPrice = isEssence
+    ? bulkDiscountedUnitPrice(unitPrice, qty)
+    : unitPrice;
+
   const onAdd = () => {
     const result = addSku(product, qty, { wholesale: useWholesale });
     if (!result.ok) {
@@ -39,9 +47,18 @@ export function AddToCartButton({
 
   return (
     <div className="space-y-3">
+      {isEssence && <BulkDiscountNotice />}
       {isEssence && (
-        <p className="text-sm text-gold-400">
-          Total {formatCOP(unitPrice * qty)}
+        <p className="flex flex-wrap items-center gap-2 text-sm text-gold-400">
+          Total {formatCOP(discountedUnitPrice * qty)}
+          {discountPct > 0 && (
+            <>
+              <span className="text-xs font-normal text-ink-60 line-through">
+                {formatCOP(unitPrice * qty)}
+              </span>
+              <Badge>-{Math.round(discountPct * 100)}% dcto.</Badge>
+            </>
+          )}
         </p>
       )}
       {isEssence ? (

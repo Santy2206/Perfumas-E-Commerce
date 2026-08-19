@@ -9,6 +9,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { BuildPayload } from "../lib/build-pricing";
 import type { CatalogProduct } from "../lib/catalog-types";
+import { bulkDiscountedUnitPrice } from "../lib/bulk-discount";
 import { isMedusaConfigured } from "../lib/medusa";
 import {
   addVariantToMedusaCart,
@@ -41,6 +42,12 @@ export type CartLine =
       medusaLineId?: string;
       /** e.g. essence — quantity is grams */
       productKind?: string;
+      /**
+       * Undiscounted per-gram price, for retail essence lines only. Kept
+       * around so `price` (the bulk-discount tier price for the current
+       * quantity) can be recomputed whenever quantity changes.
+       */
+      baseUnitPrice?: number;
     };
 
 type B2BProfile = {
@@ -148,17 +155,22 @@ export const useCartStore = create<CartStore>()(
             ? product.metadata.product_kind
             : undefined;
         const isEssence = productKind === "essence";
-        const minQty = product.minQty ?? (isEssence && !wholesale ? 30 : 1);
+        // Bulk-gram discount only applies to essences bought at retail (by weight).
+        const isEssenceRetail = isEssence && !wholesale;
+        const minQty = product.minQty ?? (isEssenceRetail ? 30 : 1);
         if (quantity < minQty) {
           return {
             ok: false,
-            error: isEssence && !wholesale
+            error: isEssenceRetail
               ? `Cantidad mínima: ${minQty} g`
               : `Cantidad mínima: ${minQty} unidades`,
           };
         }
-        const price =
+        const baseUnitPrice =
           wholesale && product.wholesalePrice != null ? product.wholesalePrice : product.price;
+        const price = isEssenceRetail
+          ? bulkDiscountedUnitPrice(baseUnitPrice, quantity)
+          : baseUnitPrice;
         const variantId =
           product.variantId ||
           (typeof product.metadata?.medusa_variant_id === "string"
@@ -177,17 +189,25 @@ export const useCartStore = create<CartStore>()(
           if (nextQty < minQty) {
             return {
               ok: false,
-              error: isEssence && !wholesale
+              error: isEssenceRetail
                 ? `Cantidad mínima: ${minQty} g`
                 : `Cantidad mínima: ${minQty} unidades`,
             };
           }
+          const nextBaseUnitPrice = isEssenceRetail
+            ? existing.baseUnitPrice ?? baseUnitPrice
+            : undefined;
+          const nextPrice = isEssenceRetail
+            ? bulkDiscountedUnitPrice(nextBaseUnitPrice!, nextQty)
+            : existing.price;
           set((s) => ({
             lines: s.lines.map((l) =>
               l.id === existing.id && l.kind === "sku"
                 ? {
                     ...l,
                     quantity: nextQty,
+                    price: nextPrice,
+                    baseUnitPrice: nextBaseUnitPrice,
                     variantId: variantId || l.variantId,
                     productKind: productKind || l.productKind,
                     minQty: minQty || l.minQty,
@@ -233,6 +253,7 @@ export const useCartStore = create<CartStore>()(
           isWholesale: wholesale,
           minQty,
           productKind,
+          baseUnitPrice: isEssenceRetail ? baseUnitPrice : undefined,
         };
         set((s) => ({ lines: [...s.lines, item] }));
 
@@ -273,8 +294,21 @@ export const useCartStore = create<CartStore>()(
               : `Cantidad mínima: ${line.minQty} unidades`,
           };
         }
+        // Essences bought at retail re-price on every quantity change so the
+        // bulk-gram discount tier always matches the current grams.
+        const nextPrice =
+          line?.kind === "sku" &&
+          line.productKind === "essence" &&
+          !line.isWholesale &&
+          line.baseUnitPrice != null
+            ? bulkDiscountedUnitPrice(line.baseUnitPrice, quantity)
+            : undefined;
         set((s) => ({
-          lines: s.lines.map((l) => (l.id === id ? { ...l, quantity } : l)),
+          lines: s.lines.map((l) =>
+            l.id === id
+              ? { ...l, quantity, ...(nextPrice != null ? { price: nextPrice } : {}) }
+              : l
+          ),
         }));
 
         if (line?.medusaLineId && get().medusaCartId) {
