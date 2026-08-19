@@ -25,7 +25,7 @@ const NAV = [
   { href: "/crear", label: "Preparar" },
   { href: "/tienda/perfumeria", label: "Preparadas" },
   { href: "/tienda/insumos", label: "Insumos" },
-  { href: "/tienda/hogar", label: "Hogar" },
+  { href: "/tienda/hogar", label: "Cuidado" },
   { href: "/tienda/accesorios", label: "Accesorios" },
   { href: "/mayoristas", label: "Mayoristas" },
 ];

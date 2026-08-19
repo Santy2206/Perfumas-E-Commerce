@@ -32,7 +32,6 @@ function categoryOf(p: CatalogProduct): string {
 
 export function AccesoriosBrowser({
   products,
-  sourceLabel,
 }: {
   products: CatalogProduct[];
   sourceLabel: string;
@@ -133,7 +132,6 @@ export function AccesoriosBrowser({
       <p className="text-sm text-ink-60 mb-2">
         Bisutería y marroquinería — filtra por tipo, material y precio.
       </p>
-      <p className="mb-4 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
       <FreeShippingNotice variant="companion" className="mb-4" />
 
       <SearchSuggestInput

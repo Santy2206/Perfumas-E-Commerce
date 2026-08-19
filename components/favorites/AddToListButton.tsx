@@ -27,10 +27,13 @@ export function AddToListButton({
   target,
   className,
   label = "Añadir a lista",
+  compact = false,
 }: {
   target: SkuTarget | BuildTarget;
   className?: string;
   label?: string;
+  /** Small inline trigger for spreadsheet-style rows (list view), instead of a full-width button. */
+  compact?: boolean;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -115,21 +118,28 @@ export function AddToListButton({
   };
 
   return (
-    <div ref={rootRef} className={cn("relative w-full", className)}>
+    <div ref={rootRef} className={cn("relative", compact ? "inline-block" : "w-full", className)}>
       <Button
         type="button"
         variant="outline"
         size="sm"
-        className="w-full"
+        className={compact ? "h-6 w-auto px-2 text-[9px]" : "w-full"}
         onClick={onOpen}
       >
         {label}
       </Button>
       {msg && !open && (
-        <p className="mt-1 text-center text-[10px] text-gold-400">{msg}</p>
+        <p className={cn("mt-1 text-gold-400", compact ? "text-[9px]" : "text-center text-[10px]")}>
+          {msg}
+        </p>
       )}
       {open && (
-        <div className="absolute left-0 right-0 z-40 mt-1 rounded-sm border border-gold-400/30 bg-paper p-3 shadow-lg">
+        <div
+          className={cn(
+            "absolute z-40 mt-1 rounded-sm border border-gold-400/30 bg-paper p-3 shadow-lg",
+            compact ? "left-0 w-56" : "left-0 right-0"
+          )}
+        >
           <p className="mb-2 text-[10px] uppercase tracking-widest text-ink-60">
             Tus listas
           </p>

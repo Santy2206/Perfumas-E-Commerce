@@ -10,6 +10,7 @@ export type BulkDiscountTier = { minGrams: number; pct: number };
 export const BULK_DISCOUNT_TIERS: BulkDiscountTier[] = [
   { minGrams: 100, pct: 0.05 },
   { minGrams: 200, pct: 0.1 },
+  { minGrams: 250, pct: 0.15 },
 ];
 
 /** Fraction off (0–1) for a given quantity in grams. 0 when no tier applies. */

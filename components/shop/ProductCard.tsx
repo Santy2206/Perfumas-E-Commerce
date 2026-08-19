@@ -27,12 +27,17 @@ export function ProductCard({
   highlighted = false,
   /** list = compact row, no product image (used by the Insumos list view) */
   layout = "grid",
+  /** list layout only: hide the "Casa" / "Gramos" cells for categories without them */
+  showHouseColumn = true,
+  showGramsColumn = true,
 }: {
   product: CatalogProduct;
   wholesale?: boolean;
   intent?: "create" | "buy";
   highlighted?: boolean;
   layout?: "grid" | "list";
+  showHouseColumn?: boolean;
+  showGramsColumn?: boolean;
 }) {
   const addSku = useCartStore((s) => s.addSku);
   const [error, setError] = useState<string | null>(null);
@@ -71,6 +76,7 @@ export function ProductCard({
   };
 
   const showPrice = mode === "buy";
+  const house = typeof product.metadata?.house === "string" ? product.metadata.house : "";
   const listTarget = {
     type: "sku" as const,
     productId: product.id,
@@ -122,45 +128,97 @@ export function ProductCard({
 
   if (layout === "list") {
     return (
-      <div
+      <tr
         id={`product-${product.id}`}
         className={cn(
-          "flex flex-col gap-3 border-b border-ink/10 py-4 scroll-mt-28 sm:flex-row sm:items-center sm:justify-between sm:gap-6",
-          highlighted && "bg-gold-400/5 ring-2 ring-gold-400/50"
+          "scroll-mt-28 border-b border-ink/10 align-middle text-xs",
+          highlighted && "bg-gold-400/5 ring-1 ring-inset ring-gold-400/50"
         )}
       >
-        <div className="min-w-0 flex-1">
-          <div className="mb-1 flex flex-wrap items-center gap-2">
-            <Badge variant="outline">{product.category}</Badge>
-            {wholesale && <Badge variant="b2b">Mayorista</Badge>}
+        <td className="px-2 py-1.5">
+          <div className="flex min-w-[9rem] items-center gap-1.5">
+            {wholesale && (
+              <Badge variant="b2b" className="shrink-0">
+                Mayorista
+              </Badge>
+            )}
+            <Link
+              href={`/producto/${product.handle}`}
+              className="truncate text-ink hover:text-gold-400"
+              title={product.title}
+            >
+              {product.title}
+            </Link>
           </div>
-          <Link
-            href={`/producto/${product.handle}`}
-            className="font-display text-base text-ink hover:text-gold-400"
-            title={product.title}
-          >
-            {product.title}
-          </Link>
-          {product.description && (
-            <p className="mt-0.5 line-clamp-1 text-xs text-ink-60">
-              {product.description}
-            </p>
+        </td>
+        {showHouseColumn && (
+          <td className="hidden max-w-[10rem] truncate px-2 py-1.5 text-ink-60 sm:table-cell">
+            {house || "—"}
+          </td>
+        )}
+        <td className="whitespace-nowrap px-2 py-1.5 text-right">
+          <span className="font-semibold text-ink">
+            {sellByGram ? (
+              <>
+                {formatCOP(lineTotal)}
+                {discountPct > 0 && (
+                  <span className="ml-1 text-[10px] font-normal text-ink-60 line-through">
+                    {formatCOP(originalLineTotal)}
+                  </span>
+                )}
+              </>
+            ) : showPrice ? (
+              <>
+                {formatCOP(price)}
+                {isEssence ? "/g" : ""}
+              </>
+            ) : null}
+          </span>
+          {discountPct > 0 && (
+            <Badge className="ml-1 px-1.5 py-0 text-[9px]">
+              -{Math.round(discountPct * 100)}%
+            </Badge>
           )}
-          {error && <p className="mt-1 text-xs text-red-300">{error}</p>}
-        </div>
-        <div className="flex flex-wrap items-center gap-3 sm:shrink-0">
-          {priceBlock}
-          {gramsBlock}
-          <LikeButton
-            productId={product.id}
-            productKind={typeof kind === "string" ? kind : undefined}
-            title={product.title}
-            handle={product.handle}
-          />
-          <AddToListButton target={listTarget} />
-          <div className="w-full sm:w-auto">{addButton}</div>
-        </div>
-      </div>
+        </td>
+        {showGramsColumn && (
+          <td className="px-2 py-1.5">
+            {sellByGram && (
+              <GramsQuantityInput
+                value={grams}
+                min={minQty}
+                onChange={setGrams}
+                size="sm"
+              />
+            )}
+          </td>
+        )}
+        <td className="px-2 py-1.5">
+          <div className="flex items-center justify-end gap-1.5">
+            <LikeButton
+              productId={product.id}
+              productKind={typeof kind === "string" ? kind : undefined}
+              title={product.title}
+              handle={product.handle}
+              className="shrink-0"
+            />
+            <AddToListButton target={listTarget} label="+ Lista" compact />
+            {isEssence && mode === "create" ? (
+              <Button asChild size="sm" className="h-6 shrink-0 px-2 text-[9px]">
+                <Link href={`/crear?fragrance=${product.id}`}>Preparar</Link>
+              </Button>
+            ) : (
+              <Button
+                size="sm"
+                className="h-6 shrink-0 px-2 text-[9px]"
+                onClick={onAdd}
+              >
+                {added ? "✓" : "Agregar"}
+              </Button>
+            )}
+          </div>
+          {error && <p className="text-right text-[10px] text-red-300">{error}</p>}
+        </td>
+      </tr>
     );
   }
 

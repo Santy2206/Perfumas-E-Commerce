@@ -48,6 +48,15 @@ const CATS: { id: InsumosCat; label: string }[] = [
   { id: "todos", label: "Todos" },
 ];
 
+/** Default view per category — envases/alcohol/feromonas open in cuadrícula, esencias in lista. */
+const DEFAULT_LAYOUT_BY_CAT: Record<InsumosCat, "grid" | "list"> = {
+  esencias: "list",
+  envases: "grid",
+  alcohol: "grid",
+  feromonas: "grid",
+  todos: "list",
+};
+
 const TIERS: { id: QualityTier | "all"; label: string }[] = [
   { id: "all", label: "Todas" },
   { id: "AAA", label: "AAA" },
@@ -88,7 +97,6 @@ function collectionLabel(
 export function InsumosBrowser({
   products,
   wholesale = false,
-  sourceLabel,
 }: {
   products: CatalogProduct[];
   wholesale?: boolean;
@@ -97,9 +105,8 @@ export function InsumosBrowser({
   const params = useSearchParams();
   const initial = (params.get("cat") as InsumosCat) || "esencias";
   const essenceFocus = params.get("essence");
-  const [cat, setCat] = useState<InsumosCat>(
-    CATS.some((c) => c.id === initial) ? initial : "esencias"
-  );
+  const initialCat = CATS.some((c) => c.id === initial) ? initial : "esencias";
+  const [cat, setCat] = useState<InsumosCat>(initialCat);
   const [search, setSearch] = useState("");
   const [gender, setGender] = useState<Gender | null>(null);
   const [group, setGroup] = useState<OlfactiveGroup | null>(null);
@@ -108,7 +115,7 @@ export function InsumosBrowser({
   const [sizeMl, setSizeMl] = useState<number | "all">("all");
   const [sort, setSort] = useState<CatalogSort>("alpha-asc");
   const [collection, setCollection] = useState<CollectionFilter>(null);
-  const [layout, setLayout] = useState<"grid" | "list">("grid");
+  const [layout, setLayout] = useState<"grid" | "list">(DEFAULT_LAYOUT_BY_CAT[initialCat]);
   const likes = useFavoritesStore((s) => s.likes);
   const lists = useFavoritesStore((s) => s.lists);
 
@@ -205,6 +212,7 @@ export function InsumosBrowser({
 
   const selectCat = (next: InsumosCat) => {
     setCat(next);
+    setLayout(DEFAULT_LAYOUT_BY_CAT[next]);
     setSearch("");
     if (next !== "esencias" && next !== "todos") {
       setGender(null);
@@ -334,7 +342,6 @@ export function InsumosBrowser({
         </a>
         .
       </p>
-      <p className="mb-4 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
       <FreeShippingNotice variant="insumos" className="mb-4" />
 
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -344,14 +351,20 @@ export function InsumosBrowser({
               key={c.id}
               type="button"
               onClick={() => selectCat(c.id)}
-              className={`rounded-sm px-3 py-2 text-xs uppercase tracking-widest border transition-colors ${
+              className={`rounded-full border-2 px-4 py-2 text-xs font-bold uppercase tracking-widest transition-colors ${
                 cat === c.id
-                  ? "border-gold-400 bg-gold-400/10 text-gold-400"
-                  : "border-ink/15 text-ink-60 hover:border-gold-400/40"
+                  ? "border-gold-400 bg-gold-400 text-wine-950 shadow-[0_2px_0_0_rgba(202,169,105,0.35)]"
+                  : "border-ink/20 bg-white text-ink hover:border-gold-400 hover:text-gold-400"
               }`}
             >
               {c.label}
-              <span className="ml-1 opacity-60">({buckets[c.id].length})</span>
+              <span
+                className={`ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${
+                  cat === c.id ? "bg-wine-950/15 text-wine-950" : "bg-ink/10 text-ink-60"
+                }`}
+              >
+                {buckets[c.id].length}
+              </span>
             </button>
           ))}
         </div>
@@ -384,8 +397,6 @@ export function InsumosBrowser({
           </button>
         </div>
       </div>
-
-      {showEssenceFilters && <BulkDiscountNotice className="mb-4" />}
 
       <SearchSuggestInput
         className="mb-6 w-full max-w-2xl"
@@ -535,6 +546,8 @@ export function InsumosBrowser({
         />
       )}
 
+      {showEssenceFilters && <BulkDiscountNotice className="mb-4" />}
+
       <div id={RESULTS_ID} className="scroll-mt-24">
         <PaginatedProductGrid
           products={filtered}
@@ -542,6 +555,8 @@ export function InsumosBrowser({
           intent="buy"
           highlightId={essenceFocus}
           layout={layout}
+          showHouseColumn={showEssenceFilters}
+          showGramsColumn={showEssenceFilters}
         />
       </div>
     </div>

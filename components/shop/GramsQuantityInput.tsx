@@ -11,6 +11,8 @@ type Props = {
   className?: string;
   inputClassName?: string;
   showMinHint?: boolean;
+  /** "sm" = compact spreadsheet-row sizing (list view); default = the big steppers. */
+  size?: "default" | "sm";
 };
 
 function clampGrams(raw: string, min: number): number {
@@ -31,7 +33,9 @@ export function GramsQuantityInput({
   className,
   inputClassName,
   showMinHint = false,
+  size = "default",
 }: Props) {
+  const isSm = size === "sm";
   const [draft, setDraft] = useState(String(value));
 
   useEffect(() => {
@@ -51,16 +55,31 @@ export function GramsQuantityInput({
   };
 
   return (
-    <div className={cn("space-y-1", className)}>
-      <label className="flex items-center gap-2 text-xs text-ink-60">
-        <span className="text-[11px] font-bold uppercase tracking-widest text-gold-400">
+    <div className={cn(isSm ? "space-y-0.5" : "space-y-1", className)}>
+      <label className={cn("flex items-center", isSm ? "gap-1 text-[10px] text-ink-60" : "gap-2 text-xs text-ink-60")}>
+        <span
+          className={cn(
+            "font-bold uppercase tracking-widest text-gold-400",
+            isSm ? "text-[9px]" : "text-[11px]"
+          )}
+        >
           {label}
         </span>
-        <div className="flex items-center overflow-hidden rounded-md border-2 border-gold-400 shadow-[0_2px_0_0_rgba(202,169,105,0.25)]">
+        <div
+          className={cn(
+            "flex items-center overflow-hidden border-gold-400",
+            isSm
+              ? "rounded border"
+              : "rounded-md border-2 shadow-[0_2px_0_0_rgba(202,169,105,0.25)]"
+          )}
+        >
           <button
             type="button"
             aria-label="Menos gramos"
-            className="flex h-11 w-11 items-center justify-center bg-gold-400 text-xl font-bold text-wine-950 transition-colors hover:bg-gold-100 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-gold-400"
+            className={cn(
+              "flex items-center justify-center bg-gold-400 font-bold text-wine-950 transition-colors hover:bg-gold-100 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-gold-400",
+              isSm ? "h-6 w-6 text-xs" : "h-11 w-11 text-xl"
+            )}
             disabled={value <= min}
             onClick={() => step(-1)}
           >
@@ -84,14 +103,18 @@ export function GramsQuantityInput({
               }
             }}
             className={cn(
-              "h-11 w-20 border-x-2 border-gold-400 bg-white px-2 text-center text-base font-bold text-ink outline-none",
+              "border-x-2 border-gold-400 bg-white text-center font-bold text-ink outline-none",
+              isSm ? "h-6 w-10 px-1 text-[11px]" : "h-11 w-20 px-2 text-base",
               inputClassName
             )}
           />
           <button
             type="button"
             aria-label="Más gramos"
-            className="flex h-11 w-11 items-center justify-center bg-gold-400 text-xl font-bold text-wine-950 transition-colors hover:bg-gold-100"
+            className={cn(
+              "flex items-center justify-center bg-gold-400 font-bold text-wine-950 transition-colors hover:bg-gold-100",
+              isSm ? "h-6 w-6 text-xs" : "h-11 w-11 text-xl"
+            )}
             onClick={() => step(1)}
           >
             +
@@ -99,7 +122,7 @@ export function GramsQuantityInput({
         </div>
       </label>
       {showMinHint && (
-        <p className="text-xs text-ink-60">mín. {min} g</p>
+        <p className={isSm ? "text-[9px] text-ink-60" : "text-xs text-ink-60"}>mín. {min} g</p>
       )}
     </div>
   );

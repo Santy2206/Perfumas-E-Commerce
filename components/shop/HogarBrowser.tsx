@@ -23,7 +23,6 @@ import { FreeShippingNotice } from "./FreeShippingNotice";
 
 export function HogarBrowser({
   products,
-  sourceLabel,
 }: {
   products: CatalogProduct[];
   sourceLabel: string;
@@ -84,7 +83,6 @@ export function HogarBrowser({
       <p className="text-sm text-ink-60 mb-2">
         Splash, cremas, aromatizantes, aseo y empaques.
       </p>
-      <p className="mb-4 text-xs uppercase tracking-widest text-ink-60">{sourceLabel}</p>
       <FreeShippingNotice variant="companion" className="mb-4" />
 
       <SearchSuggestInput
