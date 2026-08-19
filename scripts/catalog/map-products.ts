@@ -56,6 +56,7 @@ export type BuilderBottle = {
   closure: "Agrafe" | "Rosca";
   price: number;
   matchesFragranceIds?: string[];
+  imageUrl?: string;
 };
 
 export type BuilderAlcohol = {
@@ -75,6 +76,7 @@ export type CatalogProductOut = {
   price: number;
   wholesalePrice?: number;
   minQty?: number;
+  imageUrl?: string;
   metadata?: Record<string, unknown>;
   tags?: string[];
 };
@@ -288,12 +290,21 @@ export function mapParsedCatalog(
   // Excel codes can repeat across rows — IDs must be unique for React keys + cart lines.
   const bottles: BuilderBottle[] = [];
   const bottleIds = new Set<string>();
+  // Predicts the handle the "replicas-preparadas" catalog loop below will assign to this
+  // same row, so its Medusa thumbnail can be attached here too. Kept in a separate set
+  // from `handles` so it doesn't shift the real handle-dedup order used by that loop
+  // (and therefore doesn't desync already-synced Medusa product handles).
+  const previewHandles = new Set<string>();
   for (const r of parsed.preparedReplicas) {
     const qualityTier = detectBottleTier(r.name);
     const capacityMl = detectCapacityMl(r.name);
     const closure = detectClosure(r.name);
     const matchesFragranceIds = matchFragranceIds(r.name, fragrances);
     const id = ensureUniqueId(`rep-${r.code}-${capacityMl}`, bottleIds);
+    const previewHandle = ensureUniqueHandle(
+      toHandle(r.name) || id,
+      previewHandles,
+    );
     bottles.push({
       id,
       name: r.name,
@@ -304,6 +315,7 @@ export function mapParsedCatalog(
       matchesFragranceIds: matchesFragranceIds.length
         ? matchesFragranceIds
         : undefined,
+      imageUrl: imageByHandle?.get(previewHandle),
     });
   }
 
@@ -325,6 +337,7 @@ export function mapParsedCatalog(
       price: b.price,
       wholesalePrice: wholesaleOf(b.price, b.wholesalePrice),
       minQty: DEFAULT_MOQ,
+      imageUrl: imageByHandle?.get(handle),
       metadata: {
         quality_tier: qualityTier,
         capacity_ml: capacityMl,
@@ -353,6 +366,7 @@ export function mapParsedCatalog(
       price: r.price,
       wholesalePrice: wholesaleOf(r.price, r.wholesalePrice),
       minQty: DEFAULT_MOQ,
+      imageUrl: imageByHandle?.get(handle),
       metadata: {
         product_kind: "prepared_replica",
         quality_tier: qualityTier,
@@ -397,6 +411,7 @@ export function mapParsedCatalog(
       price: row.price,
       wholesalePrice: wholesaleOf(row.price, row.wholesalePrice),
       minQty: DEFAULT_MOQ,
+      imageUrl: imageByHandle?.get(handle),
       metadata: { product_kind: klass.product_kind, excel_code: row.code },
       tags: [klass.category, klass.department],
     });
@@ -419,6 +434,7 @@ export function mapParsedCatalog(
         price: a.price,
         wholesalePrice: wholesaleOf(a.price),
         minQty: DEFAULT_MOQ,
+        imageUrl: imageByHandle?.get(handle),
         metadata: { unit: a.unit, product_kind: "alcohol" },
         tags: ["alcohol", "insumo"],
       });
@@ -441,6 +457,7 @@ export function mapParsedCatalog(
         price: a.price,
         wholesalePrice: wholesaleOf(a.price),
         minQty: DEFAULT_MOQ,
+        imageUrl: imageByHandle?.get(handle),
         metadata: { unit: a.unit, product_kind: "alcohol" },
         tags: ["alcohol", "insumo"],
       });
@@ -459,6 +476,7 @@ export function mapParsedCatalog(
       price: row.price,
       wholesalePrice: wholesaleOf(row.price, row.wholesalePrice),
       minQty: DEFAULT_MOQ,
+      imageUrl: imageByHandle?.get(handle),
       metadata: { product_kind: "accessory", excel_code: row.code },
       tags: ["bisuteria", "accesorios"],
     });
@@ -476,6 +494,7 @@ export function mapParsedCatalog(
       price: row.price,
       wholesalePrice: wholesaleOf(row.price, row.wholesalePrice),
       minQty: DEFAULT_MOQ,
+      imageUrl: imageByHandle?.get(handle),
       metadata: { product_kind: "accessory", excel_code: row.code },
       tags: ["accesorios"],
     });
@@ -493,12 +512,16 @@ export function mapParsedCatalog(
       price: row.price,
       wholesalePrice: wholesaleOf(row.price, row.wholesalePrice),
       minQty: DEFAULT_MOQ,
+      imageUrl: imageByHandle?.get(handle),
       metadata: { product_kind: "home_care", excel_code: row.code },
       tags: ["hogar", row.sheet],
     });
   }
 
-  const pheromones = [...STATIC_PHEROMONES];
+  const pheromones = STATIC_PHEROMONES.map((ph) => ({
+    ...ph,
+    imageUrl: imageByHandle?.get(ph.handle),
+  }));
   for (const ph of pheromones) {
     if (!handles.has(ph.handle)) handles.add(ph.handle);
     if (!catalogProducts.some((p) => p.id === ph.id)) {

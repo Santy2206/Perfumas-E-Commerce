@@ -472,8 +472,17 @@ function BottleCard({
   const ml = bottleSizeMl(bottle);
   return (
     <div className="bg-white border border-gold-400/25 rounded-sm p-5 flex flex-col">
-      <div className="relative aspect-square bg-paper-soft rounded-sm mb-4 flex items-center justify-center text-ink-60 text-xs">
-        Réplica preparada
+      <div className="relative aspect-square bg-paper-soft rounded-sm mb-4 flex items-center justify-center text-ink-60 text-xs overflow-hidden">
+        {bottle.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={bottle.imageUrl}
+            alt={bottle.name}
+            className="h-full w-full object-contain p-2"
+          />
+        ) : (
+          "Réplica preparada"
+        )}
         <LikeButton
           productId={bottle.id}
           productKind="bottle"
