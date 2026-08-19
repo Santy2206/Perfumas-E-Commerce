@@ -41,11 +41,7 @@ export function AddToCartButton({
     <div className="space-y-3">
       {isEssence && (
         <p className="text-sm text-gold-400">
-          {formatCOP(unitPrice)} / gramo
-          <span className="text-ink-60">
-            {" "}
-            · total {formatCOP(unitPrice * qty)}
-          </span>
+          Total {formatCOP(unitPrice * qty)}
         </p>
       )}
       {isEssence ? (

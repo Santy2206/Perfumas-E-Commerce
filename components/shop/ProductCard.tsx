@@ -5,7 +5,13 @@ import { formatCOP, cn } from "../../lib/utils";
 import type { CatalogProduct } from "../../lib/catalog-types";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 import { useCartStore } from "../../store/useCartStore";
 import { useState } from "react";
 import { LikeButton } from "../favorites/LikeButton";
@@ -32,11 +38,14 @@ export function ProductCard({
   const isEssence = kind === "essence";
   const mode = intent ?? (isEssence ? "create" : "buy");
   const sellByGram = isEssence && mode === "buy" && !wholesale;
-  const minQty = product.minQty ?? (sellByGram ? 30 : wholesale ? product.minQty ?? 1 : 1);
+  const minQty =
+    product.minQty ?? (sellByGram ? 30 : wholesale ? (product.minQty ?? 1) : 1);
   const [grams, setGrams] = useState(minQty);
 
   const price =
-    wholesale && product.wholesalePrice != null ? product.wholesalePrice : product.price;
+    wholesale && product.wholesalePrice != null
+      ? product.wholesalePrice
+      : product.price;
 
   const onAdd = () => {
     const qty = sellByGram ? grams : wholesale ? minQty : 1;
@@ -65,14 +74,14 @@ export function ProductCard({
       id={`product-${product.id}`}
       className={cn(
         "flex flex-col scroll-mt-28",
-        highlighted && "ring-2 ring-gold-400/70"
+        highlighted && "ring-2 ring-gold-400/70",
       )}
     >
       <CardHeader>
         <div
           className={cn(
             "group/image relative mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-sm",
-            "bg-paper-soft"
+            "bg-paper-soft",
           )}
         >
           {product.imageUrl ? (
@@ -83,7 +92,7 @@ export function ProductCard({
                 alt={product.title}
                 className={cn(
                   "h-full w-full object-contain p-2 transition-opacity duration-300",
-                  product.hoverImageUrl && "group-hover/image:opacity-0"
+                  product.hoverImageUrl && "group-hover/image:opacity-0",
                 )}
               />
               {product.hoverImageUrl && (
@@ -97,7 +106,9 @@ export function ProductCard({
               )}
             </>
           ) : (
-            <span className="font-display text-3xl text-gold-400/50">{product.title.charAt(0)}</span>
+            <span className="font-display text-3xl text-gold-400/50">
+              {product.title.charAt(0)}
+            </span>
           )}
           <LikeButton
             productId={product.id}
@@ -123,28 +134,31 @@ export function ProductCard({
       </CardHeader>
       <CardContent className="flex-1">
         {product.description && (
-          <p className="text-xs text-ink-60 line-clamp-2">{product.description}</p>
+          <p className="text-xs text-ink-60 line-clamp-2">
+            {product.description}
+          </p>
         )}
-        {showPrice ? (
+        {showPrice && !sellByGram ? (
           <p className="mt-3 font-semibold text-ink">
             {formatCOP(price)}
             {isEssence ? " / gramo" : ""}
           </p>
-        ) : isEssence ? (
+        ) : isEssence && !sellByGram ? (
           <p className="mt-3 text-xs text-ink-60">
             Prepara tu perfume personalizado con esta esencia
           </p>
         ) : null}
         {sellByGram && (
           <div className="mt-3 space-y-1">
+            <p className="font-semibold text-ink">
+              Total {formatCOP(price * grams)}
+            </p>
             <GramsQuantityInput
               value={grams}
               min={minQty}
               onChange={setGrams}
             />
-            <p className="text-xs text-ink-60">
-              mín. {minQty} g · total {formatCOP(price * grams)}
-            </p>
+            <p className="text-xs text-ink-60">mín. {minQty} g</p>
           </div>
         )}
         {showPrice && wholesale && product.minQty ? (
@@ -156,7 +170,9 @@ export function ProductCard({
         <AddToListButton target={listTarget} />
         {isEssence && mode === "create" ? (
           <Button asChild className="w-full" size="sm">
-            <Link href={`/crear?fragrance=${product.id}`}>Preparar con esta</Link>
+            <Link href={`/crear?fragrance=${product.id}`}>
+              Preparar con esta
+            </Link>
           </Button>
         ) : (
           <Button className="w-full" size="sm" onClick={onAdd}>
