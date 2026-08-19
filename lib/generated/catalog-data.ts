@@ -6,7 +6,7 @@
 import type { Bottle, Fragrance, LooseComponent } from "../types";
 import type { CatalogProduct } from "../catalog-types";
 
-export const GENERATED_AT = "2026-08-19T19:02:54.083Z";
+export const GENERATED_AT = "2026-08-19T19:47:17.377Z";
 
 export const OLFACTIVE_GROUPS = [
   {
@@ -2486,7 +2486,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 30,
     "closure": "Rosca",
-    "price": 17500
+    "price": 17500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/1-million-rosca-replica-30-ml-01KZSHJYJ1R94NX3WW32R52835.jpeg"
   },
   {
     "id": "rep-1341-100",
@@ -2494,7 +2495,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 39500
+    "price": 39500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-rosca-replica-100-ml-01KZSHK1NBKYDHVWJ5WDEQ3GR9.jpeg"
   },
   {
     "id": "rep-1323-100",
@@ -2505,7 +2507,8 @@ export const BOTTLES: Bottle[] = [
     "price": 45000,
     "matchesFragranceIds": [
       "ess-40-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/360-agrafe-replica-100-ml-01KZSHK4J0Q5NA5P3Z6481S0C9.jpeg"
   },
   {
     "id": "rep-1328-100",
@@ -2524,7 +2527,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 55,
     "closure": "Rosca",
-    "price": 26500
+    "price": 26500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/agatha-lujo-rosca-55-ml-01KZSHK7EGZXEPRQAYRNVFK794.jpeg"
   },
   {
     "id": "rep-1393-100",
@@ -2551,7 +2555,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 30,
     "closure": "Rosca",
-    "price": 18000
+    "price": 18000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arabia-rosca-30-ml-01KZSHKG7X89NKYA21Z8AABGH8.jpeg"
   },
   {
     "id": "rep-1287-100",
@@ -2559,7 +2564,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Agrafe",
-    "price": 39500
+    "price": 39500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arsenal-agrafe-replica-100-ml-01KZSHKK4VDM19ZVTGJ37MF555.jpeg"
   },
   {
     "id": "rep-1355-100",
@@ -2567,7 +2573,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 39500
+    "price": 39500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arsenal-rosca-replica-100-ml-01KZSHKP1JXZZQ0467ZG7VXTGF.jpeg"
   },
   {
     "id": "rep-1360-100",
@@ -2575,7 +2582,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 37500
+    "price": 37500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/asus-rosca-lujo-100-ml-01M0DJBV6NC42AKJ6G202Q57RV.jpeg"
   },
   {
     "id": "rep-1358-55",
@@ -2583,7 +2591,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 55,
     "closure": "Rosca",
-    "price": 27000
+    "price": 27000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/beauty-rosca-lujo-55-ml-01KZSHKRYAZ2TEKVTHRMDSQR98.jpeg"
   },
   {
     "id": "rep-1271-100",
@@ -2591,7 +2600,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 41000
+    "price": 41000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bella-rosca-replica-100-ml-01KZSHKVTFXCPM2K0V90DWQWCT.jpeg"
   },
   {
     "id": "rep-1364-30",
@@ -2683,7 +2693,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 80,
     "closure": "Rosca",
-    "price": 33500
+    "price": 33500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/butter-fly-rosca-lujo-80-ml-01KZSHKYQ5JC5H32084D6VS9Z3.jpeg"
   },
   {
     "id": "rep-1371-60",
@@ -2710,7 +2721,8 @@ export const BOTTLES: Bottle[] = [
     "price": 41500,
     "matchesFragranceIds": [
       "ess-8-M"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/can-can-rosca-replica-100-ml-01KZSHM1PNPRTGSR8CATE9BP7V.jpeg"
   },
   {
     "id": "rep-1241-100",
@@ -2718,7 +2730,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 40000
+    "price": 40000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/canada-chanel-rosca-replica-100-ml-01M0DJD7F6EECQ2YQBB5RKR9PC.jpeg"
   },
   {
     "id": "rep-1359-100",
@@ -2790,7 +2803,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 36000
+    "price": 36000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cilindrico-rosca-lujo-100-ml-01KZSHMABZPQ01HGQV2FSC3MF7.jpeg"
   },
   {
     "id": "rep-1211-30",
@@ -2806,7 +2820,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 50,
     "closure": "Rosca",
-    "price": 24000
+    "price": 24000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cilindrico-rosca-lujo-50-ml-01KZSHMD8HB2E0ZGQQWCC9Y2BT.jpeg"
   },
   {
     "id": "rep-1213-60",
@@ -2841,7 +2856,8 @@ export const BOTTLES: Bottle[] = [
     "price": 41000,
     "matchesFragranceIds": [
       "ess-20-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/copa-invictus-rosca-replica-100-ml-01KZSHMNYW7A62BB65TKS9B4M6.jpeg"
   },
   {
     "id": "rep-1272-30",
@@ -2852,7 +2868,8 @@ export const BOTTLES: Bottle[] = [
     "price": 18000,
     "matchesFragranceIds": [
       "ess-20-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/copa-invictus-rosca-replica-30-ml-01KZSHMRYE79Z2J8H3W7MZ8C7F.jpeg"
   },
   {
     "id": "rep-1238-50",
@@ -2863,7 +2880,8 @@ export const BOTTLES: Bottle[] = [
     "price": 26000,
     "matchesFragranceIds": [
       "ess-20-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/copa-invictus-rosca-replica-50-ml-01KZSHMVTEFT4R39XXE0PXJF6W.jpeg"
   },
   {
     "id": "rep-1370-100",
@@ -2887,7 +2905,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 50,
     "closure": "Rosca",
-    "price": 25000
+    "price": 25000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/corazon-rosca-color-50-ml-01KZSHMYPT3P4RCFDEZBB65ZKX.jpeg"
   },
   {
     "id": "rep-1270-60",
@@ -2895,7 +2914,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 60,
     "closure": "Rosca",
-    "price": 28000
+    "price": 28000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/corazon-rosca-cristal-60-ml-01KZSHN1K73Y0YES4VX7KSG9ZD.jpeg"
   },
   {
     "id": "rep-1237-100",
@@ -2903,7 +2923,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 39500
+    "price": 39500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/creed-rosca-replica-100-ml-01KZSHN4FP74XF69ESH3TG54A4.jpeg"
   },
   {
     "id": "rep-1236-30",
@@ -2911,7 +2932,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 30,
     "closure": "Rosca",
-    "price": 18000
+    "price": 18000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/creed-rosca-replica-30-ml-01M0DJDC2S4NWNQ7Q2Q042S567.jpeg"
   },
   {
     "id": "rep-1356-50",
@@ -2967,7 +2989,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 50,
     "closure": "Rosca",
-    "price": 27000
+    "price": 27000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/eiffel-rosca-lujo-50-ml-01KZSHNAERV0D738SDC11QA1AF.jpeg"
   },
   {
     "id": "rep-1307-60",
@@ -2978,7 +3001,8 @@ export const BOTTLES: Bottle[] = [
     "price": 27500,
     "matchesFragranceIds": [
       "ess-90-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/emblem-rosca-replica-60-ml-01M0DJDECZKFXX4E1G5YJCG6KY.jpeg"
   },
   {
     "id": "rep-1325-50",
@@ -3022,7 +3046,8 @@ export const BOTTLES: Bottle[] = [
     "price": 39500,
     "matchesFragranceIds": [
       "ess-12-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/fahrenheit-rosca-replica-100-ml-01KZSHNDF6HCFQ8MVZKSPRQZHC.jpeg"
   },
   {
     "id": "rep-1258-100",
@@ -3033,7 +3058,8 @@ export const BOTTLES: Bottle[] = [
     "price": 40000,
     "matchesFragranceIds": [
       "ess-16-M"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/fantasy-agrafe-replica-100-ml-01KZSHNGBWJNWCCDWV00Y48NRY.jpeg"
   },
   {
     "id": "rep-1315-110",
@@ -3076,7 +3102,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 38500
+    "price": 38500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/flor-lujo-rosca-100-ml-01M0DJDVH83NE9P6B6G9397NKW.jpeg"
   },
   {
     "id": "rep-1383-100",
@@ -3188,7 +3215,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 60,
     "closure": "Rosca",
-    "price": 26500
+    "price": 26500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/guitarra-rosca-60-ml-01M0DJE04D90MK6X01FGG9WW0D.jpeg"
   },
   {
     "id": "rep-1219-100",
@@ -3218,7 +3246,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AAA",
     "capacityMl": 100,
     "closure": "Agrafe",
-    "price": 80000
+    "price": 80000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/honor-glory-lataffa-agrafe-100-ml-aaa-01M0DJE2J187WBD4ZB7Q62K6MP.jpeg"
   },
   {
     "id": "rep-1257-100",
@@ -3242,7 +3271,8 @@ export const BOTTLES: Bottle[] = [
     "matchesFragranceIds": [
       "ess-20-M",
       "ess-17-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/hugo-boss-rosca-replica-100-ml-01M0DJE4VV42MESDWHCT5MKX8P.jpeg"
   },
   {
     "id": "rep-1273-60",
@@ -3270,7 +3300,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 30,
     "closure": "Rosca",
-    "price": 17500
+    "price": 17500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/issey-miyake-rosca-replica-30-ml-01M0DJEBSJNTHY8BX633E9ED3J.jpeg"
   },
   {
     "id": "rep-1392-30",
@@ -3286,7 +3317,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 40500
+    "price": 40500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/j-adore-rosca-replica-100-ml-01M0DJEGDF1KEF811Y56W54TR8.jpeg"
   },
   {
     "id": "rep-1223-60",
@@ -3294,7 +3326,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 60,
     "closure": "Rosca",
-    "price": 29000
+    "price": 29000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/j-adore-rosca-replica-60-ml-01M0DJEJQ9TNDFV223XDGKS9VZ.jpeg"
   },
   {
     "id": "rep-1297-50",
@@ -3310,7 +3343,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 45,
     "closure": "Rosca",
-    "price": 25000
+    "price": 25000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/kalifa-rosca-lujo-45-ml-01M0DJEN8XFX5K42302KNNAK1P.jpeg"
   },
   {
     "id": "rep-1330-30",
@@ -3337,7 +3371,8 @@ export const BOTTLES: Bottle[] = [
     "price": 39500,
     "matchesFragranceIds": [
       "ess-22-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/lacoste-red-rosca-replica-100-ml-01M0DJESWD93CNX06K1EME6AXK.jpeg"
   },
   {
     "id": "rep-1279-100",
@@ -3364,7 +3399,8 @@ export const BOTTLES: Bottle[] = [
     "price": 42000,
     "matchesFragranceIds": [
       "ess-27-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/legend-rosca-replica-100-ml-01M0DJEW6D2FFY7ZH5GNHR8X1A.jpeg"
   },
   {
     "id": "rep-1308-85",
@@ -3410,7 +3446,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Agrafe",
-    "price": 38500
+    "price": 38500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/manzana-agrafe-lujo-100-ml-01M0DJF0T2BD25AGRR2JE05S34.jpeg"
   },
   {
     "id": "rep-1321-30",
@@ -3458,7 +3495,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 55,
     "closure": "Rosca",
-    "price": 26000
+    "price": 26000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/new-york-rosca-55-ml-01M0DJF33QZ66WBFTMQGM7EMDX.jpeg"
   },
   {
     "id": "rep-1235-100",
@@ -3469,7 +3507,8 @@ export const BOTTLES: Bottle[] = [
     "price": 40000,
     "matchesFragranceIds": [
       "ess-68-M"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/olympea-rosca-replica-100-ml-01M0DJF7SE6K69SP6PEQFV2YFZ.jpeg"
   },
   {
     "id": "rep-1324-50",
@@ -3488,7 +3527,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 65,
     "closure": "Rosca",
-    "price": 33000
+    "price": 33000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/omnia-rosca-replica-65-ml-01M0DJFERX13CXHK2R19G3RHZC.jpeg"
   },
   {
     "id": "rep-1316-50",
@@ -3499,7 +3539,8 @@ export const BOTTLES: Bottle[] = [
     "price": 26000,
     "matchesFragranceIds": [
       "ess-42-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/only-the-brave-rosca-replica-50-ml-01M0DJFNPDN0QBBE5ASJTBZB6F.jpeg"
   },
   {
     "id": "rep-1285-80",
@@ -3510,7 +3551,8 @@ export const BOTTLES: Bottle[] = [
     "price": 34000,
     "matchesFragranceIds": [
       "ess-42-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/only-the-brave-rosca-replica-80-ml-01M0DJFR0CC864M2H4S06Y59D5.jpeg"
   },
   {
     "id": "rep-1382-65",
@@ -3526,7 +3568,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 30,
     "closure": "Rosca",
-    "price": 21500
+    "price": 21500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/oso-moshino-rosca-replica-30-ml-01M0DJG19BVZPNFSEGWTFQCAHC.jpeg"
   },
   {
     "id": "rep-1310-50",
@@ -3534,7 +3577,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 50,
     "closure": "Rosca",
-    "price": 30000
+    "price": 30000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/oso-moshino-rosca-replica-50-ml-01M0DJG3JPZ01EDNVF54ST47F1.jpeg"
   },
   {
     "id": "rep-1276-100",
@@ -3636,7 +3680,8 @@ export const BOTTLES: Bottle[] = [
     "price": 27500,
     "matchesFragranceIds": [
       "ess-34-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/polo-rosca-replica-55-ml-01M0DJGMSXPQJMW5YPNHD2W3HA.jpeg"
   },
   {
     "id": "rep-1327-80",
@@ -3647,7 +3692,8 @@ export const BOTTLES: Bottle[] = [
     "price": 38000,
     "matchesFragranceIds": [
       "ess-92-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/pure-xs-f-rosca-replica-80-ml-01M0DJGQ4GX97YF5Y2WYMTEV6C.jpeg"
   },
   {
     "id": "rep-1361-100",
@@ -3658,7 +3704,8 @@ export const BOTTLES: Bottle[] = [
     "price": 40000,
     "matchesFragranceIds": [
       "ess-33-M"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/ralph-agrafe-replica-100-ml-01M0DJGSFAXG8PMM5MNRND0BS7.jpeg"
   },
   {
     "id": "rep-1283-50",
@@ -3690,7 +3737,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Agrafe",
-    "price": 48000
+    "price": 48000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/robot-fame-agrafe-replica-100-ml-01M0DJGY33WPRWFN8463881DS8.jpeg"
   },
   {
     "id": "rep-1390-100",
@@ -3712,7 +3760,8 @@ export const BOTTLES: Bottle[] = [
     "price": 24500,
     "matchesFragranceIds": [
       "ess-113-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/robot-phantom-rosca-replica-30-ml-01M0DJH2XDZWE8W870RRAY85YJ.jpeg"
   },
   {
     "id": "rep-1389-50",
@@ -3723,7 +3772,8 @@ export const BOTTLES: Bottle[] = [
     "price": 32500,
     "matchesFragranceIds": [
       "ess-113-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/robot-phantom-rosca-replica-50-ml-01M0DJH5DDW1CVQ9PWQTR382X6.jpeg"
   },
   {
     "id": "rep-1338-100",
@@ -3734,7 +3784,8 @@ export const BOTTLES: Bottle[] = [
     "price": 39500,
     "matchesFragranceIds": [
       "ess-100-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sauvage-rosca-replica-100-ml-01M0DJHEWPSBR06F2E4WH6STH0.jpeg"
   },
   {
     "id": "rep-1306-100",
@@ -3746,7 +3797,8 @@ export const BOTTLES: Bottle[] = [
     "matchesFragranceIds": [
       "ess-118-M",
       "ess-117-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/scandal-f-agrafe-replica-100-ml-01M0DJHNY3F90DXB6MD08MZWC5.jpeg"
   },
   {
     "id": "rep-1376-30",
@@ -3754,7 +3806,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 30,
     "closure": "Rosca",
-    "price": 17500
+    "price": 17500,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sultan-rosca-30-ml-01M0DJJ69R7FZG4DF5263KNV96.jpeg"
   },
   {
     "id": "rep-1363-90",
@@ -3765,7 +3818,8 @@ export const BOTTLES: Bottle[] = [
     "price": 42000,
     "matchesFragranceIds": [
       "ess-35-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/swiss-army-rosca-replica-90-ml-01M0DJJDEVW1PQ2NPWFQDKCK1H.jpeg"
   },
   {
     "id": "rep-1351-30",
@@ -3776,7 +3830,8 @@ export const BOTTLES: Bottle[] = [
     "price": 21500,
     "matchesFragranceIds": [
       "ess-79-M"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/tacon-good-girl-rosca-30-ml-01M0DJJFRCKTSWWFP26FQK381Q.jpeg"
   },
   {
     "id": "rep-1331-50",
@@ -3841,7 +3896,8 @@ export const BOTTLES: Bottle[] = [
     "price": 39000,
     "matchesFragranceIds": [
       "ess-37-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/tommy-rosca-replica-90-ml-01M0DJJRYXJ9WDEF0BJBAFF3C2.jpeg"
   },
   {
     "id": "rep-1302-100",
@@ -3849,7 +3905,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 100,
     "closure": "Rosca",
-    "price": 39000
+    "price": 39000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/valentino-rosca-replica-100-ml-01M0DJK8V86R5Z93Z940E6AQEX.jpeg"
   },
   {
     "id": "rep-1300-30-2",
@@ -3865,7 +3922,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 50,
     "closure": "Rosca",
-    "price": 25000
+    "price": 25000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/valentino-rosca-replica-50-ml-01M0DJKB39HAW29EBAZ26CJG35.jpeg"
   },
   {
     "id": "rep-1249-100",
@@ -3889,7 +3947,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 85,
     "closure": "Rosca",
-    "price": 38000
+    "price": 38000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/vip-bala-rosca-replica-85-ml-01M0DJKDBAGAVEJTAZJCT0P3XR.jpeg"
   },
   {
     "id": "rep-1384-100",
@@ -3919,7 +3978,8 @@ export const BOTTLES: Bottle[] = [
     "price": 19000,
     "matchesFragranceIds": [
       "ess-142-M"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yara-lattafa-rosca-30-ml-01M0DJKVZFWWPWXDPKJK96GRVJ.jpeg"
   },
   {
     "id": "rep-1347-30",
@@ -3930,7 +3990,8 @@ export const BOTTLES: Bottle[] = [
     "price": 22500,
     "matchesFragranceIds": [
       "ess-142-M"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yara-lattafa-rosca-30-ml-aa-01M0DJKSQ313QWTJHXAEKBZHDV.jpeg"
   },
   {
     "id": "rep-rep-199-50",
@@ -3938,7 +3999,8 @@ export const BOTTLES: Bottle[] = [
     "qualityTier": "AA",
     "capacityMl": 50,
     "closure": "Rosca",
-    "price": 31000
+    "price": 31000,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/mandarin-rosca-replica-50-ml-01M0DJEYGZ7T9GHSCNR1QABWDG.jpeg"
   },
   {
     "id": "rep-rep-200-50",
@@ -3981,7 +4043,8 @@ export const BOTTLES: Bottle[] = [
     "price": 76000,
     "matchesFragranceIds": [
       "ess-140-M"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cloud-agrafe-100-ml-aaa-01KZSHMG5A57HVBHXAWZSZ28E4.jpeg"
   },
   {
     "id": "rep-rep-204-100",
@@ -4003,7 +4066,8 @@ export const BOTTLES: Bottle[] = [
     "price": 78000,
     "matchesFragranceIds": [
       "ess-149-H"
-    ]
+    ],
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/erba-pura-agrafe-100-ml-aaa-caja-01M0DJDJ6N92J4PDKVSNPWTB56.jpeg"
   }
 ] as Bottle[];
 
@@ -11325,6 +11389,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 22200,
     "wholesalePrice": 20000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/1-million-replica-agrafe-100-ml-01KZSHJVN1T57QBK0P5GAB7R4P.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -11349,6 +11414,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 30000,
     "wholesalePrice": 27000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/1-million-replica-agrafe-100-ml-aaa-01KZSHJQXZCVG9QYDGDV4QKSY7.jpeg",
     "metadata": {
       "quality_tier": "AAA",
       "capacity_ml": 100,
@@ -11373,6 +11439,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 5800,
     "wholesalePrice": 5200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/1-million-rosca-replica-30-ml-01KZSHJYJ1R94NX3WW32R52835.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -11397,6 +11464,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9200,
     "wholesalePrice": 8300,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/212-rosca-replica-100-ml-01KZSHK1NBKYDHVWJ5WDEQ3GR9.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -11421,6 +11489,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 15400,
     "wholesalePrice": 13900,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/360-agrafe-replica-100-ml-01KZSHK4J0Q5NA5P3Z6481S0C9.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -11473,6 +11542,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7100,
     "wholesalePrice": 6400,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/agatha-lujo-rosca-55-ml-01KZSHK7EGZXEPRQAYRNVFK794.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 55,
@@ -11497,6 +11567,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 47000,
     "wholesalePrice": 44700,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/amber-oud-100-ml-aaa-caja-01KZSHKAEC1KK85MRDMBFNFWKE.jpeg",
     "metadata": {
       "quality_tier": "AAA",
       "capacity_ml": 100,
@@ -11523,6 +11594,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6800,
     "wholesalePrice": 6100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arabia-rosca-30-ml-01KZSHKG7X89NKYA21Z8AABGH8.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -11547,6 +11619,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7200,
     "wholesalePrice": 6500,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/asus-rosca-lujo-100-ml-01M0DJBV6NC42AKJ6G202Q57RV.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -11571,6 +11644,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7800,
     "wholesalePrice": 7000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/beauty-rosca-lujo-55-ml-01KZSHKRYAZ2TEKVTHRMDSQR98.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 55,
@@ -11595,6 +11669,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 10900,
     "wholesalePrice": 9800,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bella-rosca-replica-100-ml-01KZSHKVTFXCPM2K0V90DWQWCT.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -11820,6 +11895,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8600,
     "wholesalePrice": 7700,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/butter-fly-rosca-lujo-80-ml-01KZSHKYQ5JC5H32084D6VS9Z3.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 80,
@@ -11868,6 +11944,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 11500,
     "wholesalePrice": 10400,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/can-can-rosca-replica-100-ml-01KZSHM1PNPRTGSR8CATE9BP7V.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -11894,6 +11971,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9300,
     "wholesalePrice": 8400,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/canada-chanel-rosca-replica-100-ml-01M0DJD7F6EECQ2YQBB5RKR9PC.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -11944,6 +12022,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7200,
     "wholesalePrice": 6500,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/canal-bleu-rosca-replica-60-ml-01KZSHM4K947JK4XBGJZ6NBREY.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 60,
@@ -11970,6 +12049,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9200,
     "wholesalePrice": 8300,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cat-meau-rosca-replica-60-ml-01KZSHM7G6MKDV1G4X59MHN1GB.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 60,
@@ -12090,6 +12170,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 5500,
     "wholesalePrice": 5000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cilindrico-rosca-lujo-100-ml-01KZSHMABZPQ01HGQV2FSC3MF7.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -12138,6 +12219,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 4300,
     "wholesalePrice": 3900,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cilindrico-rosca-lujo-50-ml-01KZSHMD8HB2E0ZGQQWCC9Y2BT.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -12234,6 +12316,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6900,
     "wholesalePrice": 6200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cool-rosca-lujo-100-ml-01KZSHMK2ENA2BGBNCA8W7EZQW.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -12258,6 +12341,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 11000,
     "wholesalePrice": 9900,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/copa-invictus-rosca-replica-100-ml-01KZSHMNYW7A62BB65TKS9B4M6.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -12284,6 +12368,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7000,
     "wholesalePrice": 6300,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/copa-invictus-rosca-replica-30-ml-01KZSHMRYE79Z2J8H3W7MZ8C7F.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -12310,6 +12395,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8000,
     "wholesalePrice": 7200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/copa-invictus-rosca-replica-50-ml-01KZSHMVTEFT4R39XXE0PXJF6W.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -12408,6 +12494,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6800,
     "wholesalePrice": 6100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/corazon-rosca-color-50-ml-01KZSHMYPT3P4RCFDEZBB65ZKX.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -12432,6 +12519,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8300,
     "wholesalePrice": 7500,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/corazon-rosca-cristal-60-ml-01KZSHN1K73Y0YES4VX7KSG9ZD.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 60,
@@ -12456,6 +12544,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9200,
     "wholesalePrice": 8300,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/creed-rosca-replica-100-ml-01KZSHN4FP74XF69ESH3TG54A4.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -12480,6 +12569,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6700,
     "wholesalePrice": 6000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/creed-rosca-replica-30-ml-01M0DJDC2S4NWNQ7Q2Q042S567.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -12552,6 +12642,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7600,
     "wholesalePrice": 6800,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/dorso-rosca-lujo-100-ml-01KZSHN7JJTT2M7T6Z3EJA58SW.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -12600,6 +12691,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8200,
     "wholesalePrice": 7400,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/eiffel-rosca-lujo-50-ml-01KZSHNAERV0D738SDC11QA1AF.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -12624,6 +12716,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8000,
     "wholesalePrice": 7200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/emblem-rosca-replica-60-ml-01M0DJDECZKFXX4E1G5YJCG6KY.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 60,
@@ -12752,6 +12845,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9000,
     "wholesalePrice": 8100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/fahrenheit-rosca-replica-100-ml-01KZSHNDF6HCFQ8MVZKSPRQZHC.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -12778,6 +12872,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6800,
     "wholesalePrice": 6100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/fantasy-agrafe-replica-100-ml-01KZSHNGBWJNWCCDWV00Y48NRY.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -12878,6 +12973,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8200,
     "wholesalePrice": 7400,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/flor-lujo-rosca-100-ml-01M0DJDVH83NE9P6B6G9397NKW.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -13094,6 +13190,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6800,
     "wholesalePrice": 6100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/granada-arsenal-agrafe-replica-100-ml-01KZSHNKA6HQHRZBFYBHXE4ZJ0.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -13142,6 +13239,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6600,
     "wholesalePrice": 5900,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/guitarra-rosca-60-ml-01M0DJE04D90MK6X01FGG9WW0D.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 60,
@@ -13192,6 +13290,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 48000,
     "wholesalePrice": 45600,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/honor-glory-lataffa-agrafe-100-ml-aaa-01M0DJE2J187WBD4ZB7Q62K6MP.jpeg",
     "metadata": {
       "quality_tier": "AAA",
       "capacity_ml": 100,
@@ -13216,6 +13315,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9000,
     "wholesalePrice": 8100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/hugo-boss-rosca-replica-100-ml-01M0DJE4VV42MESDWHCT5MKX8P.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -13294,6 +13394,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6000,
     "wholesalePrice": 5400,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/issey-miyake-rosca-replica-30-ml-01M0DJEBSJNTHY8BX633E9ED3J.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -13318,6 +13419,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 10200,
     "wholesalePrice": 9200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/j-adore-rosca-replica-100-ml-01M0DJEGDF1KEF811Y56W54TR8.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -13342,6 +13444,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8500,
     "wholesalePrice": 7700,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/j-adore-rosca-replica-60-ml-01M0DJEJQ9TNDFV223XDGKS9VZ.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 60,
@@ -13390,6 +13493,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8300,
     "wholesalePrice": 7500,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/kalifa-rosca-lujo-45-ml-01M0DJEN8XFX5K42302KNNAK1P.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 45,
@@ -13414,6 +13518,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9000,
     "wholesalePrice": 8100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/lacoste-red-rosca-replica-100-ml-01M0DJESWD93CNX06K1EME6AXK.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -13512,6 +13617,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 11700,
     "wholesalePrice": 10500,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/legend-rosca-replica-100-ml-01M0DJEW6D2FFY7ZH5GNHR8X1A.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -13588,6 +13694,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9000,
     "wholesalePrice": 8100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/manzana-agrafe-lujo-100-ml-01M0DJF0T2BD25AGRR2JE05S34.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -13780,6 +13887,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6600,
     "wholesalePrice": 5900,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/new-york-rosca-55-ml-01M0DJF33QZ66WBFTMQGM7EMDX.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 55,
@@ -13804,6 +13912,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 10000,
     "wholesalePrice": 9000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/olympea-rosca-replica-100-ml-01M0DJF7SE6K69SP6PEQFV2YFZ.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -13856,6 +13965,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 12300,
     "wholesalePrice": 11100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/omnia-rosca-replica-65-ml-01M0DJFERX13CXHK2R19G3RHZC.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 65,
@@ -13880,6 +13990,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7500,
     "wholesalePrice": 6800,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/only-the-brave-rosca-replica-50-ml-01M0DJFNPDN0QBBE5ASJTBZB6F.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -13906,6 +14017,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8500,
     "wholesalePrice": 7700,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/only-the-brave-rosca-replica-80-ml-01M0DJFR0CC864M2H4S06Y59D5.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 80,
@@ -13956,6 +14068,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9800,
     "wholesalePrice": 8800,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/oso-moshino-rosca-replica-30-ml-01M0DJG19BVZPNFSEGWTFQCAHC.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -13980,6 +14093,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 12100,
     "wholesalePrice": 10900,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/oso-moshino-rosca-replica-50-ml-01M0DJG3JPZ01EDNVF54ST47F1.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -14004,6 +14118,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 13300,
     "wholesalePrice": 12000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/paris-grafe-replica-100-ml-01M0DJG86XX9QYKXTYVTZ4RDRQ.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -14246,6 +14361,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 8000,
     "wholesalePrice": 7200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/polo-rosca-replica-55-ml-01M0DJGMSXPQJMW5YPNHD2W3HA.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 55,
@@ -14272,6 +14388,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 12300,
     "wholesalePrice": 11100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/pure-xs-f-rosca-replica-80-ml-01M0DJGQ4GX97YF5Y2WYMTEV6C.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 80,
@@ -14298,6 +14415,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 11800,
     "wholesalePrice": 10600,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/ralph-agrafe-replica-100-ml-01M0DJGSFAXG8PMM5MNRND0BS7.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -14446,6 +14564,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 18500,
     "wholesalePrice": 16700,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/robot-fame-agrafe-replica-100-ml-01M0DJGY33WPRWFN8463881DS8.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -14496,6 +14615,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 13200,
     "wholesalePrice": 11900,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/robot-phantom-rosca-replica-30-ml-01M0DJH2XDZWE8W870RRAY85YJ.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -14522,6 +14642,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 14700,
     "wholesalePrice": 13200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/robot-phantom-rosca-replica-50-ml-01M0DJH5DDW1CVQ9PWQTR382X6.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -14548,6 +14669,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 14700,
     "wholesalePrice": 13200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/robot-famme-rosca-replica-50-ml-01M0DJH0K6PQ51976999252TE7.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -14574,6 +14696,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9500,
     "wholesalePrice": 8600,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sauvage-rosca-replica-100-ml-01M0DJHEWPSBR06F2E4WH6STH0.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -14600,6 +14723,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 13000,
     "wholesalePrice": 11700,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/scandal-f-agrafe-replica-100-ml-01M0DJHNY3F90DXB6MD08MZWC5.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -14651,6 +14775,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 5500,
     "wholesalePrice": 5000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/sultan-rosca-30-ml-01M0DJJ69R7FZG4DF5263KNV96.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -14675,6 +14800,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 13800,
     "wholesalePrice": 12400,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/swiss-army-rosca-replica-90-ml-01M0DJJDEVW1PQ2NPWFQDKCK1H.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 90,
@@ -14701,6 +14827,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 10200,
     "wholesalePrice": 9200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/tacon-good-girl-rosca-30-ml-01M0DJJFRCKTSWWFP26FQK381Q.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -14827,6 +14954,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 10500,
     "wholesalePrice": 9500,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/tommy-rosca-replica-90-ml-01M0DJJRYXJ9WDEF0BJBAFF3C2.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 90,
@@ -14853,6 +14981,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 9700,
     "wholesalePrice": 8700,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/valentino-rosca-replica-100-ml-01M0DJK8V86R5Z93Z940E6AQEX.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 100,
@@ -14901,6 +15030,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 6500,
     "wholesalePrice": 5900,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/valentino-rosca-replica-50-ml-01M0DJKB39HAW29EBAZ26CJG35.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -14949,6 +15079,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 11200,
     "wholesalePrice": 10100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/vip-bala-rosca-replica-85-ml-01M0DJKDBAGAVEJTAZJCT0P3XR.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 85,
@@ -15023,6 +15154,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7800,
     "wholesalePrice": 7000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yara-lattafa-rosca-30-ml-01M0DJKVZFWWPWXDPKJK96GRVJ.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -15049,6 +15181,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 11300,
     "wholesalePrice": 10200,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yara-lattafa-rosca-30-ml-aa-01M0DJKSQ313QWTJHXAEKBZHDV.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 30,
@@ -15075,6 +15208,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 12500,
     "wholesalePrice": 11300,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/mandarin-rosca-replica-50-ml-01M0DJEYGZ7T9GHSCNR1QABWDG.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -15099,6 +15233,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 7900,
     "wholesalePrice": 7100,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arabe-rosca-replica-50-ml-01KZSHKDBAWXWDG0PQWKG714SX.jpeg",
     "metadata": {
       "quality_tier": "AA",
       "capacity_ml": 50,
@@ -15177,6 +15312,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 40000,
     "wholesalePrice": 36000,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cloud-agrafe-100-ml-aaa-01KZSHMG5A57HVBHXAWZSZ28E4.jpeg",
     "metadata": {
       "quality_tier": "AAA",
       "capacity_ml": 100,
@@ -15229,6 +15365,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 42000,
     "wholesalePrice": 37800,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/erba-pura-agrafe-100-ml-aaa-caja-01M0DJDJ6N92J4PDKVSNPWTB56.jpeg",
     "metadata": {
       "quality_tier": "AAA",
       "capacity_ml": 100,
@@ -15530,6 +15667,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 39500,
     "wholesalePrice": 33600,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arsenal-agrafe-replica-100-ml-01KZSHKK4VDM19ZVTGJ37MF555.jpeg",
     "metadata": {
       "product_kind": "prepared_replica",
       "quality_tier": "AA",
@@ -15557,6 +15695,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "price": 39500,
     "wholesalePrice": 33600,
     "minQty": 6,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arsenal-rosca-replica-100-ml-01KZSHKP1JXZZQ0467ZG7VXTGF.jpeg",
     "metadata": {
       "product_kind": "prepared_replica",
       "quality_tier": "AA",
