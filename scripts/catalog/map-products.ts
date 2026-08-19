@@ -45,6 +45,7 @@ export type BuilderFragrance = {
   gender: "dama" | "caballero" | "unisex";
   group: string;
   pricePerGram: number;
+  imageUrl?: string;
 };
 
 export type BuilderBottle = {
@@ -149,7 +150,7 @@ function ensureUniqueId(base: string, used: Set<string>): string {
 
 function matchFragranceIds(
   bottleName: string,
-  fragrances: BuilderFragrance[]
+  fragrances: BuilderFragrance[],
 ): string[] {
   const key = bottleName
     .normalize("NFD")
@@ -167,9 +168,24 @@ function matchFragranceIds(
 }
 
 const FALLBACK_ALCOHOL: BuilderAlcohol[] = [
-  { id: "alc-30", name: "Alcohol Desodorizado (válvula spray)", unit: "30 ml", price: 1600 },
-  { id: "alc-60", name: "Alcohol Desodorizado (válvula spray)", unit: "60 ml", price: 2200 },
-  { id: "alc-125", name: "Alcohol Desodorizado (válvula spray)", unit: "125 ml", price: 3500 },
+  {
+    id: "alc-30",
+    name: "Alcohol Desodorizado (válvula spray)",
+    unit: "30 ml",
+    price: 1600,
+  },
+  {
+    id: "alc-60",
+    name: "Alcohol Desodorizado (válvula spray)",
+    unit: "60 ml",
+    price: 2200,
+  },
+  {
+    id: "alc-125",
+    name: "Alcohol Desodorizado (válvula spray)",
+    unit: "125 ml",
+    price: 3500,
+  },
 ];
 
 const STATIC_PHEROMONES: CatalogProductOut[] = [
@@ -214,7 +230,11 @@ const STATIC_PHEROMONES: CatalogProductOut[] = [
   },
 ];
 
-export function mapParsedCatalog(parsed: ParsedCatalog): MappedCatalog {
+export function mapParsedCatalog(
+  parsed: ParsedCatalog,
+  opts?: { imageByHandle?: Map<string, string> },
+): MappedCatalog {
+  const imageByHandle = opts?.imageByHandle;
   const handles = new Set<string>();
   const fragrances: BuilderFragrance[] = [];
   const catalogProducts: CatalogProductOut[] = [];
@@ -225,8 +245,9 @@ export function mapParsedCatalog(parsed: ParsedCatalog): MappedCatalog {
     const group = mapOlfactiveGroup(e.groupLabel);
     const handle = ensureUniqueHandle(
       toHandle(`${e.contratipo}-${e.gender}`),
-      handles
+      handles,
     );
+    const imageUrl = imageByHandle?.get(handle);
     const wholesale = wholesaleOf(e.pricePerGram, e.wholesalePerGram);
     fragrances.push({
       id,
@@ -235,6 +256,7 @@ export function mapParsedCatalog(parsed: ParsedCatalog): MappedCatalog {
       gender: e.gender,
       group,
       pricePerGram: e.pricePerGram,
+      imageUrl,
     });
     catalogProducts.push({
       id,
@@ -383,7 +405,10 @@ export function mapParsedCatalog(parsed: ParsedCatalog): MappedCatalog {
   if (!alcoholOptions.length) {
     alcoholOptions.push(...FALLBACK_ALCOHOL);
     for (const a of FALLBACK_ALCOHOL) {
-      const handle = ensureUniqueHandle(toHandle(`${a.name}-${a.unit}`), handles);
+      const handle = ensureUniqueHandle(
+        toHandle(`${a.name}-${a.unit}`),
+        handles,
+      );
       catalogProducts.push({
         id: a.id,
         handle,
@@ -402,7 +427,10 @@ export function mapParsedCatalog(parsed: ParsedCatalog): MappedCatalog {
     // Ensure alcohol builder options also exist as catalog rows (may already)
     for (const a of alcoholOptions) {
       if (catalogProducts.some((p) => p.id === a.id)) continue;
-      const handle = ensureUniqueHandle(toHandle(`${a.name}-${a.unit}`), handles);
+      const handle = ensureUniqueHandle(
+        toHandle(`${a.name}-${a.unit}`),
+        handles,
+      );
       catalogProducts.push({
         id: a.id,
         handle,

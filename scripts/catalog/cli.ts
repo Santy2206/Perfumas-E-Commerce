@@ -12,6 +12,7 @@ import { parseBothWorkbooks } from "./parse-xlsx";
 import { mapParsedCatalog } from "./map-products";
 import { writeCatalogOutputs } from "./write-outputs";
 import { syncMedusaCatalog } from "./sync-medusa";
+import { fetchMedusaThumbnails } from "./fetch-medusa-images";
 
 function argValue(argv: string[], name: string): string | undefined {
   const idx = argv.indexOf(name);
@@ -31,12 +32,11 @@ async function cmdImport(argv: string[]) {
     argValue(argv, "--fragrances") ||
     process.env.PERFUMAS_FRAGANCIAS_XLSX;
   const perfumas =
-    argValue(argv, "--perfumas") ||
-    process.env.PERFUMAS_PERFUMAS_XLSX;
+    argValue(argv, "--perfumas") || process.env.PERFUMAS_PERFUMAS_XLSX;
 
   if (!fragancias || !perfumas) {
     console.error(
-      "Usage: catalog:import --fragancias <PRECIOS FRAGANCIAS.xlsx> --perfumas <PRECIOS PERFUMAS.xlsx>"
+      "Usage: catalog:import --fragancias <PRECIOS FRAGANCIAS.xlsx> --perfumas <PRECIOS PERFUMAS.xlsx>",
     );
     process.exit(1);
   }
@@ -53,7 +53,20 @@ async function cmdImport(argv: string[]) {
 
   console.log("Parsing…");
   const parsed = parseBothWorkbooks(fPath, pPath);
-  const mapped = mapParsedCatalog(parsed);
+
+  console.log("Fetching product images from Medusa…");
+  let imageByHandle = new Map<string, string>();
+  try {
+    imageByHandle = await fetchMedusaThumbnails();
+    console.log(`Found ${imageByHandle.size} thumbnails in Medusa.`);
+  } catch (err) {
+    console.warn(
+      "Could not fetch thumbnails from Medusa, continuing without images:",
+      err instanceof Error ? err.message : err,
+    );
+  }
+
+  const mapped = mapParsedCatalog(parsed, { imageByHandle }); // ← pasa el mapa
   const { seedPath, generatedPath } = writeCatalogOutputs(mapped);
   console.log("Summary:", mapped.summary);
   console.log("Wrote", seedPath);
@@ -65,30 +78,31 @@ async function cmdExport() {
   const gen = resolve(process.cwd(), "lib", "generated", "catalog-data.ts");
   if (!existsSync(gen)) {
     console.error(
-      "No generated catalog. Run catalog:import with Excel paths first."
+      "No generated catalog. Run catalog:import with Excel paths first.",
     );
     process.exit(1);
   }
-  const { CATALOG_PRODUCTS, CATALOG_SUMMARY } = await import(
-    "../../lib/generated/catalog-data"
-  );
+  const { CATALOG_PRODUCTS, CATALOG_SUMMARY } =
+    await import("../../lib/generated/catalog-data");
   const { writeCatalogOutputs } = await import("./write-outputs");
   // Rebuild a minimal MappedCatalog-compatible write via seed-only path
   const { mapParsedCatalog } = await import("./map-products");
   // Simpler: rewrite seed from CATALOG_PRODUCTS using write-outputs helpers
-  const seedProducts = (CATALOG_PRODUCTS as {
-    id: string;
-    handle: string;
-    title: string;
-    description?: string;
-    department: string;
-    category: string;
-    price: number;
-    wholesalePrice?: number;
-    minQty?: number;
-    metadata?: Record<string, unknown>;
-    tags?: string[];
-  }[]).map((p) => ({
+  const seedProducts = (
+    CATALOG_PRODUCTS as {
+      id: string;
+      handle: string;
+      title: string;
+      description?: string;
+      department: string;
+      category: string;
+      price: number;
+      wholesalePrice?: number;
+      minQty?: number;
+      metadata?: Record<string, unknown>;
+      tags?: string[];
+    }[]
+  ).map((p) => ({
     handle: p.handle,
     title: p.title,
     description: p.description,
