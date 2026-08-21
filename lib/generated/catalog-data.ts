@@ -6,7 +6,7 @@
 import type { Bottle, Fragrance, LooseComponent } from "../types";
 import type { CatalogProduct } from "../catalog-types";
 
-export const GENERATED_AT = "2026-08-21T17:55:23.796Z";
+export const GENERATED_AT = "2026-08-21T18:24:53.262Z";
 
 export const OLFACTIVE_GROUPS = [
   {
@@ -57,7 +57,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ANIMALE",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/animale-dama-01M0JQZAD8NT3T4JQ1TK816N5M.jpeg"
   },
   {
     "id": "ess-3-M",
@@ -92,7 +93,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "HUGO BOSS",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/boss-intense-dama-01M0JR0K8PWNBECG1K2H17V50X.jpeg"
   },
   {
     "id": "ess-7-M",
@@ -100,7 +102,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "HUGO BOSS",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/boss-orange-dama-01M0JR0PA7DZKKBW3F9HG2J164.jpeg"
   },
   {
     "id": "ess-8-M",
@@ -117,7 +120,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/carolina-herrera-dama-01M0JR17N86QRPJ3VSB6X0PEDQ.jpeg"
   },
   {
     "id": "ess-10-M",
@@ -125,7 +129,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/ch-carolina-herrera-dama-01M0JR1DMK185CR4NT1XH37HDQ.jpeg"
   },
   {
     "id": "ess-11-M",
@@ -133,7 +138,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CHANEL",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/chance-dama-01M0JR1V9HNQZRBJQYSFA5NFC1.jpeg"
   },
   {
     "id": "ess-12-M",
@@ -445,7 +451,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BURBERRY",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/burberry-dama-01M0JR0WG6DX8GPDDYGW6QBEWC.jpeg"
   },
   {
     "id": "ess-51-M",
@@ -606,7 +613,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BVLGARI",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/blv-dama-01M0JR01TFKJKWDWC431NW1RBZ.jpeg"
   },
   {
     "id": "ess-71-M",
@@ -707,7 +715,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "YANBAL",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/ccori-passion-dama-01M0JR1B4VD5HFC59Y2Q8C8ACT.jpeg"
   },
   {
     "id": "ess-86-M",
@@ -715,7 +724,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/ch-sublime-dama-01M0JR1M0SBH3NC3ZH6RXFQHZZ.jpeg"
   },
   {
     "id": "ess-87-M",
@@ -723,7 +733,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ELIZABETH ARDEN",
     "gender": "dama",
     "group": "citricas-frescas",
-    "pricePerGram": 420
+    "pricePerGram": 420,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/5th-avenue-dama-01M0JQZ44EF545R79VJQCF9NEJ.jpeg"
   },
   {
     "id": "ess-88-M",
@@ -926,7 +937,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "VICTORIA´S SECRET",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 350
+    "pricePerGram": 350,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bombshell-dama-01M0JR08DGK68EA6S5AG72DWG4.jpeg"
   },
   {
     "id": "ess-114-M",
@@ -1126,7 +1138,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "YANBAL",
     "gender": "dama",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/adrenalina-dama-01M0JQZ7T8AN27WECC65BWH4NX.jpeg"
   },
   {
     "id": "ess-140-M",
@@ -1231,7 +1244,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BURBERRY",
     "gender": "dama",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/burberry-her-dama-01M0JR0Z2DXRFMBC87AR6HA520.jpeg"
   },
   {
     "id": "ess-152-M",
@@ -1324,7 +1338,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LORIS AZZARO",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/azzaro-caballero-01M0JQZNPZJGCYMK2FT7P8YPWQ.jpeg"
   },
   {
     "id": "ess-4-H",
@@ -1341,7 +1356,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "HUGO BOSS",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/boss-in-motion-caballero-01M0JR0DJFX2Z30QBVJYG5B123.jpeg"
   },
   {
     "id": "ess-7-H",
@@ -1349,7 +1365,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/carolina-herrera-caballero-01M0JR13Z9P7YDQFMMPP355A1W.jpeg"
   },
   {
     "id": "ess-8-H",
@@ -1683,7 +1700,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "Perfumas",
     "gender": "unisex",
     "group": "citricas-frescas",
-    "pricePerGram": 350
+    "pricePerGram": 350,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arruru-caballero-01M0JQZFCN5GCB2Z3DXWW94C2P.jpeg"
   },
   {
     "id": "ess-50-H",
@@ -1859,7 +1877,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/ch-men-caballero-01M0JR1G4WFZNXTNK0F6Y8ET1Z.jpeg"
   },
   {
     "id": "ess-76-H",
@@ -1925,7 +1944,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "BVLGARY",
     "gender": "caballero",
     "group": "maderas-orientales",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/blv-pour-homme-caballero-01M0JR04VWABHEZR9H0ARPXEM4.jpeg"
   },
   {
     "id": "ess-85-H",
@@ -1966,7 +1986,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "HUGO BOSS",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/boss-element-caballero-01M0JR0B3R52XGW0WSBQD2AV1H.jpeg"
   },
   {
     "id": "ess-90-H",
@@ -1998,7 +2019,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "YANBAL",
     "gender": "caballero",
     "group": "maderas-orientales",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/arom-caballero-01M0JQZCWCAZ6090G4K5RQ7104.jpeg"
   },
   {
     "id": "ess-94-H",
@@ -2023,7 +2045,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "HUGO BOSS",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/boss-orange-for-men-caballero-01M0JR0T0ZBHH67X2DY4608HZ3.jpeg"
   },
   {
     "id": "ess-97-H",
@@ -2065,7 +2088,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "CAROLINA HERRERA",
     "gender": "caballero",
     "group": "intermedios",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bad-boy-caballero-01M0JQZR9ZMNQY18B3JGB42JEK.jpeg"
   },
   {
     "id": "ess-103-H",
@@ -2106,7 +2130,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LACOSTE",
     "gender": "caballero",
     "group": "citricas-frescas",
-    "pricePerGram": 410
+    "pricePerGram": 410,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/challenge-caballero-01M0JR1RS2E6SWMAGXE0Q332Q3.jpeg"
   },
   {
     "id": "ess-108-H",
@@ -2290,7 +2315,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "caballero",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/asad-caballero-01M0JQZK7EY5774WBE3VA1BQEC.jpeg"
   },
   {
     "id": "ess-130-H",
@@ -2342,7 +2368,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "ESIKA",
     "gender": "caballero",
     "group": "maderas-orientales",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cardigan-caballero-01M0JR11GR9YME47YST0SZ4D97.jpeg"
   },
   {
     "id": "ess-136-H",
@@ -2383,7 +2410,8 @@ export const FRAGRANCES: Fragrance[] = [
     "house": "LATTAFA",
     "gender": "unisex",
     "group": "dulces",
-    "pricePerGram": 400
+    "pricePerGram": 400,
+    "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/bade-e-al-oud-sublime-unisex-caballero-01M0JQZY2CBJ1550JZQZ9CK53G.jpeg"
   },
   {
     "id": "ess-141-H",
@@ -3994,7 +4022,7 @@ export const BOTTLES: Bottle[] = [
     "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/yara-lattafa-rosca-30-ml-aa-01M0DJKSQ313QWTJHXAEKBZHDV.jpeg"
   },
   {
-    "id": "rep-rep-199-50",
+    "id": "rep-rep-169-50",
     "name": "MANDARIN ROSCA REPLICA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -4003,7 +4031,7 @@ export const BOTTLES: Bottle[] = [
     "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/mandarin-rosca-replica-50-ml-01M0DJEYGZ7T9GHSCNR1QABWDG.jpeg"
   },
   {
-    "id": "rep-rep-200-50",
+    "id": "rep-rep-170-50",
     "name": "ARABE ROSCA 50 ML",
     "qualityTier": "AA",
     "capacityMl": 50,
@@ -4011,7 +4039,7 @@ export const BOTTLES: Bottle[] = [
     "price": 26000
   },
   {
-    "id": "rep-rep-201-100",
+    "id": "rep-rep-171-100",
     "name": "212 VIP BLACK AGRAFE REPLICA 100 ML AA",
     "qualityTier": "AA",
     "capacityMl": 100,
@@ -4023,7 +4051,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-rep-202-100",
+    "id": "rep-rep-172-100",
     "name": "YARA CANDY AGRAFE 100 ML AAA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -4035,7 +4063,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-rep-203-100",
+    "id": "rep-rep-173-100",
     "name": "CLOUD AGRAFE 100 ML AAA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -4047,7 +4075,7 @@ export const BOTTLES: Bottle[] = [
     "imageUrl": "https://imryfuqliytqhxszyxml.supabase.co/storage/v1/object/public/medusa/cloud-agrafe-100-ml-aaa-01KZSHMG5A57HVBHXAWZSZ28E4.jpeg"
   },
   {
-    "id": "rep-rep-204-100",
+    "id": "rep-rep-174-100",
     "name": "EROS AGRAFE 100 ML AAA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -4058,7 +4086,7 @@ export const BOTTLES: Bottle[] = [
     ]
   },
   {
-    "id": "rep-rep-205-100",
+    "id": "rep-rep-175-100",
     "name": "ERBA PURA AGRAFE 100 ML AAA CAJA",
     "qualityTier": "AAA",
     "capacityMl": 100,
@@ -4073,22 +4101,40 @@ export const BOTTLES: Bottle[] = [
 
 export const ALCOHOL_OPTIONS: LooseComponent[] = [
   {
-    "id": "alc-30",
-    "name": "Alcohol Desodorizado (válvula spray)",
-    "unit": "30 ml",
+    "id": "alc-30-ml",
+    "name": "Alcohol Desodorizado",
+    "unit": "30 ML",
     "price": 1600
   },
   {
-    "id": "alc-60",
-    "name": "Alcohol Desodorizado (válvula spray)",
-    "unit": "60 ml",
+    "id": "alc-60-ml",
+    "name": "Alcohol Desodorizado",
+    "unit": "60 ML",
     "price": 2200
   },
   {
-    "id": "alc-125",
-    "name": "Alcohol Desodorizado (válvula spray)",
-    "unit": "125 ml",
+    "id": "alc-125-ml",
+    "name": "Alcohol Desodorizado",
+    "unit": "125 ML",
     "price": 3500
+  },
+  {
+    "id": "alc-250-ml",
+    "name": "Alcohol Desodorizado",
+    "unit": "250 ML",
+    "price": 4000
+  },
+  {
+    "id": "alc-500-ml",
+    "name": "Alcohol Desodorizado",
+    "unit": "500 ML",
+    "price": 7400
+  },
+  {
+    "id": "alc-1000-ml",
+    "name": "Alcohol Desodorizado",
+    "unit": "1000 ML",
+    "price": 13500
   }
 ] as LooseComponent[];
 
@@ -15199,7 +15245,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "b-env-200",
+    "id": "b-env-156",
     "handle": "mandarin-rosca-replica-50-ml",
     "title": "MANDARIN ROSCA REPLICA 50 ML",
     "description": "Envase vacío AA · 50 ml · cierre Rosca",
@@ -15215,7 +15261,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "closure": "Rosca",
       "matches_fragrance_ids": [],
       "product_kind": "bottle",
-      "excel_code": "env-200"
+      "excel_code": "env-156"
     },
     "tags": [
       "envase",
@@ -15224,7 +15270,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "b-env-201",
+    "id": "b-env-157",
     "handle": "arabe-rosca-replica-50-ml",
     "title": "ARABE ROSCA REPLICA 50 ML",
     "description": "Envase vacío AA · 50 ml · cierre Rosca",
@@ -15240,7 +15286,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "closure": "Rosca",
       "matches_fragrance_ids": [],
       "product_kind": "bottle",
-      "excel_code": "env-201"
+      "excel_code": "env-157"
     },
     "tags": [
       "envase",
@@ -15249,7 +15295,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "b-env-202",
+    "id": "b-env-158",
     "handle": "212-vip-black-agrafe-100-ml-aa",
     "title": "212 VIP BLACK AGRAFE 100 ML AA",
     "description": "Envase vacío AA · 100 ml · cierre Agrafe",
@@ -15267,7 +15313,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
         "ess-97-H"
       ],
       "product_kind": "bottle",
-      "excel_code": "env-202"
+      "excel_code": "env-158"
     },
     "tags": [
       "envase",
@@ -15276,7 +15322,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "b-env-203",
+    "id": "b-env-159",
     "handle": "yara-candy-agrafe-100-ml-aaa",
     "title": "YARA CANDY AGRAFE 100 ML AAA",
     "description": "Envase vacío AAA · 100 ml · cierre Agrafe",
@@ -15294,7 +15340,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
         "ess-150-M"
       ],
       "product_kind": "bottle",
-      "excel_code": "env-203"
+      "excel_code": "env-159"
     },
     "tags": [
       "envase",
@@ -15303,7 +15349,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "b-env-204",
+    "id": "b-env-160",
     "handle": "cloud-agrafe-100-ml-aaa",
     "title": "CLOUD AGRAFE 100 ML AAA",
     "description": "Envase vacío AAA · 100 ml · cierre Agrafe",
@@ -15321,7 +15367,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
         "ess-140-M"
       ],
       "product_kind": "bottle",
-      "excel_code": "env-204"
+      "excel_code": "env-160"
     },
     "tags": [
       "envase",
@@ -15330,7 +15376,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "b-env-205",
+    "id": "b-env-161",
     "handle": "eros-agrafe-100-ml-aaa",
     "title": "EROS AGRAFE 100 ML AAA",
     "description": "Envase vacío AAA · 100 ml · cierre Agrafe",
@@ -15347,7 +15393,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
         "ess-43-H"
       ],
       "product_kind": "bottle",
-      "excel_code": "env-205"
+      "excel_code": "env-161"
     },
     "tags": [
       "envase",
@@ -15356,7 +15402,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "b-env-206",
+    "id": "b-env-162",
     "handle": "erba-pura-agrafe-100-ml-aaa-caja",
     "title": "ERBA PURA AGRAFE 100 ML AAA CAJA",
     "description": "Envase vacío AAA · 100 ml · cierre Agrafe",
@@ -15374,7 +15420,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
         "ess-149-H"
       ],
       "product_kind": "bottle",
-      "excel_code": "env-206"
+      "excel_code": "env-162"
     },
     "tags": [
       "envase",
@@ -19900,7 +19946,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-199-50",
+    "id": "rep-rep-169-50",
     "handle": "mandarin-rosca-replica-50-ml-2",
     "title": "MANDARIN ROSCA REPLICA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19914,7 +19960,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "quality_tier": "AA",
       "capacity_ml": 50,
       "closure": "Rosca",
-      "excel_code": "rep-199",
+      "excel_code": "rep-169",
       "refill_price": 20000,
       "bottle_price": 4500,
       "matches_fragrance_ids": []
@@ -19927,7 +19973,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-200-50",
+    "id": "rep-rep-170-50",
     "handle": "arabe-rosca-50-ml",
     "title": "ARABE ROSCA 50 ML",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19941,7 +19987,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "quality_tier": "AA",
       "capacity_ml": 50,
       "closure": "Rosca",
-      "excel_code": "rep-200",
+      "excel_code": "rep-170",
       "refill_price": 20000,
       "bottle_price": 4500,
       "matches_fragrance_ids": []
@@ -19954,7 +20000,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-201-100",
+    "id": "rep-rep-171-100",
     "handle": "212-vip-black-agrafe-replica-100-ml-aa",
     "title": "212 VIP BLACK AGRAFE REPLICA 100 ML AA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19968,7 +20014,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "quality_tier": "AA",
       "capacity_ml": 100,
       "closure": "Agrafe",
-      "excel_code": "rep-201",
+      "excel_code": "rep-171",
       "refill_price": 32000,
       "matches_fragrance_ids": [
         "ess-41-M",
@@ -19983,7 +20029,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-202-100",
+    "id": "rep-rep-172-100",
     "handle": "yara-candy-agrafe-100-ml-aaa-2",
     "title": "YARA CANDY AGRAFE 100 ML AAA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -19997,7 +20043,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "quality_tier": "AAA",
       "capacity_ml": 100,
       "closure": "Agrafe",
-      "excel_code": "rep-202",
+      "excel_code": "rep-172",
       "refill_price": 32000,
       "matches_fragrance_ids": [
         "ess-142-M",
@@ -20012,7 +20058,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-203-100",
+    "id": "rep-rep-173-100",
     "handle": "cloud-agrafe-100-ml-aaa-2",
     "title": "CLOUD AGRAFE 100 ML AAA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -20026,7 +20072,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "quality_tier": "AAA",
       "capacity_ml": 100,
       "closure": "Agrafe",
-      "excel_code": "rep-203",
+      "excel_code": "rep-173",
       "refill_price": 32000,
       "matches_fragrance_ids": [
         "ess-140-M"
@@ -20040,7 +20086,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-204-100",
+    "id": "rep-rep-174-100",
     "handle": "eros-agrafe-100-ml-aaa-2",
     "title": "EROS AGRAFE 100 ML AAA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -20054,7 +20100,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "quality_tier": "AAA",
       "capacity_ml": 100,
       "closure": "Agrafe",
-      "excel_code": "rep-204",
+      "excel_code": "rep-174",
       "refill_price": 32000,
       "matches_fragrance_ids": [
         "ess-43-H"
@@ -20068,7 +20114,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "rep-rep-205-100",
+    "id": "rep-rep-175-100",
     "handle": "erba-pura-agrafe-100-ml-aaa-caja-2",
     "title": "ERBA PURA AGRAFE 100 ML AAA CAJA",
     "description": "Réplica preparada lista para usar (precio unitario).",
@@ -20082,7 +20128,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       "quality_tier": "AAA",
       "capacity_ml": 100,
       "closure": "Agrafe",
-      "excel_code": "rep-205",
+      "excel_code": "rep-175",
       "refill_price": 32000,
       "matches_fragrance_ids": [
         "ess-149-H"
@@ -20102,7 +20148,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "cuidado",
     "price": 8000,
-    "wholesalePrice": 6400,
+    "wholesalePrice": 6800,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20120,7 +20166,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10500,
-    "wholesalePrice": 8400,
+    "wholesalePrice": 8900,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20138,7 +20184,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 12000,
-    "wholesalePrice": 9600,
+    "wholesalePrice": 10800,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20156,7 +20202,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10000,
-    "wholesalePrice": 8000,
+    "wholesalePrice": 8500,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20174,7 +20220,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10500,
-    "wholesalePrice": 8400,
+    "wholesalePrice": 8900,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20192,7 +20238,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 12000,
-    "wholesalePrice": 9600,
+    "wholesalePrice": 10200,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20210,7 +20256,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 11000,
-    "wholesalePrice": 8800,
+    "wholesalePrice": 9400,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20228,7 +20274,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10000,
-    "wholesalePrice": 8000,
+    "wholesalePrice": 8500,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20246,11 +20292,83 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "ambientales",
     "price": 10500,
-    "wholesalePrice": 8400,
+    "wholesalePrice": 8900,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
       "excel_code": "splash-14"
+    },
+    "tags": [
+      "ambientales",
+      "hogar"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-16",
+    "handle": "crema-perfumas-facial-y-corporal-30-ml",
+    "title": "CREMA PERFUMAS FACIAL Y CORPORAL 30 ML",
+    "department": "hogar",
+    "category": "ambientales",
+    "price": 2400,
+    "wholesalePrice": 2000,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "splash-16"
+    },
+    "tags": [
+      "ambientales",
+      "hogar"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-17",
+    "handle": "crema-perfumas-facial-y-corporal-60-ml",
+    "title": "CREMA PERFUMAS FACIAL Y CORPORAL 60 ML",
+    "department": "hogar",
+    "category": "ambientales",
+    "price": 3500,
+    "wholesalePrice": 3000,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "splash-17"
+    },
+    "tags": [
+      "ambientales",
+      "hogar"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-18",
+    "handle": "crema-perfumas-facial-y-corporal-125-ml",
+    "title": "CREMA PERFUMAS FACIAL Y CORPORAL 125 ML",
+    "department": "hogar",
+    "category": "ambientales",
+    "price": 5500,
+    "wholesalePrice": 4700,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "splash-18"
+    },
+    "tags": [
+      "ambientales",
+      "hogar"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-19",
+    "handle": "crema-perfumas-facial-y-corporal-250-ml",
+    "title": "CREMA PERFUMAS FACIAL Y CORPORAL 250 ML",
+    "department": "hogar",
+    "category": "ambientales",
+    "price": 10000,
+    "wholesalePrice": 8500,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "splash-19"
     },
     "tags": [
       "ambientales",
@@ -20264,7 +20382,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "hogar",
     "category": "cuidado",
     "price": 8500,
-    "wholesalePrice": 6800,
+    "wholesalePrice": 7200,
     "minQty": 6,
     "metadata": {
       "product_kind": "home_care",
@@ -20272,6 +20390,204 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     },
     "tags": [
       "cuidado",
+      "hogar"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-26",
+    "handle": "alcohol-desodorizado-30-ml-valvula-spray",
+    "title": "ALCOHOL DESODORIZADO 30 ML VALVULA SPRAY",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 1600,
+    "wholesalePrice": 1280,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "alcohol",
+      "excel_code": "splash-26"
+    },
+    "tags": [
+      "alcohol",
+      "insumos"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-27",
+    "handle": "alcohol-desodorizado-60-ml-valvula-spray",
+    "title": "ALCOHOL DESODORIZADO 60 ML VALVULA SPRAY",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 2200,
+    "wholesalePrice": 1760,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "alcohol",
+      "excel_code": "splash-27"
+    },
+    "tags": [
+      "alcohol",
+      "insumos"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-28",
+    "handle": "alcohol-desodorizado-125-ml-valvula-spray",
+    "title": "ALCOHOL DESODORIZADO 125 ML VALVULA SPRAY",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 3500,
+    "wholesalePrice": 2800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "alcohol",
+      "excel_code": "splash-28"
+    },
+    "tags": [
+      "alcohol",
+      "insumos"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-29",
+    "handle": "alcohol-desodorizado-125-ml-100-gr",
+    "title": "ALCOHOL DESODORIZADO 125 ML (100 GR)",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 2300,
+    "wholesalePrice": 1700,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "alcohol",
+      "excel_code": "splash-29"
+    },
+    "tags": [
+      "alcohol",
+      "insumos"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-30",
+    "handle": "alcohol-desodorizado-250-ml-200-gr",
+    "title": "ALCOHOL DESODORIZADO 250 ML (200 GR)",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 4000,
+    "wholesalePrice": 3000,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "alcohol",
+      "excel_code": "splash-30"
+    },
+    "tags": [
+      "alcohol",
+      "insumos"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-31",
+    "handle": "alcohol-desodorizado-500-ml-400-gr",
+    "title": "ALCOHOL DESODORIZADO 500 ML (400 GR)",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 7400,
+    "wholesalePrice": 5600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "alcohol",
+      "excel_code": "splash-31"
+    },
+    "tags": [
+      "alcohol",
+      "insumos"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-32",
+    "handle": "alcohol-desodorizado-1000-ml-800-gr",
+    "title": "ALCOHOL DESODORIZADO 1000 ML (800 GR)",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 13500,
+    "wholesalePrice": 10100,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "alcohol",
+      "excel_code": "splash-32"
+    },
+    "tags": [
+      "alcohol",
+      "insumos"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-35",
+    "handle": "agua-de-linos-spray-30-ml",
+    "title": "AGUA DE LINOS SPRAY 30 ML",
+    "department": "hogar",
+    "category": "ambientales",
+    "price": 2400,
+    "wholesalePrice": 1800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "splash-35"
+    },
+    "tags": [
+      "ambientales",
+      "hogar"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-36",
+    "handle": "agua-de-linos-spray-60-ml",
+    "title": "AGUA DE LINOS SPRAY 60 ML",
+    "department": "hogar",
+    "category": "ambientales",
+    "price": 4000,
+    "wholesalePrice": 3000,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "splash-36"
+    },
+    "tags": [
+      "ambientales",
+      "hogar"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-37",
+    "handle": "agua-de-linos-spray-125-ml",
+    "title": "AGUA DE LINOS SPRAY 125 ML",
+    "department": "hogar",
+    "category": "ambientales",
+    "price": 7000,
+    "wholesalePrice": 5300,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "splash-37"
+    },
+    "tags": [
+      "ambientales",
+      "hogar"
+    ]
+  },
+  {
+    "id": "sku-splash-splash-38",
+    "handle": "agua-de-linos-spray-250-ml",
+    "title": "AGUA DE LINOS SPRAY 250 ML",
+    "department": "hogar",
+    "category": "ambientales",
+    "price": 13000,
+    "wholesalePrice": 9800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "splash-38"
+    },
+    "tags": [
+      "ambientales",
       "hogar"
     ]
   },
@@ -20294,9 +20610,9 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "alc-30",
-    "handle": "alcohol-desodorizado-valvula-spray-30-ml",
-    "title": "Alcohol Desodorizado (válvula spray) 30 ml",
+    "id": "alc-30-ml",
+    "handle": "alcohol-desodorizado-30-ml",
+    "title": "Alcohol Desodorizado 30 ML",
     "description": "Alcohol desodorizado especializado para perfumería.",
     "department": "insumos",
     "category": "alcohol",
@@ -20304,7 +20620,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "wholesalePrice": 1280,
     "minQty": 6,
     "metadata": {
-      "unit": "30 ml",
+      "unit": "30 ML",
       "product_kind": "alcohol"
     },
     "tags": [
@@ -20313,9 +20629,9 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "alc-60",
-    "handle": "alcohol-desodorizado-valvula-spray-60-ml",
-    "title": "Alcohol Desodorizado (válvula spray) 60 ml",
+    "id": "alc-60-ml",
+    "handle": "alcohol-desodorizado-60-ml",
+    "title": "Alcohol Desodorizado 60 ML",
     "description": "Alcohol desodorizado especializado para perfumería.",
     "department": "insumos",
     "category": "alcohol",
@@ -20323,7 +20639,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "wholesalePrice": 1760,
     "minQty": 6,
     "metadata": {
-      "unit": "60 ml",
+      "unit": "60 ML",
       "product_kind": "alcohol"
     },
     "tags": [
@@ -20332,9 +20648,9 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    "id": "alc-125",
-    "handle": "alcohol-desodorizado-valvula-spray-125-ml",
-    "title": "Alcohol Desodorizado (válvula spray) 125 ml",
+    "id": "alc-125-ml",
+    "handle": "alcohol-desodorizado-125-ml",
+    "title": "Alcohol Desodorizado 125 ML",
     "description": "Alcohol desodorizado especializado para perfumería.",
     "department": "insumos",
     "category": "alcohol",
@@ -20342,7 +20658,64 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "wholesalePrice": 2800,
     "minQty": 6,
     "metadata": {
-      "unit": "125 ml",
+      "unit": "125 ML",
+      "product_kind": "alcohol"
+    },
+    "tags": [
+      "alcohol",
+      "insumo"
+    ]
+  },
+  {
+    "id": "alc-250-ml",
+    "handle": "alcohol-desodorizado-250-ml",
+    "title": "Alcohol Desodorizado 250 ML",
+    "description": "Alcohol desodorizado especializado para perfumería.",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 4000,
+    "wholesalePrice": 3200,
+    "minQty": 6,
+    "metadata": {
+      "unit": "250 ML",
+      "product_kind": "alcohol"
+    },
+    "tags": [
+      "alcohol",
+      "insumo"
+    ]
+  },
+  {
+    "id": "alc-500-ml",
+    "handle": "alcohol-desodorizado-500-ml",
+    "title": "Alcohol Desodorizado 500 ML",
+    "description": "Alcohol desodorizado especializado para perfumería.",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 7400,
+    "wholesalePrice": 5920,
+    "minQty": 6,
+    "metadata": {
+      "unit": "500 ML",
+      "product_kind": "alcohol"
+    },
+    "tags": [
+      "alcohol",
+      "insumo"
+    ]
+  },
+  {
+    "id": "alc-1000-ml",
+    "handle": "alcohol-desodorizado-1000-ml",
+    "title": "Alcohol Desodorizado 1000 ML",
+    "description": "Alcohol desodorizado especializado para perfumería.",
+    "department": "insumos",
+    "category": "alcohol",
+    "price": 13500,
+    "wholesalePrice": 10800,
+    "minQty": 6,
+    "metadata": {
+      "unit": "1000 ML",
       "product_kind": "alcohol"
     },
     "tags": [
@@ -20357,7 +20730,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 8000,
+    "wholesalePrice": 9000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20375,7 +20748,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 20000,
-    "wholesalePrice": 16000,
+    "wholesalePrice": 18000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20393,7 +20766,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 8000,
+    "wholesalePrice": 9000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20411,7 +20784,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 8000,
+    "wholesalePrice": 9000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20429,7 +20802,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 8000,
+    "wholesalePrice": 9000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20447,7 +20820,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 15000,
-    "wholesalePrice": 12000,
+    "wholesalePrice": 13500,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20465,7 +20838,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 8000,
+    "wholesalePrice": 9000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20483,7 +20856,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 12000,
-    "wholesalePrice": 9600,
+    "wholesalePrice": 10800,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20501,7 +20874,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 15000,
-    "wholesalePrice": 12000,
+    "wholesalePrice": 13500,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20519,7 +20892,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 10000,
-    "wholesalePrice": 8000,
+    "wholesalePrice": 9000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20537,7 +20910,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 20000,
-    "wholesalePrice": 16000,
+    "wholesalePrice": 18000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -20555,7 +20928,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "bisuteria",
     "price": 5000,
-    "wholesalePrice": 4000,
+    "wholesalePrice": 4500,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21509,7 +21882,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 12000,
-    "wholesalePrice": 9600,
+    "wholesalePrice": 11400,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21526,11 +21899,96 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 25000,
-    "wholesalePrice": 20000,
+    "wholesalePrice": 23800,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
       "excel_code": "1901"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1902",
+    "handle": "cartuchera-peluche",
+    "title": "CARTUCHERA PELUCHE",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 8000,
+    "wholesalePrice": 7600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1902"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1902",
+    "handle": "cartuchera-grande",
+    "title": "CARTUCHERA GRANDE",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 10000,
+    "wholesalePrice": 9500,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1902"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1902",
+    "handle": "cartuchera-mediana",
+    "title": "CARTUCHERA MEDIANA",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 7000,
+    "wholesalePrice": 6700,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1902"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1903",
+    "handle": "cartuchera-lapiz",
+    "title": "CARTUCHERA LAPIZ",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 4000,
+    "wholesalePrice": 3800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1903"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1904",
+    "handle": "mini-monedero",
+    "title": "MINI MONEDERO",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 2500,
+    "wholesalePrice": 2400,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1904"
     },
     "tags": [
       "accesorios"
@@ -21543,11 +22001,28 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 20000,
-    "wholesalePrice": 16000,
+    "wholesalePrice": 19000,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
       "excel_code": "1910"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1950",
+    "handle": "billetera-sintetico-grande-f",
+    "title": "BILLETERA SINTETICO GRANDE F",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 38000,
+    "wholesalePrice": 36100,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1950"
     },
     "tags": [
       "accesorios"
@@ -21560,11 +22035,28 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 25000,
-    "wholesalePrice": 20000,
+    "wholesalePrice": 23800,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
       "excel_code": "1951"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1952",
+    "handle": "billetera-sintetica-cuadrada-mediana-f",
+    "title": "BILLETERA SINTETICA CUADRADA MEDIANA F",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 25000,
+    "wholesalePrice": 23800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1952"
     },
     "tags": [
       "accesorios"
@@ -21577,11 +22069,96 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 24000,
-    "wholesalePrice": 19200,
+    "wholesalePrice": 22800,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
       "excel_code": "1953"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1961",
+    "handle": "billetera-cuero-eco-m",
+    "title": "BILLETERA CUERO ECO M",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 25000,
+    "wholesalePrice": 23800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1961"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1963",
+    "handle": "billetera-cuero-fina-m",
+    "title": "BILLETERA CUERO FINA M",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 30000,
+    "wholesalePrice": 28500,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1963"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1964",
+    "handle": "billetera-cuero-cortaunas-m",
+    "title": "BILLETERA CUERO + CORTAUÑAS M",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 28000,
+    "wholesalePrice": 26600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1964"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1964",
+    "handle": "billetera-cuero-portadocumentos-m",
+    "title": "BILLETERA CUERO + PORTADOCUMENTOS M",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 27000,
+    "wholesalePrice": 25700,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1964"
+    },
+    "tags": [
+      "accesorios"
+    ]
+  },
+  {
+    "id": "acc-1980",
+    "handle": "cinturon-sintetica-f",
+    "title": "CINTURON SINTETICA F",
+    "department": "accesorios",
+    "category": "marroquineria",
+    "price": 12000,
+    "wholesalePrice": 11400,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "accessory",
+      "excel_code": "1980"
     },
     "tags": [
       "accesorios"
@@ -21594,7 +22171,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 22000,
-    "wholesalePrice": 17600,
+    "wholesalePrice": 20900,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21611,7 +22188,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 25000,
-    "wholesalePrice": 20000,
+    "wholesalePrice": 23800,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21628,7 +22205,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "department": "accesorios",
     "category": "marroquineria",
     "price": 15000,
-    "wholesalePrice": 12000,
+    "wholesalePrice": 14300,
     "minQty": 6,
     "metadata": {
       "product_kind": "accessory",
@@ -21657,6 +22234,294 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
+    "id": "hog-plas-plas-4",
+    "handle": "valvula-spray-plastica",
+    "title": "VALVULA SPRAY PLASTICA",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 600,
+    "wholesalePrice": 480,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-4"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-5",
+    "handle": "envase-crema-30-ml-fliptop",
+    "title": "ENVASE CREMA 30 ML FLIPTOP",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1200,
+    "wholesalePrice": 960,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-5"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-6",
+    "handle": "envase-crema-30-ml-valvula-plastica",
+    "title": "ENVASE CREMA 30 ML VALVULA PLASTICA",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1200,
+    "wholesalePrice": 960,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-6"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-7",
+    "handle": "envase-crema-60-ml-fliptop",
+    "title": "ENVASE CREMA 60 ML FLIPTOP",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1300,
+    "wholesalePrice": 1040,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-7"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-8",
+    "handle": "envase-crema-60-ml-valvula-plastica",
+    "title": "ENVASE CREMA 60 ML VALVULA PLASTICA",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1400,
+    "wholesalePrice": 1120,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-8"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-9",
+    "handle": "envase-crema-125-ml-fliptop",
+    "title": "ENVASE CREMA 125 ML FLIPTOP",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1600,
+    "wholesalePrice": 1280,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-9"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-10",
+    "handle": "envase-crema-125-ml-valvula-plastica",
+    "title": "ENVASE CREMA 125 ML VALVULA PLASTICA",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1700,
+    "wholesalePrice": 1360,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-10"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-11",
+    "handle": "envase-crema-250-ml-fliptop",
+    "title": "ENVASE CREMA 250 ML FLIPTOP",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 2200,
+    "wholesalePrice": 1760,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-11"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-12",
+    "handle": "envase-crema-250-ml-valvula-plastica",
+    "title": "ENVASE CREMA 250 ML VALVULA PLASTICA",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 2300,
+    "wholesalePrice": 1840,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-12"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-13",
+    "handle": "envase-plastico-30-ml-tapa-seguridad",
+    "title": "ENVASE PLASTICO 30 ML TAPA SEGURIDAD",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 800,
+    "wholesalePrice": 640,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-13"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-14",
+    "handle": "envase-plastico-60-ml-tapa-seguridad",
+    "title": "ENVASE PLASTICO 60 ML TAPA SEGURIDAD",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 900,
+    "wholesalePrice": 720,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-14"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-15",
+    "handle": "envase-plastico-125-ml-tapa-seguridad",
+    "title": "ENVASE PLASTICO 125 ML TAPA SEGURIDAD",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1000,
+    "wholesalePrice": 800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-15"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-16",
+    "handle": "envase-plastico-250-ml-tapa-seguridad",
+    "title": "ENVASE PLASTICO 250 ML TAPA SEGURIDAD",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1200,
+    "wholesalePrice": 960,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-16"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-17",
+    "handle": "envase-plastico-500-ml-tapa-seguridad",
+    "title": "ENVASE PLASTICO 500 ML TAPA SEGURIDAD",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1400,
+    "wholesalePrice": 1120,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-17"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-18",
+    "handle": "envase-plastico-1000-ml-tapa-seguridad",
+    "title": "ENVASE PLASTICO 1000 ML TAPA SEGURIDAD",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1600,
+    "wholesalePrice": 1280,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-18"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-19",
+    "handle": "bala-plastica-250-ml-tapa-aplicadora",
+    "title": "BALA PLASTICA 250 ML TAPA APLICADORA",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 1900,
+    "wholesalePrice": 1520,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-19"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
     "id": "hog-plas-plas-20",
     "handle": "caja-replica-aa",
     "title": "CAJA REPLICA AA",
@@ -21672,6 +22537,528 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     "tags": [
       "hogar",
       "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-21",
+    "handle": "caja-generica-para-cilindricos",
+    "title": "CAJA GENERICA PARA CILINDRICOS",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 2000,
+    "wholesalePrice": 1600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-21"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-plas-plas-22",
+    "handle": "caja-para-regalo",
+    "title": "CAJA PARA REGALO",
+    "department": "hogar",
+    "category": "empaques",
+    "price": 3000,
+    "wholesalePrice": 2400,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "plas-22"
+    },
+    "tags": [
+      "hogar",
+      "plas"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-4",
+    "handle": "jabon-liquido-lavadora-1-2-litro",
+    "title": "JABON LIQUIDO LAVADORA 1/2 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 3100,
+    "wholesalePrice": 2800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-4"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-5",
+    "handle": "jabon-liquido-lavadora-1-litro",
+    "title": "JABON LIQUIDO LAVADORA 1 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 5500,
+    "wholesalePrice": 5000,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-5"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-6",
+    "handle": "jabon-liquido-lavadora-galon-4-litros",
+    "title": "JABON LIQUIDO LAVADORA GALON 4 LITROS",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 19600,
+    "wholesalePrice": 17600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-6"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-7",
+    "handle": "jabon-liquido-rey-1-2-litro",
+    "title": "JABON LIQUIDO (REY) 1/2 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 2900,
+    "wholesalePrice": 2600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-7"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-8",
+    "handle": "jabon-liquido-rey-1-litro",
+    "title": "JABON LIQUIDO (REY) 1 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 5200,
+    "wholesalePrice": 4700,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-8"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-9",
+    "handle": "jabon-liquido-rey-galon-4-litros",
+    "title": "JABON LIQUIDO (REY) GALON 4 LITROS",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 17600,
+    "wholesalePrice": 15800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-9"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-10",
+    "handle": "jabon-liquido-lavaloza-500-ml",
+    "title": "JABON LIQUIDO LAVALOZA 500 ML",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 2800,
+    "wholesalePrice": 2500,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-10"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-11",
+    "handle": "jabon-liquido-lavaloza-1000-ml",
+    "title": "JABON LIQUIDO LAVALOZA 1000 ML",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 5000,
+    "wholesalePrice": 4500,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-11"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-12",
+    "handle": "jabon-liquido-lavaloza-galon-4-litro",
+    "title": "JABON LIQUIDO LAVALOZA GALON 4 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 17300,
+    "wholesalePrice": 15600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-12"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-13",
+    "handle": "jabon-liquido-para-manos-1-2-litro",
+    "title": "JABON LIQUIDO PARA MANOS 1/2 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 2400,
+    "wholesalePrice": 2200,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-13"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-14",
+    "handle": "jabon-liquido-para-manos-1-litro",
+    "title": "JABON LIQUIDO PARA MANOS 1 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 4400,
+    "wholesalePrice": 4000,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-14"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-15",
+    "handle": "jabon-liquido-para-manos-galon-4-litros",
+    "title": "JABON LIQUIDO PARA MANOS GALON 4 LITROS",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 15000,
+    "wholesalePrice": 13500,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-15"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-16",
+    "handle": "vinagre-industrial-1-2-litro",
+    "title": "VINAGRE INDUSTRIAL 1/2 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 2300,
+    "wholesalePrice": 2100,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-16"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-17",
+    "handle": "vinagre-industrial-1-litro",
+    "title": "VINAGRE INDUSTRIAL 1 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 3900,
+    "wholesalePrice": 3500,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-17"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-18",
+    "handle": "vinagre-industrial-galon-4-litros",
+    "title": "VINAGRE INDUSTRIAL GALON 4 LITROS",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 13300,
+    "wholesalePrice": 12000,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-18"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-19",
+    "handle": "desmanchador-ropa-color-1-2-litro",
+    "title": "DESMANCHADOR ROPA COLOR 1/2 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 2100,
+    "wholesalePrice": 1900,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-19"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-20",
+    "handle": "desmanchador-ropa-color-1-litro",
+    "title": "DESMANCHADOR ROPA COLOR 1 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 3400,
+    "wholesalePrice": 3100,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-20"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-21",
+    "handle": "desmanchador-ropa-color-galon-4-litros",
+    "title": "DESMANCHADOR ROPA COLOR GALON 4 LITROS",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 10800,
+    "wholesalePrice": 9700,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-21"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-22",
+    "handle": "suavizante-para-ropa-1-2-litro",
+    "title": "SUAVIZANTE PARA ROPA 1/2 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 2800,
+    "wholesalePrice": 2500,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-22"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-23",
+    "handle": "suavizante-para-ropa-1-litro",
+    "title": "SUAVIZANTE PARA ROPA 1 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 4900,
+    "wholesalePrice": 4400,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-23"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-24",
+    "handle": "suavizante-para-ropa-galon-4-litros",
+    "title": "SUAVIZANTE PARA ROPA GALON 4 LITROS",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 11900,
+    "wholesalePrice": 10700,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-24"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-25",
+    "handle": "limpia-pisos-1-2-litro",
+    "title": "LIMPIA PISOS 1/2 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 2300,
+    "wholesalePrice": 2100,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-25"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-26",
+    "handle": "limpia-pisos-1-litro",
+    "title": "LIMPIA PISOS 1 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 4000,
+    "wholesalePrice": 3600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-26"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-27",
+    "handle": "limpia-pisos-galon-4-litros",
+    "title": "LIMPIA PISOS GALON 4 LITROS",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 13800,
+    "wholesalePrice": 12400,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-27"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-28",
+    "handle": "desengrasante-industrial-1-2-litro",
+    "title": "DESENGRASANTE INDUSTRIAL 1/2 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 2900,
+    "wholesalePrice": 2600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-28"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-29",
+    "handle": "desengrasante-industrial-1-litro",
+    "title": "DESENGRASANTE INDUSTRIAL 1 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 5100,
+    "wholesalePrice": 4600,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-29"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
+    ]
+  },
+  {
+    "id": "hog-aseo-aseo-30",
+    "handle": "desengrasante-industrial-galon-4-litro",
+    "title": "DESENGRASANTE INDUSTRIAL GALON 4 LITRO",
+    "department": "hogar",
+    "category": "aseo",
+    "price": 17600,
+    "wholesalePrice": 15800,
+    "minQty": 6,
+    "metadata": {
+      "product_kind": "home_care",
+      "excel_code": "aseo-30"
+    },
+    "tags": [
+      "hogar",
+      "aseo"
     ]
   },
   {
@@ -21772,7 +23159,7 @@ export const CATALOG_SUMMARY = {
   "essences": 289,
   "bottles": 172,
   "preparedReplicas": 172,
-  "alcohol": 3,
-  "catalogProducts": 713,
-  "seedProducts": 713
+  "alcohol": 6,
+  "catalogProducts": 788,
+  "seedProducts": 788
 } as const;

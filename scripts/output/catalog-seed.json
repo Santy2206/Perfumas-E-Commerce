@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T17:55:23.796Z",
+  "generatedAt": "2026-08-21T18:24:53.262Z",
   "currency": "COP",
   "region": "co",
   "wholesaleDiscountDefault": 0.2,
@@ -17190,7 +17190,7 @@
         "closure": "Rosca",
         "matches_fragrance_ids": [],
         "product_kind": "bottle",
-        "excel_code": "env-200",
+        "excel_code": "env-156",
         "tags": [
           "envase",
           "insumo",
@@ -17200,7 +17200,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "b-env-200",
+          "sku": "b-env-156",
           "prices": [
             {
               "amount": 12500,
@@ -17228,7 +17228,7 @@
         "closure": "Rosca",
         "matches_fragrance_ids": [],
         "product_kind": "bottle",
-        "excel_code": "env-201",
+        "excel_code": "env-157",
         "tags": [
           "envase",
           "insumo",
@@ -17238,7 +17238,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "b-env-201",
+          "sku": "b-env-157",
           "prices": [
             {
               "amount": 7900,
@@ -17269,7 +17269,7 @@
           "ess-97-H"
         ],
         "product_kind": "bottle",
-        "excel_code": "env-202",
+        "excel_code": "env-158",
         "tags": [
           "envase",
           "insumo",
@@ -17279,7 +17279,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "b-env-202",
+          "sku": "b-env-158",
           "prices": [
             {
               "amount": 17000,
@@ -17310,7 +17310,7 @@
           "ess-150-M"
         ],
         "product_kind": "bottle",
-        "excel_code": "env-203",
+        "excel_code": "env-159",
         "tags": [
           "envase",
           "insumo",
@@ -17320,7 +17320,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "b-env-203",
+          "sku": "b-env-159",
           "prices": [
             {
               "amount": 36000,
@@ -17350,7 +17350,7 @@
           "ess-140-M"
         ],
         "product_kind": "bottle",
-        "excel_code": "env-204",
+        "excel_code": "env-160",
         "tags": [
           "envase",
           "insumo",
@@ -17360,7 +17360,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "b-env-204",
+          "sku": "b-env-160",
           "prices": [
             {
               "amount": 40000,
@@ -17390,7 +17390,7 @@
           "ess-43-H"
         ],
         "product_kind": "bottle",
-        "excel_code": "env-205",
+        "excel_code": "env-161",
         "tags": [
           "envase",
           "insumo",
@@ -17400,7 +17400,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "b-env-205",
+          "sku": "b-env-161",
           "prices": [
             {
               "amount": 30000,
@@ -17430,7 +17430,7 @@
           "ess-149-H"
         ],
         "product_kind": "bottle",
-        "excel_code": "env-206",
+        "excel_code": "env-162",
         "tags": [
           "envase",
           "insumo",
@@ -17440,7 +17440,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "b-env-206",
+          "sku": "b-env-162",
           "prices": [
             {
               "amount": 42000,
@@ -24292,7 +24292,7 @@
         "quality_tier": "AA",
         "capacity_ml": 50,
         "closure": "Rosca",
-        "excel_code": "rep-199",
+        "excel_code": "rep-169",
         "refill_price": 20000,
         "bottle_price": 4500,
         "matches_fragrance_ids": [],
@@ -24306,7 +24306,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "rep-rep-199-50",
+          "sku": "rep-rep-169-50",
           "prices": [
             {
               "amount": 31000,
@@ -24333,7 +24333,7 @@
         "quality_tier": "AA",
         "capacity_ml": 50,
         "closure": "Rosca",
-        "excel_code": "rep-200",
+        "excel_code": "rep-170",
         "refill_price": 20000,
         "bottle_price": 4500,
         "matches_fragrance_ids": [],
@@ -24347,7 +24347,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "rep-rep-200-50",
+          "sku": "rep-rep-170-50",
           "prices": [
             {
               "amount": 26000,
@@ -24374,7 +24374,7 @@
         "quality_tier": "AA",
         "capacity_ml": 100,
         "closure": "Agrafe",
-        "excel_code": "rep-201",
+        "excel_code": "rep-171",
         "refill_price": 32000,
         "matches_fragrance_ids": [
           "ess-41-M",
@@ -24390,7 +24390,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "rep-rep-201-100",
+          "sku": "rep-rep-171-100",
           "prices": [
             {
               "amount": 48000,
@@ -24417,7 +24417,7 @@
         "quality_tier": "AAA",
         "capacity_ml": 100,
         "closure": "Agrafe",
-        "excel_code": "rep-202",
+        "excel_code": "rep-172",
         "refill_price": 32000,
         "matches_fragrance_ids": [
           "ess-142-M",
@@ -24433,7 +24433,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "rep-rep-202-100",
+          "sku": "rep-rep-172-100",
           "prices": [
             {
               "amount": 70000,
@@ -24460,7 +24460,7 @@
         "quality_tier": "AAA",
         "capacity_ml": 100,
         "closure": "Agrafe",
-        "excel_code": "rep-203",
+        "excel_code": "rep-173",
         "refill_price": 32000,
         "matches_fragrance_ids": [
           "ess-140-M"
@@ -24475,7 +24475,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "rep-rep-203-100",
+          "sku": "rep-rep-173-100",
           "prices": [
             {
               "amount": 76000,
@@ -24502,7 +24502,7 @@
         "quality_tier": "AAA",
         "capacity_ml": 100,
         "closure": "Agrafe",
-        "excel_code": "rep-204",
+        "excel_code": "rep-174",
         "refill_price": 32000,
         "matches_fragrance_ids": [
           "ess-43-H"
@@ -24517,7 +24517,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "rep-rep-204-100",
+          "sku": "rep-rep-174-100",
           "prices": [
             {
               "amount": 66000,
@@ -24544,7 +24544,7 @@
         "quality_tier": "AAA",
         "capacity_ml": 100,
         "closure": "Agrafe",
-        "excel_code": "rep-205",
+        "excel_code": "rep-175",
         "refill_price": 32000,
         "matches_fragrance_ids": [
           "ess-149-H"
@@ -24559,7 +24559,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "rep-rep-205-100",
+          "sku": "rep-rep-175-100",
           "prices": [
             {
               "amount": 78000,
@@ -24599,7 +24599,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 6400,
+            "wholesale_price": 6800,
             "min_qty": 6
           }
         }
@@ -24631,7 +24631,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8400,
+            "wholesale_price": 8900,
             "min_qty": 6
           }
         }
@@ -24663,7 +24663,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 9600,
+            "wholesale_price": 10800,
             "min_qty": 6
           }
         }
@@ -24695,7 +24695,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8000,
+            "wholesale_price": 8500,
             "min_qty": 6
           }
         }
@@ -24727,7 +24727,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8400,
+            "wholesale_price": 8900,
             "min_qty": 6
           }
         }
@@ -24759,7 +24759,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 9600,
+            "wholesale_price": 10200,
             "min_qty": 6
           }
         }
@@ -24791,7 +24791,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8800,
+            "wholesale_price": 9400,
             "min_qty": 6
           }
         }
@@ -24823,7 +24823,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8000,
+            "wholesale_price": 8500,
             "min_qty": 6
           }
         }
@@ -24855,7 +24855,135 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8400,
+            "wholesale_price": 8900,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "crema-perfumas-facial-y-corporal-30-ml",
+      "title": "CREMA PERFUMAS FACIAL Y CORPORAL 30 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "product_kind": "home_care",
+        "excel_code": "splash-16",
+        "tags": [
+          "ambientales",
+          "hogar"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-16",
+          "prices": [
+            {
+              "amount": 2400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "crema-perfumas-facial-y-corporal-60-ml",
+      "title": "CREMA PERFUMAS FACIAL Y CORPORAL 60 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "product_kind": "home_care",
+        "excel_code": "splash-17",
+        "tags": [
+          "ambientales",
+          "hogar"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-17",
+          "prices": [
+            {
+              "amount": 3500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "crema-perfumas-facial-y-corporal-125-ml",
+      "title": "CREMA PERFUMAS FACIAL Y CORPORAL 125 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "product_kind": "home_care",
+        "excel_code": "splash-18",
+        "tags": [
+          "ambientales",
+          "hogar"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-18",
+          "prices": [
+            {
+              "amount": 5500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4700,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "crema-perfumas-facial-y-corporal-250-ml",
+      "title": "CREMA PERFUMAS FACIAL Y CORPORAL 250 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "product_kind": "home_care",
+        "excel_code": "splash-19",
+        "tags": [
+          "ambientales",
+          "hogar"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-19",
+          "prices": [
+            {
+              "amount": 10000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 8500,
             "min_qty": 6
           }
         }
@@ -24887,7 +25015,359 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 6800,
+            "wholesale_price": 7200,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-30-ml-valvula-spray",
+      "title": "ALCOHOL DESODORIZADO 30 ML VALVULA SPRAY",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "product_kind": "alcohol",
+        "excel_code": "splash-26",
+        "tags": [
+          "alcohol",
+          "insumos"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-26",
+          "prices": [
+            {
+              "amount": 1600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1280,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-60-ml-valvula-spray",
+      "title": "ALCOHOL DESODORIZADO 60 ML VALVULA SPRAY",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "product_kind": "alcohol",
+        "excel_code": "splash-27",
+        "tags": [
+          "alcohol",
+          "insumos"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-27",
+          "prices": [
+            {
+              "amount": 2200,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1760,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-125-ml-valvula-spray",
+      "title": "ALCOHOL DESODORIZADO 125 ML VALVULA SPRAY",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "product_kind": "alcohol",
+        "excel_code": "splash-28",
+        "tags": [
+          "alcohol",
+          "insumos"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-28",
+          "prices": [
+            {
+              "amount": 3500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-125-ml-100-gr",
+      "title": "ALCOHOL DESODORIZADO 125 ML (100 GR)",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "product_kind": "alcohol",
+        "excel_code": "splash-29",
+        "tags": [
+          "alcohol",
+          "insumos"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-29",
+          "prices": [
+            {
+              "amount": 2300,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1700,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-250-ml-200-gr",
+      "title": "ALCOHOL DESODORIZADO 250 ML (200 GR)",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "product_kind": "alcohol",
+        "excel_code": "splash-30",
+        "tags": [
+          "alcohol",
+          "insumos"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-30",
+          "prices": [
+            {
+              "amount": 4000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-500-ml-400-gr",
+      "title": "ALCOHOL DESODORIZADO 500 ML (400 GR)",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "product_kind": "alcohol",
+        "excel_code": "splash-31",
+        "tags": [
+          "alcohol",
+          "insumos"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-31",
+          "prices": [
+            {
+              "amount": 7400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 5600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-1000-ml-800-gr",
+      "title": "ALCOHOL DESODORIZADO 1000 ML (800 GR)",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "product_kind": "alcohol",
+        "excel_code": "splash-32",
+        "tags": [
+          "alcohol",
+          "insumos"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-32",
+          "prices": [
+            {
+              "amount": 13500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 10100,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "agua-de-linos-spray-30-ml",
+      "title": "AGUA DE LINOS SPRAY 30 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "product_kind": "home_care",
+        "excel_code": "splash-35",
+        "tags": [
+          "ambientales",
+          "hogar"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-35",
+          "prices": [
+            {
+              "amount": 2400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "agua-de-linos-spray-60-ml",
+      "title": "AGUA DE LINOS SPRAY 60 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "product_kind": "home_care",
+        "excel_code": "splash-36",
+        "tags": [
+          "ambientales",
+          "hogar"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-36",
+          "prices": [
+            {
+              "amount": 4000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "agua-de-linos-spray-125-ml",
+      "title": "AGUA DE LINOS SPRAY 125 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "product_kind": "home_care",
+        "excel_code": "splash-37",
+        "tags": [
+          "ambientales",
+          "hogar"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-37",
+          "prices": [
+            {
+              "amount": 7000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 5300,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "agua-de-linos-spray-250-ml",
+      "title": "AGUA DE LINOS SPRAY 250 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "ambientales",
+        "product_kind": "home_care",
+        "excel_code": "splash-38",
+        "tags": [
+          "ambientales",
+          "hogar"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "sku-splash-splash-38",
+          "prices": [
+            {
+              "amount": 13000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 9800,
             "min_qty": 6
           }
         }
@@ -24926,15 +25406,15 @@
       ]
     },
     {
-      "handle": "alcohol-desodorizado-valvula-spray-30-ml",
-      "title": "Alcohol Desodorizado (válvula spray) 30 ml",
+      "handle": "alcohol-desodorizado-30-ml",
+      "title": "Alcohol Desodorizado 30 ML",
       "description": "Alcohol desodorizado especializado para perfumería.",
       "collection": "insumos",
       "status": "published",
       "metadata": {
         "department": "insumos",
         "category": "alcohol",
-        "unit": "30 ml",
+        "unit": "30 ML",
         "product_kind": "alcohol",
         "tags": [
           "alcohol",
@@ -24944,7 +25424,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "alc-30",
+          "sku": "alc-30-ml",
           "prices": [
             {
               "amount": 1600,
@@ -24959,15 +25439,15 @@
       ]
     },
     {
-      "handle": "alcohol-desodorizado-valvula-spray-60-ml",
-      "title": "Alcohol Desodorizado (válvula spray) 60 ml",
+      "handle": "alcohol-desodorizado-60-ml",
+      "title": "Alcohol Desodorizado 60 ML",
       "description": "Alcohol desodorizado especializado para perfumería.",
       "collection": "insumos",
       "status": "published",
       "metadata": {
         "department": "insumos",
         "category": "alcohol",
-        "unit": "60 ml",
+        "unit": "60 ML",
         "product_kind": "alcohol",
         "tags": [
           "alcohol",
@@ -24977,7 +25457,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "alc-60",
+          "sku": "alc-60-ml",
           "prices": [
             {
               "amount": 2200,
@@ -24992,15 +25472,15 @@
       ]
     },
     {
-      "handle": "alcohol-desodorizado-valvula-spray-125-ml",
-      "title": "Alcohol Desodorizado (válvula spray) 125 ml",
+      "handle": "alcohol-desodorizado-125-ml",
+      "title": "Alcohol Desodorizado 125 ML",
       "description": "Alcohol desodorizado especializado para perfumería.",
       "collection": "insumos",
       "status": "published",
       "metadata": {
         "department": "insumos",
         "category": "alcohol",
-        "unit": "125 ml",
+        "unit": "125 ML",
         "product_kind": "alcohol",
         "tags": [
           "alcohol",
@@ -25010,7 +25490,7 @@
       "variants": [
         {
           "title": "Default",
-          "sku": "alc-125",
+          "sku": "alc-125-ml",
           "prices": [
             {
               "amount": 3500,
@@ -25019,6 +25499,105 @@
           ],
           "metadata": {
             "wholesale_price": 2800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-250-ml",
+      "title": "Alcohol Desodorizado 250 ML",
+      "description": "Alcohol desodorizado especializado para perfumería.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "unit": "250 ML",
+        "product_kind": "alcohol",
+        "tags": [
+          "alcohol",
+          "insumo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "alc-250-ml",
+          "prices": [
+            {
+              "amount": 4000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3200,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-500-ml",
+      "title": "Alcohol Desodorizado 500 ML",
+      "description": "Alcohol desodorizado especializado para perfumería.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "unit": "500 ML",
+        "product_kind": "alcohol",
+        "tags": [
+          "alcohol",
+          "insumo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "alc-500-ml",
+          "prices": [
+            {
+              "amount": 7400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 5920,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "alcohol-desodorizado-1000-ml",
+      "title": "Alcohol Desodorizado 1000 ML",
+      "description": "Alcohol desodorizado especializado para perfumería.",
+      "collection": "insumos",
+      "status": "published",
+      "metadata": {
+        "department": "insumos",
+        "category": "alcohol",
+        "unit": "1000 ML",
+        "product_kind": "alcohol",
+        "tags": [
+          "alcohol",
+          "insumo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "alc-1000-ml",
+          "prices": [
+            {
+              "amount": 13500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 10800,
             "min_qty": 6
           }
         }
@@ -25050,7 +25629,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8000,
+            "wholesale_price": 9000,
             "min_qty": 6
           }
         }
@@ -25082,7 +25661,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 16000,
+            "wholesale_price": 18000,
             "min_qty": 6
           }
         }
@@ -25114,7 +25693,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8000,
+            "wholesale_price": 9000,
             "min_qty": 6
           }
         }
@@ -25146,7 +25725,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8000,
+            "wholesale_price": 9000,
             "min_qty": 6
           }
         }
@@ -25178,7 +25757,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8000,
+            "wholesale_price": 9000,
             "min_qty": 6
           }
         }
@@ -25210,7 +25789,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 12000,
+            "wholesale_price": 13500,
             "min_qty": 6
           }
         }
@@ -25242,7 +25821,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8000,
+            "wholesale_price": 9000,
             "min_qty": 6
           }
         }
@@ -25274,7 +25853,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 9600,
+            "wholesale_price": 10800,
             "min_qty": 6
           }
         }
@@ -25306,7 +25885,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 12000,
+            "wholesale_price": 13500,
             "min_qty": 6
           }
         }
@@ -25338,7 +25917,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 8000,
+            "wholesale_price": 9000,
             "min_qty": 6
           }
         }
@@ -25370,7 +25949,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 16000,
+            "wholesale_price": 18000,
             "min_qty": 6
           }
         }
@@ -25402,7 +25981,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 4000,
+            "wholesale_price": 4500,
             "min_qty": 6
           }
         }
@@ -27097,7 +27676,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 9600,
+            "wholesale_price": 11400,
             "min_qty": 6
           }
         }
@@ -27128,7 +27707,162 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 20000,
+            "wholesale_price": 23800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cartuchera-peluche",
+      "title": "CARTUCHERA PELUCHE",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1902",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1902",
+          "prices": [
+            {
+              "amount": 8000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 7600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cartuchera-grande",
+      "title": "CARTUCHERA GRANDE",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1902",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1902",
+          "prices": [
+            {
+              "amount": 10000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 9500,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cartuchera-mediana",
+      "title": "CARTUCHERA MEDIANA",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1902",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1902",
+          "prices": [
+            {
+              "amount": 7000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 6700,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cartuchera-lapiz",
+      "title": "CARTUCHERA LAPIZ",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1903",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1903",
+          "prices": [
+            {
+              "amount": 4000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "mini-monedero",
+      "title": "MINI MONEDERO",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1904",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1904",
+          "prices": [
+            {
+              "amount": 2500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2400,
             "min_qty": 6
           }
         }
@@ -27159,7 +27893,38 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 16000,
+            "wholesale_price": 19000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "billetera-sintetico-grande-f",
+      "title": "BILLETERA SINTETICO GRANDE F",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1950",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1950",
+          "prices": [
+            {
+              "amount": 38000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 36100,
             "min_qty": 6
           }
         }
@@ -27190,7 +27955,38 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 20000,
+            "wholesale_price": 23800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "billetera-sintetica-cuadrada-mediana-f",
+      "title": "BILLETERA SINTETICA CUADRADA MEDIANA F",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1952",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1952",
+          "prices": [
+            {
+              "amount": 25000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 23800,
             "min_qty": 6
           }
         }
@@ -27221,7 +28017,162 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 19200,
+            "wholesale_price": 22800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "billetera-cuero-eco-m",
+      "title": "BILLETERA CUERO ECO M",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1961",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1961",
+          "prices": [
+            {
+              "amount": 25000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 23800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "billetera-cuero-fina-m",
+      "title": "BILLETERA CUERO FINA M",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1963",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1963",
+          "prices": [
+            {
+              "amount": 30000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 28500,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "billetera-cuero-cortaunas-m",
+      "title": "BILLETERA CUERO + CORTAUÑAS M",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1964",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1964",
+          "prices": [
+            {
+              "amount": 28000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 26600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "billetera-cuero-portadocumentos-m",
+      "title": "BILLETERA CUERO + PORTADOCUMENTOS M",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1964",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1964",
+          "prices": [
+            {
+              "amount": 27000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 25700,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cinturon-sintetica-f",
+      "title": "CINTURON SINTETICA F",
+      "collection": "accesorios",
+      "status": "published",
+      "metadata": {
+        "department": "accesorios",
+        "category": "marroquineria",
+        "product_kind": "accessory",
+        "excel_code": "1980",
+        "tags": [
+          "accesorios"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "acc-1980",
+          "prices": [
+            {
+              "amount": 12000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 11400,
             "min_qty": 6
           }
         }
@@ -27252,7 +28203,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 17600,
+            "wholesale_price": 20900,
             "min_qty": 6
           }
         }
@@ -27283,7 +28234,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 20000,
+            "wholesale_price": 23800,
             "min_qty": 6
           }
         }
@@ -27314,7 +28265,7 @@
             }
           ],
           "metadata": {
-            "wholesale_price": 12000,
+            "wholesale_price": 14300,
             "min_qty": 6
           }
         }
@@ -27353,6 +28304,518 @@
       ]
     },
     {
+      "handle": "valvula-spray-plastica",
+      "title": "VALVULA SPRAY PLASTICA",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-4",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-4",
+          "prices": [
+            {
+              "amount": 600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 480,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-crema-30-ml-fliptop",
+      "title": "ENVASE CREMA 30 ML FLIPTOP",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-5",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-5",
+          "prices": [
+            {
+              "amount": 1200,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 960,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-crema-30-ml-valvula-plastica",
+      "title": "ENVASE CREMA 30 ML VALVULA PLASTICA",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-6",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-6",
+          "prices": [
+            {
+              "amount": 1200,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 960,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-crema-60-ml-fliptop",
+      "title": "ENVASE CREMA 60 ML FLIPTOP",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-7",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-7",
+          "prices": [
+            {
+              "amount": 1300,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1040,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-crema-60-ml-valvula-plastica",
+      "title": "ENVASE CREMA 60 ML VALVULA PLASTICA",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-8",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-8",
+          "prices": [
+            {
+              "amount": 1400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1120,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-crema-125-ml-fliptop",
+      "title": "ENVASE CREMA 125 ML FLIPTOP",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-9",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-9",
+          "prices": [
+            {
+              "amount": 1600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1280,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-crema-125-ml-valvula-plastica",
+      "title": "ENVASE CREMA 125 ML VALVULA PLASTICA",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-10",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-10",
+          "prices": [
+            {
+              "amount": 1700,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1360,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-crema-250-ml-fliptop",
+      "title": "ENVASE CREMA 250 ML FLIPTOP",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-11",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-11",
+          "prices": [
+            {
+              "amount": 2200,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1760,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-crema-250-ml-valvula-plastica",
+      "title": "ENVASE CREMA 250 ML VALVULA PLASTICA",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-12",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-12",
+          "prices": [
+            {
+              "amount": 2300,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1840,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-plastico-30-ml-tapa-seguridad",
+      "title": "ENVASE PLASTICO 30 ML TAPA SEGURIDAD",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-13",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-13",
+          "prices": [
+            {
+              "amount": 800,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 640,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-plastico-60-ml-tapa-seguridad",
+      "title": "ENVASE PLASTICO 60 ML TAPA SEGURIDAD",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-14",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-14",
+          "prices": [
+            {
+              "amount": 900,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 720,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-plastico-125-ml-tapa-seguridad",
+      "title": "ENVASE PLASTICO 125 ML TAPA SEGURIDAD",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-15",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-15",
+          "prices": [
+            {
+              "amount": 1000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-plastico-250-ml-tapa-seguridad",
+      "title": "ENVASE PLASTICO 250 ML TAPA SEGURIDAD",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-16",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-16",
+          "prices": [
+            {
+              "amount": 1200,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 960,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-plastico-500-ml-tapa-seguridad",
+      "title": "ENVASE PLASTICO 500 ML TAPA SEGURIDAD",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-17",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-17",
+          "prices": [
+            {
+              "amount": 1400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1120,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "envase-plastico-1000-ml-tapa-seguridad",
+      "title": "ENVASE PLASTICO 1000 ML TAPA SEGURIDAD",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-18",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-18",
+          "prices": [
+            {
+              "amount": 1600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1280,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "bala-plastica-250-ml-tapa-aplicadora",
+      "title": "BALA PLASTICA 250 ML TAPA APLICADORA",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-19",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-19",
+          "prices": [
+            {
+              "amount": 1900,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1520,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
       "handle": "caja-replica-aa",
       "title": "CAJA REPLICA AA",
       "collection": "hogar",
@@ -27379,6 +28842,934 @@
           ],
           "metadata": {
             "wholesale_price": 3600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "caja-generica-para-cilindricos",
+      "title": "CAJA GENERICA PARA CILINDRICOS",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-21",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-21",
+          "prices": [
+            {
+              "amount": 2000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "caja-para-regalo",
+      "title": "CAJA PARA REGALO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "empaques",
+        "product_kind": "home_care",
+        "excel_code": "plas-22",
+        "tags": [
+          "hogar",
+          "plas"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-plas-plas-22",
+          "prices": [
+            {
+              "amount": 3000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2400,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-lavadora-1-2-litro",
+      "title": "JABON LIQUIDO LAVADORA 1/2 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-4",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-4",
+          "prices": [
+            {
+              "amount": 3100,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-lavadora-1-litro",
+      "title": "JABON LIQUIDO LAVADORA 1 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-5",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-5",
+          "prices": [
+            {
+              "amount": 5500,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 5000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-lavadora-galon-4-litros",
+      "title": "JABON LIQUIDO LAVADORA GALON 4 LITROS",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-6",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-6",
+          "prices": [
+            {
+              "amount": 19600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 17600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-rey-1-2-litro",
+      "title": "JABON LIQUIDO (REY) 1/2 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-7",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-7",
+          "prices": [
+            {
+              "amount": 2900,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-rey-1-litro",
+      "title": "JABON LIQUIDO (REY) 1 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-8",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-8",
+          "prices": [
+            {
+              "amount": 5200,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4700,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-rey-galon-4-litros",
+      "title": "JABON LIQUIDO (REY) GALON 4 LITROS",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-9",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-9",
+          "prices": [
+            {
+              "amount": 17600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 15800,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-lavaloza-500-ml",
+      "title": "JABON LIQUIDO LAVALOZA 500 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-10",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-10",
+          "prices": [
+            {
+              "amount": 2800,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2500,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-lavaloza-1000-ml",
+      "title": "JABON LIQUIDO LAVALOZA 1000 ML",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-11",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-11",
+          "prices": [
+            {
+              "amount": 5000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4500,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-lavaloza-galon-4-litro",
+      "title": "JABON LIQUIDO LAVALOZA GALON 4 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-12",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-12",
+          "prices": [
+            {
+              "amount": 17300,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 15600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-para-manos-1-2-litro",
+      "title": "JABON LIQUIDO PARA MANOS 1/2 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-13",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-13",
+          "prices": [
+            {
+              "amount": 2400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2200,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-para-manos-1-litro",
+      "title": "JABON LIQUIDO PARA MANOS 1 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-14",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-14",
+          "prices": [
+            {
+              "amount": 4400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "jabon-liquido-para-manos-galon-4-litros",
+      "title": "JABON LIQUIDO PARA MANOS GALON 4 LITROS",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-15",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-15",
+          "prices": [
+            {
+              "amount": 15000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 13500,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "vinagre-industrial-1-2-litro",
+      "title": "VINAGRE INDUSTRIAL 1/2 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-16",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-16",
+          "prices": [
+            {
+              "amount": 2300,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2100,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "vinagre-industrial-1-litro",
+      "title": "VINAGRE INDUSTRIAL 1 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-17",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-17",
+          "prices": [
+            {
+              "amount": 3900,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3500,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "vinagre-industrial-galon-4-litros",
+      "title": "VINAGRE INDUSTRIAL GALON 4 LITROS",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-18",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-18",
+          "prices": [
+            {
+              "amount": 13300,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 12000,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "desmanchador-ropa-color-1-2-litro",
+      "title": "DESMANCHADOR ROPA COLOR 1/2 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-19",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-19",
+          "prices": [
+            {
+              "amount": 2100,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 1900,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "desmanchador-ropa-color-1-litro",
+      "title": "DESMANCHADOR ROPA COLOR 1 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-20",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-20",
+          "prices": [
+            {
+              "amount": 3400,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3100,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "desmanchador-ropa-color-galon-4-litros",
+      "title": "DESMANCHADOR ROPA COLOR GALON 4 LITROS",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-21",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-21",
+          "prices": [
+            {
+              "amount": 10800,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 9700,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "suavizante-para-ropa-1-2-litro",
+      "title": "SUAVIZANTE PARA ROPA 1/2 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-22",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-22",
+          "prices": [
+            {
+              "amount": 2800,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2500,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "suavizante-para-ropa-1-litro",
+      "title": "SUAVIZANTE PARA ROPA 1 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-23",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-23",
+          "prices": [
+            {
+              "amount": 4900,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4400,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "suavizante-para-ropa-galon-4-litros",
+      "title": "SUAVIZANTE PARA ROPA GALON 4 LITROS",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-24",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-24",
+          "prices": [
+            {
+              "amount": 11900,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 10700,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "limpia-pisos-1-2-litro",
+      "title": "LIMPIA PISOS 1/2 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-25",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-25",
+          "prices": [
+            {
+              "amount": 2300,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2100,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "limpia-pisos-1-litro",
+      "title": "LIMPIA PISOS 1 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-26",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-26",
+          "prices": [
+            {
+              "amount": 4000,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 3600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "limpia-pisos-galon-4-litros",
+      "title": "LIMPIA PISOS GALON 4 LITROS",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-27",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-27",
+          "prices": [
+            {
+              "amount": 13800,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 12400,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "desengrasante-industrial-1-2-litro",
+      "title": "DESENGRASANTE INDUSTRIAL 1/2 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-28",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-28",
+          "prices": [
+            {
+              "amount": 2900,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 2600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "desengrasante-industrial-1-litro",
+      "title": "DESENGRASANTE INDUSTRIAL 1 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-29",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-29",
+          "prices": [
+            {
+              "amount": 5100,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 4600,
+            "min_qty": 6
+          }
+        }
+      ]
+    },
+    {
+      "handle": "desengrasante-industrial-galon-4-litro",
+      "title": "DESENGRASANTE INDUSTRIAL GALON 4 LITRO",
+      "collection": "hogar",
+      "status": "published",
+      "metadata": {
+        "department": "hogar",
+        "category": "aseo",
+        "product_kind": "home_care",
+        "excel_code": "aseo-30",
+        "tags": [
+          "hogar",
+          "aseo"
+        ]
+      },
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "hog-aseo-aseo-30",
+          "prices": [
+            {
+              "amount": 17600,
+              "currency_code": "cop"
+            }
+          ],
+          "metadata": {
+            "wholesale_price": 15800,
             "min_qty": 6
           }
         }
@@ -27545,13 +29936,13 @@
       ]
     }
   ],
-  "count": 713,
+  "count": 788,
   "summary": {
     "essences": 289,
     "bottles": 172,
     "preparedReplicas": 172,
-    "alcohol": 3,
-    "catalogProducts": 713,
-    "seedProducts": 713
+    "alcohol": 6,
+    "catalogProducts": 788,
+    "seedProducts": 788
   }
 }
