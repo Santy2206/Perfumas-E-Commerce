@@ -6,7 +6,7 @@
 import type { Bottle, Fragrance, LooseComponent } from "../types";
 import type { CatalogProduct } from "../catalog-types";
 
-export const GENERATED_AT = "2026-08-19T19:47:17.377Z";
+export const GENERATED_AT = "2026-08-21T17:55:23.796Z";
 
 export const OLFACTIVE_GROUPS = [
   {
